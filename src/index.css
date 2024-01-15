@@ -1,0 +1,21 @@
+:root {
+    --primary-color: #042B2A;
+    --secondary-color: #D66B27;
+    --text-color-dark: #021a19;
+    --text-color-light: #ededed;
+    --background-color: #fff;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+.no-bullets {
+    list-style-type: none;
+}
+  
+.no-decoration {
+    text-decoration: none;
+    color: inherit;
+}
+  
