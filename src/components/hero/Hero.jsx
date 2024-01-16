@@ -5,7 +5,6 @@ import './Hero.css';
 function Hero() {
   return (
     <div>
-      {/* Add your Hero component's content and logic here */}
     </div>
   );
 }
