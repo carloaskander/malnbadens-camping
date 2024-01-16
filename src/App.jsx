@@ -2,13 +2,13 @@ import { useState } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css'
 
-import Navbar from './components/navbar/Navbar.jsx';
-import Home from './pages/home/Home.jsx'; // Assuming 'Home' includes Hero and BookNow
-import Accommodation from './pages/accommodation/Accommodation.jsx';
-import Activities from './pages/activities/Activities.jsx';
-import Hudiksvall from './pages/hudiksvall/Hudiksvall.jsx';
-import Restaurant from './pages/restaurant/Restaurant.jsx';
-import Openinghours from './pages/opening-hours/Openinghours.jsx';
+import Navbar from './components/navbar/Navbar';
+import Home from './pages/home/Home';
+import Accommodation from './pages/accommodation/Accommodation';
+import Activities from './pages/activities/Activities';
+import Hudiksvall from './pages/hudiksvall/Hudiksvall';
+import Restaurant from './pages/restaurant/Restaurant';
+import Openinghours from './pages/opening-hours/Openinghours';
 
 function App() {
 

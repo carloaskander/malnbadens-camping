@@ -1,7 +1,7 @@
 import React from 'react';
 
-import Hero from '../../components/hero/Hero.jsx';
-import BookNow from '../../components/booknow/BookNow.jsx';
+import Hero from '../../components/hero/Hero';
+import BookNow from '../../components/booknow/BookNow';
 
 function Home() {
     return(
