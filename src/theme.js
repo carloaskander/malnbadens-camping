@@ -3,31 +3,41 @@
 import { createTheme } from '@mui/material/styles';
 
 const theme = createTheme({
+  typography: {
+    fontFamily: 'Roboto, sans-serif',
+  },
   palette: {
     primary: {
-      main: '#042B2A', // Your primary color
+      main: '#042B2A', // primary color
     },
     secondary: {
-      main: '#D66B27', // Your secondary color
+      main: '#D66B27', // secondary color
     },
     text: {
-      primary: '#021a19', // Your dark text color
-      secondary: '#ededed', // Your light text color
+      primary: '#021a19', // dark text color
+      secondary: '#ededed', // light text color
     },
     background: {
-      default: '#fff', // Your background color
+      default: '#fff', //background color
     },
   },
   components: {
     MuiAppBar: {
       styleOverrides: {
         root: {
-          backgroundColor: 'rgba(4, 43, 42, 0.7)', // Your primary color with 0.7 opacity
+          backgroundColor: 'rgba(4, 43, 42, 0.95)', //Primary green color with 0.7 opacity
+        },
+      },
+    },
+    MuiDrawer: {
+      styleOverrides: {
+        paper: {
+          backgroundColor: 'rgba(4, 43, 42, 0.85)', //Primary green color with 0.85 opacity
+          color: 'white', // Text color for the items in the drawer
         },
       },
     },
   },
-  // ... any other theme customization ...
 });
 
 export default theme;

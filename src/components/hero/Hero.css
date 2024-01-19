@@ -1,0 +1,90 @@
+.hero-container {
+    /* Position */
+    position: relative;
+
+    /* Size */
+    width: 100%;
+    height: 75vh;
+}
+
+
+.hero-image {
+    /* Position */
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    /* Size */
+    width: 100%;
+    height: 100%;
+
+    /* Style */
+    object-fit: cover;
+    z-index: -1;
+}
+
+
+.hero-overlay {
+    /* Position */
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    /* Style */
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+    z-index: 0;
+}
+
+
+.hero-content {
+    /* Position */
+    position: absolute;
+    top: 70px;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    /* Size */
+    width: 100%;
+    height: calc(100% - 70px);
+
+    /* Style */
+    object-fit: cover;
+    z-index: 1;
+}
+
+.hero-title {
+    /* Style */
+    text-align: center;
+    color: white;
+
+    /* Size */
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.hero-subtitle {
+    /* Style */
+    color: white;
+
+    /* Size */
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.hero-cta {
+    /* Size */
+    padding: 10px 20px;
+
+    /* Style */
+    background-color: var(--secondary-color); /* Check if variable is defined */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+}

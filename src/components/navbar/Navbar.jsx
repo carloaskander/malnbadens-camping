@@ -12,6 +12,9 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 
+// IMAGE IMPORTS
+import logo from '../../assets/images/logo/mbclogo-light-transparent-horizontal.png';
+
 
 function Navbar() {
     const [drawerOpen, setDrawerOpen] = useState(false);
@@ -56,8 +59,9 @@ const list = () => (
 
 
     return (
-        <AppBar position="static">
-            <Toolbar>
+        <AppBar position="fixed">
+            <Toolbar style={{ justifyContent: 'space-between', minHeight: '70px' }}>
+                <img src={logo} alt="Logo" style={{ height: '70px' }} />
                 <IconButton
                     edge="start"
                     color="inherit"
@@ -66,7 +70,6 @@ const list = () => (
                 >
                     <MenuIcon />
                 </IconButton>
-                {/* You can add your logo or title here */}
                 <Drawer
                     anchor="right"
                     open={drawerOpen}
