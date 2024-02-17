@@ -1,0 +1,7 @@
+.cards-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Adjust based on your design */
+    padding: 20px;
+    justify-content: center; /* Center cards in the container */
+}
