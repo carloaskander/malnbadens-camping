@@ -24,7 +24,7 @@ const theme = createTheme({
     MuiAppBar: {
       styleOverrides: {
         root: {
-          backgroundColor: 'rgba(4, 43, 42, 0.95)', // Primary green color with 0.7 opacity
+          backgroundColor: 'rgba(4, 43, 42, 0.95)', // Primary green color with 0.95 opacity
         },
       },
     },
@@ -39,9 +39,10 @@ const theme = createTheme({
     MuiCard: {
       styleOverrides: {
         root: {
-          backgroundColor: grey[100], // Using MUI's light grey
-          color: '#021a19', // Consider using the dark text color for better contrast
+          backgroundColor: '#fff', // Using MUI's light grey
+          color: '#021a19', // Dark text color for better contrast
           borderRadius: '1px',
+          boxShadow: '0px 2px 8px 4px rgba(0, 0, 0, 0.1)',
         },
       },
     },
@@ -49,11 +50,19 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           height: '160px', // Standardize the height for all card media
-          // Add any additional styles you want for the card media here
         },
       },
     },
-    // You can also add overrides for other card-related components like MuiCardContent here
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          borderRadius: '0', // Apply no border radius to all buttons
+          backgroundColor: '#D66B27',
+          // Add other global button styles here
+        },
+      },
+    },
+    // Additional component overrides can be placed here
   },
 });
 

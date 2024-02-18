@@ -2,6 +2,9 @@ import React from 'react';
 import Hero from '../../components/hero/Hero';
 import AccommodationCard from '../../components/AccommodationCard/AccommodationCard';
 import Box from '@mui/material/Box'; // Import Box from MUI
+import campingThumbnail from '../../assets/images/accommodation-cards/camping-thumbnail.jpg';
+import cottagesThumbnail from '../../assets/images/accommodation-cards/cottages-thumbnail.jpg';
+import hostelThumbnail from '../../assets/images/accommodation-cards/hostel-thumbnail.jpg';
 
 function Home() {
   return (
@@ -19,19 +22,19 @@ function Home() {
         <AccommodationCard
           title="Camping"
           description="Enjoy a night under the stars and reconnect with nature."
-          imageUrl="/images/camping.jpg"
+          imageUrl={campingThumbnail}
           link="/camping"
         />
         <AccommodationCard
           title="Cottages"
           description="Cozy up in our comfortable cottages for a more private experience."
-          imageUrl="/images/cottages.jpg"
+          imageUrl={cottagesThumbnail}
           link="/cottages"
         />
         <AccommodationCard
           title="Hostel"
           description="Meet fellow travelers in our friendly and affordable hostel."
-          imageUrl="/images/hostel.jpg"
+          imageUrl={hostelThumbnail}
           link="/hostel"
         />
       </Box>

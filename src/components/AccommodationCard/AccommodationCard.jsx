@@ -6,39 +6,57 @@ function AccommodationCard({ title, description, imageUrl, link }) {
     <Card 
       sx={{
         flex: '1 1 auto',
-        Width: '100%', // Minimum width of the card
+        width: '100%',
         maxWidth: { sm: 375 },
         mb: 2, // Margin bottom for spacing between cards
       }}
     >
       <CardMedia
         component="img"
-        height="140"
         image={imageUrl}
         alt={title}
         sx={{
-          // You can add specific styles for CardMedia if needed
+          height: 200,
+          objectFit: 'cover',
         }}
       />
       <CardContent
         sx={{
-          // Styles specific to the content area, if needed
+          // Styles specific to the content area
         }}
       >
-        <Typography gutterBottom variant="h5" component="div">
+        <Typography
+          gutterBottom
+          variant="h5"
+          component="div"
+          sx={{
+            fontWeight: 'bold', // Makes the title bold
+            color: 'text.primary', // Use the primary color from the theme
+          }}
+        >
           {title}
         </Typography>
-        <Typography variant="body2" color="text.secondary">
+        <Typography
+          variant="body2"
+          color="text.primary"
+          sx={{
+          }}
+        >
           {description}
         </Typography>
-        <Button 
-          size="small" 
+        <Button
+          size="medium"
           href={link}
           sx={{
             mt: 1, // Margin top for spacing above the button
-            // Additional button styles if needed
+            color: 'white', // Text color for the button
+            '&:hover': {
+              backgroundColor: 'primary.dark', // Darken the button on hover
+            },
           }}
-        >Learn More</Button>
+        >
+          Learn More
+        </Button>
       </CardContent>
     </Card>
   );
