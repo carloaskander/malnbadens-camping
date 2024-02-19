@@ -7,6 +7,7 @@
 }
 
 body {
+    min-height: 100vh;
     position: relative;
     background-image: url('/src/assets/images/background/adobestocktopograhy.png');
     background-repeat: repeat;

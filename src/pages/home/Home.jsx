@@ -23,19 +23,19 @@ function Home() {
           title="Camping"
           description="Enjoy a night under the stars and reconnect with nature."
           imageUrl={campingThumbnail}
-          link="/camping"
+          link="/accommodation/camping"
         />
         <AccommodationCard
           title="Cottages"
           description="Cozy up in our comfortable cottages for a more private experience."
           imageUrl={cottagesThumbnail}
-          link="/cottages"
+          link="/accommodation/cottages"
         />
         <AccommodationCard
           title="Hostel"
           description="Meet fellow travelers in our friendly and affordable hostel."
           imageUrl={hostelThumbnail}
-          link="/hostel"
+          link="/accommodation/hostel"
         />
       </Box>
     </div>

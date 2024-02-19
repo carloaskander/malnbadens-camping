@@ -6,6 +6,9 @@ import Navbar from './components/navbar/Navbar';
 import Hero from './components/hero/Hero'
 import Home from './pages/home/Home';
 import Accommodation from './pages/accommodation/Accommodation';
+import Camping from './pages/camping/Camping';
+import Cottages from './pages/cottages/Cottages';
+import Hostel from './pages/hostel/Hostel';
 import Activities from './pages/activities/Activities';
 import Hudiksvall from './pages/hudiksvall/Hudiksvall';
 import Restaurant from './pages/restaurant/Restaurant';
@@ -22,14 +25,19 @@ function App() {
         <Router>
           <Navbar/>
           <Routes>
-            <Route path="/" element={<Navigate replace to="/home" />} />
-            <Route path="/home" element={<Home />} />
-            <Route path="/accommodation" element={<Accommodation />} />
-            <Route path="/activities" element={<Activities />} />
-            <Route path="/hudiksvall" element={<Hudiksvall />} />
-            <Route path="/restaurant" element={<Restaurant />} />
-            <Route path="/opening-hours" element={<Openinghours />} />
-          </Routes>
+          <Route path="/" element={<Navigate replace to="/home" />} />
+          <Route path="/home" element={<Home />} />
+          {/* Potentially there might be added a accommodation page with camping, cottages and hostel as nested routes here. */}
+          <Route path="/accommodation/camping" element={<Camping />} />
+          <Route path="/accommodation/cottages" element={<Cottages />} />
+          <Route path="/accommodation/hostel" element={<Hostel />} />
+          <Route path="/activities" element={<Activities />} />
+          <Route path="/hudiksvall" element={<Hudiksvall />} />
+          <Route path="/restaurant" element={<Restaurant />} />
+          <Route path="/opening-hours" element={<Openinghours />} />
+          {/* Other routes */}
+        </Routes>
+
         </Router>
         {/* <Footer/> */}
       </ThemeProvider>
