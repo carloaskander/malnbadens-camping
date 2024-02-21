@@ -4,6 +4,9 @@
     --text-color-dark: #021a19;
     --text-color-light: #ededed;
     --background-color: #fff;
+    
+    --navbar-min-height: 70px;
+    --navbar-logo-height: 70px;
 }
 
 body {

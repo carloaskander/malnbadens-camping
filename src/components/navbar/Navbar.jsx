@@ -88,8 +88,8 @@ const list = () => (
 
     return (
         <AppBar position="fixed">
-            <Toolbar style={{ justifyContent: 'space-between', minHeight: '70px' }}>
-                <img src={logo} alt="Logo" style={{ height: '70px' }} />
+            <Toolbar style={{ justifyContent: 'space-between', minHeight: 'var(--navbar-min-height)' }}>
+                <img src={logo} alt="Logo" style={{ height: 'var(--navbar-logo-height)' }} />
                 <IconButton
                     edge="start"
                     color="inherit"

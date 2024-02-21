@@ -7,10 +7,10 @@ const theme = createTheme({
   },
   palette: {
     primary: {
-      main: '#042B2A', // Primary color
+      main: 'rgba(4, 43, 42)', // Primary color
     },
     secondary: {
-      main: '#D66B27', // Secondary color
+      main: 'rgba(214, 107, 39)', // Secondary color
     },
     text: {
       primary: '#021a19', // Dark text color
