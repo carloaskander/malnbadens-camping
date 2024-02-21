@@ -24,7 +24,6 @@ function PhotoGallery({ images }) {
         }, 400); // Half of your transition duration
     };
     
-
     useEffect(() => {
         // Set up a timer for auto-sliding
         const timer = setInterval(() => {
