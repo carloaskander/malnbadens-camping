@@ -27,17 +27,13 @@ function AccommodationCard({ title, description, imageUrl, link }) {
       >
         <Typography
           gutterBottom
-          variant="h5"
+          variant="h4"
           component="div"
-          sx={{
-            fontWeight: 'bold', // Makes the title bold
-            color: 'text.primary', // Use the primary color from the theme
-          }}
         >
           {title}
         </Typography>
         <Typography
-          variant="body2"
+          variant="body1"
           color="text.primary"
           sx={{
           }}

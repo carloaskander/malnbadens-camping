@@ -1,40 +1,80 @@
 import React from 'react';
-import './Hero.css';
-
-import hero from '../../assets/images/hero/hero-image-1.jpg'
-
-// MATERIAL-UI IMPORTS
-import { Typography, Button } from '@mui/material';
+import { Box, Typography, Button } from '@mui/material';
+import heroImage from '../../assets/images/hero/hero-image-1.jpg';
 
 function Hero() {
   return (
-    <div className="hero-container">
-      <img src={hero} alt="Campsite" className="hero-image" />
-      <div className="hero-overlay"></div>
-      <div className="hero-content">
-        <Typography variant="h4" component="h1" style={{ fontStyle: 'italic' }} className="hero-title">
+    <Box 
+      sx={{
+        position: 'relative',
+        width: '100%',
+        height: { xs: '75vh', md: '50vh' }, // Less tall on desktop
+        '&::before': { // Using pseudo-element for hero image
+          content: '""',
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          backgroundImage: `url(${heroImage})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          zIndex: -1,
+        },
+        '&::after': { // Using pseudo-element for overlay
+          content: '""',
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          backgroundColor: 'rgba(0, 0, 0, 0.5)',
+          zIndex: 0,
+        }
+      }}
+    >
+      <Box
+        sx={{
+          position: 'absolute',
+          top: '70px',
+          left: 0,
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center',
+          width: '100%',
+          height: 'calc(100% - 70px)',
+          zIndex: 1,
+        }}
+      >
+        <Typography
+          color="text.secondary"
+          variant="h3"
+          gutterBottom
+          sx={{ fontStyle: 'italic', textAlign: 'center' }}
+        >
           Welcome to our Campsite
         </Typography>
-        <Typography variant="h6" component="h2" style={{ fontStyle: 'italic', marginBottom: '20px' }} className="hero-subtitle">
-          Experience sea, city and nature.
+        <Typography
+          color="text.secondary"
+          variant="h6"
+          sx={{ fontStyle: 'italic', mb: 2, textAlign: 'center' }}
+        >
+          Experience sea, city, and nature.
         </Typography>
-        <Button variant="contained" color="secondary" className="hero-cta"
-        sx={{
-          padding: '10px 20px',
-          backgroundColor: 'var(--secondary-color)', // Ensure this variable is defined
-          color: 'white',
-          border: 'none',
-          borderRadius: '1px',
-          cursor: 'pointer',
-          fontSize: '1.125rem',
-        }}
+        <Button
+          variant="contained"
+          color="secondary"
+          sx={{
+            fontSize: '1.125rem',
+            borderRadius: '1px',
+          }}
         >
           Book Now
         </Button>
-      </div>
-    </div>
+      </Box>
+    </Box>
   );
 }
-
 
 export default Hero;

@@ -39,9 +39,11 @@ function PhotoGallery({ images }) {
             bgcolor: '#f8f8f8', // Off-white background
             overflow: 'hidden',
             width: '100%', // Ensure it takes full width
-            boxShadow: 'inset 0 0px 20px rgba(0,0,0,0.2)'
+            boxShadow: 'inset 0 0px 20px rgba(0,0,0,0.2)',
+            display: 'flex',
+            justifyContent: 'center',
         }}>
-            <Box sx={{
+            <Box maxWidth="lg" sx={{
                 position: 'relative',
                 width: '100%', 
                 padding: 5,
