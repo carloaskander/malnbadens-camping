@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import './Navbar.css';
+import './MobileNavbar.css';
 
 // MATERIAL-UI IMPORTS
 import AppBar from '@mui/material/AppBar';
@@ -21,8 +21,7 @@ import CloseIcon from '@mui/icons-material/Close';
 // IMAGE IMPORTS
 import logo from '../../assets/images/logo/mbclogo-light-transparent-horizontal.png';
 
-
-function Navbar() {
+function MobileNavbar() {
     const [drawerOpen, setDrawerOpen] = useState(false);
 
 const toggleDrawer = (open) => (event) => {
@@ -85,7 +84,6 @@ const list = () => (
     </Box>
 );
 
-
     return (
         <AppBar position="fixed">
             <Toolbar style={{ justifyContent: 'space-between', minHeight: 'var(--navbar-min-height)' }}>
@@ -116,4 +114,4 @@ const list = () => (
     );
 }
 
-export default Navbar;
+export default MobileNavbar;

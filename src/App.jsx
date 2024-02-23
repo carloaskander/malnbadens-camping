@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import './App.css'
 
-import Navbar from './components/navbar/Navbar';
+import ResponsiveNavbar from './components/responsive-navbar/ResponsiveNavbar';
 import Hero from './components/hero/Hero'
 import Home from './pages/home/Home';
 import Accommodation from './pages/accommodation/Accommodation';
@@ -23,7 +23,7 @@ function App() {
     <>
       <ThemeProvider theme={theme}>
         <Router>
-          <Navbar/>
+          <ResponsiveNavbar/>
           <Routes>
           <Route path="/" element={<Navigate replace to="/home" />} />
           <Route path="/home" element={<Home />} />
