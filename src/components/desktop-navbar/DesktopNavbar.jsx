@@ -12,20 +12,21 @@ import MenuIcon from '@mui/icons-material/Menu'; // Assuming you want to use thi
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import logo from '../../assets/images/logo/mbclogo-light-transparent-horizontal.png';
+import { useTheme } from '@mui/material/styles';
 
 function DesktopNavbar() {
   const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
+  const theme = useTheme(); // Use the useTheme hook here
+  const id = open ? 'simple-popover' : undefined;
 
-  const handleAccommodationClick = (event) => {
-    setAnchorEl(event.currentTarget);
+  const handleAccommodationHover = (event) => {
+      setAnchorEl(event.currentTarget);
   };
 
   const handleClose = () => {
-    setAnchorEl(null);
+      setAnchorEl(null);
   };
-
-  const open = Boolean(anchorEl);
-  const id = open ? 'simple-popover' : undefined;
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -37,21 +38,29 @@ function DesktopNavbar() {
               <Typography component={Link} to="/home" sx={{ marginRight: '20px', textDecoration: 'none', color: 'inherit' }}>Home</Typography>
               <IconButton
                 aria-describedby={id}
-                onClick={handleAccommodationClick}
+                onMouseEnter={handleAccommodationHover}
                 sx={{ marginRight: '20px', color: 'text.secondary', fontSize: '1rem', fontWeight: '500', fontFamily: 'Roboto' }}
               >
                 Accommodation
                 {open ? <ExpandLessIcon /> : <ExpandMoreIcon />}
               </IconButton>
               <Menu
-                id={id}
+                id="accommodation-menu"
                 anchorEl={anchorEl}
                 open={open}
                 onClose={handleClose}
-              >
-                <MenuItem onClick={handleClose} component={Link} to="/accommodation/camping">Camping</MenuItem>
-                <MenuItem onClick={handleClose} component={Link} to="/accommodation/cottages">Cottages</MenuItem>
-                <MenuItem onClick={handleClose} component={Link} to="/accommodation/hostel">Hostel</MenuItem>
+                onMouseLeave={handleClose} // Close menu on mouse leave
+                PaperProps={{
+                    sx: {
+                        bgcolor: theme.palette.primary.main, // Use theme here
+                        borderTop: `4px solid ${theme.palette.secondary.main}`, // Border top with secondary color
+                        width: '150px',
+                    }
+                }}
+            >
+                <MenuItem onClick={handleClose} component={Link} to="/accommodation/camping" sx={{ color: 'text.secondary' }}>Camping</MenuItem>
+                <MenuItem onClick={handleClose} component={Link} to="/accommodation/cottages" sx={{ color: 'text.secondary' }}>Cottages</MenuItem>
+                <MenuItem onClick={handleClose} component={Link} to="/accommodation/hostel" sx={{ color: 'text.secondary' }}>Hostel</MenuItem>
               </Menu>
               <Typography component={Link} to="/activities" sx={{ marginRight: '20px', textDecoration: 'none', color: 'inherit' }}>Activities</Typography>
               <Typography component={Link} to="/hudiksvall" sx={{ marginRight: '20px', textDecoration: 'none', color: 'inherit' }}>Hudiksvall</Typography>

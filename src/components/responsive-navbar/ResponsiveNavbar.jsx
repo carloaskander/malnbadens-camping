@@ -2,7 +2,7 @@ import React from 'react';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import DesktopNavbar from '../desktop-navbar/DesktopNavbar';
-import MobileNavbar from '../navbar/MobileNavbar';
+import MobileNavbar from '../mobile-navbar/MobileNavbar';
 
 function ResponsiveNavbar() {
   const theme = useTheme();
