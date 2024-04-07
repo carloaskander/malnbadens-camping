@@ -8,7 +8,7 @@ function Hero() {
       sx={{
         position: 'relative',
         width: '100%',
-        height: { xs: '75vh', md: '50vh' }, // Less tall on desktop
+        height: { xs: '75vh', md: '75vh' }, // Less tall on desktop
         '&::before': { // Using pseudo-element for hero image
           content: '""',
           position: 'absolute',
@@ -37,40 +37,36 @@ function Hero() {
         sx={{
           position: 'absolute',
           top: '70px',
-          left: 0,
+          left: 10,
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'center',
-          alignItems: 'center',
-          width: '100%',
+          gap: 2,
+          alignItems: 'start',
           height: 'calc(100% - 70px)',
           zIndex: 1,
         }}
       >
         <Typography
           color="text.secondary"
-          variant="h3"
-          gutterBottom
-          sx={{ fontStyle: 'italic', textAlign: 'center' }}
+          variant="h5"
         >
-          Welcome to our Campsite
+          Experience sea, city, and nature.
         </Typography>
         <Typography
           color="text.secondary"
-          variant="h6"
-          sx={{ fontStyle: 'italic', mb: 2, textAlign: 'center' }}
+          variant="h1"
         >
-          Experience sea, city, and nature.
+          Malnbaden<br/>Camping
         </Typography>
         <Button
           variant="contained"
           color="secondary"
           sx={{
-            fontSize: '1.125rem',
-            borderRadius: '1px',
+            fontSize: '22px',
           }}
         >
-          Book Now
+          Boka Direkt
         </Button>
       </Box>
     </Box>

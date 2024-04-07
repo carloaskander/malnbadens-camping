@@ -35,11 +35,11 @@ function DesktopNavbar() {
           <Toolbar sx={{ justifyContent: 'space-between', minHeight: 'var(--navbar-min-height)' }}>
             <img src={logo} alt="Logo" style={{ height: 'var(--navbar-logo-height)' }} />
             <Box display="flex" alignItems="center">
-              <Typography component={Link} to="/home" sx={{ marginRight: '20px', textDecoration: 'none', color: 'inherit' }}>Home</Typography>
+              <Typography component={Link} to="/home" sx={{ fontSize: '1.25rem', letterSpacing: '1px', fontFamily: 'Bebas Neue, Arial, Helvetica', marginRight: '20px', textDecoration: 'none', color: 'inherit' }}>Home</Typography>
               <IconButton
                 aria-describedby={id}
                 onMouseEnter={handleAccommodationHover}
-                sx={{ marginRight: '20px', color: 'text.secondary', fontSize: '1rem', fontWeight: '500', fontFamily: 'Roboto' }}
+                sx={{ marginRight: '20px', color: 'text.secondary', fontSize: '1.25rem', letterSpacing: '1px', fontFamily: 'Bebas Neue, Arial, Helvetica' }}
               >
                 Accommodation
                 {open ? <ExpandLessIcon /> : <ExpandMoreIcon />}
@@ -58,14 +58,14 @@ function DesktopNavbar() {
                     }
                 }}
             >
-                <MenuItem onClick={handleClose} component={Link} to="/accommodation/camping" sx={{ color: 'text.secondary' }}>Camping</MenuItem>
-                <MenuItem onClick={handleClose} component={Link} to="/accommodation/cottages" sx={{ color: 'text.secondary' }}>Cottages</MenuItem>
-                <MenuItem onClick={handleClose} component={Link} to="/accommodation/hostel" sx={{ color: 'text.secondary' }}>Hostel</MenuItem>
+                <MenuItem onClick={handleClose} component={Link} to="/accommodation/camping" sx={{ color: 'text.secondary', fontSize: '1.25rem', letterSpacing: '1px', fontFamily: 'Bebas Neue, Arial, Helvetica' }}>Camping</MenuItem>
+                <MenuItem onClick={handleClose} component={Link} to="/accommodation/cottages" sx={{ color: 'text.secondary', fontSize: '1.25rem', letterSpacing: '1px', fontFamily: 'Bebas Neue, Arial, Helvetica' }}>Cottages</MenuItem>
+                <MenuItem onClick={handleClose} component={Link} to="/accommodation/hostel" sx={{ color: 'text.secondary', fontSize: '1.25rem', letterSpacing: '1px', fontFamily: 'Bebas Neue, Arial, Helvetica' }}>Hostel</MenuItem>
               </Menu>
-              <Typography component={Link} to="/activities" sx={{ marginRight: '20px', textDecoration: 'none', color: 'inherit' }}>Activities</Typography>
-              <Typography component={Link} to="/hudiksvall" sx={{ marginRight: '20px', textDecoration: 'none', color: 'inherit' }}>Hudiksvall</Typography>
-              <Typography component={Link} to="/restaurant" sx={{ marginRight: '20px', textDecoration: 'none', color: 'inherit' }}>Restaurant</Typography>
-              <Typography component={Link} to="/opening-hours" sx={{ textDecoration: 'none', color: 'inherit' }}>Opening Hours</Typography>
+              <Typography component={Link} to="/activities" sx={{ marginRight: '20px', textDecoration: 'none', color: 'inherit', fontSize: '1.25rem', letterSpacing: '1px', fontFamily: 'Bebas Neue, Arial, Helvetica' }}>Activities</Typography>
+              <Typography component={Link} to="/hudiksvall" sx={{ marginRight: '20px', textDecoration: 'none', color: 'inherit', fontSize: '1.25rem', letterSpacing: '1px', fontFamily: 'Bebas Neue, Arial, Helvetica' }}>Hudiksvall</Typography>
+              <Typography component={Link} to="/restaurant" sx={{ marginRight: '20px', textDecoration: 'none', color: 'inherit', fontSize: '1.25rem', letterSpacing: '1px', fontFamily: 'Bebas Neue, Arial, Helvetica' }}>Restaurant</Typography>
+              <Typography component={Link} to="/opening-hours" sx={{ textDecoration: 'none', color: 'inherit', fontSize: '1.25rem', letterSpacing: '1px', fontFamily: 'Bebas Neue, Arial, Helvetica' }}>Opening Hours</Typography>
             </Box>
           </Toolbar>
         </Container>

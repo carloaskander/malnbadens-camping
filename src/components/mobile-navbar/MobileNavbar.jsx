@@ -48,10 +48,22 @@ const list = () => (
         <List>
             {/* Replace these with your actual navigation links */}
             <ListItem sx={{ pr: 6 }} button component={Link} to="/home" key="Home">
-                <ListItemText primary="Home" />
+                <ListItemText primary="Home"  primaryTypographyProps={{
+                style: { 
+                    fontFamily: 'Bebas Neue', 
+                    fontSize: '1.25rem',
+                    letterSpacing: '1px'
+                }
+            }} />
             </ListItem>
             <ListItem sx={{ pr: 6 }} button onClick={handleClickAccommodation} key="Accommodation">
-            <ListItemText primary="Accommodation" />
+            <ListItemText primary="Accommodation"  primaryTypographyProps={{
+                style: { 
+                    fontFamily: 'Bebas Neue', 
+                    fontSize: '1.25rem',
+                    letterSpacing: '1px'
+                }
+            }}/>
             {openAccommodation ? <ExpandLess /> : <ExpandMore />}
             </ListItem>
             <Collapse in={openAccommodation} timeout="auto" unmountOnExit>
@@ -68,16 +80,40 @@ const list = () => (
             </List>
             </Collapse>
             <ListItem sx={{ pr: 6 }} button component={Link} to="/activities" key="Activities">
-                <ListItemText primary="Activities" />
+                <ListItemText primary="Activities"  primaryTypographyProps={{
+                style: { 
+                    fontFamily: 'Bebas Neue', 
+                    fontSize: '1.25rem',
+                    letterSpacing: '1px'
+                }
+            }} />
             </ListItem>
             <ListItem sx={{ pr: 6 }} button component={Link} to="/hudiksvall" key="Hudiksvall">
-                <ListItemText primary="Hudiksvall" />
+                <ListItemText primary="Hudiksvall"  primaryTypographyProps={{
+                style: { 
+                    fontFamily: 'Bebas Neue', 
+                    fontSize: '1.25rem',
+                    letterSpacing: '1px'
+                }
+            }} />
             </ListItem>
             <ListItem sx={{ pr: 6 }} button component={Link} to="/restaurant" key="Restaurant">
-                <ListItemText primary="Restaurant" />
+                <ListItemText primary="Restaurant"  primaryTypographyProps={{
+                style: { 
+                    fontFamily: 'Bebas Neue', 
+                    fontSize: '1.25rem',
+                    letterSpacing: '1px'
+                }
+            }} />
             </ListItem>
             <ListItem sx={{ pr: 6 }} button component={Link} to="/opening-hours" key="Opening Hours">
-                <ListItemText primary="Opening Hours" />
+                <ListItemText primary="Opening Hours"  primaryTypographyProps={{
+                style: { 
+                    fontFamily: 'Bebas Neue', 
+                    fontSize: '1.25rem',
+                    letterSpacing: '1px'
+                }
+            }} />
             </ListItem>
             {/* Add more ListItem components as needed */}
         </List>

@@ -15,10 +15,11 @@ import Restaurant from './pages/restaurant/Restaurant';
 import Openinghours from './pages/opening-hours/Openinghours';
 import { ThemeProvider } from '@mui/material/styles';
 import theme from './theme';
+// Using Web Font Loader for more control
+
 
 
 function App() {
-
   return (
     <>
       <ThemeProvider theme={theme}>

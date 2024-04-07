@@ -1,37 +1,36 @@
 import { createTheme } from '@mui/material/styles';
 import { grey } from '@mui/material/colors';
 
+
 const theme = createTheme({
   typography: {
-    fontFamily: 'Roboto, sans-serif',
     h1: {
+      fontFamily: 'Bebas Neue, Arial, sans-serif', 
       fontWeight: 500,
-      color: 'rgba(4, 43, 42)', // Apply the color to h1
     },
     h2: {
-      fontWeight: 400,
-      color: 'rgba(4, 43, 42)', // Apply the color to h2
+      fontFamily: 'Bebas Neue, Arial, sans-serif', 
+      fontWeight: 500,
     },
     h3: {
-      fontWeight: 400,
-      color: 'rgba(4, 43, 42)', // Apply the color to h3
+      fontFamily: 'Bebas Neue, Arial, sans-serif', 
+      fontWeight: 500,
     },
     h4: {
+      fontFamily: 'Bebas Neue, Arial, sans-serif', 
       fontWeight: 500,
-      color: 'rgba(4, 43, 42)', // Apply the color to h4
     },
     h5: {
+      fontFamily: 'Bebas Neue, Arial, sans-serif', 
       fontWeight: 500,
-      color: 'rgba(4, 43, 42)', // Apply the color to h5
     },
     h6: {
+      fontFamily: 'Bebas Neue, Arial, sans-serif', 
       fontWeight: 500,
-      color: 'rgba(4, 43, 42)', // Apply the color to h6
     },
     body1: {
+      fontFamily: 'Noto Serif, Arial, sans-serif',
       fontWeight: 500,
-      wordSpacing: '1px',
-      color: 'rgba(100, 130, 130)', //Light shade of our primary color.
     }
   },
   palette: {
@@ -54,6 +53,15 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           backgroundColor: 'rgba(4, 43, 42, 0.95)', // Primary green color with 0.95 opacity
+        },
+      },
+    },
+    MuiListItemText: {
+      styleOverrides: {
+        primary: { // Targeting the primary text within ListItemText
+          fontFamily: '"Bebas Neue", Arial, sans-serif',
+          fontSize: '1.25rem',
+          letterSpacing: '1px',
         },
       },
     },
@@ -92,10 +100,13 @@ const theme = createTheme({
     MuiButton: {
       styleOverrides: {
         root: {
+          padding: '10px',
           borderRadius: '0', // Apply no border radius to all buttons
           backgroundColor: '#D66B27',
-          padding: '10px',
+          fontFamily: 'Bebas Neue, Arial, sans-serif',
+          fontSize: '18px',
           wordSpacing: '1px',
+          letterSpacing: '1px',
           // Add other global button styles here
         },
       },
