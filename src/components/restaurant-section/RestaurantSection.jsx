@@ -17,6 +17,7 @@ function RestaurantSection() {
         zIndex: 1,
         backgroundSize: 'cover', // Ensure the image covers the area
         backgroundPosition: 'center right', // Center the background image
+        border: '10px solid white',
       },
     },
     {
@@ -24,10 +25,10 @@ function RestaurantSection() {
       alt: 'Delicious Cuisine',
       style: {
         position: 'absolute',
-        top: { xs: '70%', md: '65%' },
-        right: { xs: '45%', md: '50%' },
-        width: { xs: '55%', md: '45%' },
-        height: { xs: '50%', md: '55%' }, // Adjusted for responsiveness
+        top: { xs: '50%', md: '65%' },
+        left: { xs: '5%', md: '5%' },
+        width: { xs: '250px', md: '250px' },
+        height: { xs: '300px', md: '300px' }, // Adjusted for responsiveness
         zIndex: 2,
         backgroundSize: 'cover', // Cover effect
         backgroundPosition: 'center', // Center the background image
@@ -54,7 +55,7 @@ function RestaurantSection() {
             <Typography sx={{ mb: 3 }}>
             Med sin varierade meny och enastående utsikt över havet lockar restaurangen både lokalbefolkningen och besökare. Här samlas människor för att njuta av solen, livliga evenemang och den avslappnade atmosfären. Bara ett stenkast från campingen hittar du en samlingspunkt för god mat och gemenskap.
             </Typography>
-            <Button variant="contained" color="secondary">
+            <Button variant="contained">
               Visa Meny
             </Button>
           </Grid>

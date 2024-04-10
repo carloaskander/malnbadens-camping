@@ -31,6 +31,17 @@ const theme = createTheme({
     body1: {
       fontFamily: 'Noto Serif, Arial, sans-serif',
       fontWeight: 500,
+      fontSize: '18px'
+    },
+    body2: {
+      fontFamily: 'Noto Serif, Arial, sans-serif',
+      fontWeight: 500,
+      fontSize: '16px'
+    },
+    body3: {
+      fontFamily: 'Noto Serif, Arial, sans-serif',
+      fontWeight: 500,
+      fontSize: '15px'
     }
   },
   palette: {

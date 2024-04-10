@@ -34,14 +34,13 @@ function AccommodationCard({ title, description, imageUrl, link }) {
           <Typography variant="h4" component="div">
             {title}
           </Typography>
-          <Typography variant="body1" color="text.primary" mb={3} sx={{ minHeight: '100px' }}>
+          <Typography variant="body2" color="text.primary" mb={2} sx={{ minHeight: '100px' }}>
             {description}
           </Typography>
           <Button
             size="medium"
             href={link}
             sx={{
-              mt: 1, // Margin top for spacing above the button
               color: 'white', // Text color for the button
               '&:hover': {
                   backgroundColor: 'primary.dark', // Darken the button on hover
