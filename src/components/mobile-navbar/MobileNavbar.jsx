@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import './MobileNavbar.css';
 
 // MATERIAL-UI IMPORTS
 import AppBar from '@mui/material/AppBar';
@@ -11,7 +10,7 @@ import Drawer from '@mui/material/Drawer';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
-import { Box, ListItemIcon, ListSubheader } from '@mui/material';
+import { Box } from '@mui/material';
 import Collapse from '@mui/material/Collapse';
 import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
@@ -106,15 +105,6 @@ const list = () => (
                 }
             }} />
             </ListItem>
-            <ListItem sx={{ pr: 6 }} button component={Link} to="/hudiksvall" key="Hudiksvall">
-                <ListItemText primary="Hudiksvall"  primaryTypographyProps={{
-                style: { 
-                    fontFamily: 'Bebas Neue', 
-                    fontSize: '1.25rem',
-                    letterSpacing: '1px'
-                }
-            }} />
-            </ListItem>
             <ListItem sx={{ pr: 6 }} button component={Link} to="/restaurant" key="Restaurant">
                 <ListItemText primary="Restaurang"  primaryTypographyProps={{
                 style: { 
@@ -125,7 +115,7 @@ const list = () => (
             }} />
             </ListItem>
             <ListItem sx={{ pr: 6 }} button component={Link} to="/opening-hours" key="Opening Hours">
-                <ListItemText primary="Opening Hours"  primaryTypographyProps={{
+                <ListItemText primary="Öppettider"  primaryTypographyProps={{
                 style: { 
                     fontFamily: 'Bebas Neue', 
                     fontSize: '1.25rem',

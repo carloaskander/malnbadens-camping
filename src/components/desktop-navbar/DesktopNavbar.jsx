@@ -63,7 +63,6 @@ function DesktopNavbar() {
                 <MenuItem onClick={handleClose} component={Link} to="/accommodation/hostel" sx={{ color: 'text.secondary', fontSize: '1.25rem', letterSpacing: '1px', fontFamily: 'Bebas Neue, Arial, Helvetica' }}>Vandrarhem</MenuItem>
               </Menu>
               <Typography component={Link} to="/activities" sx={{ marginRight: '20px', textDecoration: 'none', color: 'inherit', fontSize: '1.25rem', letterSpacing: '1px', fontFamily: 'Bebas Neue, Arial, Helvetica' }}>Aktiviteter</Typography>
-              <Typography component={Link} to="/hudiksvall" sx={{ marginRight: '20px', textDecoration: 'none', color: 'inherit', fontSize: '1.25rem', letterSpacing: '1px', fontFamily: 'Bebas Neue, Arial, Helvetica' }}>Hudiksvall</Typography>
               <Typography component={Link} to="/restaurant" sx={{ marginRight: '20px', textDecoration: 'none', color: 'inherit', fontSize: '1.25rem', letterSpacing: '1px', fontFamily: 'Bebas Neue, Arial, Helvetica' }}>Restaurang</Typography>
               <Typography component={Link} to="/opening-hours" sx={{ textDecoration: 'none', color: 'inherit', fontSize: '1.25rem', letterSpacing: '1px', fontFamily: 'Bebas Neue, Arial, Helvetica' }}>Öppettider</Typography>
             </Box>

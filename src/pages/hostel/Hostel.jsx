@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import contentfulClient from "../../contentfulClient";
 import { Box, Typography, Container, Grid, Button, Paper, Icon } from '@mui/material';
 import PhotoGallery from "../../components/photo-gallery/PhotoGallery";
+import HostelPrices from "../../components/hostel-prices/HostelPrices"
 
 function Hostel() {
     const [hostelContent, setHostelContent] = useState(null);
@@ -111,6 +112,7 @@ function Hostel() {
                             </Box>
                         </Grid>
                     </Grid>
+                    <HostelPrices/>
                 </Container>
             </Container>
         </Box>

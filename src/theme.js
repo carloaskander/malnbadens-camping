@@ -74,6 +74,11 @@ const theme = createTheme({
           fontSize: '1.25rem',
           letterSpacing: '1px',
         },
+        secondary: { // Targeting the primary text within ListItemText
+          fontFamily: '"Bebas Neue", Arial, sans-serif',
+          fontSize: '1.25rem',
+          letterSpacing: '1px',
+        },
       },
     },
     MuiDrawer: {
@@ -81,13 +86,6 @@ const theme = createTheme({
         paper: {
           backgroundColor: 'rgba(4, 43, 42, 0.85)', // Primary green color with 0.85 opacity
           color: 'white', // Text color for the items in the drawer
-        },
-      },
-    },
-    MuiListItemText: {
-      styleOverrides: {
-        primary: { // Target the primary text
-          color: 'white', // Set your desired color
         },
       },
     },
@@ -126,6 +124,36 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           borderRadius: 0, // Set border radius to 0 for all Paper components
+        },
+      },
+    },
+    MuiTextField: {
+      defaultProps: {
+        // Default props here
+      },
+    },
+    MuiInputLabel: { 
+      styleOverrides: {
+        root: {
+          color: 'rgba(4, 43, 42)', // Set label color
+          '&.Mui-focused': {
+            color: '#D66B27', // Label color on focus
+          },
+        },
+      },
+    },
+    MuiOutlinedInput: {
+      styleOverrides: {
+        root: {
+          '& .MuiOutlinedInput-notchedOutline': {
+            border: '1px solid rgba(4, 43, 42, 0.5)',
+          },
+          '&:hover .MuiOutlinedInput-notchedOutline': {
+            border: '2px solid rgba(4, 43, 42)', // Border color on hover
+          },
+          '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+            border: '2px solid #30824d',
+          },
         },
       },
     },

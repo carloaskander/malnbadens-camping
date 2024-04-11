@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import contentfulClient from "../../contentfulClient";
 import { Box, Typography, Container, Grid, Button, Paper, Icon } from '@mui/material';
 import PhotoGallery from "../../components/photo-gallery/PhotoGallery";
+import CottagePrices from "../../components/cottage-prices/CottagePrices"
 
 function Cottages() {
     const [cottagesContent, setCottagesContent] = useState(null);
@@ -106,6 +107,7 @@ function Cottages() {
                             </Box>
                         </Grid>
                     </Grid>
+                    <CottagePrices/>
                 </Container>
             </Container>
         </Box>

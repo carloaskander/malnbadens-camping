@@ -55,8 +55,8 @@ function RestaurantSection() {
             <Typography sx={{ mb: 3 }}>
             Med sin varierade meny och enastående utsikt över havet lockar restaurangen både lokalbefolkningen och besökare. Här samlas människor för att njuta av solen, livliga evenemang och den avslappnade atmosfären. Bara ett stenkast från campingen hittar du en samlingspunkt för god mat och gemenskap.
             </Typography>
-            <Button variant="contained">
-              Visa Meny
+            <Button variant="contained" href='/restaurant'>
+              Mer Info
             </Button>
           </Grid>
           {/* Image Container */}

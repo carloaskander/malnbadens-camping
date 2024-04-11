@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import contentfulClient from "../../contentfulClient.js";
 import { Box, Typography, Container, Grid, Button, Paper, Icon } from '@mui/material';
 import PhotoGallery from "../../components/photo-gallery/PhotoGallery";
+import CampingPrices from "../../components/camping-prices/CampingPrices.jsx"
 
 function Camping() {
   const [campingContent, setCampingContent] = useState(null);
@@ -85,7 +86,7 @@ function Camping() {
                 </Button>
               </Paper>
             </Grid>
-            <Grid item xs={12} md={6}>
+            <Grid item xs={12} md={6} mb={6}>
               <Typography mb={2} variant="h5">Bekvämligheter</Typography>
               <Box>
                 {amenities.map((amenity) => (
@@ -108,6 +109,7 @@ function Camping() {
               </Box>
             </Grid>
           </Grid>
+          <CampingPrices/>
         </Container>
       </Container>
     </Box>
