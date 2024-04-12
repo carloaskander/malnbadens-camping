@@ -63,7 +63,7 @@ function RestaurantSection() {
           {/* Image Container */}
           <Grid item xs={12} md={6} mb={12} sx={{ position: 'relative', height: '500px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
             {images.map((image, index) => (
-              <LazyLoad key={index} once offset={100} placeholder={<Box sx={{ height: 300, backgroundColor: 'grey.200' }} />}>
+              <LazyLoad key={index} once offset={200} placeholder={<Box sx={{ height: 300, backgroundColor: 'grey.200' }} />}>
                 <Box
                   sx={{
                     ...image.style,

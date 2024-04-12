@@ -1,14 +1,15 @@
 import React from 'react';
-import { Box, Grid, Container, Card, CardMedia, CardContent, Typography } from '@mui/material';
-import beachLadderImage from '../../assets/images/beach/beach-ladder.jpg';
-import runningTrailImage from '../../assets/images/activities/running-trail.jpg'
+import { Box, Grid, Container, Skeleton, Card, CardMedia, CardContent, Typography } from '@mui/material';
+import beachImage from '../../assets/images/beach/beach.jpg';
+import runningTrailImage from '../../assets/images/activities/running-trail.jpg';
+import kayakImage from '../../assets/images/activities/kayak.jpg';
 
 function Activities() {
   const activities = [
-    { title: 'Stranden', description: 'Upplev den vackra sandstranden med aktiviteter för hela familjen.', imageUrl: beachLadderImage },
+    { title: 'Stranden', description: 'Upplev den vackra sandstranden med aktiviteter för hela familjen.', imageUrl: beachImage },
     { title: 'Motionsspår', description: 'Ta en löprunda eller en avkopplande promenad längs våra natursköna spår.', imageUrl: runningTrailImage },
-    { title: 'Aktivitet 3', description: 'Fördjupa dig i roliga aktiviteter som väntar på att utforskas.', imageUrl: 'image-url-3' },
-    { title: 'Aktivitet 4', description: 'Fördjupa dig i roliga aktiviteter som väntar på att utforskas.', imageUrl: 'image-url-3' },
+    { title: 'Kajak', description: 'Upplev spänningen och det rogivande vattnet när du paddlar kajak längs Hudiksvalls kustlinje.', imageUrl: kayakImage },
+    { title: 'Minigolf', description: 'Testa din precision och ha kul med familj och vänner på vår utmanande minigolfbana.', imageUrl: '' },
   ];
 
   return (
@@ -24,12 +25,13 @@ function Activities() {
         </Container>
       </Box>
       <Box sx={{ bgcolor: '#FAF6EE', py: 8 }}>
-        <Container maxWidth="xl">
-          <Grid container spacing={2} justifyContent="center">
+        <Container maxWidth="lg">
+          <Grid container spacing={2} justifyContent="flex-start">
             {activities.map((activity, index) => (
               <Grid item xs={12} sm={6} md={4} key={index}>
                 <Card>
-                  <Box sx={{ position: 'relative', width: '100%', paddingTop: '56.25%' /* 16:9 Aspect Ratio */, overflow: 'hidden' }}>
+                <Box sx={{ position: 'relative', width: '100%', paddingTop: '56.25%' /* 16:9 Aspect Ratio */, overflow: 'hidden' }}>
+                  {activity.imageUrl ? (
                     <CardMedia
                       component="img"
                       image={activity.imageUrl}
@@ -43,18 +45,47 @@ function Activities() {
                         objectFit: 'cover',
                       }}
                     />
-                  </Box>
-                  <CardContent sx={{ minHeight: 140 }}>
-                    <Typography gutterBottom variant="h5" component="div">
+                  ) : (
+                    <Skeleton variant="rectangular" sx={{
+                      position: 'absolute',
+                      top: 0,
+                      left: 0,
+                      width: '100%',
+                      height: '100%' // Adjust this if necessary to match the aspect ratio height
+                    }} />
+                  )}
+                </Box>
+
+                  <CardContent>
+                    <Typography gutterBottom variant="h4" component="div">
                       {activity.title}
                     </Typography>
-                    <Typography variant="body3">
+                    <Typography sx={{ minHeight: '70px' }} variant="body3" component="div">
                       {activity.description}
                     </Typography>
                   </CardContent>
                 </Card>
               </Grid>
             ))}
+            {/* Skeletons for "Coming Soon" activities */}
+            <Grid item xs={12} sm={6} md={4}>
+              <Card>
+                <Skeleton variant="rectangular" width="100%" height={165} />
+                <CardContent>
+                  <Skeleton variant="text" sx={{ width: '40%', minHeight:{ lg: '75px', sm: '50px' }, marginBottom: '-10px' }} />
+                  <Skeleton variant="text" width="100%" height='100px' />
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={12} sm={6} md={4} sx={{ display: { xs: 'none', sm: 'block' } }}>
+              <Card>
+                <Skeleton variant="rectangular" width="100%" height={165} />
+                <CardContent>
+                  <Skeleton variant="text" sx={{ width: '40%', minHeight:{ lg: '75px', sm: '50px' }, marginBottom: '-10px' }} />
+                  <Skeleton variant="text" width="100%" height='100px'/>
+                </CardContent>
+              </Card>
+            </Grid>
           </Grid>
         </Container>
       </Box>

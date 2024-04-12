@@ -16,7 +16,7 @@ function AccommodationCard({ title, description, imageUrl, link }) {
       }}
     >
         <Box sx={{ position: 'relative', width: '100%', paddingTop: '56.25%' /* 16:9 Aspect Ratio */, overflow: 'hidden' }}>
-          <LazyLoad height="100%" once offset={100} placeholder={<div style={{ height: '100%', background: 'grey' }} />}>
+          <LazyLoad height="100%" once offset={200} placeholder={<div style={{ height: '100%', background: 'grey' }} />}>
             <img
               alt={title}
               src={imageUrl}

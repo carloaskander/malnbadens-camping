@@ -16,7 +16,6 @@ function MapSection() {
             src={mapUrl}
             style={{ border: 0, width: '100%', maxWidth: '1000px', height: '450px' }}
             allowFullScreen=""
-            loading="lazy"
           ></iframe>
         </Box>
         <Box sx={{ display: 'flex', justifyContent: 'center' }}>

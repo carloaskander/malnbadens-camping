@@ -71,7 +71,7 @@ function ActivitiesSection() {
                     </Typography>
                   </Grid>
             <Grid item xs={12} md={6} mb={15} sx={{ position: 'relative', }}>
-              <LazyLoad once offset={100} placeholder={<Box sx={{ height: 300, backgroundColor: 'grey.200' }} />}>
+              <LazyLoad once offset={200} placeholder={<Box sx={{ height: 300, backgroundColor: 'grey.200' }} />}>
                 <Box
                   sx={{
                     ...activity.imageStyle,
