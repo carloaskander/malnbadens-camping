@@ -1,5 +1,6 @@
 import React from 'react';
 import { Box, Typography, Button, Grid, Container } from '@mui/material';
+import LazyLoad from 'react-lazyload';
 import restaurantImage1 from '../../assets/images/restaurant/restaurant-sign.jpg';
 import restaurantImage2 from '../../assets/images/restaurant/restaurant-food-bbq.jpg';
 
@@ -62,14 +63,15 @@ function RestaurantSection() {
           {/* Image Container */}
           <Grid item xs={12} md={6} mb={12} sx={{ position: 'relative', height: '500px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
             {images.map((image, index) => (
-              <Box
-                key={index}
-                sx={{
-                  ...image.style,
-                  backgroundImage: `url(${image.src})`,
-                  backgroundRepeat: 'no-repeat',
-                }}
-              />
+              <LazyLoad key={index} once offset={100} placeholder={<Box sx={{ height: 300, backgroundColor: 'grey.200' }} />}>
+                <Box
+                  sx={{
+                    ...image.style,
+                    backgroundImage: `url(${image.src})`,
+                    backgroundRepeat: 'no-repeat',
+                  }}
+                />
+              </LazyLoad>
             ))}
           </Grid>
         </Grid>

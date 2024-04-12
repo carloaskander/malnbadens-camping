@@ -7,7 +7,7 @@ function Hero() {
 
   useEffect(() => {
     if(videoRef.current) {
-      videoRef.current.playbackRate = 0.6; // Slow down the video to half speed
+      videoRef.current.playbackRate = 0.8; // Slow down the video to half speed
     }
   }, []);
 
@@ -25,7 +25,7 @@ function Hero() {
           left: 0,
           width: '100%',
           height: '100%',
-          backgroundColor: 'rgba(0, 0, 0, 0.6)', // Adjust the opacity as needed
+          backgroundColor: 'rgba(0, 0, 0, 0.3)', // Adjust the opacity as needed
           zIndex: 1, // Ensure it's above the video but below the text
         },
       }}
@@ -36,6 +36,7 @@ function Hero() {
         muted 
         playsInline
         ref={videoRef}
+        preload='auto'
         style={{
           position: 'absolute',
           top: '50%',
@@ -58,8 +59,8 @@ function Hero() {
           left: 10,
           display: 'flex',
           flexDirection: 'column',
-          justifyContent: 'center',
-          gap: 2,
+          justifyContent: { xs: 'flex-end', lg: 'center' },
+          gap: 1,
           alignItems: 'start',
           height: 'calc(100% - 70px)',
           zIndex: 2, // Ensure text appears above the overlay
@@ -67,15 +68,26 @@ function Hero() {
       >
         <Typography
           color="text.secondary"
+          component='h2'
           variant="h5"
+          sx={{ 
+            fontSize: { xs: '1.25rem', sm: '1.75rem', md: '2rem' }
+          }}
         >
-          Experience sea, city, and nature.
+          Upplev hav, stad och natur.
         </Typography>
         <Typography
           color="text.secondary"
           variant="h1"
+          sx={{
+            fontSize: {
+              xs: '4rem', // default for mobile screens
+              sm: '5rem', // for tablets and above
+              md: '6rem'  // for medium screens and larger
+            }
+          }}
         >
-          Malnbaden<br/>Camping
+          Malnbadens<br/>Camping
         </Typography>
         <Button
           variant="contained"
@@ -83,7 +95,8 @@ function Hero() {
           href='https://bokning4.paxess.se/malnbaden2'
           target='_blank'
           sx={{
-            fontSize: '22px',
+            fontSize: { xs: '20', lg: '22px' },
+            marginBottom: { xs: '10px', lg: '0px' },
           }}
         >
           Boka Direkt

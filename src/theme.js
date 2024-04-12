@@ -63,7 +63,7 @@ const theme = createTheme({
     MuiAppBar: {
       styleOverrides: {
         root: {
-          backgroundColor: 'rgba(4, 43, 42, 0.95)', // Primary green color with 0.95 opacity
+          backgroundColor: 'rgba(4, 51, 40, 0.97)', // Primary green color with 0.97 opacity
         },
       },
     },

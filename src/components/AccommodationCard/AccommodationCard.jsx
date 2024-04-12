@@ -1,6 +1,6 @@
-// AccommodationCard.jsx
 import React from 'react';
-import { Card, CardMedia, CardContent, Typography, Button, Box, Container } from '@mui/material';
+import { Card, CardContent, Typography, Button, Box } from '@mui/material';
+import LazyLoad from 'react-lazyload';
 
 function AccommodationCard({ title, description, imageUrl, link }) {
   return (
@@ -16,19 +16,13 @@ function AccommodationCard({ title, description, imageUrl, link }) {
       }}
     >
         <Box sx={{ position: 'relative', width: '100%', paddingTop: '56.25%' /* 16:9 Aspect Ratio */, overflow: 'hidden' }}>
-          <CardMedia
-            component="img"
-            image={imageUrl}
-            alt={title}
-            sx={{
-              position: 'absolute',
-              top: 0,
-              left: 0,
-              width: '100%',
-              height: '100%',
-              objectFit: 'cover',
-            }}
-          />
+          <LazyLoad height="100%" once offset={100} placeholder={<div style={{ height: '100%', background: 'grey' }} />}>
+            <img
+              alt={title}
+              src={imageUrl}
+              style={{ width: '100%', height: '100%', objectFit: 'cover', position: 'absolute', top: 0, left: 0 }}
+            />
+          </LazyLoad>
         </Box>
         <CardContent>
           <Typography variant="h4" component="div">
@@ -41,9 +35,9 @@ function AccommodationCard({ title, description, imageUrl, link }) {
             size="medium"
             href={link}
             sx={{
-              color: 'white', // Text color for the button
+              color: 'white',
               '&:hover': {
-                  backgroundColor: 'primary.dark', // Darken the button on hover
+                backgroundColor: 'primary.dark',
               },
             }}
           >
@@ -52,7 +46,6 @@ function AccommodationCard({ title, description, imageUrl, link }) {
         </CardContent>
     </Card>
   );
-  
 }
 
 export default AccommodationCard;

@@ -11,7 +11,7 @@ import MenuItem from '@mui/material/MenuItem';
 import MenuIcon from '@mui/icons-material/Menu'; // Assuming you want to use this icon
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
-import logo from '../../assets/images/logo/mbclogo-light-transparent-horizontal.png';
+import logo from '../../assets/images/logo/mbclogo-orange-transparent-horizontal-2.png';
 import { useTheme } from '@mui/material/styles';
 
 function DesktopNavbar() {
@@ -34,14 +34,18 @@ function DesktopNavbar() {
         <Container maxWidth="lg">
           <Toolbar sx={{ justifyContent: 'space-between', minHeight: 'var(--navbar-min-height)' }}>
             <img src={logo} alt="Logo" style={{ height: 'var(--navbar-logo-height)' }} />
+            {/* <Typography variant="h6" component="div" color='secondary.main' sx={{ textAlign: 'center' }}>
+              Malnbadens <br/> Camping
+            </Typography> */}
+
             <Box display="flex" alignItems="center">
               <Typography component={Link} to="/home" sx={{ fontSize: '1.25rem', letterSpacing: '1px', fontFamily: 'Bebas Neue, Arial, Helvetica', marginRight: '20px', textDecoration: 'none', color: 'inherit' }}>Hem</Typography>
               <IconButton
                 aria-describedby={id}
                 onMouseEnter={handleAccommodationHover}
-                sx={{ marginRight: '20px', color: 'text.secondary', fontSize: '1.25rem', letterSpacing: '1px', fontFamily: 'Bebas Neue, Arial, Helvetica' }}
+                sx={{ justifyContent: 'flex-start', minWidth: '150px', marginRight: '20px', color: 'text.secondary', fontSize: '1.25rem', letterSpacing: '1px', fontFamily: 'Bebas Neue, Arial, Helvetica' }}
               >
-                Boende
+                Våra Boenden
                 {open ? <ExpandLessIcon /> : <ExpandMoreIcon />}
               </IconButton>
               <Menu
@@ -54,7 +58,7 @@ function DesktopNavbar() {
                     sx: {
                         bgcolor: theme.palette.primary.main, // Use theme here
                         borderTop: `4px solid ${theme.palette.secondary.main}`, // Border top with secondary color
-                        width: '150px',
+                        minWidth: '150px',
                     }
                 }}
             >

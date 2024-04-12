@@ -18,7 +18,7 @@ import CloseIcon from '@mui/icons-material/Close';
 
 
 // IMAGE IMPORTS
-import logo from '../../assets/images/logo/mbclogo-light-transparent-horizontal.png';
+import logo from '../../assets/images/logo/mbclogo-orange-transparent-horizontal-2.png';
 
 function MobileNavbar() {
     const [drawerOpen, setDrawerOpen] = useState(false);

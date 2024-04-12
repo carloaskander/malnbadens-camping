@@ -1,5 +1,6 @@
 import React from 'react';
 import { Box, Typography, Button, Grid, Container } from '@mui/material';
+import LazyLoad from 'react-lazyload';
 import beachLadderImage from '../../assets/images/beach/beach-ladder.jpg';
 import runningTrailImage from '../../assets/images/activities/running-trail.jpg';
 import beachDockImage from '../../assets/images/beach/beach-dock.jpg';
@@ -70,23 +71,25 @@ function ActivitiesSection() {
                     </Typography>
                   </Grid>
             <Grid item xs={12} md={6} mb={15} sx={{ position: 'relative', }}>
-              <Box
-                sx={{
-                  ...activity.imageStyle,
-                  backgroundImage: `url(${activity.imageUrl})`,
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center',
-                }}
-              />
-              {activity.polaroid && (
+              <LazyLoad once offset={100} placeholder={<Box sx={{ height: 300, backgroundColor: 'grey.200' }} />}>
                 <Box
                   sx={{
-                    ...activity.polaroid.style,
-                    backgroundImage: `url(${activity.polaroid.imageUrl})`,
-                    // Rest of the polaroid styles, make sure to add position: 'absolute' if you want to position it inside the relative container
-                    }}
-      />
-    )}
+                    ...activity.imageStyle,
+                    backgroundImage: `url(${activity.imageUrl})`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                  }}
+                />
+                {activity.polaroid && (
+                  <Box
+                    sx={{
+                      ...activity.polaroid.style,
+                      backgroundImage: `url(${activity.polaroid.imageUrl})`,
+                      // Rest of the polaroid styles, make sure to add position: 'absolute' if you want to position it inside the relative container
+                      }}
+                  />
+                )}
+              </LazyLoad>
             </Grid>
           </Grid>
         ))}
