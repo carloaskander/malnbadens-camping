@@ -9,5 +9,8 @@
         { "source": "/att-gora-i-hudiksvall", "destination": "/activities", "permanent": true },
         { "source": "/restaurang", "destination": "/restaurant", "permanent": true },
         { "source": "/oppettider", "destination": "/opening-hours", "permanent": true }
+    ],
+    "rewrites": [
+        { "source": "/(.*)", "destination": "/index.html" }
     ]
 }
