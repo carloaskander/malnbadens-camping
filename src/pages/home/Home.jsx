@@ -6,9 +6,6 @@ import AccommodationCard from '../../components/AccommodationCard/AccommodationC
 import ActivitiesSection from '../../components/activities-section/ActivitiesSection';
 import RestaurantSection from '../../components/restaurant-section/RestaurantSection';
 import MapSection from '../../components/map-section/MapSection';
-import campingThumbnail from '../../assets/images/accommodation-cards/camping-thumbnail.webp';
-import cottagesThumbnail from '../../assets/images/accommodation-cards/cottages-thumbnail.webp';
-import hostelThumbnail from '../../assets/images/accommodation-cards/hostel-thumbnail.jpg';
 
 function Home() {
   return (
