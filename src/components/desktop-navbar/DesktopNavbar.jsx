@@ -32,8 +32,8 @@ function DesktopNavbar() {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="fixed">
         <Container maxWidth="lg">
-          <Toolbar sx={{ justifyContent: 'space-between', minHeight: 'var(--navbar-min-height)' }}>
-            <img src={logo} alt="Logo" style={{ height: 'var(--navbar-logo-height)' }} />
+          <Toolbar sx={{ justifyContent: 'space-between', minHeight: '70px' }}>
+            <img src={logo} alt="Logo" style={{ height: '70px' }} />
             {/* <Typography variant="h6" component="div" color='secondary.main' sx={{ textAlign: 'center' }}>
               Malnbadens <br/> Camping
             </Typography> */}
@@ -43,7 +43,7 @@ function DesktopNavbar() {
               <IconButton
                 aria-describedby={id}
                 onMouseEnter={handleAccommodationHover}
-                sx={{ justifyContent: 'flex-start', minWidth: '150px', marginRight: '20px', color: 'text.secondary', fontSize: '1.25rem', letterSpacing: '1px', fontFamily: 'Bebas Neue, Arial, Helvetica' }}
+                sx={{ justifyContent: 'flex-start', minWidth: '150px', marginRight: 2, color: 'text.secondary', fontSize: '1.25rem', letterSpacing: '1px', fontFamily: 'Bebas Neue, Arial, Helvetica' }}
               >
                 Våra Boenden
                 {open ? <ExpandLessIcon /> : <ExpandMoreIcon />}

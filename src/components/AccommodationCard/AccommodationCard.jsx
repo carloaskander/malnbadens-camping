@@ -43,7 +43,7 @@ const accommodationOptions = [
 
 function AccommodationCard() {
   return (
-    <Box sx={{ bgcolor: '#FAF6EE' }}>
+    <Box>
       <Container maxWidth='xl' sx={{ py: 8 }}>
         <Grid container spacing={2} justifyContent="center" alignItems="center">
           {accommodationOptions.map((option, index) => (

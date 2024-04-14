@@ -54,7 +54,7 @@ function ActivitiesSection() {
   
 
   return (
-    <Box sx={{ py: 8, bgcolor: '#FAF6EE' }}>
+    <Box>
       <Container maxWidth='lg'>
         <Typography variant="h2" gutterBottom sx={{ mb: 8, textAlign: 'center' }}>
           AKTIVITETER

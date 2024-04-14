@@ -5,6 +5,26 @@ import PhotoGallery from "../../components/photo-gallery/PhotoGallery";
 import CottagePrices from "../../components/cottage-prices/CottagePrices";
 import BookingConditions from "../../components/booking-conditions/BookingConditions.jsx";
 
+//Material UI Icons
+import WifiIcon from '@mui/icons-material/Wifi';
+import TvIcon from '@mui/icons-material/Tv';
+import DeckIcon from '@mui/icons-material/Deck';
+import WcIcon from '@mui/icons-material/Wc';
+import ShowerIcon from '@mui/icons-material/Shower'; 
+import HotTubIcon from '@mui/icons-material/HotTub';
+import BabyChangingStationIcon from '@mui/icons-material/BabyChangingStation';
+import MicrowaveIcon from '@mui/icons-material/Microwave';
+import SoupKitchenIcon from '@mui/icons-material/SoupKitchen';
+import OutdoorGrillIcon from '@mui/icons-material/OutdoorGrill';
+import FormatListNumberedIcon from '@mui/icons-material/FormatListNumbered';
+import CottageIcon from '@mui/icons-material/Cottage';
+import BedIcon from '@mui/icons-material/Bed';
+import AirlineSeatFlatIcon from '@mui/icons-material/AirlineSeatFlat';
+
+const ColoredIcon = ({ icon, color }) => (
+    <Icon sx={{ color: color }}>{icon}</Icon>
+);
+
 function Cottages() {
     const [cottagesContent, setCottagesContent] = useState(null);
 
@@ -26,29 +46,27 @@ function Cottages() {
     const imageUrls = cottagesContent.photoGallery?.map(photo => photo.fields.file.url) || [];
 
     const amenities = [
-      { name: "Wifi", icon: "wifi" },
-      { name: "LCD-TV", icon: "tv" },
-      { name: "Egen uteplats", icon: "deck" },
-      { name: "WC i servicehuset", icon: "wc" },
-      { name: "Dusch i servicehuset", icon: "shower" },
-      { name: "Bastu i servicehuset", icon: "hot_tub" },
-      { name: "Skötrum", icon: "baby_changing_station" },
-      { name: "Simpelt kök i stugan", icon: "microwave" },
-      { name: "Extra gemensamt storkök", icon: "soup_kitchen" },
-      { name: "Gemensam grill", icon: "outdoor_grill" },
-        // Add more amenities as needed
+        { name: "Wifi", icon: <WifiIcon /> },
+        { name: "LCD-TV", icon: <TvIcon /> },
+        { name: "Egen uteplats", icon: <DeckIcon /> },
+        { name: "WC i servicehuset", icon: <WcIcon /> },
+        { name: "Dusch i servicehuset", icon: <ShowerIcon /> },
+        { name: "Bastu i servicehuset", icon: <HotTubIcon /> },
+        { name: "Skötrum", icon: <BabyChangingStationIcon /> },
+        { name: "Simpelt kök i stugan", icon: <MicrowaveIcon /> },
+        { name: "Extra gemensamt storkök", icon: <SoupKitchenIcon /> },
+        { name: "Gemensam grill", icon: <OutdoorGrillIcon /> },
     ];
-
-    const facts = [
-        { name: "Antal stugor", value: "9", icon: "format_list_numbered" },
-        { name: "Storlek stugor", value: "16m²", icon: "cottage" },
-        { name: "Antal bäddar", value: "2-4", icon: "bed" },
-        { name: "Möjlighet för extra madrass", value: "Ja", icon: "airline_seat_flat" },
-        // Add more facts as needed
-    ];
+        const facts = [
+            { name: "Antal stugor", value: "9", icon: <FormatListNumberedIcon /> },
+            { name: "Storlek stugor", value: "16m²", icon: <CottageIcon /> },
+            { name: "Antal bäddar", value: "2-4", icon: <BedIcon /> },
+            { name: "Möjlighet för extra madrass", value: "Ja", icon: <AirlineSeatFlatIcon /> },
+        ];
+        
 
     return (
-        <Box sx={{ marginTop: 'var(--navbar-min-height)' }}>
+        <Box sx={{ marginTop: 8 }}>
             <Box mb={6}>
                 <PhotoGallery images={imageUrls} />
             </Box>
@@ -85,7 +103,7 @@ function Cottages() {
                                 {amenities.map((amenity, index) => (
                                 <Grid item xs={12} sm={6} key={index}> {/* xs=12 för full bredd på små skärmar, sm=6 för halv bredd på större skärmar */}
                                     <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                                    <Icon sx={{ color: 'secondary.main' }}>{amenity.icon}</Icon>
+                                    <ColoredIcon icon={amenity.icon} color='#D66B27' />
                                     <Typography variant="h6" sx={{ color: 'primary.main' }}>{amenity.name}</Typography>
                                     </Box>
                                 </Grid>
@@ -97,7 +115,7 @@ function Cottages() {
                             <Box>
                                 {facts.map((fact) => (
                                     <Box key={fact.name} sx={{ display: 'flex', alignItems: 'center', gap: 2, marginBottom: '8px' }}>
-                                        <Icon sx={{ color: 'secondary.main' }}>{fact.icon}</Icon>
+                                        <ColoredIcon icon={fact.icon} color='#D66B27' />
                                         <Typography variant='h6'>{`${fact.name}: ${fact.value}`}</Typography>
                                     </Box>
                                 ))}

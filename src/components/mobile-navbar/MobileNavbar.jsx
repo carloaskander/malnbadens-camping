@@ -16,8 +16,7 @@ import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
 import CloseIcon from '@mui/icons-material/Close';
 
-
-// IMAGE IMPORTS
+// Image Imports
 import logo from '../../assets/images/logo/mbclogo-orange-transparent-horizontal-2.png';
 
 function MobileNavbar() {
@@ -38,12 +37,12 @@ const handleClickAccommodation = (event) => {
 };
 
 const list = () => (
-    <Box
-      role="presentation"
-      onClick={toggleDrawer(false)}
-      onKeyDown={toggleDrawer(false)}
-      sx={{ pt: 6 }}
-    >
+        <Box
+        role="presentation"
+        onClick={toggleDrawer(false)}
+        onKeyDown={toggleDrawer(false)}
+        sx={{ pt: 6 }}
+        >
         <List>
             {/* Replace these with your actual navigation links */}
             <ListItem sx={{ pr: 6 }} button component={Link} to="/home" key="Home">
@@ -130,8 +129,8 @@ const list = () => (
 
     return (
         <AppBar position="fixed">
-            <Toolbar style={{ justifyContent: 'space-between', minHeight: 'var(--navbar-min-height)' }}>
-                <img src={logo} alt="Logo" style={{ height: 'var(--navbar-logo-height)' }} />
+            <Toolbar style={{ justifyContent: 'space-between', minHeight: '70px' }}>
+                <img src={logo} alt="Logo" style={{ height: '70px' }} />
                 <IconButton
                     edge="start"
                     color="inherit"

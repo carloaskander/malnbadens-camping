@@ -42,7 +42,7 @@ function RestaurantSection() {
   ];
 
   return (
-    <Box sx={{ py: 8, px: 2, bgcolor: '#FAF6EE', textAlign: 'center', position: 'relative', overflow: 'hidden' }}>
+    <Box sx={{ py: 8, px: 2, textAlign: 'center', position: 'relative', overflow: 'hidden' }}>
       <Container maxWidth="lg">
         <Grid container spacing={2} justifyContent="center" alignItems="center">
           {/* Text Content */}

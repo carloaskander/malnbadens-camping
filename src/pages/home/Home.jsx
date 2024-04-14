@@ -9,7 +9,7 @@ import MapSection from '../../components/map-section/MapSection';
 
 function Home() {
   return (
-    <div>
+    <>
       <Helmet>
         <title>Malnbadens Camping - Upplev hav, stad och natur</title>
         <meta name="description" content="Besök Malnbadens Camping i Hudiksvall för en avkopplande upplevelse nära både stad och natur. Våra campingplatser, stugor och vandrarhem erbjuder bekvämt boende för alla besökare." />
@@ -49,11 +49,13 @@ function Home() {
         `}
       </script>
       <Hero />
-      <AccommodationCard/>
-      <ActivitiesSection />
-      <RestaurantSection />
-      <MapSection />
-    </div>
+      <Box sx={{ minHeight: '105vh', bgcolor: '#FAF6EE' }}>
+        <AccommodationCard/>
+        <ActivitiesSection />
+        <RestaurantSection />
+        <MapSection />
+      </Box>
+    </>
   );
 }
 

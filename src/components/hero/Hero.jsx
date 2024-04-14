@@ -73,7 +73,8 @@ function Hero() {
           component='h2'
           variant="h5"
           sx={{ 
-            fontSize: { xs: '1.25rem', sm: '1.75rem', md: '2rem' }
+            fontSize: { xs: '1.25rem', sm: '1.75rem', md: '2rem' },
+            minHeight: { xs: '40px', sm: '50px', md: '42px' } // Anpassade värden för olika skärmstorlekar
           }}
         >
           Upplev hav, stad och natur.
@@ -86,7 +87,8 @@ function Hero() {
               xs: '4rem', // default for mobile screens
               sm: '5rem', // for tablets and above
               md: '6rem'  // for medium screens and larger
-            }
+            },
+            minHeight: { xs: '149px', sm: '186px', md: '224px' } // Anpassade värden för olika skärmstorlekar
           }}
         >
           Malnbadens<br/>Camping
@@ -99,10 +101,12 @@ function Hero() {
           sx={{
             fontSize: { xs: '20', lg: '22px' },
             marginBottom: { xs: '10px', lg: '0px' },
+            minHeight: { xs: '51px', sm: '54px', md: '60px' } // Anpassade värden för olika skärmstorlekar
           }}
         >
           Boka Direkt
         </Button>
+
       </Box>
     </Box>
   );
