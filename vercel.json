@@ -1,16 +1,18 @@
 {
     "redirects": [
-        { "source": "/camping", "destination": "/accommodation/camping", "permanent": true },
-        { "source": "/stugor", "destination": "/accommodation/cottages", "permanent": true },
-        { "source": "/vandrarhem", "destination": "/accommodation/hostel", "permanent": true },
-        { "source": "/bokningsvillkor", "destination": "/opening-hours", "permanent": true },
-        { "source": "/karta-over-malnbadens-camping", "destination": "/opening-hours", "permanent": true },
-        { "source": "/aktiviteter", "destination": "/activities", "permanent": true },
-        { "source": "/att-gora-i-hudiksvall", "destination": "/activities", "permanent": true },
-        { "source": "/restaurang", "destination": "/restaurant", "permanent": true },
-        { "source": "/oppettider", "destination": "/opening-hours", "permanent": true }
+      { "source": "/camping", "destination": "/accommodation/camping", "permanent": true },
+      { "source": "/stugor", "destination": "/accommodation/cottages", "permanent": true },
+      { "source": "/vandrarhem", "destination": "/accommodation/hostel", "permanent": true },
+      { "source": "/priser", "destination": "/accommodation/camping", "permanent": true },
+      { "source": "/karta-over-malnbadens-camping", "destination": "/accommodation/camping", "permanent": true },
+      { "source": "/bokningsvillkor", "destination": "/opening-hours", "permanent": true },
+      { "source": "/aktiviteter", "destination": "/activities", "permanent": true },
+      { "source": "/att-gora-i-hudiksvall", "destination": "/activities", "permanent": true },
+      { "source": "/restaurang", "destination": "/restaurant", "permanent": true },
+      { "source": "/oppettider", "destination": "/opening-hours", "permanent": true }
     ],
     "rewrites": [
-        { "source": "/(.*)", "destination": "/index.html" }
+      { "source": "/((?!camping|stugor|vandrarhem|priser|karta-over-malnbadens-camping|bokningsvillkor|aktiviteter|att-gora-i-hudiksvall|restaurang|oppettider).*)", "destination": "/index.html" }
     ]
-}
+  }
+  

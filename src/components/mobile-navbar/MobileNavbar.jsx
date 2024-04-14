@@ -130,7 +130,7 @@ const list = () => (
     return (
         <AppBar position="fixed">
             <Toolbar style={{ justifyContent: 'space-between', minHeight: '70px' }}>
-                <img src={logo} alt="Logo" style={{ height: '70px' }} />
+                <img src={logo} alt="Logo" style={{ height: '70px', width: 'auto' }} />
                 <IconButton
                     edge="start"
                     color="inherit"

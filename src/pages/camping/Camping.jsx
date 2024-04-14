@@ -67,7 +67,7 @@ function Camping() {
   ];
 
   return (
-    <Box sx={{ marginTop: 8 }}>
+    <Box sx={{ marginTop: 8, minHeight: '100vh' }}>
       <Box mb={6}>
         <PhotoGallery images={imageUrls} />
       </Box>

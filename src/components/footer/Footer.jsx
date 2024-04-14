@@ -4,29 +4,48 @@ import { Facebook, YouTube, Email, Phone, LocationOn } from '@mui/icons-material
 import { Link as RouterLink } from 'react-router-dom';
 
 function Footer() {
+    const headingStyle = {
+        fontSize: {
+          xs: '0.75rem', // mindre för små enheter
+          sm: '0.875rem', // lite större för medium enheter
+          md: '1rem', // standardstorlek för större enheter
+        },
+        // Lägg till ytterligare stilinställningar här
+    };
+
+    const textStyle = {
+        fontSize: {
+          xs: '1rem', // mindre för små enheter
+          sm: '0.95rem', // lite större för medium enheter
+          md: '1.25rem', // standardstorlek för större enheter
+        },
+        whiteSpace: 'nowrap',
+        // Lägg till ytterligare stilinställningar här
+    };
+
     return (
-        <Box component="footer" sx={{ minHeight: '256px', bgcolor: 'rgba(4, 51, 40)', color: 'white', py: 3 }}>
+        <Box component="footer" sx={{ minHeight: { xs: '400px', sm:'256px'}, bgcolor: 'rgba(4, 51, 40)', color: 'white', py: 3 }}>
             <Container maxWidth="lg">
                 <Grid container spacing={4}>
                     <Grid item xs={12} sm={4}>
                         <Typography variant="h4">Snabblänkar</Typography>
                         <Box component="nav">
-                            <Link variant='h6' component={RouterLink} to="/opening-hours" color="inherit" underline="hover" sx={{ display: 'block' }}>Öppettider</Link>
+                            <Link variant='h6' sx={textStyle} component={RouterLink} to="/opening-hours" color="inherit" underline="hover">Öppettider</Link>
                         </Box>
                     </Grid>
                     <Grid item xs={12} sm={4}>
                         <Typography variant="h4">Kontakta Oss</Typography>
                         <Box sx={{ display: 'flex', alignItems: 'center', mb: 1 }}>
                             <LocationOn sx={{ mr: 1 }} />
-                            <Typography variant='h6'>Malnvägen 34, 82456 Hudiksvall</Typography>
+                            <Typography variant='h6'sx={textStyle}>Malnvägen 34, 82456 Hudiksvall</Typography>
                         </Box>
                         <Box sx={{ display: 'flex', alignItems: 'center', mb: 1 }}>
                             <Phone sx={{ mr: 1 }} />
-                            <Link variant='h6' href="tel:+065013260" color="inherit" underline="hover">0650-132 60</Link>
+                            <Link variant='h6' href="tel:+065013260" sx={textStyle} color="inherit" underline="hover">0650-132 60</Link>
                         </Box>
                         <Box sx={{ display: 'flex', alignItems: 'center', mb: 1 }}>
                             <Email sx={{ mr: 1 }} />
-                            <Link variant='h6' href="mailto:info@malnbadenscamping.se" color="inherit" underline="hover">info@malnbadenscamping.se</Link>
+                            <Link variant='h6' href="mailto:info@malnbadenscamping.se" sx={textStyle} color="inherit" underline="hover">info@malnbadenscamping.se</Link>
                         </Box>
                     </Grid>
                     <Grid item xs={12} sm={4}>
@@ -39,7 +58,7 @@ function Footer() {
                         </IconButton>
                     </Grid>
                 </Grid>
-                <Typography sx={{ pt: 3, textAlign: 'center' }} variant="body2">
+                <Typography sx={{ pt: 3, textAlign: 'center' }} variant="body3">
                     © {new Date().getFullYear()} Malnbadens Camping. All rights reserved.
                 </Typography>
             </Container>

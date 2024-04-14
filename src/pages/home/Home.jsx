@@ -49,7 +49,7 @@ function Home() {
         `}
       </script>
       <Hero />
-      <Box sx={{ minHeight: '105vh', bgcolor: '#FAF6EE' }}>
+      <Box sx={{ minHeight: '100vh', bgcolor: '#FAF6EE' }}>
         <AccommodationCard/>
         <ActivitiesSection />
         <RestaurantSection />

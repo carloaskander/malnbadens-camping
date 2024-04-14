@@ -41,7 +41,15 @@ const theme = createTheme({
     body3: {
       fontFamily: 'Noto Serif, Arial, sans-serif',
       fontWeight: 500,
-      fontSize: '15px'
+      fontSize: '15px',
+
+      // Default styles for body1 and body2 that body3 doesnt inherit, since
+      // its not a default Material UI element.
+      display: 'block',
+      marginBlockStart: '1em',
+      marginBlockEnd: '1em',
+      marginInlineStart: '0px',
+      marginInlineEnd: '0px'
     }
   },
   palette: {

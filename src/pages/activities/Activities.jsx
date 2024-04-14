@@ -14,7 +14,8 @@ function Activities() {
 
   return (
     <>
-      <Box sx={{ bgcolor: '#FAF6EE', pt: 'calc(70px + 75px)', pb: 8, textAlign: 'center' }}>
+    <Box sx={{ bgcolor: '#FAF6EE', minHeight: '100vh' }}>
+      <Box sx={{ pt: 'calc(70px + 75px)', pb: 8, textAlign: 'center' }}>
         <Container maxWidth="lg">
           <Typography variant="h2" gutterBottom>
             Saker att göra...
@@ -24,7 +25,7 @@ function Activities() {
           </Typography>
         </Container>
       </Box>
-      <Box sx={{ bgcolor: '#FAF6EE', py: 8 }}>
+      <Box sx={{ py: 8 }}>
         <Container maxWidth="lg">
           <Grid container spacing={2} justifyContent="flex-start">
             {activities.map((activity, index) => (
@@ -89,6 +90,8 @@ function Activities() {
           </Grid>
         </Container>
       </Box>
+
+    </Box>
     </>
   );
 }

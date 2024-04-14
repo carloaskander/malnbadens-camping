@@ -33,7 +33,7 @@ function DesktopNavbar() {
       <AppBar position="fixed">
         <Container maxWidth="lg">
           <Toolbar sx={{ justifyContent: 'space-between', minHeight: '70px' }}>
-            <img src={logo} alt="Logo" style={{ height: '70px' }} />
+            <img src={logo} alt="Logo" style={{ height: '70px', width: 'auto' }} />
             {/* <Typography variant="h6" component="div" color='secondary.main' sx={{ textAlign: 'center' }}>
               Malnbadens <br/> Camping
             </Typography> */}
