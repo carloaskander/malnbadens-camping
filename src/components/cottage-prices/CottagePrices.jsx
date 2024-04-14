@@ -30,7 +30,7 @@ function CottagePrices() {
     return (
         <Box sx={{ my: 4 }}>
             <Typography variant="h4" gutterBottom>{title}</Typography>
-            <Grid container spacing={2} justifyContent="center">
+            <Grid container spacing={2} justifyContent="flex-start">
                 {pricesData.seasons.map((season, index) => (
                 <Grid item xs={12} sm={6} md={4} sx={{ minWidth: 325 }} key={index}>
                     <Paper elevation={2} sx={{ mb: 2, p: 2, height: '100%' }}>

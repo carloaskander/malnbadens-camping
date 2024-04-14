@@ -94,7 +94,7 @@ function ActivitiesSection() {
           </Grid>
         ))}
         <Box sx={{ display: 'flex', justifyContent: 'center', mt: 4 }}>
-          <Button variant="contained">
+          <Button variant='contained'>
             Mer Aktiviteter
           </Button>
         </Box>

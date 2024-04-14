@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import { Box, Typography, Button } from '@mui/material';
 import heroVideo from '../../assets/images/hero/malnbaden-drone-video.mp4';
+import heroVideoPoster from '../../assets/images/hero/malnbaden-drone-video-poster.webp';
 
 function Hero() {
   const videoRef = useRef(null);
@@ -37,6 +38,8 @@ function Hero() {
         playsInline
         ref={videoRef}
         preload='auto'
+        poster={heroVideoPoster}
+        src={heroVideo}
         style={{
           position: 'absolute',
           top: '50%',
@@ -47,7 +50,6 @@ function Hero() {
           transform: 'translate(-50%, -50%)',
           zIndex: 0, // Ensure the video stays in the background
         }}
-        src={heroVideo}
       >
         Your browser does not support the video tag.
       </video>

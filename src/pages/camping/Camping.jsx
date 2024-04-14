@@ -2,7 +2,9 @@ import React, { useState, useEffect } from 'react';
 import contentfulClient from "../../contentfulClient.js";
 import { Box, Typography, Container, Grid, Button, Paper, Icon } from '@mui/material';
 import PhotoGallery from "../../components/photo-gallery/PhotoGallery";
-import CampingPrices from "../../components/camping-prices/CampingPrices.jsx"
+import CampingPrices from "../../components/camping-prices/CampingPrices.jsx";
+import CampingInfo from "../../components/camping-info/CampingInfo.jsx";
+
 
 function Camping() {
   const [campingContent, setCampingContent] = useState(null);
@@ -54,27 +56,21 @@ function Camping() {
         <Container sx={{ 
           padding: '30px', 
           backgroundColor: '#fff', 
-          boxShadow: {
-            xs: '0px 4px 6px rgba(0, 0, 0, 0.1)',
-            sm: '-4px 4px 6px rgba(0, 0, 0, 0.1)'
-          } 
+          boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.15)',
         }}>
           <Grid container spacing={8} sx={{ display: 'flex', justifyContent: 'space-between' }}>
             <Grid item xs={12} md={7}>
               <Typography variant="h2" component="h1" color="text.primary" gutterBottom>
                 {campingContent.pageTitle}
               </Typography>
-              <Typography variant="body2">
+              <Typography variant="body2" paragraph>
                 {campingContent.pageDescription}
               </Typography>
             </Grid>
             <Grid item xs={12} md={5}>
               <Paper sx={{ 
                 padding: 4,
-                boxShadow: { 
-                  xs: '0px 8px 10px rgba(0, 0, 0, 0.1)', // No boxShadow on xs breakpoint
-                  sm: '-8px 8px 10px rgba(0, 0, 0, 0.1)' // Apply boxShadow from sm breakpoint and up
-                }
+                boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)',
               }}>
                 <Typography mb={3} variant="h3">Gör en bokning</Typography>
                 <Button 
@@ -88,14 +84,16 @@ function Camping() {
             </Grid>
             <Grid item xs={12} md={6} mb={6}>
               <Typography mb={2} variant="h5">Bekvämligheter</Typography>
-              <Box>
-                {amenities.map((amenity) => (
-                  <Box key={amenity.name} sx={{ display: 'flex', alignItems: 'center', gap: 2, marginBottom: '8px' }}>
-                    <Icon sx={{ color: 'secondary.main' }}>{amenity.icon}</Icon>
-                    <Typography variant="h6" sx={{ color: 'primary.main' }}>{amenity.name}</Typography>
-                  </Box>
+              <Grid container spacing={1}>
+                {amenities.map((amenity, index) => (
+                  <Grid item xs={12} sm={6} key={index}> {/* xs=12 för full bredd på små skärmar, sm=6 för halv bredd på större skärmar */}
+                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                      <Icon sx={{ color: 'secondary.main' }}>{amenity.icon}</Icon>
+                      <Typography variant="h6" sx={{ color: 'primary.main' }}>{amenity.name}</Typography>
+                    </Box>
+                  </Grid>
                 ))}
-              </Box>
+              </Grid>
             </Grid>
             <Grid item xs={12} md={6}>
               <Typography mb={2} variant="h5">Fakta</Typography>
@@ -110,6 +108,7 @@ function Camping() {
             </Grid>
           </Grid>
           <CampingPrices/>
+          <CampingInfo/>
         </Container>
       </Container>
     </Box>

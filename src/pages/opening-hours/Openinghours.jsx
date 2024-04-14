@@ -34,7 +34,7 @@ function OpeningHours() {
                         <Typography variant="h2" gutterBottom>Öppettider</Typography>
                         {hoursData ? (
                             <>
-                                <Box sx={{ borderLeft: '5px solid rgba(11, 110, 73)', paddingLeft: '20px' }}>
+                                <Box sx={{ borderLeft: '5px solid rgba(11, 110, 73)', paddingLeft: 2 }}>
                                     <Typography variant="h3" color='rgba(11, 110, 73)'>Reception</Typography>
                                     {hoursData.openingHours.receptionHours.map((hour, index) => (
                                         <Box mb={2} key={index}>
@@ -50,7 +50,7 @@ function OpeningHours() {
                                         </Box>
                                     ))}
                                 </Box>
-                                <Box sx={{ borderLeft: '5px solid rgba(11, 110, 73)', paddingLeft: '20px' }}>
+                                <Box sx={{ borderLeft: '5px solid rgba(11, 110, 73)', paddingLeft: 2 }}>
                                     <Typography variant="h3" color='rgba(11, 110, 73)'>Minigolf</Typography>
                                     {hoursData.openingHours.minigolfHours.map((hour, index) => (
                                         <Box mb={2} key={index}>

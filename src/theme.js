@@ -46,35 +46,35 @@ const theme = createTheme({
   },
   palette: {
     primary: {
-      main: 'rgba(4, 43, 42)', // Primary color
+      main: 'rgba(4, 43, 42)',
     },
     secondary: {
-      main: 'rgba(214, 107, 39)', // Secondary color
+      main: 'rgba(214, 107, 39)',
     },
     text: {
-      primary: 'rgba(4, 43, 42)', // Dark text color
-      secondary: '#fff', // Light text color
+      primary: 'rgba(4, 43, 42)',
+      secondary: '#fff',
     },
     background: {
-      default: '#fff', // Background color
+      default: '#fff',
     },
   },
   components: {
     MuiAppBar: {
       styleOverrides: {
         root: {
-          backgroundColor: 'rgba(4, 51, 40, 0.97)', // Primary green color with 0.97 opacity
+          backgroundColor: 'rgba(4, 51, 40, 0.97)',
         },
       },
     },
     MuiListItemText: {
       styleOverrides: {
-        primary: { // Targeting the primary text within ListItemText
+        primary: {
           fontFamily: '"Bebas Neue", Arial, sans-serif',
           fontSize: '1.25rem',
           letterSpacing: '1px',
         },
-        secondary: { // Targeting the primary text within ListItemText
+        secondary: {
           fontFamily: '"Bebas Neue", Arial, sans-serif',
           fontSize: '1.25rem',
           letterSpacing: '1px',
@@ -84,16 +84,16 @@ const theme = createTheme({
     MuiDrawer: {
       styleOverrides: {
         paper: {
-          backgroundColor: 'rgba(4, 43, 42, 0.85)', // Primary green color with 0.85 opacity
-          color: 'white', // Text color for the items in the drawer
+          backgroundColor: 'rgba(4, 43, 42, 0.85)',
+          color: 'white',
         },
       },
     },
     MuiCard: {
       styleOverrides: {
         root: {
-          backgroundColor: '#fff', // Using MUI's light grey
-          color: '#021a19', // Dark text color for better contrast
+          backgroundColor: '#fff',
+          color: '#021a19',
           borderRadius: '1px',
           boxShadow: '0px 2px 8px 4px rgba(0, 0, 0, 0.1)',
         },
@@ -102,42 +102,50 @@ const theme = createTheme({
     MuiCardMedia: {
       styleOverrides: {
         root: {
-          height: '160px', // Standardize the height for all card media
+          height: '160px',
         },
       },
     },
     MuiButton: {
       styleOverrides: {
         root: {
-          padding: '10px',
-          borderRadius: '0', // Apply no border radius to all buttons
+          color: 'white',
           backgroundColor: '#D66B27',
+          padding: '10px',
+          borderRadius: '0',
           fontFamily: 'Bebas Neue, Arial, sans-serif',
           fontSize: '18px',
           wordSpacing: '1px',
           letterSpacing: '1px',
-          // Add other global button styles here
+          '&:hover': {
+            backgroundColor: 'rgba(4, 51, 40)'
+          }
         },
+        outlined: {
+          color: 'rgba(214, 107, 39)',
+          border: '2px solid rgba(214, 107, 39)',
+          backgroundColor: 'transparent',
+          '&:hover': {
+            color: 'white',
+            border: '2px solid rgba(214, 107, 39)',
+            backgroundColor: 'rgba(214, 107, 39)',
+          }
+        }
       },
     },
     MuiPaper: {
       styleOverrides: {
         root: {
-          borderRadius: 0, // Set border radius to 0 for all Paper components
+          borderRadius: 0,
         },
-      },
-    },
-    MuiTextField: {
-      defaultProps: {
-        // Default props here
       },
     },
     MuiInputLabel: { 
       styleOverrides: {
         root: {
-          color: 'rgba(4, 43, 42)', // Set label color
+          color: 'rgba(4, 43, 42)',
           '&.Mui-focused': {
-            color: '#D66B27', // Label color on focus
+            color: '#D66B27',
           },
         },
       },
@@ -149,7 +157,7 @@ const theme = createTheme({
             border: '1px solid rgba(4, 43, 42, 0.5)',
           },
           '&:hover .MuiOutlinedInput-notchedOutline': {
-            border: '2px solid rgba(4, 43, 42)', // Border color on hover
+            border: '2px solid rgba(4, 43, 42)',
           },
           '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
             border: '2px solid #30824d',
@@ -157,7 +165,6 @@ const theme = createTheme({
         },
       },
     },
-    // Additional component overrides can be placed here
   },
 });
 
