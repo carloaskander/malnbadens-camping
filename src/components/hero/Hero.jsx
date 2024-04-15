@@ -2,6 +2,7 @@ import React, { useRef, useEffect } from 'react';
 import { Box, Typography, Button } from '@mui/material';
 import heroVideo from '../../assets/images/hero/malnbaden-drone-video.mp4';
 import heroVideoPoster from '../../assets/images/hero/malnbaden-drone-video-poster.webp';
+import BookingCountdown from '../booking-countdown/BookingCountdown';
 
 function Hero() {
   const videoRef = useRef(null);
@@ -93,20 +94,7 @@ function Hero() {
         >
           Malnbadens<br/>Camping
         </Typography>
-        <Button
-          variant="contained"
-          color="secondary"
-          href='https://bokning4.paxess.se/malnbaden2'
-          target='_blank'
-          sx={{
-            fontSize: { xs: '20', lg: '22px' },
-            marginBottom: { xs: '10px', lg: '0px' },
-            minHeight: { xs: '51px', sm: '54px', md: '60px' } // Anpassade värden för olika skärmstorlekar
-          }}
-        >
-          Boka Direkt
-        </Button>
-
+        <BookingCountdown/>
       </Box>
     </Box>
   );
