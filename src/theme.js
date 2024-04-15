@@ -7,10 +7,12 @@ const theme = createTheme({
     h1: {
       fontFamily: 'Bebas Neue, Arial, sans-serif', 
       fontWeight: 500,
+      lineHeight: 1
     },
     h2: {
       fontFamily: 'Bebas Neue, Arial, sans-serif', 
       fontWeight: 500,
+      lineHeight: 1
     },
     h3: {
       fontFamily: 'Bebas Neue, Arial, sans-serif', 

@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from 'react';
-import { Box, Typography, Button } from '@mui/material';
+import { Box, Typography, Container } from '@mui/material';
 import heroVideo from '../../assets/images/hero/malnbaden-drone-video.mp4';
 import heroVideoPoster from '../../assets/images/hero/malnbaden-drone-video-poster.webp';
 import BookingCountdown from '../booking-countdown/BookingCountdown';
@@ -8,34 +8,34 @@ function Hero() {
   const videoRef = useRef(null);
 
   useEffect(() => {
-    if(videoRef.current) {
-      videoRef.current.playbackRate = 0.6; // Slow down the video to half speed
+    if (videoRef.current) {
+      videoRef.current.playbackRate = 0.6; // Slow down the video
     }
   }, []);
 
   return (
-    <Box 
+    <Box
       sx={{
         position: 'relative',
         width: '100%',
         height: { xs: '75vh', md: '75vh' },
         overflow: 'hidden',
-        '&::before': { // Adding the overlay back
+        '&::before': {
           content: '""',
           position: 'absolute',
           top: 0,
           left: 0,
           width: '100%',
           height: '100%',
-          backgroundColor: 'rgba(0, 0, 0, 0.3)', // Adjust the opacity as needed
-          zIndex: 1, // Ensure it's above the video but below the text
+          backgroundColor: 'rgba(0, 0, 0, 0.3)',
+          zIndex: 1,
         },
       }}
     >
-      <video 
-        autoPlay 
-        loop 
-        muted 
+      <video
+        autoPlay
+        loop
+        muted
         playsInline
         ref={videoRef}
         preload='auto'
@@ -45,28 +45,28 @@ function Hero() {
           position: 'absolute',
           top: '50%',
           left: '50%',
-          width: '100%',
+          width: 'auto',
           height: '100%',
+          minWidth: '100%',
           objectFit: 'cover',
           transform: 'translate(-50%, -50%)',
-          zIndex: 0, // Ensure the video stays in the background
+          zIndex: 0,
         }}
       >
         Your browser does not support the video tag.
       </video>
-
-      <Box
+      <Container
+        maxWidth="xl"
         sx={{
           position: 'absolute',
-          top: '70px',
-          left: 10,
+          top: { xs: 0, lg: '10%' },
+          left: '50%',
+          transform: 'translateX(-50%)',
+          zIndex: 2,
+          height: '100%',
           display: 'flex',
           flexDirection: 'column',
           justifyContent: { xs: 'flex-end', lg: 'center' },
-          gap: 1,
-          alignItems: 'start',
-          height: 'calc(100% - 70px)',
-          zIndex: 2, // Ensure text appears above the overlay
         }}
       >
         <Typography
@@ -74,8 +74,9 @@ function Hero() {
           component='h2'
           variant="h5"
           sx={{ 
-            fontSize: { xs: '1.25rem', sm: '1.75rem', md: '2rem' },
-            minHeight: { xs: '40px', sm: '50px', md: '42px' } // Anpassade värden för olika skärmstorlekar
+            fontSize: { xs: '1.25rem', sm: '1.75rem', md: '2rem', lg: '2.5rem' },
+            textAlign: 'left',
+            maxWidth: 'none',  // Ensures text aligns within the Container
           }}
         >
           Upplev hav, stad och natur.
@@ -85,17 +86,19 @@ function Hero() {
           variant="h1"
           sx={{
             fontSize: {
-              xs: '4rem', // default for mobile screens
-              sm: '5rem', // for tablets and above
-              md: '6rem'  // for medium screens and larger
+              xs: '4rem',
+              sm: '5rem',
+              md: '6rem',
+              lg: '8rem',
             },
-            minHeight: { xs: '149px', sm: '186px', md: '224px' } // Anpassade värden för olika skärmstorlekar
+            textAlign: 'left',
+            maxWidth: 'none',  // Ensures text aligns within the Container
           }}
         >
           Malnbadens<br/>Camping
         </Typography>
-        <BookingCountdown/>
-      </Box>
+        <BookingCountdown />
+      </Container>
     </Box>
   );
 }

@@ -72,7 +72,7 @@ function BookingCountdown() {
     }
 
     return (
-        <Paper sx={{ p: 3, mb: { xs: 2, lg: 0 }, backgroundColor: 'rgba(0, 0, 0, 0.6)', borderLeft: '5px solid rgba(214, 107, 39)' }}>
+        <Paper sx={{ p: 3, mb: { xs: 2, lg: 0 }, width: 'fit-content', backgroundColor: 'rgba(0, 0, 0, 0.6)', borderLeft: '5px solid rgba(214, 107, 39)' }}>
             {content}
             <Typography variant='h5' color='text.secondary' sx={{ mb: 1, fontSize: { xs: '16px', sm: '20px', md: '22px', lg: '25px' } }}>
                 Säsongen {currentTime.year()}: <Box component='span' sx={{ color: 'orange' }}>
@@ -90,7 +90,7 @@ function BookingCountdown() {
                     fontSize: { xs: '16px', sm: '18px', md: '20px', lg: '22px' },
                 }}
             >
-                Boka Direkt
+                Boka Nu
             </Button>
         </Paper>
     );
