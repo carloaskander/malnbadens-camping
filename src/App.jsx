@@ -11,6 +11,7 @@ import Hostel from './pages/hostel/Hostel';
 import Activities from './pages/activities/Activities';
 import Restaurant from './pages/restaurant/Restaurant';
 import Openinghours from './pages/opening-hours/Openinghours';
+import NotFound from './pages/not-found/NotFound';
 import Footer from './components/footer/Footer';
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
             <Route path="/activities" element={<Activities />} />
             <Route path="/restaurant" element={<Restaurant />} />
             <Route path="/opening-hours" element={<Openinghours />} />
+            <Route path="*" element={<NotFound />} />
             {/* Other routes */}
           </Routes>
           <Footer/>

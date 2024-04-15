@@ -28,6 +28,11 @@ const theme = createTheme({
       fontFamily: 'Bebas Neue, Arial, sans-serif', 
       fontWeight: 500,
     },
+    subtitle1: {
+      fontFamily: 'Noto Serif, Arial, sans-serif',
+      fontWeight: 500,
+      fontSize: '18px'
+    },
     body1: {
       fontFamily: 'Noto Serif, Arial, sans-serif',
       fontWeight: 500,
