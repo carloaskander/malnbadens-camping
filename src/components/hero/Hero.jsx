@@ -9,7 +9,7 @@ function Hero() {
 
   useEffect(() => {
     if (videoRef.current) {
-      videoRef.current.playbackRate = 0.6; // Slow down the video
+      videoRef.current.playbackRate = 0.8; // Slow down the video
     }
   }, []);
 

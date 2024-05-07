@@ -48,13 +48,13 @@ function RestaurantSection() {
           {/* Text Content */}
           <Grid item xs={12} md={6}>
             <Typography variant="h3">
-              Strandnära Restaurang
+              Strandbelägen Restaurang
             </Typography>
             <Typography variant='h5' gutterBottom>
               Maln Hav & Krog
             </Typography>
             <Typography sx={{ mb: 3 }}>
-            Med sin varierade meny och enastående utsikt över havet lockar restaurangen både lokalbefolkningen och besökare. Här samlas människor för att njuta av solen, livliga evenemang och den avslappnade atmosfären. Bara ett stenkast från campingen hittar du en samlingspunkt för god mat och gemenskap.
+            Med sin varierade meny och enastående utsikt över stranden och havet lockar restaurangen både lokalbefolkningen och besökare. Här samlas människor för att njuta av solen, livliga evenemang och den avslappnade atmosfären. Bara ett stenkast från campingen hittar du en samlingspunkt för god mat och gemenskap.
             </Typography>
             <Button variant="contained" href='/restaurant'>
               Mer Info

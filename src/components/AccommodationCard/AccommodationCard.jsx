@@ -14,7 +14,7 @@ import hostelThumbnailMedium from '../../assets/images/accommodation-cards/hoste
 const accommodationOptions = [
   {
     title: "Camping",
-    description: "Upplev campinglivets charm med havsbrisen som sällskap och bekvämligheter inom räckhåll.",
+    description: "Upplev campinglivets charm omgiven av grönska, med bekvämligheter inom räckhåll och nära till havet.",
     imageUrls: {
       medium: campingThumbnailMedium,
       small: campingThumbnailSmall,
@@ -32,7 +32,7 @@ const accommodationOptions = [
   },
   {
     title: "Vandrarhem",
-    description: "Vårt vandrarhem kombinerar prisvärdhet med trivsam gemenskap, idealiskt för äventyrslystna resenärer.",
+    description: "Vårt vandrarhem kombinerar prisvärdhet med personlig komfort, idealiskt för resenärer som söker ett praktiskt och avkopplande boende.",
     imageUrls: {
       medium: hostelThumbnailMedium,
       small: hostelThumbnailSmall,

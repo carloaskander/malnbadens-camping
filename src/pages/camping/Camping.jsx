@@ -49,6 +49,7 @@ function Camping() {
     { name: "El", icon: <ElectricalServicesIcon /> },
     { name: "Wifi", icon: <WifiIcon /> },
     { name: "Latrintömning", icon: <FormatColorFillIcon /> },
+    { name: "Gråvattentömning", icon: <FormatColorFillIcon /> },
     { name: "Servicehus", icon: <WcIcon /> },
     { name: "Bastu", icon: <HotTubIcon /> },
     { name: "Skötrum", icon: <BabyChangingStationIcon /> },
@@ -61,7 +62,7 @@ function Camping() {
   ];
 
   const facts = [
-    { name: "Antal platser", value: ">115", icon: <FormatListNumberedIcon /> },
+    { name: "Antal platser", value: "125", icon: <FormatListNumberedIcon /> },
     { name: "Area platser", value: "90-110m²", icon: <SquareFootIcon /> },
     { name: "Andel elplatser", value: "99%", icon: <ElectricalServicesIcon /> },
   ];

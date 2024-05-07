@@ -17,7 +17,7 @@ function NotFound() {
             Tyvärr kan vi inte hitta den sida du letar efter. Det kan bero på att sidan inte finns längre eller att en felaktig URL har angetts.
             </Typography>
             <Typography variant="body1">
-            En flitig programmerare sitter och jobbar för fullt bakom kulisserna för att kontinuerligt förbättra vår webbplats och ge dig en bättre användarupplevelse. Du kanske hittar sidan du letade efter genom att navigera på vår webbplats.            </Typography>
+            En flitig programmerare sitter och jobbar för fullt bakom kulisserna för att kontinuerligt förbättra vår webbplats och ge dig en bättre användarupplevelse. Du kanske hittar sidan du letade efter genom att navigera på vår webbplats.</Typography>
             <Box mt={4}>
             <Button variant="outlined" startIcon={<HomeIcon />} onClick={() => navigate('/home')}>
                 Hem

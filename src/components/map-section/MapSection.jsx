@@ -8,7 +8,7 @@ function MapSection() {
     <Box sx={{ py: 8, px: 2 }}>
       <Container maxWidth="lg">
         <Typography variant="h3" gutterBottom sx={{ textAlign: 'center' }}>
-          Find Us
+          Hitta oss
         </Typography>
         <Box sx={{ width: '100%', overflow: 'hidden', mb: 3, display: 'flex', justifyContent: 'center' }}>
           <iframe

@@ -1,9 +1,9 @@
 import React from 'react';
 import { Box, Typography, Button, Grid, Container } from '@mui/material';
 import LazyLoad from 'react-lazyload';
-import beachLadderImage from '../../assets/images/beach/beach-ladder.jpg';
+import beachDroneImage from '../../assets/images/beach/beach-drone.webp';
+import beachSoccerRestaurantImage from '../../assets/images/beach/beach-soccer-restaurant.webp';
 import runningTrailImage from '../../assets/images/activities/running-trail.jpg';
-import beachDockImage from '../../assets/images/beach/beach-dock.jpg';
 
 function ActivitiesSection() {
   const activities = [
@@ -11,7 +11,7 @@ function ActivitiesSection() {
       title: 'Strand',
       description:
         'Endast 150 meter från campingen finner du Malnbadens strand med dess populära strandrestaurang, känd för god mat, härlig stämning och roliga evenemang. Stranden är även utrustad med planer för beachvolleyboll och strandfotboll, perfekt för de som söker aktivitet och spel under sommardagarna. För hundägare finns ett särskilt avsnitt på stranden där fyrbenta vänner är välkomna att leka och svalka sig i vattnet.',
-      imageUrl: beachDockImage,
+      imageUrl: beachDroneImage,
       imageStyle: {
         width: '100%', // Default width
         maxWidth: '450px',
@@ -20,7 +20,7 @@ function ActivitiesSection() {
         // Add more styles as needed
       },
       polaroid: {
-        imageUrl: beachLadderImage,
+        imageUrl: beachSoccerRestaurantImage,
         style: {
           position: 'absolute',
           bottom: { xs: '-17%', md: '-10%' },

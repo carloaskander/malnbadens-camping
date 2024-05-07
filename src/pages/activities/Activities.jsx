@@ -1,12 +1,12 @@
 import React from 'react';
 import { Box, Grid, Container, Skeleton, Card, CardMedia, CardContent, Typography } from '@mui/material';
-import beachImage from '../../assets/images/beach/beach.jpg';
+import beachSoccerImage from '../../assets/images/beach/beach-soccer.webp';
 import runningTrailImage from '../../assets/images/activities/running-trail.jpg';
 import kayakImage from '../../assets/images/activities/kayak.jpg';
 
 function Activities() {
   const activities = [
-    { title: 'Stranden', description: 'Upplev den vackra sandstranden med aktiviteter för hela familjen.', imageUrl: beachImage },
+    { title: 'Stranden', description: 'Upplev den vackra sandstranden med aktiviteter för hela familjen.', imageUrl: beachSoccerImage },
     { title: 'Motionsspår', description: 'Ta en löprunda eller en avkopplande promenad längs våra natursköna spår.', imageUrl: runningTrailImage },
     { title: 'Kajak', description: 'Upplev spänningen och det rogivande vattnet när du paddlar kajak längs Hudiksvalls kustlinje.', imageUrl: kayakImage },
     { title: 'Minigolf', description: 'Testa din precision och ha kul med familj och vänner på vår utmanande minigolfbana.', imageUrl: '' },

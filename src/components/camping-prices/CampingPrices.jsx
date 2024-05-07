@@ -37,8 +37,17 @@ function CampingPrices() {
                         <Typography variant="h5" gutterBottom>{season.name} <br/> {season.dateRange}</Typography>
                         <List>
                             {season.prices.map((price, priceIndex) => (
-                                <ListItem key={priceIndex} divider>
-                                    <ListItemText primaryTypographyProps={{ color: 'secondary.main' }} secondaryTypographyProps={{ color: 'primary.main' }} primary={`${price.description}`} secondary={`${price.price}`} />
+                                <ListItem key={priceIndex} divider sx={{ flexDirection: 'column', alignItems: 'flex-start'}}>
+                                    {/* <ListItemText primaryTypographyProps={{ color: 'secondary.main' }} secondaryTypographyProps={{ color: 'primary.main' }} primary={`${price.description}`} secondary={`${price.price}`} /> */}
+                                    <Typography color="secondary.main" variant="h6">
+                                        {price.description}
+                                    </Typography>
+                                    <Typography color="secondary.main" fontStyle="italic" variant="body2">
+                                        {price.additionalInfo}
+                                    </Typography>
+                                    <Typography color="primary.main" variant="h6" component="body2">
+                                        {price.price}
+                                    </Typography>
                                 </ListItem>
                             ))}
                         </List>
