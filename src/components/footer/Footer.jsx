@@ -41,7 +41,7 @@ function Footer() {
                         </Box>
                         <Box sx={{ display: 'flex', alignItems: 'center', mb: 1 }}>
                             <Phone sx={{ mr: 1 }} />
-                            <Link variant='h6' href="tel:+065013260" sx={textStyle} color="inherit" underline="hover">0650-132 60</Link>
+                            <Link variant='h6' href="tel:065013260" sx={textStyle} color="inherit" underline="hover">0650-132 60</Link>
                         </Box>
                         <Box sx={{ display: 'flex', alignItems: 'center', mb: 1 }}>
                             <Email sx={{ mr: 1 }} />

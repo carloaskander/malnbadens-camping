@@ -98,7 +98,7 @@ function OpeningHours() {
                             </>
                         ) : <Typography>Loading...</Typography>}
                     </Grid>
-                    <Grid item xs={12} md={6} style={{ position: 'relative' }}>
+                    <Grid item xs={12} md={6} style={{ position: 'relative', display: 'none' }}>
                         <Typography variant="h2" gutterBottom>Kontakta Oss</Typography>
                         {lottieAnimation.animationData && (
                             <Lottie
