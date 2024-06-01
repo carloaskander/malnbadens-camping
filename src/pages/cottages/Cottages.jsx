@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import contentfulClient from "../../contentfulClient";
 import { Box, Typography, Container, Grid, Button, Paper, Icon } from '@mui/material';
 import PhotoGallery from "../../components/photo-gallery/PhotoGallery";
@@ -26,6 +27,7 @@ const ColoredIcon = ({ icon, color }) => (
 );
 
 function Cottages() {
+    const { t } = useTranslation();
     const [cottagesContent, setCottagesContent] = useState(null);
 
     useEffect(() => {
@@ -41,29 +43,29 @@ function Cottages() {
         .catch(console.error);
     }, []);
 
-    if (!cottagesContent) return <p>Laddar...</p>;
+    if (!cottagesContent) return <p>{t('loading')}</p>;
 
     const imageUrls = cottagesContent.photoGallery?.map(photo => photo.fields.file.url) || [];
 
     const amenities = [
-        { name: "Wifi", icon: <WifiIcon /> },
-        { name: "LCD-TV", icon: <TvIcon /> },
-        { name: "Egen uteplats", icon: <DeckIcon /> },
-        { name: "WC i servicehuset", icon: <WcIcon /> },
-        { name: "Dusch i servicehuset", icon: <ShowerIcon /> },
-        { name: "Bastu i servicehuset", icon: <HotTubIcon /> },
-        { name: "Skötrum", icon: <BabyChangingStationIcon /> },
-        { name: "Simpelt kök i stugan", icon: <MicrowaveIcon /> },
-        { name: "Extra gemensamt storkök", icon: <SoupKitchenIcon /> },
-        { name: "Gemensam grill", icon: <OutdoorGrillIcon /> },
+        { name: t('accommodation.cottagesPage.amenities.items.wifi'), icon: <WifiIcon /> },
+        { name: t('accommodation.cottagesPage.amenities.items.lcdTv'), icon: <TvIcon /> },
+        { name: t('accommodation.cottagesPage.amenities.items.privatePatio'), icon: <DeckIcon /> },
+        { name: t('accommodation.cottagesPage.amenities.items.wcInServiceHouse'), icon: <WcIcon /> },
+        { name: t('accommodation.cottagesPage.amenities.items.showerInServiceHouse'), icon: <ShowerIcon /> },
+        { name: t('accommodation.cottagesPage.amenities.items.saunaInServiceHouse'), icon: <HotTubIcon /> },
+        { name: t('accommodation.cottagesPage.amenities.items.babyChangingRoom'), icon: <BabyChangingStationIcon /> },
+        { name: t('accommodation.cottagesPage.amenities.items.simpleKitchen'), icon: <MicrowaveIcon /> },
+        { name: t('accommodation.cottagesPage.amenities.items.sharedLargeKitchen'), icon: <SoupKitchenIcon /> },
+        { name: t('accommodation.cottagesPage.amenities.items.sharedGrill'), icon: <OutdoorGrillIcon /> },
     ];
-        const facts = [
-            { name: "Antal stugor", value: "9", icon: <FormatListNumberedIcon /> },
-            { name: "Storlek stugor", value: "16m²", icon: <CottageIcon /> },
-            { name: "Antal bäddar", value: "2-4", icon: <BedIcon /> },
-            { name: "Möjlighet för extra madrass", value: "Ja", icon: <AirlineSeatFlatIcon /> },
-        ];
-        
+
+    const facts = [
+        { name: t('accommodation.cottagesPage.facts.items.numberOfCottages'), value: "9", icon: <FormatListNumberedIcon /> },
+        { name: t('accommodation.cottagesPage.facts.items.cottageSize'), value: "16m²", icon: <CottageIcon /> },
+        { name: t('accommodation.cottagesPage.facts.items.numberOfBeds'), value: "2-4", icon: <BedIcon /> },
+        { name: t('accommodation.cottagesPage.facts.items.extraMattressOption'), value: t('yes'), icon: <AirlineSeatFlatIcon /> },
+    ];
 
     return (
         <Box sx={{ marginTop: 8, minHeight: '100vh' }}>
@@ -80,10 +82,10 @@ function Cottages() {
                     <Grid container spacing={8} sx={{ display: 'flex', justifyContent: 'space-between' }}>
                         <Grid item xs={12} md={7}>
                             <Typography variant="h2" component="h1" color="text.primary" gutterBottom>
-                                {cottagesContent.pageTitle}
+                                {t('accommodation.cottagesPage.title')}
                             </Typography>
                             <Typography variant="body2" paragraph>
-                                {cottagesContent.pageDescription}
+                                {t('accommodation.cottagesPage.description')}
                             </Typography>
                         </Grid>
                         <Grid item xs={12} md={5}>
@@ -91,14 +93,14 @@ function Cottages() {
                                 padding: 4,
                                 boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)',
                             }}>
-                                <Typography mb={3} variant="h3">Gör en Bokning</Typography>
-                                    <Button href='https://bokning4.paxess.se/malnbaden2' target='_blank' variant="contained" sx={{ width: '100%', mb: 2 }}>
-                                        Boka Nu
-                                    </Button>
+                                <Typography mb={3} variant="h3">{t('accommodation.cottagesPage.booking.title')}</Typography>
+                                <Button href='https://bokning4.paxess.se/malnbaden2' target='_blank' variant="contained" sx={{ width: '100%', mb: 2 }}>
+                                    {t('accommodation.cottagesPage.booking.button')}
+                                </Button>
                             </Paper>
                         </Grid>
                         <Grid item xs={12} md={6} mb={6}>
-                            <Typography mb={2} variant="h5">Bekvämligheter</Typography>
+                            <Typography mb={2} variant="h5">{t('accommodation.cottagesPage.amenities.title')}</Typography>
                             <Grid container spacing={1}>
                                 {amenities.map((amenity, index) => (
                                 <Grid item xs={12} sm={6} key={index}> {/* xs=12 för full bredd på små skärmar, sm=6 för halv bredd på större skärmar */}
@@ -111,7 +113,7 @@ function Cottages() {
                             </Grid>
                         </Grid>
                         <Grid item xs={12} md={6}>
-                            <Typography mb={2} variant="h5">Fakta</Typography>
+                            <Typography mb={2} variant="h5">{t('accommodation.cottagesPage.facts.title')}</Typography>
                             <Box>
                                 {facts.map((fact) => (
                                     <Box key={fact.name} sx={{ display: 'flex', alignItems: 'center', gap: 2, marginBottom: '8px' }}>

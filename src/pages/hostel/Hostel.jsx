@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import contentfulClient from "../../contentfulClient";
 import { Box, Typography, Container, Grid, Button, Paper, Icon } from '@mui/material';
 import PhotoGallery from "../../components/photo-gallery/PhotoGallery";
@@ -12,9 +13,9 @@ import BathroomIcon from '@mui/icons-material/Bathroom';
 import LocalLaundryServiceIcon from '@mui/icons-material/LocalLaundryService';
 import SoupKitchenIcon from '@mui/icons-material/SoupKitchen';
 import RestaurantIcon from '@mui/icons-material/Restaurant';
-import ChairIcon from '@mui/icons-material/Chair'; // Antag att detta är TV-rum ikonen
+import ChairIcon from '@mui/icons-material/Chair';
 import DeckIcon from '@mui/icons-material/Deck';
-import BedroomChildIcon from '@mui/icons-material/BedroomChild'; // Antag att detta är för enkel/dubbelrum
+import BedroomChildIcon from '@mui/icons-material/BedroomChild';
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
 
 const ColoredIcon = ({ icon, color }) => (
@@ -22,6 +23,7 @@ const ColoredIcon = ({ icon, color }) => (
 );
 
 function Hostel() {
+    const { t } = useTranslation();
     const [hostelContent, setHostelContent] = useState(null);
 
     useEffect(() => {
@@ -41,25 +43,25 @@ function Hostel() {
 
     const imageUrls = hostelContent.photoGallery?.map(photo => photo.fields.file.url) || [];
 
-        const amenities = [
-            { name: "Wifi", icon: <WifiIcon /> },
-            { name: "Privata rum", icon: <BedroomParentIcon /> },
-            { name: "Gemensamma Badrum", icon: <BathroomIcon /> },
-            { name: "Tvättmaskin", icon: <LocalLaundryServiceIcon /> },
-            { name: "Gemensamma Kök", icon: <SoupKitchenIcon /> },
-            { name: "Matsal", icon: <RestaurantIcon /> },
-            { name: "TV-rum", icon: <ChairIcon /> },
-            { name: "Uteterrass", icon: <DeckIcon /> },
-        ];
+    const amenities = [
+        { name: t('accommodation.hostelPage.amenities.items.wifi'), icon: <WifiIcon /> },
+        { name: t('accommodation.hostelPage.amenities.items.privateRooms'), icon: <BedroomParentIcon /> },
+        { name: t('accommodation.hostelPage.amenities.items.sharedBathrooms'), icon: <BathroomIcon /> },
+        { name: t('accommodation.hostelPage.amenities.items.washingMachine'), icon: <LocalLaundryServiceIcon /> },
+        { name: t('accommodation.hostelPage.amenities.items.sharedKitchens'), icon: <SoupKitchenIcon /> },
+        { name: t('accommodation.hostelPage.amenities.items.diningRoom'), icon: <RestaurantIcon /> },
+        { name: t('accommodation.hostelPage.amenities.items.tvRoom'), icon: <ChairIcon /> },
+        { name: t('accommodation.hostelPage.amenities.items.outdoorTerrace'), icon: <DeckIcon /> },
+    ];
 
-        const facts = [
-            { name: "Antal rum", value: "15", icon: <BedroomParentIcon /> },
-            { name: "Enkel/Dubbelrum", value: "12", icon: <BedroomChildIcon /> },
-            { name: "Fyrbäddsrum", value: "3", icon: <BedroomParentIcon /> },
-            { name: "Antal badrum", value: "2", icon: <BathroomIcon /> },
-            { name: "Antal kök", value: "2", icon: <SoupKitchenIcon /> },
-            { name: "Möjlighet för extra person (vid förfrågan)", value: "Ja", icon: <PersonAddIcon /> },
-        ];
+    const facts = [
+        { name: t('accommodation.hostelPage.facts.items.numberOfRooms'), value: "15", icon: <BedroomParentIcon /> },
+        { name: t('accommodation.hostelPage.facts.items.singleDoubleRooms'), value: "12", icon: <BedroomChildIcon /> },
+        { name: t('accommodation.hostelPage.facts.items.quadRooms'), value: "3", icon: <BedroomParentIcon /> },
+        { name: t('accommodation.hostelPage.facts.items.numberOfBathrooms'), value: "2", icon: <BathroomIcon /> },
+        { name: t('accommodation.hostelPage.facts.items.numberOfKitchens'), value: "2", icon: <SoupKitchenIcon /> },
+        { name: t('accommodation.hostelPage.facts.items.extraPersonOption'), value: "Ja", icon: <PersonAddIcon /> },
+    ];
 
     return (
         <Box sx={{ marginTop: 8, minHeight: '100vh' }}>
@@ -76,10 +78,10 @@ function Hostel() {
                     <Grid container spacing={8} sx={{ display: 'flex', justifyContent: 'space-between' }}>
                         <Grid item xs={12} md={7}>
                             <Typography variant="h2" component="h1" color="text.primary" gutterBottom>
-                                {hostelContent.pageTitle}
+                                {t('accommodation.hostelPage.title')}
                             </Typography>
                             <Typography variant="body2">
-                                {hostelContent.pageDescription}
+                                {t('accommodation.hostelPage.description')}
                             </Typography>
                         </Grid>
                         <Grid item xs={12} md={5}>
@@ -87,19 +89,19 @@ function Hostel() {
                                 padding: 4,
                                 boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)',
                             }}>
-                                <Typography mb={3} variant="h3">Gör en Bokning</Typography>
+                                <Typography mb={3} variant="h3">{t('accommodation.hostelPage.booking.title')}</Typography>
                                 <Button 
                                     href='https://bokning4.paxess.se/malnbaden2' 
                                     target='_blank' 
                                     variant="contained" 
                                     sx={{ width: '100%' }}
                                 >
-                                    Boka
+                                    {t('accommodation.hostelPage.booking.button')}
                                 </Button>
                             </Paper>
                         </Grid>
                         <Grid item xs={12} md={6} mb={6}>
-                            <Typography mb={2} variant="h5">Bekvämligheter</Typography>
+                            <Typography mb={2} variant="h5">{t('accommodation.hostelPage.amenities.title')}</Typography>
                             <Grid container spacing={1}>
                                 {amenities.map((amenity, index) => (
                                 <Grid item xs={12} sm={6} key={index}> {/* xs=12 för full bredd på små skärmar, sm=6 för halv bredd på större skärmar */}
@@ -112,7 +114,7 @@ function Hostel() {
                             </Grid>
                         </Grid>
                         <Grid item xs={12} md={6}>
-                            <Typography mb={2} variant="h5">Fakta</Typography>
+                            <Typography mb={2} variant="h5">{t('accommodation.hostelPage.facts.title')}</Typography>
                             <Box>
                                 {facts.map((fact) => (
                                     <Box key={fact.name} sx={{ display: 'flex', alignItems: 'center', gap: 2, marginBottom: '8px' }}>

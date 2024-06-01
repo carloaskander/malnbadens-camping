@@ -1,16 +1,19 @@
 import React from 'react';
-import { Box, Typography, Button, Grid, Container } from '@mui/material';
+import { useTranslation } from 'react-i18next';
 import LazyLoad from 'react-lazyload';
+import { Box, Typography, Button, Grid, Container } from '@mui/material';
+
 import beachDroneImage from '../../assets/images/beach/beach-drone.webp';
 import beachSoccerRestaurantImage from '../../assets/images/beach/beach-soccer-restaurant.webp';
 import runningTrailImage from '../../assets/images/activities/running-trail.jpg';
 
+
 function ActivitiesSection() {
+  const { t } = useTranslation();
   const activities = [
     {
-      title: 'Strand',
-      description:
-        'Endast 150 meter från campingen finner du Malnbadens strand med dess populära strandrestaurang, känd för god mat, härlig stämning och roliga evenemang. Stranden är även utrustad med planer för beachvolleyboll och strandfotboll, perfekt för de som söker aktivitet och spel under sommardagarna. För hundägare finns ett särskilt avsnitt på stranden där fyrbenta vänner är välkomna att leka och svalka sig i vattnet.',
+      title: t('activitiesSection.beach.title'),
+      description: t('activitiesSection.beach.description'),
       imageUrl: beachDroneImage,
       imageStyle: {
         width: '100%', // Default width
@@ -37,9 +40,8 @@ function ActivitiesSection() {
       },
     },
     {
-      title: 'Motionsspår',
-      description:
-        'Motionsspåret vid Malnbadens camping erbjuder flera olika rutter i varierande längder, vilket gör det till ett perfekt ställe för löpning, promenader och naturupplevelser. För de som föredrar rullskridskor, rullskidor eller cykling finns särskilda banor och vägar anpassade för varje aktivitet. I närheten hittar du även en Dirt Jump-bana för de som söker adrenalinfyllda hopp och utmaningar på cykel.',
+      title: t('activitiesSection.runningTrail.title'),
+      description: t('activitiesSection.runningTrail.description'),
       imageUrl: runningTrailImage,
       imageStyle: {
         width: '100%', // Default width
@@ -57,7 +59,7 @@ function ActivitiesSection() {
     <Box>
       <Container maxWidth='lg'>
         <Typography variant="h2" gutterBottom sx={{ mb: 8, textAlign: 'center' }}>
-          AKTIVITETER
+        {t('activitiesSection.title')}
         </Typography>
         
         {activities.map((activity, index) => (
@@ -95,7 +97,7 @@ function ActivitiesSection() {
         ))}
         <Box sx={{ display: 'flex', justifyContent: 'center', mt: 4 }}>
           <Button variant='contained'>
-            Mer Aktiviteter
+          {t('activitiesSection.button')}
           </Button>
         </Box>
       </Container>

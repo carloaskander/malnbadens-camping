@@ -1,0 +1,242 @@
+{
+    "meta": {
+        "title": "Malnbadens Camping - Opplev hav, by og natur",
+        "description": "Besøk Malnbadens Camping i Hudiksvall for en avslappende opplevelse nær både by og natur. Våre campingplasser, hytter og vandrerhjem tilbyr komfortabel overnatting for alle besøkende.",
+        "keywords": "Malnbadens Camping, camping Hudiksvall, hytte Hudiksvall, vandrerhjem Hudiksvall, strand camping Sverige, camping Sverige, beste campingplasser Sverige, Hudiksvall hytter, Malnbaden hytter, Malnbaden strand",
+        "og": {
+            "title": "Malnbadens Camping - Opplev hav, by og natur",
+            "description": "Besøk Malnbadens Camping i Hudiksvall for en avslappende opplevelse nær både by og natur. Våre campingplasser, hytter og vandrerhjem tilbyr komfortabel overnatting for alle besøkende."
+        }
+    },
+    "navbar": {
+        "home": "Hjem",
+        "accommodation": {
+            "title": "Våre overnattinger",
+            "camping": "Camping",
+            "cottages": "Hytter",
+            "hostel": "Vandrerhjem"
+        },
+        "activities": "Aktiviteter",
+        "restaurant": "Restaurant",
+        "openingHours": "Åpningstider"
+    },
+    "hero": {
+        "title": "Malnbadens<br>Camping",
+        "subtitle": "Opplev hav, by og natur."
+    },
+    "accommodationCard": {
+        "camping": {
+            "title": "Camping",
+            "description": "Opplev campinglivets sjarm omgitt av grøntområder, med fasiliteter innen rekkevidde og nær havet.",
+            "button": "Info & Booking"
+        },
+        "cottages": {
+            "title": "Hytter",
+            "description": "Våre koselige hytter tilbyr en perfekt balanse mellom naturopplevelse og hjemmekomfort.",
+            "button": "Info & Booking"
+        },
+        "hostel": {
+            "title": "Vandrerhjem",
+            "description": "Vårt vandrerhjem kombinerer prisverdighet med personlig komfort, ideelt for reisende som søker en praktisk og avslappende overnatting.",
+            "button": "Info & Booking"
+        }
+    },
+    "activitiesSection": {
+        "title": "Aktiviteter",
+        "beach": {
+            "title": "Strand",
+            "description": "Kun 150 meter fra campingplassen finner du Malnbadens strand med dens populære strandrestaurant, kjent for god mat, herlig atmosfære og morsomme arrangementer. Stranden er også utstyrt med baner for strandvolleyball og strandfotball, perfekt for de som søker aktivitet og spill på sommerdagene. For hundeeiere finnes et spesielt område på stranden hvor firbeinte venner er velkomne til å leke og kjøle seg ned i vannet."
+        },
+        "runningTrail": {
+            "title": "Motionsspor",
+            "description": "Motionssporet ved Malnbadens camping tilbyr flere forskjellige ruter i varierende lengder, noe som gjør det til et perfekt sted for løping, turer og naturopplevelser. For de som foretrekker rulleskøyter, rulleski eller sykling finnes spesielle baner og veier tilpasset hver aktivitet. I nærheten finner du også en Dirt Jump-bane for de som søker adrenalinfulle hopp og utfordringer på sykkel."
+        },
+        "button": "Mer aktiviteter"
+    },
+    "restaurantSection": {
+        "title": "Strandrestaurant",
+        "subtitle": "Maln Hav & Krog",
+        "description": "Med sin varierte meny og enestående utsikt over stranden og havet tiltrekker restauranten både lokalbefolkningen og besøkende. Her samles folk for å nyte solen, livlige arrangementer og den avslappede atmosfæren. Bare et steinkast fra campingplassen finner du et samlingspunkt for god mat og fellesskap.",
+        "button": "Mer info"
+    },
+    "mapSection": {
+        "title": "Finn oss",
+        "button": "Åpne veibeskrivelse"
+    },
+    "footer": {
+        "links": {
+            "title": "Snarveier",
+            "openingHours": "Åpningstider"
+        },
+        "contact": {
+            "title": "Kontakt Oss"
+        },
+        "socials": {
+            "title": "Følg oss"
+        }
+    },
+    "accommodation": {
+        "campingPage": {
+            "title": "Camping",
+            "description": "Oppdag friluftslivet på vår velholdte campingplass, omgitt av grønne plener og naturskjønn natur. Vår camping tilbyr romslige plasser med alle nødvendige fasiliteter. For deg som søker en komfortabel naturopplevelse, tilbyr vi rene fasiliteter inkludert tilgang til dusj, wifi og et omgivende gjerde som bidrar til et trygt og skjermet opphold. For en enda smidigere opplevelse, nøl ikke med å angi ønsker om spesifikk plass ved bestilling, spesielt i høysesongen - vi streber etter å imøtekomme alle ønsker, uten garanti.",
+            "booking": {
+                "title": "Gjør en bestilling",
+                "button": "Book"
+            },
+            "amenities": {
+                "title": "Fasiliteter",
+                "items": {
+                    "el": "Elektrisitet",
+                    "wifi": "Wifi",
+                    "latrintömning": "Tømming av latrine",
+                    "gråvattentömning": "Tømming av gråvann",
+                    "servicehus": "Servicehus",
+                    "bastu": "Badstue",
+                    "skötrum": "Stellerom",
+                    "kök": "Kjøkken",
+                    "gemensamGrill": "Felles grill",
+                    "matplatsUtomhus": "Utendørs spiseplass",
+                    "diskrum": "Oppvaskrom",
+                    "dricksvatten": "Drikkevann",
+                    "kiosk": "Kiosk"
+                }
+            },
+            "facts": {
+                "title": "Fakta",
+                "items": {
+                    "antalPlatser": "Antall plasser",
+                    "areaPlatser": "Plass størrelse",
+                    "andelElplatser": "Andel plasser med strøm"
+                }
+            }
+        },
+        "cottagesPage": {
+            "title": "Hytter",
+            "description": "Opplev roen i våre sjarmerende hytter, beliggende midt i den vakre naturen. Våre hytter er praktisk innredet for å gi et komfortabelt opphold, med basisutstyrte kjøkken for enkle måltider, og tilgang til felles bad i vårt servicehus. Hver hytte har en uteplass komplett med bord og stoler, perfekt for måltider utendørs eller bare for å nyte den omkringliggende skjønnheten. Enten du vil nyte stillheten eller oppdage lokale severdigheter, er våre hytter det perfekte utgangspunktet for din ferie. Med tilgang til felleskjøkken og nærliggende servicefasiliteter har du alt du trenger for et minneverdig og komfortabelt opphold hos oss.",
+            "booking": {
+                "title": "Gjør en bestilling",
+                "button": "Book nå"
+            },
+            "amenities": {
+                "title": "Fasiliteter",
+                "items": {
+                    "wifi": "Wifi",
+                    "lcdTv": "LCD-TV",
+                    "privatePatio": "Egen uteplass",
+                    "wcInServiceHouse": "WC i servicehuset",
+                    "showerInServiceHouse": "Dusj i servicehuset",
+                    "saunaInServiceHouse": "Badstue i servicehuset",
+                    "babyChangingRoom": "Stellerom",
+                    "simpleKitchen": "Enkelt kjøkken i hytta",
+                    "sharedLargeKitchen": "Ekstra felles storkjøkken",
+                    "sharedGrill": "Felles grill"
+                }
+            },
+            "facts": {
+                "title": "Fakta",
+                "items": {
+                    "numberOfCottages": "Antall hytter",
+                    "cottageSize": "Hyttestørrelse",
+                    "numberOfBeds": "Antall senger",
+                    "extraMattressOption": "Mulighet for ekstra madrass"
+                }
+            }
+        },
+        "hostelPage": {
+            "title": "Vandrerhjem",
+            "description": "Vårt vandrerhjem tilbyr kun private rom for et komfortabelt og trygt opphold. Med tilgang til to felleskjøkken kan gjestene enkelt tilberede egne måltider, mens spisesalen tilbyr et sted for hyggelige måltider sammen. Vandrerhjemmet har separate fellesbad for menn og kvinner, som holdes rene og tilgjengelige for alle gjester. I tillegg finnes det en uteterrasse hvor du kan slappe av og nyte frisk luft. Vårt vandrerhjem er det perfekte stedet for deg som vil ha et rimelig opphold med mulighet for nye bekjentskaper og opplevelser.",
+            "booking": {
+                "title": "Gjør en bestilling",
+                "button": "Book"
+            },
+            "amenities": {
+                "title": "Fasiliteter",
+                "items": {
+                    "wifi": "Wifi",
+                    "privateRooms": "Private rom",
+                    "sharedBathrooms": "Fellesbad",
+                    "washingMachine": "Vaskemaskin",
+                    "sharedKitchens": "Felleskjøkken",
+                    "diningRoom": "Spisesal",
+                    "tvRoom": "TV-rom",
+                    "outdoorTerrace": "Uteterrasse"
+                }
+            },
+            "facts": {
+                "title": "Fakta",
+                "items": {
+                    "numberOfRooms": "Antall rom",
+                    "singleDoubleRooms": "Enkelt-/Dobbeltrom",
+                    "quadRooms": "Firemannsrom",
+                    "numberOfBathrooms": "Antall bad",
+                    "numberOfKitchens": "Antall kjøkken",
+                    "extraPersonOption": "Mulighet for ekstra person (ved forespørsel)"
+                }
+            }
+        },
+        "campsiteMap": {
+            "button": "Åpne Områdekart"
+        },
+        "bookingConditions": {
+            "button": "Åpne bestillingsvilkår"
+        }
+    },
+    "activitiesPage": {
+        "title": "Ting å gjøre...",
+        "description": "Utforsk alle de morsomme og spennende aktivitetene Malnbaden har å tilby.",
+        "activities": {
+            "beach": {
+                "title": "Stranden",
+                "description": "Opplev den vakre sandstranden med aktiviteter for hele familien."
+            },
+            "runningTrail": {
+                "title": "Motionsspor",
+                "description": "Ta en løpetur eller en avslappende spasertur langs våre naturskjønne stier."
+            },
+            "kayak": {
+                "title": "Kajakk",
+                "description": "Opplev spenningen og det rolige vannet når du padler kajakk langs Hudiksvalls kystlinje."
+            },
+            "miniGolf": {
+                "title": "Minigolf",
+                "description": "Test presisjonen din og ha det gøy med familie og venner på vår utfordrende minigolfbane."
+            }
+        }
+    },
+    "restaurantPage": {
+        "welcome": "Velkommen til",
+        "description": "Nyt velsmakende mat i beste solplassering med havet og stranden som bakgrunn. Denne sommeren har vi også en fullpakket arrangementskalender med trubadurer, quizkvelder og after beach. Mer info om sommeren 2024 kommer snart!",
+        "facebook": "Facebook",
+        "instagram": "Instagram",
+        "address": "Malnvägen 38, Hudiksvall 82450 Sverige",
+        "phone": "+46 70-544 11 59"
+    },
+    "openingHoursPage": {
+        "openingHours": {
+            "title": "Åpningstider",
+            "reception": "Resepsjon",
+            "minigolf": "Minigolf"
+        },
+        "contactUs": {
+            "title": "Kontakt Oss",
+            "name": "Ditt Navn",
+            "email": "Din E-post",
+            "message": "Melding",
+            "send": "Send"
+        },
+        "loading": "Laster..."
+    },
+    "bookingCountdown": {
+        "bookingOpens": "Booking åpner",
+        "bookingOpensIn": "Booking åpner om",
+        "days": "dager",
+        "hours": "T",
+        "minutes": "M",
+        "seconds": "S",
+        "bookingOpen": "Booking åpen",
+        "season": "Sesongen",
+        "button": "Book Nå",
+        "closedForSeason": "Stengt for sesongen",
+        "loading": "laster..."
+    }
+}

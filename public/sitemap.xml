@@ -1,49 +1,176 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <!-- Svenska -->
     <url>
-        <loc>https://www.malnbadenscamping.se/</loc>
+        <loc>https://www.malnbadenscamping.se/sv/home</loc>
         <lastmod>2024-04-12</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
-        <loc>https://www.malnbadenscamping.se/home</loc>
+        <loc>https://www.malnbadenscamping.se/sv/accommodation/camping</loc>
+        <lastmod>2024-04-10</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.malnbadenscamping.se/sv/accommodation/cottages</loc>
+        <lastmod>2024-04-10</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.malnbadenscamping.se/sv/accommodation/hostel</loc>
+        <lastmod>2024-04-10</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.malnbadenscamping.se/sv/activities</loc>
+        <lastmod>2024-04-12</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://www.malnbadenscamping.se/sv/restaurant</loc>
+        <lastmod>2024-04-10</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://www.malnbadenscamping.se/sv/opening-hours</loc>
+        <lastmod>2024-04-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- Engelska -->
+    <url>
+        <loc>https://www.malnbadenscamping.se/en/home</loc>
         <lastmod>2024-04-12</lastmod>
         <changefreq>weekly</changefreq>
-        <priority>0.9</priority>
+        <priority>1.0</priority>
     </url>
     <url>
-        <loc>https://www.malnbadenscamping.se/accommodation/camping</loc>
+        <loc>https://www.malnbadenscamping.se/en/accommodation/camping</loc>
         <lastmod>2024-04-10</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://www.malnbadenscamping.se/accommodation/cottages</loc>
+        <loc>https://www.malnbadenscamping.se/en/accommodation/cottages</loc>
         <lastmod>2024-04-10</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://www.malnbadenscamping.se/accommodation/hostel</loc>
+        <loc>https://www.malnbadenscamping.se/en/accommodation/hostel</loc>
         <lastmod>2024-04-10</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://www.malnbadenscamping.se/activities</loc>
+        <loc>https://www.malnbadenscamping.se/en/activities</loc>
         <lastmod>2024-04-12</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
-        <loc>https://www.malnbadenscamping.se/restaurant</loc>
+        <loc>https://www.malnbadenscamping.se/en/restaurant</loc>
         <lastmod>2024-04-10</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
-        <loc>https://www.malnbadenscamping.se/opening-hours</loc>
+        <loc>https://www.malnbadenscamping.se/en/opening-hours</loc>
+        <lastmod>2024-04-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- Norska -->
+    <url>
+        <loc>https://www.malnbadenscamping.se/no/home</loc>
+        <lastmod>2024-04-12</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+    </url>
+    <url>
+        <loc>https://www.malnbadenscamping.se/no/accommodation/camping</loc>
+        <lastmod>2024-04-10</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.malnbadenscamping.se/no/accommodation/cottages</loc>
+        <lastmod>2024-04-10</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.malnbadenscamping.se/no/accommodation/hostel</loc>
+        <lastmod>2024-04-10</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.malnbadenscamping.se/no/activities</loc>
+        <lastmod>2024-04-12</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://www.malnbadenscamping.se/no/restaurant</loc>
+        <lastmod>2024-04-10</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://www.malnbadenscamping.se/no/opening-hours</loc>
+        <lastmod>2024-04-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- Tyska -->
+    <url>
+        <loc>https://www.malnbadenscamping.se/de/home</loc>
+        <lastmod>2024-04-12</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+    </url>
+    <url>
+        <loc>https://www.malnbadenscamping.se/de/accommodation/camping</loc>
+        <lastmod>2024-04-10</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.malnbadenscamping.se/de/accommodation/cottages</loc>
+        <lastmod>2024-04-10</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.malnbadenscamping.se/de/accommodation/hostel</loc>
+        <lastmod>2024-04-10</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.malnbadenscamping.se/de/activities</loc>
+        <lastmod>2024-04-12</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://www.malnbadenscamping.se/de/restaurant</loc>
+        <lastmod>2024-04-10</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://www.malnbadenscamping.se/de/opening-hours</loc>
         <lastmod>2024-04-11</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.8</priority>

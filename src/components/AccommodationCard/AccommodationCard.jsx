@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { Grid, Card, CardContent, Typography, Button, Box, Container } from '@mui/material';
 
 // Importera bilder med olika storlekar
@@ -11,37 +12,44 @@ import cottagesThumbnailMedium from '../../assets/images/accommodation-cards/cot
 import hostelThumbnailSmall from '../../assets/images/accommodation-cards/hostel-card/hostel-thumbnail-small.webp';
 import hostelThumbnailMedium from '../../assets/images/accommodation-cards/hostel-card/hostel-thumbnail-medium.webp';
 
-const accommodationOptions = [
-  {
-    title: "Camping",
-    description: "Upplev campinglivets charm omgiven av grönska, med bekvämligheter inom räckhåll och nära till havet.",
-    imageUrls: {
-      medium: campingThumbnailMedium,
-      small: campingThumbnailSmall,
+function createAccommodationOptions(t) {
+  return [
+    {
+      title: t('accommodationCard.camping.title'),
+      description: t('accommodationCard.camping.description'),
+      imageUrls: {
+        medium: campingThumbnailMedium,
+        small: campingThumbnailSmall,
+      },
+      link: "/accommodation/camping",
+      button: t('accommodationCard.camping.button')
     },
-    link: "/accommodation/camping"
-  },
-  {
-    title: "Stugor",
-    description: "Våra mysiga stugor erbjuder en perfekt balans mellan naturupplevelse och hemtrevlig komfort.",
-    imageUrls: {
-      medium: cottagesThumbnailMedium,
-      small: cottagesThumbnailSmall,
+    {
+      title: t('accommodationCard.cottages.title'),
+      description: t('accommodationCard.cottages.description'),
+      imageUrls: {
+        medium: cottagesThumbnailMedium,
+        small: cottagesThumbnailSmall,
+      },
+      link: "/accommodation/cottages",
+      button: t('accommodationCard.cottages.button')
     },
-    link: "/accommodation/cottages"
-  },
-  {
-    title: "Vandrarhem",
-    description: "Vårt vandrarhem kombinerar prisvärdhet med personlig komfort, idealiskt för resenärer som söker ett praktiskt och avkopplande boende.",
-    imageUrls: {
-      medium: hostelThumbnailMedium,
-      small: hostelThumbnailSmall,
-    },
-    link: "/accommodation/hostel"
-  }
-];
+    {
+      title: t('accommodationCard.hostel.title'),
+      description: t('accommodationCard.hostel.description'),
+      imageUrls: {
+        medium: hostelThumbnailMedium,
+        small: hostelThumbnailSmall,
+      },
+      link: "/accommodation/hostel",
+      button: t('accommodationCard.hostel.button')
+    }
+  ];
+}
 
 function AccommodationCard() {
+  const { t } = useTranslation();
+  const accommodationOptions = createAccommodationOptions(t);
   return (
     <Box>
       <Container maxWidth='xl' sx={{ py: 8 }}>
@@ -76,7 +84,7 @@ function AccommodationCard() {
                     {option.description}
                   </Typography>
                   <Button variant='contained' href={option.link}>
-                    Info & Bokning
+                    {option.button}
                   </Button>
                 </CardContent>
               </Card>

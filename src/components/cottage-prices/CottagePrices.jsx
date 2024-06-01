@@ -1,15 +1,23 @@
 import React, { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import contentfulClient from '../../contentfulClient';
-import { Box, Typography, Paper, List, ListItem, ListItemText, Grid } from '@mui/material';
+import { Box, Typography, Paper, List, ListItem, Grid } from '@mui/material';
 
 function CottagePrices() {
+    const { i18n } = useTranslation();
     const [pricesData, setPricesData] = useState(null);
     const [title, setTitle] = useState("");
 
     useEffect(() => {
+        const currentLanguage = i18n.language;
+
+        // Use Swedish locale for both Swedish and Norwegian languages
+        const locale = currentLanguage === 'sv' || currentLanguage === 'no' ? 'sv' : 'en';
+
         contentfulClient.getEntries({
             content_type: 'prices', // Adjust to match your Contentful Content Model ID for cottages
             'fields.entryTitle': 'Cottage Prices',
+            locale: locale
         })
         .then((response) => {
             if (response.items.length > 0) {
@@ -23,7 +31,7 @@ function CottagePrices() {
         .catch((error) => {
             console.error("Error fetching prices from Contentful:", error);
         });
-    }, []);
+    }, [i18n.language]);
 
     if (!pricesData) return <Typography>Loading prices...</Typography>;
 
@@ -37,8 +45,18 @@ function CottagePrices() {
                         <Typography variant="h5" gutterBottom>{season.name} <br/> {season.dateRange}</Typography>
                         <List>
                             {season.prices.map((price, priceIndex) => (
-                                <ListItem key={priceIndex} divider>
-                                    <ListItemText primaryTypographyProps={{ color: 'secondary.main' }} secondaryTypographyProps={{ color: 'primary.main' }} primary={`${price.description}`} secondary={`${price.price}`} />
+                                <ListItem key={priceIndex} divider sx={{ flexDirection: 'column', alignItems: 'flex-start' }}>
+                                    <Typography color="secondary.main" variant="h6">
+                                        {price.description}
+                                    </Typography>
+                                    {price.additionalInfo && (
+                                        <Typography color="secondary.main" fontStyle="italic" variant="body2">
+                                            {price.additionalInfo}
+                                        </Typography>
+                                    )}
+                                    <Typography color="primary.main" variant="h6" component="body2">
+                                        {price.price}
+                                    </Typography>
                                 </ListItem>
                             ))}
                         </List>

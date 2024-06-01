@@ -1,10 +1,13 @@
 import React, { useRef, useEffect } from 'react';
 import { Box, Typography, Container } from '@mui/material';
+import { useTranslation } from 'react-i18next';
+import parse from 'html-react-parser';
 import heroVideo from '../../assets/images/hero/malnbaden-drone-video.mp4';
 import heroVideoPoster from '../../assets/images/hero/malnbaden-drone-video-poster.webp';
 import BookingCountdown from '../booking-countdown/BookingCountdown';
 
 function Hero() {
+  const { t } = useTranslation();
   const videoRef = useRef(null);
 
   useEffect(() => {
@@ -79,7 +82,7 @@ function Hero() {
             maxWidth: 'none',  // Ensures text aligns within the Container
           }}
         >
-          Upplev hav, stad och natur.
+          {t('hero.subtitle')}
         </Typography>
         <Typography
           color="text.secondary"
@@ -95,7 +98,7 @@ function Hero() {
             maxWidth: 'none',  // Ensures text aligns within the Container
           }}
         >
-          Malnbadens<br/>Camping
+          {parse(t('hero.title'))}
         </Typography>
         <BookingCountdown />
       </Container>

@@ -1,0 +1,242 @@
+{
+    "meta": {
+        "title": "Malnbadens Camping - Upplev hav, stad och natur",
+        "description": "Besök Malnbadens Camping i Hudiksvall för en avkopplande upplevelse nära både stad och natur. Våra campingplatser, stugor och vandrarhem erbjuder bekvämt boende för alla besökare.",
+        "keywords": "Malnbadens Camping, camping Hudiksvall, stuga Hudiksvall, vandrarhem Hudiksvall, strand camping Sverige, camping Sweden, best campsites Sweden, Hudiksvall cabins, Malnbaden cabins, Malnbaden beach",
+        "og": {
+            "title": "Malnbadens Camping - Upplev hav, stad och natur",
+            "description": "Besök Malnbadens Camping i Hudiksvall för en avkopplande upplevelse nära både stad och natur. Våra campingplatser, stugor och vandrarhem erbjuder bekvämt boende för alla besökare."
+        }
+    },
+    "navbar": {
+        "home": "Hem",
+        "accommodation": {
+            "title": "Våra boenden",
+            "camping": "Camping",
+            "cottages": "Stugor",
+            "hostel": "Vandrarhem"
+        },
+        "activities": "Aktiviteter",
+        "restaurant": "Restaurang",
+        "openingHours": "Öppettider"
+    },
+    "hero": {
+        "title": "Malnbadens<br>Camping",
+        "subtitle": "Upplev hav, stad och natur."
+    },
+    "accommodationCard": {
+        "camping": {
+            "title": "Camping",
+            "description": "Upplev campinglivets charm omgiven av grönska, med bekvämligheter inom räckhåll och nära till havet.",
+            "button": "Info & Bokning"
+        },
+        "cottages": {
+            "title": "Stugor",
+            "description": "Våra mysiga stugor erbjuder en perfekt balans mellan naturupplevelse och hemtrevlig komfort.",
+            "button": "Info & Bokning"
+        },
+        "hostel": {
+            "title": "Vandrarhem",
+            "description": "Vårt vandrarhem kombinerar prisvärdhet med personlig komfort, idealiskt för resenärer som söker ett praktiskt och avkopplande boende.",
+            "button": "Info & Bokning"
+        }
+    },
+    "activitiesSection": {
+        "title": "Aktiviteter",
+        "beach": {
+            "title": "Strand",
+            "description": "Endast 150 meter från campingen finner du Malnbadens strand med dess populära strandrestaurang, känd för god mat, härlig stämning och roliga evenemang. Stranden är även utrustad med planer för beachvolleyboll och strandfotboll, perfekt för de som söker aktivitet och spel under sommardagarna. För hundägare finns ett särskilt avsnitt på stranden där fyrbenta vänner är välkomna att leka och svalka sig i vattnet."
+        },
+        "runningTrail": {
+            "title": "Motionsspår",
+            "description": "Motionsspåret vid Malnbadens camping erbjuder flera olika rutter i varierande längder, vilket gör det till ett perfekt ställe för löpning, promenader och naturupplevelser. För de som föredrar rullskridskor, rullskidor eller cykling finns särskilda banor och vägar anpassade för varje aktivitet. I närheten hittar du även en Dirt Jump-bana för de som söker adrenalinfyllda hopp och utmaningar på cykel."
+        },
+        "button": "Mer aktiviteter"
+    },
+    "restaurantSection": {
+        "title": "Strandbelägen Restaurang",
+        "subtitle": "Maln Hav & Krog",
+        "description": "Med sin varierade meny och enastående utsikt över stranden och havet lockar restaurangen både lokalbefolkningen och besökare. Här samlas människor för att njuta av solen, livliga evenemang och den avslappnade atmosfären. Bara ett stenkast från campingen hittar du en samlingspunkt för god mat och gemenskap.",
+        "button": "Mer info"
+    },
+    "mapSection": {
+        "title": "Hitta oss",
+        "button": "Öppna vägbeskrivning"
+    },
+    "footer": {
+        "links": {
+            "title": "Snabblänkar",
+            "openingHours": "Öppettider"
+        },
+        "contact": {
+            "title": "Kontakta Oss"
+        },
+        "socials": {
+            "title": "Följ oss"
+        }
+    },
+    "accommodation": {
+        "campingPage": {
+            "title": "Camping",
+            "description": "Upptäck friluftslivet på vår välskötta campingplats, omgiven av gröna gräsytor och naturskön miljö. Vår camping erbjuder rymliga platser med all nödvändig bekvämlighet. För dig som söker en bekväm naturupplevelse, erbjuder vi rena faciliteter inklusive tillgång till dusch, wifi och ett omgärdande staket som bidrar till en trygg och avskild vistelse. För en ännu smidigare vistelse, tveka inte att ange önskemål om specifik plats vid bokning, särskilt under högsäsong - vi strävar efter att tillmötesgå alla önskemål, utan garanti.",
+            "booking": {
+                "title": "Gör en bokning",
+                "button": "Boka"
+            },
+            "amenities": {
+                "title": "Bekvämligheter",
+                "items": {
+                    "el": "El",
+                    "wifi": "Wifi",
+                    "latrintömning": "Latrintömning",
+                    "gråvattentömning": "Gråvattentömning",
+                    "servicehus": "Servicehus",
+                    "bastu": "Bastu",
+                    "skötrum": "Skötrum",
+                    "kök": "Kök",
+                    "gemensamGrill": "Gemensam grill",
+                    "matplatsUtomhus": "Matplats utomhus",
+                    "diskrum": "Diskrum",
+                    "dricksvatten": "Dricksvatten",
+                    "kiosk": "Kiosk"
+                }
+            },
+            "facts": {
+                "title": "Fakta",
+                "items": {
+                    "antalPlatser": "Antal platser",
+                    "areaPlatser": "Area platser",
+                    "andelElplatser": "Andel elplatser"
+                }
+            }
+        },
+        "cottagesPage": {
+            "title": "Stugor",
+            "description": "Upplev lugnet i våra charmiga stugor, belägna mitt i den vackra naturen. Våra stugor är praktiskt inredda för att ge en bekväm vistelse, med basutrustade kök för enkla måltider, och tillgång till gemensamma badrum i vårt servicehus. Varje stuga har en uteplats komplett med bord och stolar, perfekt för måltider utomhus eller bara för att njuta av den omgivande skönheten. Oavsett om du vill njuta av tystnaden eller upptäcka lokala sevärdheter, är våra stugor den perfekta utgångspunkten för din semester. Med tillgång till gemensamt kök och närliggande servicefaciliteter har du allt du behöver för en minnesvärd och bekväm vistelse hos oss.",
+            "booking": {
+                "title": "Gör en bokning",
+                "button": "Boka nu"
+            },
+            "amenities": {
+                "title": "Bekvämligheter",
+                "items": {
+                    "wifi": "Wifi",
+                    "lcdTv": "LCD-TV",
+                    "privatePatio": "Egen uteplats",
+                    "wcInServiceHouse": "WC i servicehuset",
+                    "showerInServiceHouse": "Dusch i servicehuset",
+                    "saunaInServiceHouse": "Bastu i servicehuset",
+                    "babyChangingRoom": "Skötrum",
+                    "simpleKitchen": "Simpelt kök i stugan",
+                    "sharedLargeKitchen": "Extra gemensamt storkök",
+                    "sharedGrill": "Gemensam grill"
+                }
+            },
+            "facts": {
+                "title": "Fakta",
+                "items": {
+                    "numberOfCottages": "Antal stugor",
+                    "cottageSize": "Storlek stugor",
+                    "numberOfBeds": "Antal bäddar",
+                    "extraMattressOption": "Möjlighet för extra madrass"
+                }
+            }
+        },
+        "hostelPage": {
+            "title": "Vandrarhem",
+            "description": "Vårt vandrarhem erbjuder enbart privata rum för en bekväm och trygg vistelse. Med tillgång till två gemensamma kök kan gästerna lätt förbereda egna måltider, medan matsalen erbjuder en plats för trevliga måltider tillsammans. Vandrarhemmet har separata gemensamma badrum för män och kvinnor, som hålls rena och tillgängliga för alla gäster. Utöver detta finns en uteterrass där du kan koppla av och njuta av frisk luft. Vårt vandrarhem är den perfekta platsen för dig som vill ha en prisvärd vistelse med möjlighet till nya bekantskaper och upplevelser.",
+            "booking": {
+                "title": "Gör en bokning",
+                "button": "Boka"
+            },
+            "amenities": {
+                "title": "Bekvämligheter",
+                "items": {
+                    "wifi": "Wifi",
+                    "privateRooms": "Privata rum",
+                    "sharedBathrooms": "Gemensamma Badrum",
+                    "washingMachine": "Tvättmaskin",
+                    "sharedKitchens": "Gemensamma Kök",
+                    "diningRoom": "Matsal",
+                    "tvRoom": "TV-rum",
+                    "outdoorTerrace": "Uteterrass"
+                }
+            },
+            "facts": {
+                "title": "Fakta",
+                "items": {
+                    "numberOfRooms": "Antal rum",
+                    "singleDoubleRooms": "Enkel/Dubbelrum",
+                    "quadRooms": "Fyrbäddsrum",
+                    "numberOfBathrooms": "Antal badrum",
+                    "numberOfKitchens": "Antal kök",
+                    "extraPersonOption": "Möjlighet för extra person (vid förfrågan)"
+                }
+            }
+        },
+        "campsiteMap": {
+            "button": "Öppna Områdeskarta"
+        },
+        "bookingConditions": {
+            "button": "Öppna bokningsvillkor"
+        }
+    },
+    "activitiesPage": {
+        "title": "Saker att göra...",
+        "description": "Utforska alla roliga och spännande aktiviteter som Malnbaden har att erbjuda.",
+        "activities": {
+            "beach": {
+                "title": "Stranden",
+                "description": "Upplev den vackra sandstranden med aktiviteter för hela familjen."
+            },
+            "runningTrail": {
+                "title": "Motionsspår",
+                "description": "Ta en löprunda eller en avkopplande promenad längs våra natursköna spår."
+            },
+            "kayak": {
+                "title": "Kajak",
+                "description": "Upplev spänningen och det rogivande vattnet när du paddlar kajak längs Hudiksvalls kustlinje."
+            },
+            "miniGolf": {
+                "title": "Minigolf",
+                "description": "Testa din precision och ha kul med familj och vänner på vår utmanande minigolfbana."
+            }
+        }
+    },
+    "restaurantPage": {
+        "welcome": "Välkommen till",
+        "description": "Njut av vällagad mat i bästa solläge med havet och sandstranden som fond. I sommar har vi även en fullspäckad evenemangskalender med bland annat trubadurer, quizkvällar och after beach. Mer info om sommaren 2024 kommer snart!",
+        "facebook": "Facebook",
+        "instagram": "Instagram",
+        "address": "Malnvägen 38, Hudiksvall 82450 Sverige",
+        "phone": "070-544 11 59"
+    },
+    "openingHoursPage": {
+        "openingHours": {
+            "title": "Öppettider",
+            "reception": "Reception",
+            "minigolf": "Minigolf"
+        },
+        "contactUs": {
+            "title": "Kontakta Oss",
+            "name": "Ditt Namn",
+            "email": "Din Email",
+            "message": "Meddelande",
+            "send": "Skicka"
+        },
+        "loading": "Laddar..."
+    },
+    "bookingCountdown": {
+        "bookingOpens": "Bokning öppnar",
+        "bookingOpensIn": "Bokning öppnar om",
+        "days": "dagar",
+        "hours": "H",
+        "minutes": "M",
+        "seconds": "S",
+        "bookingOpen": "Bokning öppet",
+        "season": "Säsongen",
+        "button": "Boka Nu",
+        "closedForSeason": "Stängt för säsongen",
+        "loading": "loading..."
+    }
+}

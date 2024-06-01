@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import { Link, useLocation } from 'react-router-dom';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
@@ -8,13 +9,18 @@ import Container from '@mui/material/Container';
 import IconButton from '@mui/material/IconButton';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import MenuIcon from '@mui/icons-material/Menu'; // Assuming you want to use this icon
+import MenuIcon from '@mui/icons-material/Menu';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import logo from '../../assets/images/logo/mbclogo-orange-transparent-horizontal-2.png';
 import { useTheme } from '@mui/material/styles';
+import LanguageSwitcher from '../language-switcher/LanguageSwitcher';
 
 function DesktopNavbar() {
+  const { t, i18n } = useTranslation();
+  const { pathname } = useLocation();
+  const currentLanguage = i18n.language;
+
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const theme = useTheme(); // Use the useTheme hook here
@@ -28,24 +34,23 @@ function DesktopNavbar() {
       setAnchorEl(null);
   };
 
+  const generateLink = (path) => `/${currentLanguage}${path}`;
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="fixed">
         <Container maxWidth="lg">
           <Toolbar sx={{ justifyContent: 'space-between', minHeight: '70px' }}>
             <img src={logo} alt="Logo" style={{ height: '70px', width: 'auto' }} />
-            {/* <Typography variant="h6" component="div" color='secondary.main' sx={{ textAlign: 'center' }}>
-              Malnbadens <br/> Camping
-            </Typography> */}
-
             <Box display="flex" alignItems="center">
-              <Typography component={Link} to="/home" sx={{ fontSize: '1.25rem', letterSpacing: '1px', fontFamily: 'Bebas Neue, Arial, Helvetica', marginRight: '20px', textDecoration: 'none', color: 'inherit' }}>Hem</Typography>
+              <LanguageSwitcher />
+              <Typography component={Link} to={generateLink('/home')} sx={{ fontSize: '1.25rem', letterSpacing: '1px', fontFamily: 'Bebas Neue, Arial, Helvetica', margin: '20px', textDecoration: 'none', color: 'inherit' }}>{t('navbar.home')}</Typography>
               <IconButton
                 aria-describedby={id}
                 onMouseEnter={handleAccommodationHover}
                 sx={{ justifyContent: 'flex-start', minWidth: '150px', marginRight: 2, color: 'text.secondary', fontSize: '1.25rem', letterSpacing: '1px', fontFamily: 'Bebas Neue, Arial, Helvetica' }}
               >
-                Våra Boenden
+                {t('navbar.accommodation.title')}
                 {open ? <ExpandLessIcon /> : <ExpandMoreIcon />}
               </IconButton>
               <Menu
@@ -62,13 +67,13 @@ function DesktopNavbar() {
                     }
                 }}
             >
-                <MenuItem onClick={handleClose} component={Link} to="/accommodation/camping" sx={{ color: 'text.secondary', fontSize: '1.25rem', letterSpacing: '1px', fontFamily: 'Bebas Neue, Arial, Helvetica' }}>Camping</MenuItem>
-                <MenuItem onClick={handleClose} component={Link} to="/accommodation/cottages" sx={{ color: 'text.secondary', fontSize: '1.25rem', letterSpacing: '1px', fontFamily: 'Bebas Neue, Arial, Helvetica' }}>Stugor</MenuItem>
-                <MenuItem onClick={handleClose} component={Link} to="/accommodation/hostel" sx={{ color: 'text.secondary', fontSize: '1.25rem', letterSpacing: '1px', fontFamily: 'Bebas Neue, Arial, Helvetica' }}>Vandrarhem</MenuItem>
+                <MenuItem onClick={handleClose} component={Link} to={generateLink('/accommodation/camping')} sx={{ color: 'text.secondary', fontSize: '1.25rem', letterSpacing: '1px', fontFamily: 'Bebas Neue, Arial, Helvetica' }}>{t('navbar.accommodation.camping')}</MenuItem>
+                <MenuItem onClick={handleClose} component={Link} to={generateLink('/accommodation/cottages')} sx={{ color: 'text.secondary', fontSize: '1.25rem', letterSpacing: '1px', fontFamily: 'Bebas Neue, Arial, Helvetica' }}>{t('navbar.accommodation.cottages')}</MenuItem>
+                <MenuItem onClick={handleClose} component={Link} to={generateLink('/accommodation/hostel')} sx={{ color: 'text.secondary', fontSize: '1.25rem', letterSpacing: '1px', fontFamily: 'Bebas Neue, Arial, Helvetica' }}>{t('navbar.accommodation.hostel')}</MenuItem>
               </Menu>
-              <Typography component={Link} to="/activities" sx={{ marginRight: '20px', textDecoration: 'none', color: 'inherit', fontSize: '1.25rem', letterSpacing: '1px', fontFamily: 'Bebas Neue, Arial, Helvetica' }}>Aktiviteter</Typography>
-              <Typography component={Link} to="/restaurant" sx={{ marginRight: '20px', textDecoration: 'none', color: 'inherit', fontSize: '1.25rem', letterSpacing: '1px', fontFamily: 'Bebas Neue, Arial, Helvetica' }}>Restaurang</Typography>
-              <Typography component={Link} to="/opening-hours" sx={{ textDecoration: 'none', color: 'inherit', fontSize: '1.25rem', letterSpacing: '1px', fontFamily: 'Bebas Neue, Arial, Helvetica' }}>Öppettider</Typography>
+              <Typography component={Link} to={generateLink('/activities')} sx={{ marginRight: '20px', textDecoration: 'none', color: 'inherit', fontSize: '1.25rem', letterSpacing: '1px', fontFamily: 'Bebas Neue, Arial, Helvetica' }}>{t('navbar.activities')}</Typography>
+              <Typography component={Link} to={generateLink('/restaurant')} sx={{ marginRight: '20px', textDecoration: 'none', color: 'inherit', fontSize: '1.25rem', letterSpacing: '1px', fontFamily: 'Bebas Neue, Arial, Helvetica' }}>{t('navbar.restaurant')}</Typography>
+              <Typography component={Link} to={generateLink('/opening-hours')} sx={{ textDecoration: 'none', color: 'inherit', fontSize: '1.25rem', letterSpacing: '1px', fontFamily: 'Bebas Neue, Arial, Helvetica' }}>{t('navbar.openingHours')}</Typography>
             </Box>
           </Toolbar>
         </Container>

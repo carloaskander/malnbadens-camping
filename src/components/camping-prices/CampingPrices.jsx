@@ -1,30 +1,37 @@
 import React, { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import contentfulClient from '../../contentfulClient';
-import { Box, Typography, Paper, List, ListItem, ListItemText, Grid } from '@mui/material';
+import { Box, Typography, Paper, List, ListItem, Grid } from '@mui/material';
 
 function CampingPrices() {
+    const { i18n } = useTranslation();
     const [pricesData, setPricesData] = useState(null);
     const [title, setTitle] = useState("");
 
-
     useEffect(() => {
+        const currentLanguage = i18n.language;
+
+        // Use Swedish locale for both Swedish and Norwegian languages
+        const locale = currentLanguage === 'sv' || currentLanguage === 'no' ? 'sv' : 'en';
+
         contentfulClient.getEntries({
             content_type: 'prices', // Make sure this matches your Contentful Content Model ID
             'fields.entryTitle': 'Camping Prices',
+            locale: locale
         })
         .then((response) => {
-        if (response.items.length > 0) {
-            const entry = response.items[0].fields;
-            setPricesData(entry.pricingDetails); // Assuming 'pricingDetails' is the field ID for your JSON
-            setTitle(entry.Title); // Here we use 'Title' as per your field ID
-        } else {
-            console.log("No entries found for the specified content type.");
-        }
+            if (response.items.length > 0) {
+                const entry = response.items[0].fields;
+                setPricesData(entry.pricingDetails); // Assuming 'pricingDetails' is the field ID for your JSON
+                setTitle(entry.Title); // Here we use 'Title' as per your field ID
+            } else {
+                console.log("No entries found for the specified content type.");
+            }
         })
         .catch((error) => {
-        console.error("Error fetching prices from Contentful:", error);
+            console.error("Error fetching prices from Contentful:", error);
         });
-    }, []);
+    }, [i18n.language]);
 
     if (!pricesData) return <Typography>Loading prices...</Typography>;
     return (

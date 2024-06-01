@@ -1,0 +1,242 @@
+{
+    "meta": {
+        "title": "Malnbadens Camping - Erleben Sie Meer, Stadt und Natur",
+        "description": "Besuchen Sie Malnbadens Camping in Hudiksvall für ein entspannendes Erlebnis in der Nähe von Stadt und Natur. Unsere Campingplätze, Hütten und Hostels bieten komfortable Unterkünfte für alle Besucher.",
+        "keywords": "Malnbadens Camping, Camping Hudiksvall, Hütte Hudiksvall, Hostel Hudiksvall, Strandcamping Schweden, Camping Schweden, beste Campingplätze Schweden, Hudiksvall Hütten, Malnbaden Hütten, Malnbaden Strand",
+        "og": {
+            "title": "Malnbadens Camping - Erleben Sie Meer, Stadt und Natur",
+            "description": "Besuchen Sie Malnbadens Camping in Hudiksvall für ein entspannendes Erlebnis in der Nähe von Stadt und Natur. Unsere Campingplätze, Hütten und Hostels bieten komfortable Unterkünfte für alle Besucher."
+        }
+    },
+    "navbar": {
+        "home": "Startseite",
+        "accommodation": {
+            "title": "Unsere Unterkünfte",
+            "camping": "Camping",
+            "cottages": "Hütten",
+            "hostel": "Hostel"
+        },
+        "activities": "Aktivitäten",
+        "restaurant": "Restaurant",
+        "openingHours": "Öffnungszeiten"
+    },
+    "hero": {
+        "title": "Malnbadens<br>Camping",
+        "subtitle": "Erleben Sie Meer, Stadt und Natur."
+    },
+    "accommodationCard": {
+        "camping": {
+            "title": "Camping",
+            "description": "Erleben Sie den Charme des Campinglebens umgeben von Grünflächen, mit Annehmlichkeiten in Reichweite und in der Nähe des Meeres.",
+            "button": "Info & Buchung"
+        },
+        "cottages": {
+            "title": "Hütten",
+            "description": "Unsere gemütlichen Hütten bieten eine perfekte Balance zwischen Naturerlebnis und häuslichem Komfort.",
+            "button": "Info & Buchung"
+        },
+        "hostel": {
+            "title": "Hostel",
+            "description": "Unser Hostel kombiniert Erschwinglichkeit mit persönlichem Komfort, ideal für Reisende, die eine praktische und entspannende Unterkunft suchen.",
+            "button": "Info & Buchung"
+        }
+    },
+    "activitiesSection": {
+        "title": "Aktivitäten",
+        "beach": {
+            "title": "Strand",
+            "description": "Nur 150 Meter vom Campingplatz entfernt finden Sie den Malnbaden-Strand mit seinem beliebten Strandrestaurant, bekannt für gutes Essen, tolle Atmosphäre und lustige Veranstaltungen. Der Strand ist auch mit Plätzen für Beachvolleyball und Strandfußball ausgestattet, ideal für diejenigen, die Aktivität und Spiel an Sommertagen suchen. Für Hundebesitzer gibt es einen speziellen Bereich am Strand, wo vierbeinige Freunde willkommen sind, um zu spielen und sich im Wasser abzukühlen."
+        },
+        "runningTrail": {
+            "title": "Laufstrecke",
+            "description": "Die Laufstrecke bei Malnbadens Camping bietet mehrere verschiedene Routen in unterschiedlichen Längen, was sie zu einem perfekten Ort für Laufen, Spaziergänge und Naturerlebnisse macht. Für diejenigen, die Inline-Skaten, Rollskifahren oder Radfahren bevorzugen, gibt es spezielle Bahnen und Wege für jede Aktivität. In der Nähe finden Sie auch eine Dirt Jump-Bahn für diejenigen, die adrenalingeladene Sprünge und Herausforderungen auf dem Fahrrad suchen."
+        },
+        "button": "Mehr Aktivitäten"
+    },
+    "restaurantSection": {
+        "title": "Strandrestaurant",
+        "subtitle": "Maln Hav & Krog",
+        "description": "Mit seiner abwechslungsreichen Speisekarte und einem atemberaubenden Blick auf den Strand und das Meer zieht das Restaurant sowohl Einheimische als auch Besucher an. Hier versammeln sich Menschen, um die Sonne zu genießen, lebhafte Veranstaltungen zu erleben und die entspannte Atmosphäre zu genießen. Nur einen Steinwurf vom Campingplatz entfernt finden Sie einen Treffpunkt für gutes Essen und Gemeinschaft.",
+        "button": "Mehr Infos"
+    },
+    "mapSection": {
+        "title": "Finden Sie uns",
+        "button": "Wegbeschreibung öffnen"
+    },
+    "footer": {
+        "links": {
+            "title": "Schnellzugriff",
+            "openingHours": "Öffnungszeiten"
+        },
+        "contact": {
+            "title": "Kontaktieren Sie uns"
+        },
+        "socials": {
+            "title": "Folgen Sie uns"
+        }
+    },
+    "accommodation": {
+        "campingPage": {
+            "title": "Camping",
+            "description": "Entdecken Sie das Outdoor-Leben auf unserem gepflegten Campingplatz, umgeben von grünen Rasenflächen und landschaftlich reizvoller Natur. Unser Campingplatz bietet geräumige Stellplätze mit allen notwendigen Annehmlichkeiten. Für diejenigen, die ein komfortables Naturerlebnis suchen, bieten wir saubere Einrichtungen, einschließlich Zugang zu Duschen, WLAN und einem umlaufenden Zaun, der zu einem sicheren und abgeschiedenen Aufenthalt beiträgt. Für einen noch reibungsloseren Aufenthalt zögern Sie nicht, bei der Buchung besondere Platzwünsche anzugeben, insbesondere in der Hochsaison - wir bemühen uns, alle Wünsche zu erfüllen, ohne Garantie.",
+            "booking": {
+                "title": "Buchung vornehmen",
+                "button": "Buchen"
+            },
+            "amenities": {
+                "title": "Annehmlichkeiten",
+                "items": {
+                    "el": "Strom",
+                    "wifi": "WLAN",
+                    "latrintömning": "Latrinenentleerung",
+                    "gråvattentömning": "Grauwasserentleerung",
+                    "servicehus": "Servicehaus",
+                    "bastu": "Sauna",
+                    "skötrum": "Wickelraum",
+                    "kök": "Küche",
+                    "gemensamGrill": "Gemeinsamer Grill",
+                    "matplatsUtomhus": "Essbereich im Freien",
+                    "diskrum": "Spülraum",
+                    "dricksvatten": "Trinkwasser",
+                    "kiosk": "Kiosk"
+                }
+            },
+            "facts": {
+                "title": "Fakten",
+                "items": {
+                    "antalPlatser": "Anzahl der Plätze",
+                    "areaPlatser": "Platzgröße",
+                    "andelElplatser": "Anteil der Plätze mit Strom"
+                }
+            }
+        },
+        "cottagesPage": {
+            "title": "Hütten",
+            "description": "Erleben Sie die Ruhe in unseren charmanten Hütten, die mitten in der wunderschönen Natur liegen. Unsere Hütten sind praktisch eingerichtet, um einen komfortablen Aufenthalt zu gewährleisten, mit grundausgestatteten Küchen für einfache Mahlzeiten und Zugang zu Gemeinschaftsbädern in unserem Servicehaus. Jede Hütte verfügt über eine Terrasse mit Tisch und Stühlen, ideal für Mahlzeiten im Freien oder einfach zum Genießen der umgebenden Schönheit. Ob Sie die Ruhe genießen oder lokale Sehenswürdigkeiten entdecken möchten, unsere Hütten sind der perfekte Ausgangspunkt für Ihren Urlaub. Mit Zugang zu Gemeinschaftsküchen und nahe gelegenen Serviceeinrichtungen haben Sie alles, was Sie für einen unvergesslichen und komfortablen Aufenthalt bei uns benötigen.",
+            "booking": {
+                "title": "Buchung vornehmen",
+                "button": "Jetzt buchen"
+            },
+            "amenities": {
+                "title": "Annehmlichkeiten",
+                "items": {
+                    "wifi": "WLAN",
+                    "lcdTv": "LCD-TV",
+                    "privatePatio": "Eigene Terrasse",
+                    "wcInServiceHouse": "WC im Servicehaus",
+                    "showerInServiceHouse": "Dusche im Servicehaus",
+                    "saunaInServiceHouse": "Sauna im Servicehaus",
+                    "babyChangingRoom": "Wickelraum",
+                    "simpleKitchen": "Einfache Küche in der Hütte",
+                    "sharedLargeKitchen": "Zusätzliches Gemeinschaftsgroßküche",
+                    "sharedGrill": "Gemeinsamer Grill"
+                }
+            },
+            "facts": {
+                "title": "Fakten",
+                "items": {
+                    "numberOfCottages": "Anzahl der Hütten",
+                    "cottageSize": "Hüttengröße",
+                    "numberOfBeds": "Anzahl der Betten",
+                    "extraMattressOption": "Möglichkeit für zusätzliche Matratze"
+                }
+            }
+        },
+        "hostelPage": {
+            "title": "Hostel",
+            "description": "Unser Hostel bietet nur private Zimmer für einen komfortablen und sicheren Aufenthalt. Mit Zugang zu zwei Gemeinschaftsküchen können Gäste leicht eigene Mahlzeiten zubereiten, während der Speisesaal einen Ort für gemeinsame Mahlzeiten bietet. Das Hostel verfügt über separate Gemeinschaftsbäder für Männer und Frauen, die sauber und für alle Gäste zugänglich gehalten werden. Darüber hinaus gibt es eine Außenterrasse, auf der Sie sich entspannen und die frische Luft genießen können. Unser Hostel ist der perfekte Ort für diejenigen, die einen preiswerten Aufenthalt mit der Möglichkeit, neue Bekanntschaften und Erlebnisse zu machen, suchen.",
+            "booking": {
+                "title": "Buchung vornehmen",
+                "button": "Buchen"
+            },
+            "amenities": {
+                "title": "Annehmlichkeiten",
+                "items": {
+                    "wifi": "WLAN",
+                    "privateRooms": "Private Zimmer",
+                    "sharedBathrooms": "Gemeinschaftsbäder",
+                    "washingMachine": "Waschmaschine",
+                    "sharedKitchens": "Gemeinschaftsküchen",
+                    "diningRoom": "Speisesaal",
+                    "tvRoom": "Fernsehraum",
+                    "outdoorTerrace": "Außenterrasse"
+                }
+            },
+            "facts": {
+                "title": "Fakten",
+                "items": {
+                    "numberOfRooms": "Anzahl der Zimmer",
+                    "singleDoubleRooms": "Einzel-/Doppelzimmer",
+                    "quadRooms": "Vierbettzimmer",
+                    "numberOfBathrooms": "Anzahl der Bäder",
+                    "numberOfKitchens": "Anzahl der Küchen",
+                    "extraPersonOption": "Möglichkeit für zusätzliche Person (auf Anfrage)"
+                }
+            }
+        },
+        "campsiteMap": {
+            "button": "Öffne den Lageplan"
+        },
+        "bookingConditions": {
+            "button": "Öffne Buchungsbedingungen"
+        }
+    },
+    "activitiesPage": {
+        "title": "Dinge zu tun...",
+        "description": "Entdecken Sie alle lustigen und spannenden Aktivitäten, die Malnbaden zu bieten hat.",
+        "activities": {
+            "beach": {
+                "title": "Strand",
+                "description": "Erleben Sie den schönen Sandstrand mit Aktivitäten für die ganze Familie."
+            },
+            "runningTrail": {
+                "title": "Laufstrecke",
+                "description": "Machen Sie einen Lauf oder einen entspannenden Spaziergang entlang unserer landschaftlich reizvollen Wege."
+            },
+            "kayak": {
+                "title": "Kajak",
+                "description": "Erleben Sie die Aufregung und die Ruhe des Wassers, während Sie mit dem Kajak entlang der Küste von Hudiksvall paddeln."
+            },
+            "miniGolf": {
+                "title": "Minigolf",
+                "description": "Testen Sie Ihre Präzision und haben Sie Spaß mit Familie und Freunden auf unserem herausfordernden Minigolfplatz."
+            }
+        }
+    },
+    "restaurantPage": {
+        "welcome": "Willkommen bei",
+        "description": "Genießen Sie gut zubereitetes Essen an der besten Sonnenlage mit Meer und Strand im Hintergrund. In diesem Sommer haben wir auch einen vollen Veranstaltungskalender mit Troubadouren, Quizabenden und After Beach. Weitere Infos zum Sommer 2024 kommen bald!",
+        "facebook": "Facebook",
+        "instagram": "Instagram",
+        "address": "Malnvägen 38, Hudiksvall 82450 Schweden",
+        "phone": "+46 70-544 11 59"
+    },
+    "openingHoursPage": {
+        "openingHours": {
+            "title": "Öffnungszeiten",
+            "reception": "Rezeption",
+            "minigolf": "Minigolf"
+        },
+        "contactUs": {
+            "title": "Kontaktieren Sie uns",
+            "name": "Ihr Name",
+            "email": "Ihre E-Mail",
+            "message": "Nachricht",
+            "send": "Senden"
+        },
+        "loading": "Lädt..."
+    },
+    "bookingCountdown": {
+        "bookingOpens": "Buchung öffnet",
+        "bookingOpensIn": "Buchung öffnet in",
+        "days": "Tage",
+        "hours": "Stunden",
+        "minutes": "Minuten",
+        "seconds": "Sekunden",
+        "bookingOpen": "Buchung geöffnet",
+        "season": "Saison",
+        "button": "Jetzt buchen",
+        "closedForSeason": "Geschlossen für die Saison",
+        "loading": "lädt..."
+    }
+}

@@ -1,0 +1,242 @@
+{
+    "meta": {
+        "title": "Malnbadens Camping - Experience Sea, City, and Nature",
+        "description": "Visit Malnbadens Camping in Hudiksvall for a relaxing experience close to both city and nature. Our campsites, cottages, and hostels offer comfortable accommodation for all visitors.",
+        "keywords": "Malnbadens Camping, camping Hudiksvall, cottage Hudiksvall, hostel Hudiksvall, beach camping Sweden, camping Sweden, best campsites Sweden, Hudiksvall cabins, Malnbaden cabins, Malnbaden beach",
+        "og": {
+            "title": "Malnbadens Camping - Experience Sea, City, and Nature",
+            "description": "Visit Malnbadens Camping in Hudiksvall for a relaxing experience close to both city and nature. Our campsites, cottages, and hostels offer comfortable accommodation for all visitors."
+        }
+    },
+    "hero": {
+        "title": "Malnbadens<br>Camping",
+        "subtitle": "Experience sea, city, and nature."
+    },
+    "navbar": {
+        "home": "Home",
+        "accommodation": {
+            "title": "Accommodation",
+            "camping": "Camping",
+            "cottages": "Cottages",
+            "hostel": "Hostel"
+        },
+        "activities": "Activities",
+        "restaurant": "Restaurant",
+        "openingHours": "Opening Hours"
+    },
+    "accommodationCard": {
+        "camping": {
+            "title": "Camping",
+            "description": "Experience the charm of camping surrounded by greenery, with amenities within reach and close to the sea.",
+            "button": "Info & Booking"
+        },
+        "cottages": {
+            "title": "Cottages",
+            "description": "Our cozy cottages offer a perfect balance between nature experience and home-like comfort.",
+            "button": "Info & Booking"
+        },
+        "hostel": {
+            "title": "Hostel",
+            "description": "Our hostel combines affordability with personal comfort, ideal for travelers seeking practical and relaxing accommodation.",
+            "button": "Info & Booking"
+        }
+    },
+    "activitiesSection": {
+        "title": "Activities",
+        "beach": {
+            "title": "Beach",
+            "description": "Just 150 meters from the campsite, you will find Malnbaden Beach with its popular beach restaurant, known for good food, great atmosphere, and fun events. The beach is also equipped with courts for beach volleyball and beach football, perfect for those looking for activity and games during the summer days. For dog owners, there is a special section on the beach where furry friends are welcome to play and cool off in the water."
+        },
+        "runningTrail": {
+            "title": "Running Trails",
+            "description": "The running trails at Malnbadens Camping offer several different routes in varying lengths, making it a perfect place for running, walking, and nature experiences. For those who prefer roller skating, roller skiing, or cycling, there are special tracks and roads adapted for each activity. Nearby, you will also find a Dirt Jump track for those seeking adrenaline-filled jumps and challenges on a bike."
+        },
+        "button": "More activities"
+    },
+    "restaurantSection": {
+        "title": "Beachfront Restaurant",
+        "subtitle": "Maln Hav & Krog",
+        "description": "With its varied menu and stunning views of the beach and sea, the restaurant attracts both locals and visitors. People gather here to enjoy the sun, lively events, and the relaxed atmosphere. Just a stone's throw from the campsite, you will find a meeting place for good food and community.",
+        "button": "More info"
+    },
+    "mapSection": {
+        "title": "Find Us",
+        "button": "Open Directions"
+    },
+    "footer": {
+        "links": {
+            "title": "Quick Links",
+            "openingHours": "Opening Hours"
+        },
+        "contact": {
+            "title": "Contact Us"
+        },
+        "socials": {
+            "title": "Follow Us"
+        }
+    },
+    "accommodation": {
+        "campingPage": {
+            "title": "Camping",
+            "description": "Discover outdoor life at our well-maintained campsite, surrounded by green lawns and scenic nature. Our campsite offers spacious pitches with all necessary amenities. For those seeking a comfortable nature experience, we offer clean facilities including access to showers, wifi, and a surrounding fence that contributes to a secure and secluded stay. For an even smoother stay, do not hesitate to specify any preferences for a specific pitch when booking, especially during peak season - we strive to accommodate all requests, without guarantee.",
+            "booking": {
+                "title": "Make a Booking",
+                "button": "Book"
+            },
+            "amenities": {
+                "title": "Amenities",
+                "items": {
+                    "el": "Electricity",
+                    "wifi": "Wifi",
+                    "latrintömning": "Latrine Emptying",
+                    "gråvattentömning": "Greywater Emptying",
+                    "servicehus": "Service Building",
+                    "bastu": "Sauna",
+                    "skötrum": "Baby Changing Room",
+                    "kök": "Kitchen",
+                    "gemensamGrill": "Shared Grill",
+                    "matplatsUtomhus": "Outdoor Dining Area",
+                    "diskrum": "Dishwashing Room",
+                    "dricksvatten": "Drinking Water",
+                    "kiosk": "Kiosk"
+                }
+            },
+            "facts": {
+                "title": "Facts",
+                "items": {
+                    "antalPlatser": "Number of Places",
+                    "areaPlatser": "Camping Pitch Size",
+                    "andelElplatser": "Percentage of Electric Pitches"
+                }
+            }
+        },
+        "cottagesPage": {
+            "title": "Cottages",
+            "description": "Experience the tranquility in our charming cottages, nestled in the heart of beautiful nature. Our cottages are practically furnished to provide a comfortable stay, with basic kitchens for simple meals, and access to shared bathrooms in our service building. Each cottage features a patio complete with a table and chairs, perfect for outdoor meals or simply enjoying the surrounding beauty. Whether you want to enjoy the silence or explore local attractions, our cottages are the perfect starting point for your holiday. With access to a shared kitchen and nearby service facilities, you have everything you need for a memorable and comfortable stay with us.",
+            "booking": {
+                "title": "Make a Booking",
+                "button": "Book Now"
+            },
+            "amenities": {
+                "title": "Amenities",
+                "items": {
+                    "wifi": "Wifi",
+                    "lcdTv": "LCD-TV",
+                    "privatePatio": "Private Patio",
+                    "wcInServiceHouse": "WC in Service House",
+                    "showerInServiceHouse": "Shower in Service House",
+                    "saunaInServiceHouse": "Sauna in Service House",
+                    "babyChangingRoom": "Baby Changing Room",
+                    "simpleKitchen": "Simple Kitchen in Cottage",
+                    "sharedLargeKitchen": "Shared Large Kitchen",
+                    "sharedGrill": "Shared Grill"
+                }
+            },
+            "facts": {
+                "title": "Facts",
+                "items": {
+                    "numberOfCottages": "Number of Cottages",
+                    "cottageSize": "Cottage Size",
+                    "numberOfBeds": "Number of Beds",
+                    "extraMattressOption": "Option for Extra Mattress"
+                }
+            }
+        },
+        "hostelPage": {
+            "title": "Hostel",
+            "description": "Our hostel offers only private rooms for a comfortable and secure stay. With access to two shared kitchens, guests can easily prepare their own meals, while the dining room provides a place for pleasant meals together. The hostel has separate shared bathrooms for men and women, which are kept clean and accessible to all guests. Additionally, there is an outdoor terrace where you can relax and enjoy the fresh air. Our hostel is the perfect place for those seeking an affordable stay with opportunities for new acquaintances and experiences.",
+            "booking": {
+                "title": "Make a Booking",
+                "button": "Book"
+            },
+            "amenities": {
+                "title": "Amenities",
+                "items": {
+                    "wifi": "Wifi",
+                    "privateRooms": "Private Rooms",
+                    "sharedBathrooms": "Shared Bathrooms",
+                    "washingMachine": "Washing Machine",
+                    "sharedKitchens": "Shared Kitchens",
+                    "diningRoom": "Dining Room",
+                    "tvRoom": "TV Room",
+                    "outdoorTerrace": "Outdoor Terrace"
+                }
+            },
+            "facts": {
+                "title": "Facts",
+                "items": {
+                    "numberOfRooms": "Number of Rooms",
+                    "singleDoubleRooms": "Single/Double Rooms",
+                    "quadRooms": "4-bed Rooms",
+                    "numberOfBathrooms": "Number of Bathrooms",
+                    "numberOfKitchens": "Number of Kitchens",
+                    "extraPersonOption": "Possibility for Extra Person (on request)"
+                }
+            }
+        },
+        "campsiteMap": {
+            "button": "Open Campsite Map"
+        },
+        "bookingConditions": {
+            "button": "Open Booking Conditions"
+        }
+    },
+    "activitiesPage": {
+        "title": "Things to do...",
+        "description": "Explore all the fun and exciting activities that Malnbaden has to offer.",
+        "activities": {
+            "beach": {
+                "title": "Beach",
+                "description": "Experience the beautiful sandy beach with activities for the whole family."
+            },
+            "runningTrail": {
+                "title": "Running Trail",
+                "description": "Take a jog or a relaxing walk along our scenic trails."
+            },
+            "kayak": {
+                "title": "Kayak",
+                "description": "Experience the thrill and the soothing water as you paddle a kayak along the Hudiksvall coastline."
+            },
+            "miniGolf": {
+                "title": "Mini Golf",
+                "description": "Test your precision and have fun with family and friends on our challenging mini golf course."
+            }
+        }
+    },
+    "restaurantPage": {
+        "welcome": "Welcome to",
+        "description": "Enjoy well-prepared food in the best sun location with the sea and beach as a backdrop. This summer, we also have a packed event calendar with troubadours, quiz nights, and after beach. More info about summer 2024 is coming soon!",
+        "facebook": "Facebook",
+        "instagram": "Instagram",
+        "address": "Malnvägen 38, Hudiksvall 82450 Sweden",
+        "phone": "+46 70-544 11 59"
+    },
+    "openingHoursPage": {
+        "openingHours": {
+            "title": "Opening Hours",
+            "reception": "Reception",
+            "minigolf": "Minigolf"
+        },
+        "contactUs": {
+            "title": "Contact Us",
+            "name": "Your Name",
+            "email": "Your Email",
+            "message": "Message",
+            "send": "Send"
+        },
+        "loading": "Loading..."
+    },
+    "bookingCountdown": {
+        "bookingOpens": "Booking opens",
+        "bookingOpensIn": "Booking opens in",
+        "days": "days",
+        "hours": "H",
+        "minutes": "M",
+        "seconds": "S",
+        "bookingOpen": "Booking open",
+        "season": "Season",
+        "button": "Book Now",
+        "closedForSeason": "Closed for the season",
+        "loading": "loading..."
+    }
+}

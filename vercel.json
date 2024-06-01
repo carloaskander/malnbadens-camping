@@ -1,15 +1,15 @@
 {
     "redirects": [
-        { "source": "/camping(/?)", "destination": "/accommodation/camping", "permanent": true },
-        { "source": "/stugor(/?)", "destination": "/accommodation/cottages", "permanent": true },
-        { "source": "/vandrarhem(/?)", "destination": "/accommodation/hostel", "permanent": true },
-        { "source": "/priser(/?)", "destination": "/accommodation/camping", "permanent": true },
-        { "source": "/karta-over-malnbadens-camping(/?)", "destination": "/accommodation/camping", "permanent": true },
-        { "source": "/bokningsvillkor(/?)", "destination": "/opening-hours", "permanent": true },
-        { "source": "/aktiviteter(/?)", "destination": "/activities", "permanent": true },
-        { "source": "/att-gora-i-hudiksvall(/?)", "destination": "/activities", "permanent": true },
-        { "source": "/restaurang(/?)", "destination": "/restaurant", "permanent": true },
-        { "source": "/oppettider(/?)", "destination": "/opening-hours", "permanent": true }
+        { "source": "/camping(/?)", "destination": "/sv/accommodation/camping", "permanent": true },
+        { "source": "/stugor(/?)", "destination": "/sv/accommodation/cottages", "permanent": true },
+        { "source": "/vandrarhem(/?)", "destination": "/sv/accommodation/hostel", "permanent": true },
+        { "source": "/priser(/?)", "destination": "/sv/accommodation/camping", "permanent": true },
+        { "source": "/karta-over-malnbadens-camping(/?)", "destination": "/sv/accommodation/camping", "permanent": true },
+        { "source": "/bokningsvillkor(/?)", "destination": "/sv/opening-hours", "permanent": true },
+        { "source": "/aktiviteter(/?)", "destination": "/sv/activities", "permanent": true },
+        { "source": "/att-gora-i-hudiksvall(/?)", "destination": "/sv/activities", "permanent": true },
+        { "source": "/restaurang(/?)", "destination": "/sv/restaurant", "permanent": true },
+        { "source": "/oppettider(/?)", "destination": "/sv/opening-hours", "permanent": true }
     ],
     "rewrites": [
         { "source": "/(.*)", "destination": "/index.html" }

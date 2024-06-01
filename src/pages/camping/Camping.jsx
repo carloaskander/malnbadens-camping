@@ -1,18 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import contentfulClient from "../../contentfulClient.js";
 import { Box, Typography, Container, Grid, Button, Paper, Icon } from '@mui/material';
+import { useTranslation } from 'react-i18next';
 import PhotoGallery from "../../components/photo-gallery/PhotoGallery";
 import CampingPrices from "../../components/camping-prices/CampingPrices.jsx";
 import CampingInfo from "../../components/camping-info/CampingInfo.jsx";
 
-//Material UI Icon Imports
+// Material UI Icon Imports
 import WifiIcon from '@mui/icons-material/Wifi';
 import ElectricalServicesIcon from '@mui/icons-material/ElectricalServices';
 import FormatColorFillIcon from '@mui/icons-material/FormatColorFill';
 import WcIcon from '@mui/icons-material/Wc';
 import HotTubIcon from '@mui/icons-material/HotTub';
 import BabyChangingStationIcon from '@mui/icons-material/BabyChangingStation';
-import SoupKitchenIcon from '@mui/icons-material/SoupKitchen'; // Observera att detta kan vara en annan ikon om det inte finns någon med exakt detta namn.
+import SoupKitchenIcon from '@mui/icons-material/SoupKitchen';
 import OutdoorGrillIcon from '@mui/icons-material/OutdoorGrill';
 import RestaurantIcon from '@mui/icons-material/Restaurant';
 import CountertopsIcon from '@mui/icons-material/Countertops';
@@ -26,6 +27,7 @@ const ColoredIcon = ({ icon, color }) => (
 );
 
 function Camping() {
+  const { t } = useTranslation();
   const [campingContent, setCampingContent] = useState(null);
 
   useEffect(() => {
@@ -46,25 +48,25 @@ function Camping() {
   const imageUrls = campingContent.photoGallery?.map(photo => photo.fields.file.url) || [];
 
   const amenities = [
-    { name: "El", icon: <ElectricalServicesIcon /> },
-    { name: "Wifi", icon: <WifiIcon /> },
-    { name: "Latrintömning", icon: <FormatColorFillIcon /> },
-    { name: "Gråvattentömning", icon: <FormatColorFillIcon /> },
-    { name: "Servicehus", icon: <WcIcon /> },
-    { name: "Bastu", icon: <HotTubIcon /> },
-    { name: "Skötrum", icon: <BabyChangingStationIcon /> },
-    { name: "Kök", icon: <SoupKitchenIcon /> },
-    { name: "Gemensam grill", icon: <OutdoorGrillIcon /> },
-    { name: "Matplats utomhus", icon: <RestaurantIcon /> },
-    { name: "Diskrum", icon: <CountertopsIcon /> },
-    { name: "Dricksvatten", icon: <WaterDropIcon /> },
-    { name: "Kiosk", icon: <LocalGroceryStoreIcon /> },
+    { name: t('accommodation.campingPage.amenities.items.el'), icon: <ElectricalServicesIcon /> },
+    { name: t('accommodation.campingPage.amenities.items.wifi'), icon: <WifiIcon /> },
+    { name: t('accommodation.campingPage.amenities.items.latrintömning'), icon: <FormatColorFillIcon /> },
+    { name: t('accommodation.campingPage.amenities.items.gråvattentömning'), icon: <FormatColorFillIcon /> },
+    { name: t('accommodation.campingPage.amenities.items.servicehus'), icon: <WcIcon /> },
+    { name: t('accommodation.campingPage.amenities.items.bastu'), icon: <HotTubIcon /> },
+    { name: t('accommodation.campingPage.amenities.items.skötrum'), icon: <BabyChangingStationIcon /> },
+    { name: t('accommodation.campingPage.amenities.items.kök'), icon: <SoupKitchenIcon /> },
+    { name: t('accommodation.campingPage.amenities.items.gemensamGrill'), icon: <OutdoorGrillIcon /> },
+    { name: t('accommodation.campingPage.amenities.items.matplatsUtomhus'), icon: <RestaurantIcon /> },
+    { name: t('accommodation.campingPage.amenities.items.diskrum'), icon: <CountertopsIcon /> },
+    { name: t('accommodation.campingPage.amenities.items.dricksvatten'), icon: <WaterDropIcon /> },
+    { name: t('accommodation.campingPage.amenities.items.kiosk'), icon: <LocalGroceryStoreIcon /> },
   ];
 
   const facts = [
-    { name: "Antal platser", value: "125", icon: <FormatListNumberedIcon /> },
-    { name: "Area platser", value: "90-110m²", icon: <SquareFootIcon /> },
-    { name: "Andel elplatser", value: "99%", icon: <ElectricalServicesIcon /> },
+    { name: t('accommodation.campingPage.facts.items.antalPlatser'), value: "125", icon: <FormatListNumberedIcon /> },
+    { name: t('accommodation.campingPage.facts.items.areaPlatser'), value: "90-110m²", icon: <SquareFootIcon /> },
+    { name: t('accommodation.campingPage.facts.items.andelElplatser'), value: "99%", icon: <ElectricalServicesIcon /> },
   ];
 
   return (
@@ -81,10 +83,10 @@ function Camping() {
           <Grid container spacing={8} sx={{ display: 'flex', justifyContent: 'space-between' }}>
             <Grid item xs={12} md={7}>
               <Typography variant="h2" component="h1" color="text.primary" gutterBottom>
-                {campingContent.pageTitle}
+                {t('accommodation.campingPage.title')}
               </Typography>
               <Typography variant="body2" paragraph>
-                {campingContent.pageDescription}
+                {t('accommodation.campingPage.description')}
               </Typography>
             </Grid>
             <Grid item xs={12} md={5}>
@@ -92,21 +94,21 @@ function Camping() {
                 padding: 4,
                 boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)',
               }}>
-                <Typography mb={3} variant="h3">Gör en bokning</Typography>
+                <Typography mb={3} variant="h3">{t('accommodation.campingPage.booking.title')}</Typography>
                 <Button 
                   href='https://bokning4.paxess.se/malnbaden2' 
-                  target='_blank'variant="contained" 
+                  target='_blank' variant="contained" 
                   sx={{ width: '100%' }}
-                  >
-                    Boka
+                >
+                  {t('accommodation.campingPage.booking.button')}
                 </Button>
               </Paper>
             </Grid>
             <Grid item xs={12} md={6} mb={6}>
-              <Typography mb={2} variant="h5">Bekvämligheter</Typography>
+              <Typography mb={2} variant="h5">{t('accommodation.campingPage.amenities.title')}</Typography>
               <Grid container spacing={1}>
                 {amenities.map((amenity, index) => (
-                  <Grid item xs={12} sm={6} key={index}> {/* xs=12 för full bredd på små skärmar, sm=6 för halv bredd på större skärmar */}
+                  <Grid item xs={12} sm={6} key={index}>
                     <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                       <ColoredIcon icon={amenity.icon} color='#D66B27'/>
                       <Typography variant="h6" sx={{ color: 'primary.main' }}>{amenity.name}</Typography>
@@ -116,7 +118,7 @@ function Camping() {
               </Grid>
             </Grid>
             <Grid item xs={12} md={6}>
-              <Typography mb={2} variant="h5">Fakta</Typography>
+              <Typography mb={2} variant="h5">{t('accommodation.campingPage.facts.title')}</Typography>
               <Box>
                 {facts.map((fact) => (
                   <Box key={fact.name} sx={{ display: 'flex', alignItems: 'center', gap: 2, marginBottom: '8px' }}>

@@ -1,10 +1,12 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { Box, Typography, Button, Grid, Container } from '@mui/material';
 import LazyLoad from 'react-lazyload';
 import restaurantImage1 from '../../assets/images/restaurant/restaurant-sign.jpg';
 import restaurantImage2 from '../../assets/images/restaurant/restaurant-food-bbq.jpg';
 
 function RestaurantSection() {
+  const { t } = useTranslation();
   const images = [
     {
       src: restaurantImage1,
@@ -48,16 +50,16 @@ function RestaurantSection() {
           {/* Text Content */}
           <Grid item xs={12} md={6}>
             <Typography variant="h3">
-              Strandbelägen Restaurang
+              {t('restaurantSection.title')}
             </Typography>
             <Typography variant='h5' gutterBottom>
-              Maln Hav & Krog
+              {t('restaurantSection.subtitle')}
             </Typography>
             <Typography sx={{ mb: 3 }}>
-            Med sin varierade meny och enastående utsikt över stranden och havet lockar restaurangen både lokalbefolkningen och besökare. Här samlas människor för att njuta av solen, livliga evenemang och den avslappnade atmosfären. Bara ett stenkast från campingen hittar du en samlingspunkt för god mat och gemenskap.
+              {t('restaurantSection.description')}
             </Typography>
             <Button variant="contained" href='/restaurant'>
-              Mer Info
+              {t('restaurantSection.button')}
             </Button>
           </Grid>
           {/* Image Container */}

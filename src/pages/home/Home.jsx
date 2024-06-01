@@ -6,16 +6,19 @@ import AccommodationCard from '../../components/AccommodationCard/AccommodationC
 import ActivitiesSection from '../../components/activities-section/ActivitiesSection';
 import RestaurantSection from '../../components/restaurant-section/RestaurantSection';
 import MapSection from '../../components/map-section/MapSection';
+import { useTranslation } from 'react-i18next';
 
 function Home() {
+  const { t } = useTranslation();
+
   return (
     <>
       <Helmet>
-        <title>Malnbadens Camping - Upplev hav, stad och natur</title>
-        <meta name="description" content="Besök Malnbadens Camping i Hudiksvall för en avkopplande upplevelse nära både stad och natur. Våra campingplatser, stugor och vandrarhem erbjuder bekvämt boende för alla besökare." />
-        <meta name="keywords" content="Malnbadens Camping, camping Hudiksvall, stuga Hudiksvall, vandrarhem Hudiksvall, strand camping Sverige, camping Sweden, best campsites Sweden, Hudiksvall cabins, Malnbaden cabins, Malnbaden beach" />
-        <meta property="og:title" content="Malnbadens Camping - Upplev hav, stad och natur" />
-        <meta property="og:description" content="Besök Malnbadens Camping i Hudiksvall för en avkopplande upplevelse nära både stad och natur. Våra campingplatser, stugor och vandrarhem erbjuder bekvämt boende för alla besökare." />
+        <title>{t('meta.title')}</title>
+        <meta name="description" content={t('meta.description')} />
+        <meta name="keywords" content={t('meta.keywords')} />
+        <meta property="og:title" content={t('meta.og.title')} />
+        <meta property="og:description" content={t('meta.og.description')} />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://www.malnbadenscamping.se" />
         <meta property="og:image" content="https://images.ctfassets.net/l5zpxv35osem/4J3hJTniRiVA9nGLsGfzVe/8ad70dbc212c0d27e13d0b737bfb389f/1D5A2860.jpg" />
@@ -30,7 +33,7 @@ function Home() {
             "url": "https://www.malnbadenscamping.se",
             "contactPoint": [{
               "@type": "ContactPoint",
-              "telephone": "+0650-132 60",
+              "telephone": "0650-132 60",
               "contactType": "customer service"
             }],
             "address": {

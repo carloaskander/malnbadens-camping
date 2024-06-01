@@ -1,0 +1,242 @@
+{
+    "meta": {
+        "title": "Malnbaden Camping - Koe meri, kaupunki ja luonto",
+        "description": "Vieraile Malnbaden Campingissa Hudiksvallissa ja nauti rentouttavasta kokemuksesta kaupungin ja luonnon lähellä. Leirintäalueemme, mökkimme ja hostellimme tarjoavat mukavaa majoitusta kaikille vierailijoille.",
+        "keywords": "Malnbaden Camping, leirintäalue Hudiksvall, mökki Hudiksvall, hostelli Hudiksvall, rantaloma Ruotsi, camping Ruotsi, parhaat leirintäalueet Ruotsi, Hudiksvall mökit, Malnbaden mökit, Malnbaden ranta",
+        "og": {
+            "title": "Malnbaden Camping - Koe meri, kaupunki ja luonto",
+            "description": "Vieraile Malnbaden Campingissa Hudiksvallissa ja nauti rentouttavasta kokemuksesta kaupungin ja luonnon lähellä. Leirintäalueemme, mökkimme ja hostellimme tarjoavat mukavaa majoitusta kaikille vierailijoille."
+        }
+    },
+    "navbar": {
+        "home": "Koti",
+        "accommodation": {
+            "title": "Majoituksemme",
+            "camping": "Camping",
+            "cottages": "Mökit",
+            "hostel": "Hostelli"
+        },
+        "activities": "Aktiviteetit",
+        "restaurant": "Ravintola",
+        "openingHours": "Aukioloajat"
+    },
+    "hero": {
+        "title": "Malnbaden<br>Camping",
+        "subtitle": "Koe meri, kaupunki ja luonto."
+    },
+    "accommodationCard": {
+        "camping": {
+            "title": "Camping",
+            "description": "Koe leirintäelämän viehätys vehreyden keskellä, mukavuudet käden ulottuvilla ja lähellä merta.",
+            "button": "Tiedot & Varaukset"
+        },
+        "cottages": {
+            "title": "Mökit",
+            "description": "Mukavat mökkimme tarjoavat täydellisen tasapainon luontoelämyksen ja kodikkaan mukavuuden välillä.",
+            "button": "Tiedot & Varaukset"
+        },
+        "hostel": {
+            "title": "Hostelli",
+            "description": "Hostellimme yhdistää edullisuuden ja henkilökohtaisen mukavuuden, ihanteellinen matkailijoille, jotka etsivät käytännöllistä ja rentouttavaa majoitusta.",
+            "button": "Tiedot & Varaukset"
+        }
+    },
+    "activitiesSection": {
+        "title": "Aktiviteetit",
+        "beach": {
+            "title": "Ranta",
+            "description": "Vain 150 metrin päässä leirintäalueesta löydät Malnbadenin rannan, jossa on suosittu rantaravintola, tunnettu hyvästä ruoasta, mukavasta ilmapiiristä ja hauskoista tapahtumista. Rannalla on myös beachvolley- ja rantajalkapallokenttiä, täydellisiä niille, jotka etsivät aktiviteetteja ja pelejä kesäpäivinä. Koiranomistajille on erityinen osa rantaa, jossa nelijalkaiset ystävät ovat tervetulleita leikkimään ja viilentymään vedessä."
+        },
+        "runningTrail": {
+            "title": "Kuntoilureitit",
+            "description": "Malnbadenin leirintäalueen kuntoilureitit tarjoavat useita eri pituisia reittejä, mikä tekee siitä täydellisen paikan juoksuun, kävelyyn ja luontoelämyksiin. Niille, jotka suosivat rullaluistimia, rullasuksia tai pyöräilyä, on erityisiä ratoja ja teitä, jotka on mukautettu jokaiseen aktiviteettiin. Lähellä on myös Dirt Jump -rata niille, jotka etsivät adrenaliinitäytteisiä hyppyjä ja haasteita pyöräillen."
+        },
+        "button": "Lisää aktiviteetteja"
+    },
+    "restaurantSection": {
+        "title": "Rantaravintola",
+        "subtitle": "Maln Hav & Krog",
+        "description": "Vaihtelevalla menullaan ja upealla näkymällä rannalle ja merelle, ravintola houkuttelee sekä paikallisia että vierailijoita. Täällä ihmiset kokoontuvat nauttimaan auringosta, vilkkaista tapahtumista ja rennosta ilmapiiristä. Vain kivenheiton päässä leirintäalueelta löydät paikan hyvälle ruoalle ja yhteisöllisyydelle.",
+        "button": "Lisätietoja"
+    },
+    "mapSection": {
+        "title": "Löydä meidät",
+        "button": "Avaa reittiohjeet"
+    },
+    "footer": {
+        "links": {
+            "title": "Pikalinkit",
+            "openingHours": "Aukioloajat"
+        },
+        "contact": {
+            "title": "Ota yhteyttä"
+        },
+        "socials": {
+            "title": "Seuraa meitä"
+        }
+    },
+    "accommodation": {
+        "campingPage": {
+            "title": "Camping",
+            "description": "Koe ulkoilmaelämä hyvin hoidetulla leirintäalueellamme, jota ympäröivät vihreät nurmikot ja kaunis luonto. Leirintäalueemme tarjoaa tilavia paikkoja kaikilla tarvittavilla mukavuuksilla. Niille, jotka etsivät mukavaa luontoelämystä, tarjoamme puhtaat tilat, mukaan lukien pääsy suihkuihin, wifiin ja ympäröivään aitaan, mikä edistää turvallista ja eristäytynyttä oleskelua. Saadaksesi vielä sujuvamman oleskelun, älä epäröi ilmoittaa mieltymyksesi tiettyyn paikkaan varauksen yhteydessä, erityisesti sesonkiaikana - pyrimme täyttämään kaikki toiveet ilman takausta.",
+            "booking": {
+                "title": "Tee varaus",
+                "button": "Varaa"
+            },
+            "amenities": {
+                "title": "Mukavuudet",
+                "items": {
+                    "el": "Sähkö",
+                    "wifi": "Wifi",
+                    "latrintömning": "Latrinan tyhjennys",
+                    "gråvattentömning": "Harmaavesien tyhjennys",
+                    "servicehus": "Palvelurakennus",
+                    "bastu": "Sauna",
+                    "skötrum": "Vauvanhoitohuone",
+                    "kök": "Keittiö",
+                    "gemensamGrill": "Yhteinen grilli",
+                    "matplatsUtomhus": "Ulkosyöntialue",
+                    "diskrum": "Astianpesuhuone",
+                    "dricksvatten": "Juomavesi",
+                    "kiosk": "Kioski"
+                }
+            },
+            "facts": {
+                "title": "Faktat",
+                "items": {
+                    "antalPlatser": "Paikkojen määrä",
+                    "areaPlatser": "Paikkojen alue",
+                    "andelElplatser": "Sähköpaikkojen osuus"
+                }
+            }
+        },
+        "cottagesPage": {
+            "title": "Mökit",
+            "description": "Koe rauhallisuus viehättävissä mökeissämme, jotka sijaitsevat keskellä kaunista luontoa. Mökkimme on käytännöllisesti sisustettu mukavaa oleskelua varten, ja niissä on perusvarustetut keittiöt yksinkertaisten aterioiden valmistamiseen sekä pääsy yhteisiin kylpyhuoneisiin palvelurakennuksessamme. Jokaisessa mökissä on terassi, jossa on pöytä ja tuolit, täydellinen ulkoateriointiin tai vain ympäröivän kauneuden nauttimiseen. Olipa tavoitteesi nauttia hiljaisuudesta tai tutustua paikallisiin nähtävyyksiin, mökkimme ovat täydellinen lähtökohta lomallesi. Pääsy yhteiseen suureen keittiöön ja lähellä oleviin palvelutiloihin takaa, että sinulla on kaikki tarvittava mieleenpainuvaa ja mukavaa oleskelua varten.",
+            "booking": {
+                "title": "Tee varaus",
+                "button": "Varaa nyt"
+            },
+            "amenities": {
+                "title": "Mukavuudet",
+                "items": {
+                    "wifi": "Wifi",
+                    "lcdTv": "LCD-TV",
+                    "privatePatio": "Yksityinen terassi",
+                    "wcInServiceHouse": "WC palvelurakennuksessa",
+                    "showerInServiceHouse": "Suihku palvelurakennuksessa",
+                    "saunaInServiceHouse": "Sauna palvelurakennuksessa",
+                    "babyChangingRoom": "Vauvanhoitohuone",
+                    "simpleKitchen": "Yksinkertainen keittiö mökissä",
+                    "sharedLargeKitchen": "Yhteinen suuri keittiö",
+                    "sharedGrill": "Yhteinen grilli"
+                }
+            },
+            "facts": {
+                "title": "Faktat",
+                "items": {
+                    "numberOfCottages": "Mökkien määrä",
+                    "cottageSize": "Mökkien koko",
+                    "numberOfBeds": "Vuoteiden määrä",
+                    "extraMattressOption": "Lisäpatjan mahdollisuus"
+                }
+            }
+        },
+        "hostelPage": {
+            "title": "Hostelli",
+            "description": "Hostellimme tarjoaa vain yksityisiä huoneita mukavaa ja turvallista oleskelua varten. Kahden yhteisen keittiön ansiosta vieraat voivat helposti valmistaa omia aterioita, ja ruokasali tarjoaa paikan mukaviin aterioihin yhdessä. Hostellissa on erilliset yhteiset kylpyhuoneet miehille ja naisille, jotka pidetään puhtaina ja kaikkien vieraiden käytettävissä. Lisäksi tarjolla on ulkoterassi, jossa voit rentoutua ja nauttia raikkaasta ilmasta. Hostellimme on täydellinen paikka niille, jotka etsivät edullista majoitusta ja mahdollisuutta tutustua uusiin ihmisiin ja kokea uusia elämyksiä.",
+            "booking": {
+                "title": "Tee varaus",
+                "button": "Varaa"
+            },
+            "amenities": {
+                "title": "Mukavuudet",
+                "items": {
+                    "wifi": "Wifi",
+                    "privateRooms": "Yksityiset huoneet",
+                    "sharedBathrooms": "Yhteiset kylpyhuoneet",
+                    "washingMachine": "Pesukone",
+                    "sharedKitchens": "Yhteiset keittiöt",
+                    "diningRoom": "Ruokasali",
+                    "tvRoom": "TV-huone",
+                    "outdoorTerrace": "Ulkoterassi"
+                }
+            },
+            "facts": {
+                "title": "Faktat",
+                "items": {
+                    "numberOfRooms": "Huoneiden määrä",
+                    "singleDoubleRooms": "Yhden/kahden hengen huoneet",
+                    "quadRooms": "Neljän hengen huoneet",
+                    "numberOfBathrooms": "Kylpyhuoneiden määrä",
+                    "numberOfKitchens": "Keittiöiden määrä",
+                    "extraPersonOption": "Lisähenkilön mahdollisuus (pyynnöstä)"
+                }
+            }
+        },
+        "campsiteMap": {
+            "button": "Avaa Alueen Kartta"
+        },
+        "bookingConditions": {
+            "button": "Avaa Varaus-ehdot"
+        }
+    },
+    "activitiesPage": {
+        "title": "Tekemistä...",
+        "description": "Tutustu kaikkiin hauskoihin ja jännittäviin aktiviteetteihin, joita Malnbaden tarjoaa.",
+        "activities": {
+            "beach": {
+                "title": "Ranta",
+                "description": "Nauti kauniista hiekkarannasta, jossa on aktiviteetteja koko perheelle."
+            },
+            "runningTrail": {
+                "title": "Kuntoilureitit",
+                "description": "Lähde lenkille tai rentouttavalle kävelylle kauniiden reittiemme varrelle."
+            },
+            "kayak": {
+                "title": "Kajakki",
+                "description": "Koe jännitys ja rauhoittava vesi meloessasi kajakilla Hudiksvallin rannikolla."
+            },
+            "miniGolf": {
+                "title": "Minigolf",
+                "description": "Testaa tarkkuuttasi ja pidä hauskaa perheen ja ystävien kanssa haastavalla minigolf-radallamme."
+            }
+        }
+    },
+    "restaurantPage": {
+        "welcome": "Tervetuloa",
+        "description": "Nauti hyvin valmistetusta ruoasta parhaassa aurinkopaikassa meren ja rannan taustalla. Tänä kesänä meillä on myös täynnä tapahtumakalenteri, jossa on trubaduureja, tietokilpailuiltoja ja after beach. Lisätietoja kesästä 2024 tulossa pian!",
+        "facebook": "Facebook",
+        "instagram": "Instagram",
+        "address": "Malnvägen 38, Hudiksvall 82450 Ruotsi",
+        "phone": "+46 70-544 11 59"
+    },
+    "openingHoursPage": {
+        "openingHours": {
+            "title": "Aukioloajat",
+            "reception": "Vastaanotto",
+            "minigolf": "Minigolf"
+        },
+        "contactUs": {
+            "title": "Ota yhteyttä",
+            "name": "Nimesi",
+            "email": "Sähköpostisi",
+            "message": "Viesti",
+            "send": "Lähetä"
+        },
+        "loading": "Ladataan..."
+    },
+    "bookingCountdown": {
+        "bookingOpens": "Varaukset alkavat",
+        "bookingOpensIn": "Varaukset alkavat",
+        "days": "päivää",
+        "hours": "T",
+        "minutes": "M",
+        "seconds": "S",
+        "bookingOpen": "Varaus avoinna",
+        "season": "Kausi",
+        "button": "Varaa nyt",
+        "closedForSeason": "Suljettu kaudelta",
+        "loading": "ladataan..."
+    }
+}

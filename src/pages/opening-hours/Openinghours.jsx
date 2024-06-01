@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 import contentfulClient from '../../contentfulClient';
 import { Box, Container, Typography, Grid, TextField, Button } from '@mui/material';
 import Lottie from 'react-lottie-player';
@@ -8,6 +9,7 @@ import checkmarkAnimation from '../../assets/lottie-animations/checkmark-animati
 import './Openinghours.css';
 
 function OpeningHours() {
+    const { t, i18n } = useTranslation();
     const [hoursData, setHoursData] = useState(null);
     const form = useRef();
 
@@ -19,12 +21,28 @@ function OpeningHours() {
     const [formStatus, setFormStatus] = useState('idle'); // 'idle', 'loading', 'sent'
 
     useEffect(() => {
-        contentfulClient.getEntry('2xiCKoDLdxacqubv36ei5r')
-            .then((entry) => {
-                setHoursData(entry.fields);
-            })
-            .catch(console.error);
-    }, []);
+        const fetchData = async () => {
+            try {
+                const locale = i18n.language === 'sv' || i18n.language === 'no' ? 'sv' : 'en'; // Adjust locale based on language
+                const response = await contentfulClient.getEntries({
+                    content_type: 'openingHours',
+                    locale: locale // Use the adjusted locale
+                });
+
+                if (response.items.length > 0) {
+                    const fields = response.items[0].fields;
+
+                    if (fields.openingHours && fields.openingHours.receptionHours && fields.openingHours.minigolfHours) {
+                        setHoursData(fields.openingHours);
+                    }
+                }
+            } catch (error) {
+                console.error('Error fetching data from Contentful:', error);
+            }
+        };
+
+        fetchData();
+    }, [i18n.language]);
 
     const sendEmail = (e) => {
         e.preventDefault();
@@ -37,7 +55,6 @@ function OpeningHours() {
 
         emailjs.sendForm('service_by9uo47', 'template_ynhwx15', form.current, 'XZ_pnDIfsRFsAprpA')
             .then((result) => {
-                console.log(result.text);
                 setFormStatus('sent');
                 setLottieAnimation({
                     animationData: checkmarkAnimation,
@@ -60,46 +77,50 @@ function OpeningHours() {
             <Container maxWidth="lg">
                 <Grid container spacing={4}>
                     <Grid item xs={12} md={6}>
-                        <Typography variant="h2" gutterBottom>Öppettider</Typography>
+                        <Typography variant="h2" gutterBottom>{t('openingHoursPage.openingHours.title')}</Typography>
                         {hoursData ? (
                             <>
-                                <Box sx={{ borderLeft: '5px solid rgba(11, 110, 73)', paddingLeft: 2 }}>
-                                    <Typography variant="h3" color='rgba(11, 110, 73)'>Reception</Typography>
-                                    {hoursData.openingHours.receptionHours.map((hour, index) => (
-                                        <Box mb={2} key={index}>
-                                            <Typography variant="h4" color='secondary.main'>
-                                                {hour.dateRange}
-                                            </Typography>
-                                            <Typography variant="h5">
-                                                {hour.description}
-                                            </Typography>
-                                            <Typography variant="body1">
-                                                {hour.note}
-                                            </Typography>
-                                        </Box>
-                                    ))}
-                                </Box>
-                                <Box sx={{ borderLeft: '5px solid rgba(11, 110, 73)', paddingLeft: 2 }}>
-                                    <Typography variant="h3" color='rgba(11, 110, 73)'>Minigolf</Typography>
-                                    {hoursData.openingHours.minigolfHours.map((hour, index) => (
-                                        <Box mb={2} key={index}>
-                                        <Typography variant="h4" color='secondary.main'>
-                                            {hour.dateRange}
-                                        </Typography>
-                                        <Typography variant="h5">
-                                            {hour.description}
-                                        </Typography>
-                                        <Typography variant="body1">
-                                            {hour.note}
-                                        </Typography>
+                                {hoursData.receptionHours && (
+                                    <Box sx={{ borderLeft: '5px solid rgba(11, 110, 73)', paddingLeft: 2 }}>
+                                        <Typography variant="h3" color='rgba(11, 110, 73)'>{t('openingHoursPage.openingHours.reception')}</Typography>
+                                        {hoursData.receptionHours.map((hour, index) => (
+                                            <Box mb={2} key={index}>
+                                                <Typography variant="h4" color='secondary.main'>
+                                                    {hour.dateRange}
+                                                </Typography>
+                                                <Typography variant="h5">
+                                                    {hour.description}
+                                                </Typography>
+                                                <Typography variant="body1">
+                                                    {hour.note}
+                                                </Typography>
+                                            </Box>
+                                        ))}
                                     </Box>
-                                    ))}
-                                </Box>
+                                )}
+                                {hoursData.minigolfHours && (
+                                    <Box sx={{ borderLeft: '5px solid rgba(11, 110, 73)', paddingLeft: 2 }}>
+                                        <Typography variant="h3" color='rgba(11, 110, 73)'>{t('openingHoursPage.openingHours.minigolf')}</Typography>
+                                        {hoursData.minigolfHours.map((hour, index) => (
+                                            <Box mb={2} key={index}>
+                                                <Typography variant="h4" color='secondary.main'>
+                                                    {hour.dateRange}
+                                                </Typography>
+                                                <Typography variant="h5">
+                                                    {hour.description}
+                                                </Typography>
+                                                <Typography variant="body1">
+                                                    {hour.note}
+                                                </Typography>
+                                            </Box>
+                                        ))}
+                                    </Box>
+                                )}
                             </>
-                        ) : <Typography>Loading...</Typography>}
+                        ) : <Typography>{t('openingHoursPage.loading')}</Typography>}
                     </Grid>
                     <Grid item xs={12} md={6} style={{ position: 'relative', display: 'none' }}>
-                        <Typography variant="h2" gutterBottom>Kontakta Oss</Typography>
+                        <Typography variant="h2" gutterBottom>{t('openingHoursPage.contactUs.title')}</Typography>
                         {lottieAnimation.animationData && (
                             <Lottie
                                 animationData={lottieAnimation.animationData}
@@ -127,11 +148,11 @@ function OpeningHours() {
                             />
                         )}
                         <form ref={form} onSubmit={sendEmail} noValidate autoComplete="off" className={`${formStatus === 'loading' || formStatus === 'sent' ? 'blur-effect' : ''}`} style={{ position: 'relative', zIndex: 1 }}>
-                            <TextField name="from_name" label="Ditt Namn" variant="outlined" fullWidth margin="normal" disabled={formStatus !== 'idle'} />
-                            <TextField name="user_email" label="Din Email" variant="outlined" fullWidth margin="normal" disabled={formStatus !== 'idle'} />
-                            <TextField name="message" label="Meddelande..." variant="outlined" fullWidth margin="normal" multiline rows={6} disabled={formStatus !== 'idle'} />
+                            <TextField name="from_name" label={t('openingHoursPage.contactUs.name')} variant="outlined" fullWidth margin="normal" disabled={formStatus !== 'idle'} />
+                            <TextField name="user_email" label={t('openingHoursPage.contactUs.email')} variant="outlined" fullWidth margin="normal" disabled={formStatus !== 'idle'} />
+                            <TextField name="message" label={t('openingHoursPage.contactUs.message')} variant="outlined" fullWidth margin="normal" multiline rows={6} disabled={formStatus !== 'idle'} />
                             <Button type="submit" variant="contained" color="primary" sx={{ mt: 2 }} disabled={formStatus !== 'idle'}>
-                                Skicka
+                                {t('openingHoursPage.contactUs.send')}
                             </Button>
                         </form>
                     </Grid>
