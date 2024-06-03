@@ -85,7 +85,7 @@ function Camping() {
         }}>
           <Grid container spacing={8} sx={{ display: 'flex', justifyContent: 'space-between' }}>
             <Grid item xs={12} md={7}>
-              <AnimatedSection direction='left' delay={0.2}>
+              <AnimatedSection direction='left' delay={0.2} noDelayOnMobile={true}>
                 <Typography variant="h2" component="h1" color="text.primary" gutterBottom>
                   {t('accommodation.campingPage.title')}
                 </Typography>
@@ -95,7 +95,7 @@ function Camping() {
               </AnimatedSection>
             </Grid>
             <Grid item xs={12} md={5}>
-              <AnimatedSection direction='right' delay={0.2}>
+              <AnimatedSection direction='right' delay={0.2} noDelayOnMobile={true}>
                 <Paper sx={{ 
                   padding: 4,
                   boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)',
@@ -112,7 +112,7 @@ function Camping() {
               </AnimatedSection>
             </Grid>
             <Grid item xs={12} md={6} mb={6}>
-              <AnimatedSection direction='left' delay={0.4}>
+              <AnimatedSection direction='left' delay={0.4} noDelayOnMobile={true}>
                 <Typography mb={2} variant="h5">{t('accommodation.campingPage.amenities.title')}</Typography>
                 <Grid container spacing={1}>
                   {amenities.map((amenity, index) => (
@@ -127,7 +127,7 @@ function Camping() {
               </AnimatedSection>
             </Grid>
             <Grid item xs={12} md={6}>
-              <AnimatedSection direction='right' delay={0.4}>
+              <AnimatedSection direction='right' delay={0.4} noDelayOnMobile={true}>
                 <Typography mb={2} variant="h5">{t('accommodation.campingPage.facts.title')}</Typography>
                 <Box>
                   {facts.map((fact) => (

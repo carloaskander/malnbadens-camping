@@ -1,7 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Grid, Card, CardContent, Typography, Button, Box, Container } from '@mui/material';
-
 import AnimatedSection from '../animated-section/AnimatedSection.jsx';
 
 // Importera bilder med olika storlekar
@@ -58,7 +57,7 @@ function AccommodationCard() {
           <Grid container spacing={2} justifyContent="center" alignItems="center">
             {accommodationOptions.map((option, index) => (
               <Grid item xs={12} sm={6} md={4} key={index}>
-                <AnimatedSection direction='right' delay={0.4 + index * 0.2}>
+                <AnimatedSection direction='right' delay={0.4 + index * 0.2} noDelayOnMobile={true}>
                   <Card 
                     sx={{
                       flexGrow: 1,

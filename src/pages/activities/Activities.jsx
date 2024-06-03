@@ -38,16 +38,16 @@ function Activities() {
       <Box sx={{ bgcolor: '#FAF6EE', minHeight: '100vh' }}>
         <Box sx={{ pt: 'calc(70px + 75px)', pb: 8, textAlign: 'center' }}>
           <Container maxWidth="lg">
-          <AnimatedSection direction="right">
-            <Typography variant="h2" gutterBottom>
-              {t('activitiesPage.title')}
-            </Typography>
-          </AnimatedSection>
-          <AnimatedSection direction="left" delay={0.2}>
-            <Typography sx={{ fontSize: '18px' }}>
-              {t('activitiesPage.description')}
-            </Typography>
-          </AnimatedSection>
+            <AnimatedSection direction="right">
+              <Typography variant="h2" gutterBottom>
+                {t('activitiesPage.title')}
+              </Typography>
+            </AnimatedSection>
+            <AnimatedSection direction="left" delay={0.2}>
+              <Typography sx={{ fontSize: '18px' }}>
+                {t('activitiesPage.description')}
+              </Typography>
+            </AnimatedSection>
           </Container>
         </Box>
         <Box sx={{ py: 8 }}>
@@ -55,7 +55,7 @@ function Activities() {
             <Grid container spacing={2} justifyContent="flex-start">
               {activities.map((activity, index) => (
                 <Grid item xs={12} sm={6} md={4} key={index}>
-                  <AnimatedSection direction='right' delay={0.4 + index * 0.2}>
+                  <AnimatedSection direction='right' delay={0.4 + index * 0.2} noDelayOnMobile={true}>
                     <Card>
                       <Box sx={{ position: 'relative', width: '100%', paddingTop: '56.25%', overflow: 'hidden' }}>
                         <CardMedia
