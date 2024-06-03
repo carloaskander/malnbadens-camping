@@ -5,8 +5,9 @@ import { Box, Typography, Container, Grid, Button, Paper, Icon } from '@mui/mate
 import PhotoGallery from "../../components/photo-gallery/PhotoGallery";
 import CottagePrices from "../../components/cottage-prices/CottagePrices";
 import BookingConditions from "../../components/booking-conditions/BookingConditions.jsx";
+import AnimatedSection from '../../components/animated-section/AnimatedSection.jsx';
 
-//Material UI Icons
+// Material UI Icon Imports
 import WifiIcon from '@mui/icons-material/Wifi';
 import TvIcon from '@mui/icons-material/Tv';
 import DeckIcon from '@mui/icons-material/Deck';
@@ -69,10 +70,11 @@ function Cottages() {
 
     return (
         <Box sx={{ marginTop: 8, minHeight: '100vh' }}>
-            <Box mb={6}>
-                <PhotoGallery images={imageUrls} />
-            </Box>
-
+            <AnimatedSection direction="right">
+                <Box sx={{ backgroundColor: '#faf6ee' }}>
+                    <PhotoGallery images={imageUrls} />
+                </Box>
+            </AnimatedSection>
             <Container maxWidth="lg">
                 <Container sx={{ 
                     padding: '30px', 
@@ -81,51 +83,63 @@ function Cottages() {
                 }}>                    
                     <Grid container spacing={8} sx={{ display: 'flex', justifyContent: 'space-between' }}>
                         <Grid item xs={12} md={7}>
-                            <Typography variant="h2" component="h1" color="text.primary" gutterBottom>
-                                {t('accommodation.cottagesPage.title')}
-                            </Typography>
-                            <Typography variant="body2" paragraph>
-                                {t('accommodation.cottagesPage.description')}
-                            </Typography>
+                            <AnimatedSection direction="left" delay={0.2}>
+                                <Typography variant="h2" component="h1" color="text.primary" gutterBottom>
+                                    {t('accommodation.cottagesPage.title')}
+                                </Typography>
+                                <Typography variant="body2" paragraph>
+                                    {t('accommodation.cottagesPage.description')}
+                                </Typography>
+                            </AnimatedSection>
                         </Grid>
                         <Grid item xs={12} md={5}>
-                            <Paper sx={{ 
-                                padding: 4,
-                                boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)',
-                            }}>
-                                <Typography mb={3} variant="h3">{t('accommodation.cottagesPage.booking.title')}</Typography>
-                                <Button href='https://bokning4.paxess.se/malnbaden2' target='_blank' variant="contained" sx={{ width: '100%', mb: 2 }}>
-                                    {t('accommodation.cottagesPage.booking.button')}
-                                </Button>
-                            </Paper>
+                            <AnimatedSection direction="right" delay={0.2}>
+                                <Paper sx={{ 
+                                    padding: 4,
+                                    boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)',
+                                }}>
+                                    <Typography mb={3} variant="h3">{t('accommodation.cottagesPage.booking.title')}</Typography>
+                                    <Button href='https://bokning4.paxess.se/malnbaden2' target='_blank' variant="contained" sx={{ width: '100%', mb: 2 }}>
+                                        {t('accommodation.cottagesPage.booking.button')}
+                                    </Button>
+                                </Paper>
+                            </AnimatedSection>
                         </Grid>
                         <Grid item xs={12} md={6} mb={6}>
-                            <Typography mb={2} variant="h5">{t('accommodation.cottagesPage.amenities.title')}</Typography>
-                            <Grid container spacing={1}>
-                                {amenities.map((amenity, index) => (
-                                <Grid item xs={12} sm={6} key={index}> {/* xs=12 för full bredd på små skärmar, sm=6 för halv bredd på större skärmar */}
-                                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                                    <ColoredIcon icon={amenity.icon} color='#D66B27' />
-                                    <Typography variant="h6" sx={{ color: 'primary.main' }}>{amenity.name}</Typography>
-                                    </Box>
+                            <AnimatedSection direction="left" delay={0.4}>
+                                <Typography mb={2} variant="h5">{t('accommodation.cottagesPage.amenities.title')}</Typography>
+                                <Grid container spacing={1}>
+                                    {amenities.map((amenity, index) => (
+                                    <Grid item xs={12} sm={6} key={index}>
+                                        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                                        <ColoredIcon icon={amenity.icon} color='#D66B27' />
+                                        <Typography variant="h6" sx={{ color: 'primary.main' }}>{amenity.name}</Typography>
+                                        </Box>
+                                    </Grid>
+                                    ))}
                                 </Grid>
-                                ))}
-                            </Grid>
+                            </AnimatedSection>
                         </Grid>
                         <Grid item xs={12} md={6}>
-                            <Typography mb={2} variant="h5">{t('accommodation.cottagesPage.facts.title')}</Typography>
-                            <Box>
-                                {facts.map((fact) => (
-                                    <Box key={fact.name} sx={{ display: 'flex', alignItems: 'center', gap: 2, marginBottom: '8px' }}>
-                                        <ColoredIcon icon={fact.icon} color='#D66B27' />
-                                        <Typography variant='h6'>{`${fact.name}: ${fact.value}`}</Typography>
-                                    </Box>
-                                ))}
-                            </Box>
+                            <AnimatedSection direction="right" delay={0.4}>
+                                <Typography mb={2} variant="h5">{t('accommodation.cottagesPage.facts.title')}</Typography>
+                                <Box>
+                                    {facts.map((fact) => (
+                                        <Box key={fact.name} sx={{ display: 'flex', alignItems: 'center', gap: 2, marginBottom: '8px' }}>
+                                            <ColoredIcon icon={fact.icon} color='#D66B27' />
+                                            <Typography variant='h6'>{`${fact.name}: ${fact.value}`}</Typography>
+                                        </Box>
+                                    ))}
+                                </Box>
+                            </AnimatedSection>
                         </Grid>
                     </Grid>
-                    <CottagePrices/>
-                    <BookingConditions/>
+                    <AnimatedSection direction="left">
+                        <CottagePrices/>
+                    </AnimatedSection>
+                    <AnimatedSection direction="right">
+                        <BookingConditions/>
+                    </AnimatedSection>
                 </Container>
             </Container>
         </Box>

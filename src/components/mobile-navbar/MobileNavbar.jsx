@@ -16,6 +16,7 @@ import ExpandMore from '@mui/icons-material/ExpandMore';
 import CloseIcon from '@mui/icons-material/Close';
 import logo from '../../assets/images/logo/mbclogo-orange-transparent-horizontal-2.png';
 import LanguageSwitcher from '../language-switcher/LanguageSwitcher';
+import AnimatedSection from '../animated-section/AnimatedSection.jsx';
 
 function MobileNavbar() {
   const { t, i18n } = useTranslation();
@@ -130,17 +131,23 @@ function MobileNavbar() {
   return (
     <AppBar position="fixed">
       <Toolbar style={{ justifyContent: 'space-between', minHeight: '70px' }}>
-        <img src={logo} alt="Logo" style={{ height: '70px', width: 'auto' }} />
+        <AnimatedSection direction="left">
+          <img src={logo} alt="Logo" style={{ height: '70px', width: 'auto' }} />
+        </AnimatedSection>
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-          <LanguageSwitcher />
-          <IconButton
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            onClick={toggleDrawer(true)}
-          >
-            <MenuIcon />
-          </IconButton>
+          <AnimatedSection direction="right">
+            <LanguageSwitcher />
+          </AnimatedSection>
+          <AnimatedSection direction="right" delay={0.2}>
+            <IconButton
+              edge="start"
+              color="inherit"
+              aria-label="menu"
+              onClick={toggleDrawer(true)}
+            >
+              <MenuIcon />
+            </IconButton>
+          </AnimatedSection>
         </Box>
         <Drawer
           anchor="right"

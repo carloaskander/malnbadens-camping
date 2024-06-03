@@ -1,0 +1,7 @@
+.image-gallery-slide img {
+    height: 500px;
+}
+
+.fullscreen .image-gallery-slide img {
+    height: 70vh;
+}

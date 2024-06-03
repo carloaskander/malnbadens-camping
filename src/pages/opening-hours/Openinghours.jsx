@@ -6,6 +6,7 @@ import Lottie from 'react-lottie-player';
 import emailjs from 'emailjs-com'; // Import emailjs
 import loadingAnimation from '../../assets/lottie-animations/loading-animation.json'; // Import loading animation
 import checkmarkAnimation from '../../assets/lottie-animations/checkmark-animation.json'; // Import checkmark animation
+import AnimatedSection from '../../components/animated-section/AnimatedSection.jsx';
 import './Openinghours.css';
 
 function OpeningHours() {
@@ -77,84 +78,93 @@ function OpeningHours() {
             <Container maxWidth="lg">
                 <Grid container spacing={4}>
                     <Grid item xs={12} md={6}>
-                        <Typography variant="h2" gutterBottom>{t('openingHoursPage.openingHours.title')}</Typography>
-                        {hoursData ? (
-                            <>
-                                {hoursData.receptionHours && (
-                                    <Box sx={{ borderLeft: '5px solid rgba(11, 110, 73)', paddingLeft: 2 }}>
-                                        <Typography variant="h3" color='rgba(11, 110, 73)'>{t('openingHoursPage.openingHours.reception')}</Typography>
-                                        {hoursData.receptionHours.map((hour, index) => (
-                                            <Box mb={2} key={index}>
-                                                <Typography variant="h4" color='secondary.main'>
-                                                    {hour.dateRange}
-                                                </Typography>
-                                                <Typography variant="h5">
-                                                    {hour.description}
-                                                </Typography>
-                                                <Typography variant="body1">
-                                                    {hour.note}
-                                                </Typography>
-                                            </Box>
-                                        ))}
-                                    </Box>
-                                )}
-                                {hoursData.minigolfHours && (
-                                    <Box sx={{ borderLeft: '5px solid rgba(11, 110, 73)', paddingLeft: 2 }}>
-                                        <Typography variant="h3" color='rgba(11, 110, 73)'>{t('openingHoursPage.openingHours.minigolf')}</Typography>
-                                        {hoursData.minigolfHours.map((hour, index) => (
-                                            <Box mb={2} key={index}>
-                                                <Typography variant="h4" color='secondary.main'>
-                                                    {hour.dateRange}
-                                                </Typography>
-                                                <Typography variant="h5">
-                                                    {hour.description}
-                                                </Typography>
-                                                <Typography variant="body1">
-                                                    {hour.note}
-                                                </Typography>
-                                            </Box>
-                                        ))}
-                                    </Box>
-                                )}
-                            </>
-                        ) : <Typography>{t('openingHoursPage.loading')}</Typography>}
+                        <AnimatedSection direction="left">
+                            <Typography variant="h2" gutterBottom>{t('openingHoursPage.openingHours.title')}</Typography>
+                        </AnimatedSection>
+                        <AnimatedSection direction="left">
+                            {hoursData ? (
+                                <>
+                                    {hoursData.receptionHours && (
+                                        <Box sx={{ borderLeft: '5px solid rgba(11, 110, 73)', paddingLeft: 2 }}>
+                                            <Typography variant="h3" color='rgba(11, 110, 73)'>{t('openingHoursPage.openingHours.reception')}</Typography>
+                                            {hoursData.receptionHours.map((hour, index) => (
+                                                <Box mb={2} key={index}>
+                                                    <Typography variant="h4" color='secondary.main'>
+                                                        {hour.dateRange}
+                                                    </Typography>
+                                                    <Typography variant="h5">
+                                                        {hour.description}
+                                                    </Typography>
+                                                    <Typography variant="body1">
+                                                        {hour.note}
+                                                    </Typography>
+                                                </Box>
+                                            ))}
+                                        </Box>
+                                    )}
+                                    {hoursData.minigolfHours && (
+                                        <Box sx={{ borderLeft: '5px solid rgba(11, 110, 73)', paddingLeft: 2 }}>
+                                            <Typography variant="h3" color='rgba(11, 110, 73)'>{t('openingHoursPage.openingHours.minigolf')}</Typography>
+                                            {hoursData.minigolfHours.map((hour, index) => (
+                                                <Box mb={2} key={index}>
+                                                    <Typography variant="h4" color='secondary.main'>
+                                                        {hour.dateRange}
+                                                    </Typography>
+                                                    <Typography variant="h5">
+                                                        {hour.description}
+                                                    </Typography>
+                                                    <Typography variant="body1">
+                                                        {hour.note}
+                                                    </Typography>
+                                                </Box>
+                                            ))}
+                                        </Box>
+                                    )}
+                                </>
+                            ) : <Typography>{t('openingHoursPage.loading')}</Typography>}
+                        </AnimatedSection>
                     </Grid>
-                    <Grid item xs={12} md={6} style={{ position: 'relative', display: 'none' }}>
-                        <Typography variant="h2" gutterBottom>{t('openingHoursPage.contactUs.title')}</Typography>
-                        {lottieAnimation.animationData && (
-                            <Lottie
-                                animationData={lottieAnimation.animationData}
-                                play={lottieAnimation.play}
-                                loop={false}
-                                style={{
-                                    position: 'absolute',
-                                    top: '50%',
-                                    left: '50%',
-                                    transform: 'translate(-50%, -50%)',
-                                    width: '150px',
-                                    height: '150px',
-                                    zIndex: 10, // Highest, to keep animation on top
-                                }}
-                                onComplete={() => {
-                                    if (formStatus === 'sent' || formStatus === 'loading') {
-                                        setFormStatus('idle');
-                                        setLottieAnimation({
-                                            animationData: null,
-                                            play: true,
-                                            loop: false
-                                        });                                        
-                                    }
-                                }}
-                            />
-                        )}
-                        <form ref={form} onSubmit={sendEmail} noValidate autoComplete="off" className={`${formStatus === 'loading' || formStatus === 'sent' ? 'blur-effect' : ''}`} style={{ position: 'relative', zIndex: 1 }}>
-                            <TextField name="from_name" label={t('openingHoursPage.contactUs.name')} variant="outlined" fullWidth margin="normal" disabled={formStatus !== 'idle'} />
-                            <TextField name="user_email" label={t('openingHoursPage.contactUs.email')} variant="outlined" fullWidth margin="normal" disabled={formStatus !== 'idle'} />
-                            <TextField name="message" label={t('openingHoursPage.contactUs.message')} variant="outlined" fullWidth margin="normal" multiline rows={6} disabled={formStatus !== 'idle'} />
-                            <Button type="submit" variant="contained" color="primary" sx={{ mt: 2 }} disabled={formStatus !== 'idle'}>
-                                {t('openingHoursPage.contactUs.send')}
-                            </Button>
-                        </form>
+                    <Grid item xs={12} md={6}>
+                        {/* Uncomment and use when needed */}
+                        {/* <AnimatedSection direction="right">
+                            <Typography variant="h2" gutterBottom>{t('openingHoursPage.contactUs.title')}</Typography>
+                        </AnimatedSection>
+                        <AnimatedSection direction="right">
+                            {lottieAnimation.animationData && (
+                                <Lottie
+                                    animationData={lottieAnimation.animationData}
+                                    play={lottieAnimation.play}
+                                    loop={false}
+                                    style={{
+                                        position: 'absolute',
+                                        top: '50%',
+                                        left: '50%',
+                                        transform: 'translate(-50%, -50%)',
+                                        width: '150px',
+                                        height: '150px',
+                                        zIndex: 10, // Highest, to keep animation on top
+                                    }}
+                                    onComplete={() => {
+                                        if (formStatus === 'sent' || formStatus === 'loading') {
+                                            setFormStatus('idle');
+                                            setLottieAnimation({
+                                                animationData: null,
+                                                play: true,
+                                                loop: false
+                                            });                                        
+                                        }
+                                    }}
+                                />
+                            )} */}
+                            {/* <form ref={form} onSubmit={sendEmail} noValidate autoComplete="off" className={`${formStatus === 'loading' || formStatus === 'sent' ? 'blur-effect' : ''}`} style={{ position: 'relative', zIndex: 1 }}>
+                                <TextField name="from_name" label={t('openingHoursPage.contactUs.name')} variant="outlined" fullWidth margin="normal" disabled={formStatus !== 'idle'} />
+                                <TextField name="user_email" label={t('openingHoursPage.contactUs.email')} variant="outlined" fullWidth margin="normal" disabled={formStatus !== 'idle'} />
+                                <TextField name="message" label={t('openingHoursPage.contactUs.message')} variant="outlined" fullWidth margin="normal" multiline rows={6} disabled={formStatus !== 'idle'} />
+                                <Button type="submit" variant="contained" color="primary" sx={{ mt: 2 }} disabled={formStatus !== 'idle'}>
+                                    {t('openingHoursPage.contactUs.send')}
+                                </Button>
+                            </form> */}
+                        {/* </AnimatedSection> */}
                     </Grid>
                 </Grid>
             </Container>

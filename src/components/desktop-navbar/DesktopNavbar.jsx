@@ -9,12 +9,12 @@ import Container from '@mui/material/Container';
 import IconButton from '@mui/material/IconButton';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import MenuIcon from '@mui/icons-material/Menu';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import logo from '../../assets/images/logo/mbclogo-orange-transparent-horizontal-2.png';
 import { useTheme } from '@mui/material/styles';
 import LanguageSwitcher from '../language-switcher/LanguageSwitcher';
+import AnimatedSection from '../animated-section/AnimatedSection.jsx';
 
 function DesktopNavbar() {
   const { t, i18n } = useTranslation();
@@ -41,18 +41,26 @@ function DesktopNavbar() {
       <AppBar position="fixed">
         <Container maxWidth="lg">
           <Toolbar sx={{ justifyContent: 'space-between', minHeight: '70px' }}>
-            <img src={logo} alt="Logo" style={{ height: '70px', width: 'auto' }} />
+            <AnimatedSection direction="left">
+              <img src={logo} alt="Logo" style={{ height: '70px', width: 'auto' }} />
+            </AnimatedSection>
             <Box display="flex" alignItems="center">
-              <LanguageSwitcher />
-              <Typography component={Link} to={generateLink('/home')} sx={{ fontSize: '1.25rem', letterSpacing: '1px', fontFamily: 'Bebas Neue, Arial, Helvetica', margin: '20px', textDecoration: 'none', color: 'inherit' }}>{t('navbar.home')}</Typography>
-              <IconButton
-                aria-describedby={id}
-                onMouseEnter={handleAccommodationHover}
-                sx={{ justifyContent: 'flex-start', minWidth: '150px', marginRight: 2, color: 'text.secondary', fontSize: '1.25rem', letterSpacing: '1px', fontFamily: 'Bebas Neue, Arial, Helvetica' }}
-              >
-                {t('navbar.accommodation.title')}
-                {open ? <ExpandLessIcon /> : <ExpandMoreIcon />}
-              </IconButton>
+              <AnimatedSection direction="right">
+                <LanguageSwitcher />
+              </AnimatedSection>
+              <AnimatedSection direction="right" delay={0.2}>
+                <Typography component={Link} to={generateLink('/home')} sx={{ fontSize: '1.25rem', letterSpacing: '1px', fontFamily: 'Bebas Neue, Arial, Helvetica', margin: '20px', textDecoration: 'none', color: 'inherit' }}>{t('navbar.home')}</Typography>
+              </AnimatedSection>
+              <AnimatedSection direction="right" delay={0.4}>
+                <IconButton
+                  aria-describedby={id}
+                  onMouseEnter={handleAccommodationHover}
+                  sx={{ justifyContent: 'flex-start', minWidth: '150px', marginRight: 2, color: 'text.secondary', fontSize: '1.25rem', letterSpacing: '1px', fontFamily: 'Bebas Neue, Arial, Helvetica' }}
+                >
+                  {t('navbar.accommodation.title')}
+                  {open ? <ExpandLessIcon /> : <ExpandMoreIcon />}
+                </IconButton>
+              </AnimatedSection>
               <Menu
                 id="accommodation-menu"
                 anchorEl={anchorEl}
@@ -71,9 +79,15 @@ function DesktopNavbar() {
                 <MenuItem onClick={handleClose} component={Link} to={generateLink('/accommodation/cottages')} sx={{ color: 'text.secondary', fontSize: '1.25rem', letterSpacing: '1px', fontFamily: 'Bebas Neue, Arial, Helvetica' }}>{t('navbar.accommodation.cottages')}</MenuItem>
                 <MenuItem onClick={handleClose} component={Link} to={generateLink('/accommodation/hostel')} sx={{ color: 'text.secondary', fontSize: '1.25rem', letterSpacing: '1px', fontFamily: 'Bebas Neue, Arial, Helvetica' }}>{t('navbar.accommodation.hostel')}</MenuItem>
               </Menu>
-              <Typography component={Link} to={generateLink('/activities')} sx={{ marginRight: '20px', textDecoration: 'none', color: 'inherit', fontSize: '1.25rem', letterSpacing: '1px', fontFamily: 'Bebas Neue, Arial, Helvetica' }}>{t('navbar.activities')}</Typography>
-              <Typography component={Link} to={generateLink('/restaurant')} sx={{ marginRight: '20px', textDecoration: 'none', color: 'inherit', fontSize: '1.25rem', letterSpacing: '1px', fontFamily: 'Bebas Neue, Arial, Helvetica' }}>{t('navbar.restaurant')}</Typography>
-              <Typography component={Link} to={generateLink('/opening-hours')} sx={{ textDecoration: 'none', color: 'inherit', fontSize: '1.25rem', letterSpacing: '1px', fontFamily: 'Bebas Neue, Arial, Helvetica' }}>{t('navbar.openingHours')}</Typography>
+              <AnimatedSection direction="right" delay={0.6}>
+                <Typography component={Link} to={generateLink('/activities')} sx={{ marginRight: '20px', textDecoration: 'none', color: 'inherit', fontSize: '1.25rem', letterSpacing: '1px', fontFamily: 'Bebas Neue, Arial, Helvetica' }}>{t('navbar.activities')}</Typography>
+              </AnimatedSection>
+              <AnimatedSection direction="right" delay={0.8}>
+                <Typography component={Link} to={generateLink('/restaurant')} sx={{ marginRight: '20px', textDecoration: 'none', color: 'inherit', fontSize: '1.25rem', letterSpacing: '1px', fontFamily: 'Bebas Neue, Arial, Helvetica' }}>{t('navbar.restaurant')}</Typography>
+              </AnimatedSection>
+              <AnimatedSection direction="right" delay={1.0}>
+                <Typography component={Link} to={generateLink('/opening-hours')} sx={{ textDecoration: 'none', color: 'inherit', fontSize: '1.25rem', letterSpacing: '1px', fontFamily: 'Bebas Neue, Arial, Helvetica' }}>{t('navbar.openingHours')}</Typography>
+              </AnimatedSection>
             </Box>
           </Toolbar>
         </Container>

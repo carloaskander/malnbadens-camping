@@ -5,6 +5,7 @@ import parse from 'html-react-parser';
 import heroVideo from '../../assets/images/hero/malnbaden-drone-video.mp4';
 import heroVideoPoster from '../../assets/images/hero/malnbaden-drone-video-poster.webp';
 import BookingCountdown from '../booking-countdown/BookingCountdown';
+import AnimatedSection from '../animated-section/AnimatedSection';
 
 function Hero() {
   const { t } = useTranslation();
@@ -72,35 +73,41 @@ function Hero() {
           justifyContent: { xs: 'flex-end', lg: 'center' },
         }}
       >
-        <Typography
-          color="text.secondary"
-          component='h2'
-          variant="h5"
-          sx={{ 
-            fontSize: { xs: '1.25rem', sm: '1.75rem', md: '2rem', lg: '2.5rem' },
-            textAlign: 'left',
-            maxWidth: 'none',  // Ensures text aligns within the Container
-          }}
-        >
-          {t('hero.subtitle')}
-        </Typography>
-        <Typography
-          color="text.secondary"
-          variant="h1"
-          sx={{
-            fontSize: {
-              xs: '4rem',
-              sm: '5rem',
-              md: '6rem',
-              lg: '8rem',
-            },
-            textAlign: 'left',
-            maxWidth: 'none',  // Ensures text aligns within the Container
-          }}
-        >
-          {parse(t('hero.title'))}
-        </Typography>
-        <BookingCountdown />
+        <AnimatedSection direction='left'>
+          <Typography
+            color="text.secondary"
+            component='h2'
+            variant="h5"
+            sx={{ 
+              fontSize: { xs: '1.25rem', sm: '1.75rem', md: '2rem', lg: '2.5rem' },
+              textAlign: 'left',
+              maxWidth: 'none',  // Ensures text aligns within the Container
+            }}
+          >
+            {t('hero.subtitle')}
+          </Typography>
+        </AnimatedSection>
+        <AnimatedSection direction='right' delay={0.2}>
+          <Typography
+            color="text.secondary"
+            variant="h1"
+            sx={{
+              fontSize: {
+                xs: '4rem',
+                sm: '5rem',
+                md: '6rem',
+                lg: '8rem',
+              },
+              textAlign: 'left',
+              maxWidth: 'none',  // Ensures text aligns within the Container
+            }}
+          >
+            {parse(t('hero.title'))}
+          </Typography>
+        </AnimatedSection>
+        <AnimatedSection direction='left' delay={0.4}>
+          <BookingCountdown />
+        </AnimatedSection>
       </Container>
     </Box>
   );

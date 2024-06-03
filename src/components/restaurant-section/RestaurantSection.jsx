@@ -2,6 +2,9 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Box, Typography, Button, Grid, Container } from '@mui/material';
 import LazyLoad from 'react-lazyload';
+
+import AnimatedSection from '../animated-section/AnimatedSection.jsx';
+
 import restaurantImage1 from '../../assets/images/restaurant/restaurant-sign.jpg';
 import restaurantImage2 from '../../assets/images/restaurant/restaurant-food-bbq.jpg';
 
@@ -44,41 +47,43 @@ function RestaurantSection() {
   ];
 
   return (
-    <Box sx={{ py: 8, px: 2, textAlign: 'center', position: 'relative', overflow: 'hidden' }}>
-      <Container maxWidth="lg">
-        <Grid container spacing={2} justifyContent="center" alignItems="center">
-          {/* Text Content */}
-          <Grid item xs={12} md={6}>
-            <Typography variant="h3">
-              {t('restaurantSection.title')}
-            </Typography>
-            <Typography variant='h5' gutterBottom>
-              {t('restaurantSection.subtitle')}
-            </Typography>
-            <Typography sx={{ mb: 3 }}>
-              {t('restaurantSection.description')}
-            </Typography>
-            <Button variant="contained" href='/restaurant'>
-              {t('restaurantSection.button')}
-            </Button>
+    <AnimatedSection direction='right'>
+      <Box sx={{ py: 8, px: 2, textAlign: 'center', position: 'relative', overflow: 'hidden' }}>
+        <Container maxWidth="lg">
+          <Grid container spacing={2} justifyContent="center" alignItems="center">
+            {/* Text Content */}
+            <Grid item xs={12} md={6}>
+              <Typography variant="h3">
+                {t('restaurantSection.title')}
+              </Typography>
+              <Typography variant='h5' gutterBottom>
+                {t('restaurantSection.subtitle')}
+              </Typography>
+              <Typography sx={{ mb: 3 }}>
+                {t('restaurantSection.description')}
+              </Typography>
+              <Button variant="contained" href='/restaurant'>
+                {t('restaurantSection.button')}
+              </Button>
+            </Grid>
+            {/* Image Container */}
+            <Grid item xs={12} md={6} mb={12} sx={{ position: 'relative', height: '500px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+              {images.map((image, index) => (
+                <LazyLoad key={index} once offset={200} placeholder={<Box sx={{ height: 300, backgroundColor: 'grey.200' }} />}>
+                  <Box
+                    sx={{
+                      ...image.style,
+                      backgroundImage: `url(${image.src})`,
+                      backgroundRepeat: 'no-repeat',
+                    }}
+                  />
+                </LazyLoad>
+              ))}
+            </Grid>
           </Grid>
-          {/* Image Container */}
-          <Grid item xs={12} md={6} mb={12} sx={{ position: 'relative', height: '500px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-            {images.map((image, index) => (
-              <LazyLoad key={index} once offset={200} placeholder={<Box sx={{ height: 300, backgroundColor: 'grey.200' }} />}>
-                <Box
-                  sx={{
-                    ...image.style,
-                    backgroundImage: `url(${image.src})`,
-                    backgroundRepeat: 'no-repeat',
-                  }}
-                />
-              </LazyLoad>
-            ))}
-          </Grid>
-        </Grid>
-      </Container>
-    </Box>
+        </Container>
+      </Box>
+    </AnimatedSection>
   );
 }
 

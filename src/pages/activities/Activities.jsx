@@ -4,7 +4,8 @@ import { Box, Grid, Container, Card, CardMedia, CardContent, Typography } from '
 import beachSoccerImage from '../../assets/images/beach/beach-soccer.webp';
 import runningTrailImage from '../../assets/images/activities/running-trail.jpg';
 import kayakImage from '../../assets/images/activities/kayak.jpg';
-import miniGolfImage from '../../assets/images/activities/minigolf.jpeg'; // Importera minigolf bilden
+import miniGolfImage from '../../assets/images/activities/minigolf.jpeg';
+import AnimatedSection from '../../components/animated-section/AnimatedSection.jsx'; // Importera AnimatedSection
 
 function Activities() {
   const { t } = useTranslation();
@@ -37,12 +38,16 @@ function Activities() {
       <Box sx={{ bgcolor: '#FAF6EE', minHeight: '100vh' }}>
         <Box sx={{ pt: 'calc(70px + 75px)', pb: 8, textAlign: 'center' }}>
           <Container maxWidth="lg">
+          <AnimatedSection direction="right">
             <Typography variant="h2" gutterBottom>
               {t('activitiesPage.title')}
             </Typography>
+          </AnimatedSection>
+          <AnimatedSection direction="left" delay={0.2}>
             <Typography sx={{ fontSize: '18px' }}>
               {t('activitiesPage.description')}
             </Typography>
+          </AnimatedSection>
           </Container>
         </Box>
         <Box sx={{ py: 8 }}>
@@ -50,9 +55,9 @@ function Activities() {
             <Grid container spacing={2} justifyContent="flex-start">
               {activities.map((activity, index) => (
                 <Grid item xs={12} sm={6} md={4} key={index}>
-                  <Card>
-                    <Box sx={{ position: 'relative', width: '100%', paddingTop: '56.25%', overflow: 'hidden' }}>
-                      {activity.imageUrl ? (
+                  <AnimatedSection direction='right' delay={0.4 + index * 0.2}>
+                    <Card>
+                      <Box sx={{ position: 'relative', width: '100%', paddingTop: '56.25%', overflow: 'hidden' }}>
                         <CardMedia
                           component="img"
                           image={activity.imageUrl}
@@ -66,31 +71,17 @@ function Activities() {
                             objectFit: 'cover',
                           }}
                         />
-                      ) : (
-                        <CardMedia
-                          component="img"
-                          image={miniGolfImage} // Om activity.imageUrl saknas, använd minigolf bilden
-                          alt="Minigolf"
-                          sx={{
-                            position: 'absolute',
-                            top: 0,
-                            left: 0,
-                            width: '100%',
-                            height: '100%',
-                            objectFit: 'cover',
-                          }}
-                        />
-                      )}
-                    </Box>
-                    <CardContent>
-                      <Typography gutterBottom variant="h4" component="div">
-                        {activity.title}
-                      </Typography>
-                      <Typography sx={{ minHeight: '70px' }} variant="body2" component="div">
-                        {activity.description}
-                      </Typography>
-                    </CardContent>
-                  </Card>
+                      </Box>
+                      <CardContent>
+                        <Typography gutterBottom variant="h4" component="div">
+                          {activity.title}
+                        </Typography>
+                        <Typography sx={{ minHeight: '70px' }} variant="body2" component="div">
+                          {activity.description}
+                        </Typography>
+                      </CardContent>
+                    </Card>
+                  </AnimatedSection>
                 </Grid>
               ))}
             </Grid>

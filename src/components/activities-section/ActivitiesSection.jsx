@@ -3,6 +3,8 @@ import { useTranslation } from 'react-i18next';
 import LazyLoad from 'react-lazyload';
 import { Box, Typography, Button, Grid, Container } from '@mui/material';
 
+import AnimatedSection from '../animated-section/AnimatedSection.jsx';
+
 import beachDroneImage from '../../assets/images/beach/beach-drone.webp';
 import beachSoccerRestaurantImage from '../../assets/images/beach/beach-soccer-restaurant.webp';
 import runningTrailImage from '../../assets/images/activities/running-trail.jpg';
@@ -57,51 +59,54 @@ function ActivitiesSection() {
 
   return (
     <Box>
-      <Container maxWidth='lg'>
-        <Typography variant="h2" gutterBottom sx={{ mb: 8, textAlign: 'center' }}>
-        {t('activitiesSection.title')}
-        </Typography>
-        
-        {activities.map((activity, index) => (
-          <Grid container spacing={ {xs: 2, md: 10} } alignItems="center" direction={index % 2 === 0 ? 'row' : 'row-reverse'} key={index} mb={4}>
-                  <Grid item xs={12} md={6}>
-                    <Typography variant="h3" gutterBottom>
-                      {activity.title}
-                    </Typography>
-                    <Typography variant="body1">
-                      {activity.description}
-                    </Typography>
-                  </Grid>
-            <Grid item xs={12} md={6} mb={15} sx={{ position: 'relative', }}>
-              <LazyLoad once offset={200} placeholder={<Box sx={{ height: 300, backgroundColor: 'grey.200' }} />}>
-                <Box
-                  sx={{
-                    ...activity.imageStyle,
-                    backgroundImage: `url(${activity.imageUrl})`,
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center',
-                  }}
-                />
-                {activity.polaroid && (
+        <Container maxWidth='lg'>
+          <AnimatedSection direction='left'>
+            <Typography variant="h2" gutterBottom sx={{ mb: 8, textAlign: 'center' }}>
+              {t('activitiesSection.title')}
+            </Typography>
+          </AnimatedSection>
+          {activities.map((activity, index) => (
+            <Grid container spacing={ {xs: 2, md: 10} } alignItems="center" direction={index % 2 === 0 ? 'row' : 'row-reverse'} key={index} mb={4}>
+                      <Grid item xs={12} md={6}>
+                        <AnimatedSection direction='right'>
+                          <Typography variant="h3" gutterBottom>
+                            {activity.title}
+                          </Typography>
+                          <Typography variant="body1">
+                            {activity.description}
+                          </Typography>
+                        </AnimatedSection>
+                      </Grid>
+              <Grid item xs={12} md={6} mb={15} sx={{ position: 'relative', }}>
+                <LazyLoad once offset={200} placeholder={<Box sx={{ height: 300, backgroundColor: 'grey.200' }} />}>
                   <Box
                     sx={{
-                      ...activity.polaroid.style,
-                      backgroundImage: `url(${activity.polaroid.imageUrl})`,
-                      // Rest of the polaroid styles, make sure to add position: 'absolute' if you want to position it inside the relative container
-                      }}
+                      ...activity.imageStyle,
+                      backgroundImage: `url(${activity.imageUrl})`,
+                      backgroundSize: 'cover',
+                      backgroundPosition: 'center',
+                    }}
                   />
-                )}
-              </LazyLoad>
+                  {activity.polaroid && (
+                    <Box
+                      sx={{
+                        ...activity.polaroid.style,
+                        backgroundImage: `url(${activity.polaroid.imageUrl})`,
+                        // Rest of the polaroid styles, make sure to add position: 'absolute' if you want to position it inside the relative container
+                        }}
+                    />
+                  )}
+                </LazyLoad>
+              </Grid>
             </Grid>
-          </Grid>
-        ))}
-        <Box sx={{ display: 'flex', justifyContent: 'center', mt: 4 }}>
-          <Button variant='contained'>
-          {t('activitiesSection.button')}
-          </Button>
-        </Box>
-      </Container>
-    </Box>
+          ))}
+          <Box sx={{ display: 'flex', justifyContent: 'center', mt: 4 }}>
+            <Button variant='contained'>
+            {t('activitiesSection.button')}
+            </Button>
+          </Box>
+        </Container>
+      </Box>
   );
 }
 
