@@ -40,7 +40,7 @@ function Footer() {
                             </AnimatedSection>
                         </Grid>
                         <Grid item xs={12} sm={4}>
-                            <AnimatedSection direction='right'>
+                            <AnimatedSection direction='right' delay={0.2} noDelayOnMobile={true}>
                                 <Typography variant="h4">{t('footer.contact.title')}</Typography>
                                 <Box sx={{ display: 'flex', alignItems: 'center', mb: 1 }}>
                                     <LocationOn sx={{ mr: 1 }} />
@@ -57,7 +57,7 @@ function Footer() {
                             </AnimatedSection>
                         </Grid>
                         <Grid item xs={12} sm={4}>
-                            <AnimatedSection direction='right'>
+                            <AnimatedSection direction='right' delay={0.4} noDelayOnMobile={true}>
                                 <Typography variant="h4">{t('footer.socials.title')}</Typography>
                                 <IconButton component="a" href="https://www.facebook.com/p/Malnbadens-Camping-Vandrarhem-Hudiksvall-100053636355088/" target="_blank" color="inherit">
                                     <Facebook />
@@ -68,7 +68,7 @@ function Footer() {
                             </AnimatedSection>
                         </Grid>
                     </Grid>
-                    <AnimatedSection direction='right'>
+                    <AnimatedSection direction='right' delay={0.6} noDelayOnMobile={true}>
                         <Typography sx={{ pt: 3, textAlign: 'center' }} variant="body3">
                             © {new Date().getFullYear()} Malnbadens Camping. All rights reserved.
                         </Typography>

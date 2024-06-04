@@ -72,11 +72,9 @@ function Camping() {
 
   return (
     <Box sx={{ marginTop: 8, minHeight: '100vh' }}>
-      <AnimatedSection direction="right">
         <Box sx={{ backgroundColor: '#faf6ee' }}>
           <PhotoGallery images={imageUrls} />
         </Box>
-      </AnimatedSection>
       <Container maxWidth="lg">
         <Container sx={{ 
           padding: '30px', 

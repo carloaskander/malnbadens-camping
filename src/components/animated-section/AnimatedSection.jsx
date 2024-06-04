@@ -45,7 +45,7 @@ const AnimatedSection = ({ children, direction = 'left', delay = 0, noDelayOnMob
     };
 
     return (
-        <Box ref={ref}>
+        <Box sx={{ overflow: 'hidden' }} ref={ref}>
         <motion.div
             initial="hidden"
             animate={inView ? 'visible' : 'hidden'}
