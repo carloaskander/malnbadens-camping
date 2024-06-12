@@ -2,6 +2,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Box, Typography, Button, Grid, Container } from '@mui/material';
 import LazyLoad from 'react-lazyload';
+import { useNavigate } from 'react-router-dom';
 
 import AnimatedSection from '../animated-section/AnimatedSection.jsx';
 
@@ -9,7 +10,10 @@ import restaurantImage1 from '../../assets/images/restaurant/restaurant-sign.jpg
 import restaurantImage2 from '../../assets/images/restaurant/restaurant-food-bbq.jpg';
 
 function RestaurantSection() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const navigate = useNavigate();
+  const currentLanguage = i18n.language;
+
   const images = [
     {
       src: restaurantImage1,
@@ -46,6 +50,10 @@ function RestaurantSection() {
     // Add more images as needed
   ];
 
+  const handleClick = () => {
+    navigate(`/${currentLanguage}/restaurant`);
+  };
+
   return (
     <AnimatedSection direction='right'>
       <Box sx={{ py: 8, px: 2, textAlign: 'center', position: 'relative', overflow: 'hidden' }}>
@@ -62,7 +70,7 @@ function RestaurantSection() {
               <Typography sx={{ mb: 3 }}>
                 {t('restaurantSection.description')}
               </Typography>
-              <Button variant="contained" href='/restaurant'>
+              <Button variant="contained" onClick={handleClick}>
                 {t('restaurantSection.button')}
               </Button>
             </Grid>

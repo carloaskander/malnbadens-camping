@@ -1,5 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 import LazyLoad from 'react-lazyload';
 import { Box, Typography, Button, Grid, Container } from '@mui/material';
 
@@ -11,7 +12,14 @@ import runningTrailImage from '../../assets/images/activities/running-trail.jpg'
 
 
 function ActivitiesSection() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const navigate = useNavigate();
+  const currentLanguage = i18n.language;
+  
+  const handleClick = () => {
+    navigate(`/${currentLanguage}/activities`);
+  };
+
   const activities = [
     {
       title: t('activitiesSection.beach.title'),
@@ -101,7 +109,7 @@ function ActivitiesSection() {
             </Grid>
           ))}
           <Box sx={{ display: 'flex', justifyContent: 'center', mt: 4 }}>
-            <Button variant='contained'>
+            <Button variant='contained' onClick={handleClick}>
             {t('activitiesSection.button')}
             </Button>
           </Box>

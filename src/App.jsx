@@ -15,6 +15,7 @@ import Restaurant from './pages/restaurant/Restaurant';
 import Openinghours from './pages/opening-hours/Openinghours';
 import NotFound from './pages/not-found/NotFound';
 import Footer from './components/footer/Footer';
+import ScrollTopButton from './components/scroll-top-button/ScrollTopButton.jsx';
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
             {/* Other routes */}
           </Routes>
           <Footer />
+          <ScrollTopButton />
         </Router>
       </ThemeProvider>
     </>
