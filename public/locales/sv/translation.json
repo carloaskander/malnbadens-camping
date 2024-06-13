@@ -238,5 +238,12 @@
         "button": "Boka Nu",
         "closedForSeason": "Stängt för säsongen",
         "loading": "loading..."
+    }, 
+    "notFoundPage": {
+        "title": "Sidan hittades inte",
+        "subtitle": "Tyvärr kan vi inte hitta den sida du letar efter. Det kan bero på att sidan inte finns längre eller att en felaktig URL har angetts.",
+        "description": "En flitig programmerare sitter och jobbar för fullt bakom kulisserna för att kontinuerligt förbättra vår webbplats och ge dig en bättre användarupplevelse. Du kanske hittar sidan du letade efter genom att navigera på vår webbplats.",
+        "homeButton": "Hem",
+        "campingButton": "Camping"
     }
 }

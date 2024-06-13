@@ -238,5 +238,12 @@
         "button": "Jetzt buchen",
         "closedForSeason": "Geschlossen für die Saison",
         "loading": "lädt..."
+    },
+    "notFoundPage": {
+        "title": "Seite nicht gefunden",
+        "subtitle": "Leider können wir die Seite, die Sie suchen, nicht finden. Dies kann daran liegen, dass die Seite nicht mehr existiert oder eine falsche URL eingegeben wurde.",
+        "description": "Ein fleißiger Programmierer arbeitet hart hinter den Kulissen, um unsere Website kontinuierlich zu verbessern und Ihnen eine bessere Benutzererfahrung zu bieten. Sie finden möglicherweise die gesuchte Seite, indem Sie durch unsere Website navigieren.",
+        "homeButton": "Startseite",
+        "campingButton": "Camping"
     }
 }

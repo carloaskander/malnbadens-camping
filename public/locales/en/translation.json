@@ -238,5 +238,12 @@
         "button": "Book Now",
         "closedForSeason": "Closed for the season",
         "loading": "loading..."
+    },
+    "notFoundPage": {
+        "title": "Page Not Found",
+        "subtitle": "Unfortunately, we can't find the page you're looking for. It may be due to the page no longer existing or an incorrect URL being entered.",
+        "description": "A diligent programmer is working hard behind the scenes to continuously improve our website and give you a better user experience. You may find the page you were looking for by navigating through our website.",
+        "homeButton": "Home",
+        "campingButton": "Camping"
     }
 }

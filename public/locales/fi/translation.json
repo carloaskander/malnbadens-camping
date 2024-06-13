@@ -238,5 +238,12 @@
         "button": "Varaa nyt",
         "closedForSeason": "Suljettu kaudelta",
         "loading": "ladataan..."
+    },
+    "notFoundPage": {
+        "title": "Sivua ei löydy",
+        "subtitle": "Valitettavasti emme löydä etsimääsi sivua. Tämä voi johtua siitä, että sivua ei enää ole tai että URL-osoite on syötetty väärin.",
+        "description": "Ahkera ohjelmoija työskentelee kovasti kulissien takana parantaakseen jatkuvasti verkkosivustoamme ja tarjotakseen sinulle paremman käyttökokemuksen. Saatat löytää etsimäsi sivun navigoimalla verkkosivustomme kautta.",
+        "homeButton": "Koti",
+        "campingButton": "Leirintäalue"
     }
 }

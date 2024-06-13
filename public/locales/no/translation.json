@@ -238,5 +238,12 @@
         "button": "Book Nå",
         "closedForSeason": "Stengt for sesongen",
         "loading": "laster..."
+    },
+    "notFoundPage": {
+        "title": "Siden ble ikke funnet",
+        "subtitle": "Dessverre kan vi ikke finne siden du leter etter. Dette kan skyldes at siden ikke lenger eksisterer eller at en feil URL ble angitt.",
+        "description": "En flittig programmerer jobber hardt bak kulissene for kontinuerlig å forbedre nettstedet vårt og gi deg en bedre brukeropplevelse. Du kan finne siden du lette etter ved å navigere på nettstedet vårt.",
+        "homeButton": "Hjem",
+        "campingButton": "Camping"
     }
 }
