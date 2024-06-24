@@ -167,7 +167,6 @@
                 "items": {
                     "numberOfRooms": "Huoneiden määrä",
                     "singleDoubleRooms": "Yhden/kahden hengen huoneet",
-                    "quadRooms": "Neljän hengen huoneet",
                     "numberOfBathrooms": "Kylpyhuoneiden määrä",
                     "numberOfKitchens": "Keittiöiden määrä",
                     "extraPersonOption": "Lisähenkilön mahdollisuus (pyynnöstä)"

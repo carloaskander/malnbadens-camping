@@ -167,7 +167,6 @@
                 "items": {
                     "numberOfRooms": "Antall rom",
                     "singleDoubleRooms": "Enkelt-/Dobbeltrom",
-                    "quadRooms": "Firemannsrom",
                     "numberOfBathrooms": "Antall bad",
                     "numberOfKitchens": "Antall kjøkken",
                     "extraPersonOption": "Mulighet for ekstra person (ved forespørsel)"

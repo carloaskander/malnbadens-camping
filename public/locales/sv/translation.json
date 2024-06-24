@@ -167,7 +167,6 @@
                 "items": {
                     "numberOfRooms": "Antal rum",
                     "singleDoubleRooms": "Enkel/Dubbelrum",
-                    "quadRooms": "Fyrbäddsrum",
                     "numberOfBathrooms": "Antal badrum",
                     "numberOfKitchens": "Antal kök",
                     "extraPersonOption": "Möjlighet för extra person (vid förfrågan)"

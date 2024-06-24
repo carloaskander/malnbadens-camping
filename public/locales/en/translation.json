@@ -167,7 +167,6 @@
                 "items": {
                     "numberOfRooms": "Number of Rooms",
                     "singleDoubleRooms": "Single/Double Rooms",
-                    "quadRooms": "4-bed Rooms",
                     "numberOfBathrooms": "Number of Bathrooms",
                     "numberOfKitchens": "Number of Kitchens",
                     "extraPersonOption": "Possibility for Extra Person (on request)"

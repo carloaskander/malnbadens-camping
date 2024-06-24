@@ -58,7 +58,6 @@ function Hostel() {
     const facts = [
         { name: t('accommodation.hostelPage.facts.items.numberOfRooms'), value: "15", icon: <BedroomParentIcon /> },
         { name: t('accommodation.hostelPage.facts.items.singleDoubleRooms'), value: "12", icon: <BedroomChildIcon /> },
-        { name: t('accommodation.hostelPage.facts.items.quadRooms'), value: "3", icon: <BedroomParentIcon /> },
         { name: t('accommodation.hostelPage.facts.items.numberOfBathrooms'), value: "2", icon: <BathroomIcon /> },
         { name: t('accommodation.hostelPage.facts.items.numberOfKitchens'), value: "2", icon: <SoupKitchenIcon /> },
         { name: t('accommodation.hostelPage.facts.items.extraPersonOption'), value: "Ja", icon: <PersonAddIcon /> },
