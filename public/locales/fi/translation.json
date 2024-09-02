@@ -144,7 +144,7 @@
         },
         "hostelPage": {
             "title": "Hostelli",
-            "description": "Hostellimme tarjoaa vain yksityisiä huoneita mukavaa ja turvallista oleskelua varten. Kahden yhteisen keittiön ansiosta vieraat voivat helposti valmistaa omia aterioita, ja ruokasali tarjoaa paikan mukaviin aterioihin yhdessä. Hostellissa on erilliset yhteiset kylpyhuoneet miehille ja naisille, jotka pidetään puhtaina ja kaikkien vieraiden käytettävissä. Lisäksi tarjolla on ulkoterassi, jossa voit rentoutua ja nauttia raikkaasta ilmasta. Hostellimme on täydellinen paikka niille, jotka etsivät edullista majoitusta ja mahdollisuutta tutustua uusiin ihmisiin ja kokea uusia elämyksiä.",
+            "description": "Meidän tuore ja käytännöllinen hostellimme on ihanteellinen yrityksille, jotka haluavat varata majoitusta työntekijöilleen tai viikoittain pendelöiville tai pitkäaikaista majoitusta etsiville työntekijöille. Tarjoamme yksi- ja kahden hengen huoneita yhteisillä kylpyhuoneilla sekä kaksi keittiötä ja yhteisen huoneen, jossa on suuri televisio, joka on täydellinen rentoutumiseen työpäivän jälkeen. Meillä on runsaasti pysäköintitilaa. Hostelli sijaitsee 4 kilometrin päässä Hudiksvallin keskustasta, rauhallisella alueella mäntymetsän ympäröimänä, tarjoten erinomaiset mahdollisuudet juoksemiseen ja kävelyyn. Tarjoamme myös ilmaiset pyykinpesumahdollisuudet, joissa on pääsy pesukoneeseen ja kuivauskaappiin. Bussiyhteydet kaupunkiin ovat hyvät, ja lähin ruokakauppa on 2 kilometrin päässä, matkan varrella tänne.",
             "booking": {
                 "title": "Tee varaus",
                 "button": "Varaa"
@@ -213,6 +213,7 @@
     "openingHoursPage": {
         "openingHours": {
             "title": "Aukioloajat",
+            "description": "Turistikautemme leirintäalueella ja mökeissämme kestää toukokuun puolivälistä syyskuun loppuun. Hostellimme on kuitenkin varattavissa yritysasiakkaille ympäri vuoden, mikä sopii pidempiin oleskeluihin tai suurempiin varauksiin. Lisätietoja ja varauskyselyjä varten ota meihin yhteyttä osoitteessa info@malnbadenscamping.se.",
             "reception": "Vastaanotto",
             "minigolf": "Minigolf"
         },

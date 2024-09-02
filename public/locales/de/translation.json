@@ -144,7 +144,7 @@
         },
         "hostelPage": {
             "title": "Hostel",
-            "description": "Unser Hostel bietet nur private Zimmer für einen komfortablen und sicheren Aufenthalt. Mit Zugang zu zwei Gemeinschaftsküchen können Gäste leicht eigene Mahlzeiten zubereiten, während der Speisesaal einen Ort für gemeinsame Mahlzeiten bietet. Das Hostel verfügt über separate Gemeinschaftsbäder für Männer und Frauen, die sauber und für alle Gäste zugänglich gehalten werden. Darüber hinaus gibt es eine Außenterrasse, auf der Sie sich entspannen und die frische Luft genießen können. Unser Hostel ist der perfekte Ort für diejenigen, die einen preiswerten Aufenthalt mit der Möglichkeit, neue Bekanntschaften und Erlebnisse zu machen, suchen.",
+            "description": "Unsere frische und praktische Herberge ist ideal für Unternehmen, die Unterkünfte für ihre Mitarbeiter buchen möchten, oder für Arbeiter, die wöchentlich pendeln oder langfristige Aufenthalte suchen. Wir bieten Einzel- und Doppelzimmer mit Gemeinschaftsbädern sowie zwei Küchen und einen Gemeinschaftsraum mit Großbildfernseher, ideal zum Entspannen nach einem Arbeitstag. Es gibt ausreichend Parkplätze. Die Herberge liegt 4 Kilometer vom Zentrum von Hudiksvall entfernt, in einer ruhigen Gegend, umgeben von Kiefernwäldern, was hervorragende Möglichkeiten zum Laufen und Spazierengehen bietet. Wir bieten auch kostenlose Wäschemöglichkeiten mit Zugang zu Waschmaschine und Trockenschrank. Es gibt gute Busverbindungen in die Stadt, und der nächste Supermarkt ist 2 Kilometer entfernt, entlang der Straße zu uns.",
             "booking": {
                 "title": "Buchung vornehmen",
                 "button": "Buchen"
@@ -213,6 +213,7 @@
     "openingHoursPage": {
         "openingHours": {
             "title": "Öffnungszeiten",
+            "description": "Die Touristensaison auf unserem Campingplatz und in unseren Hütten dauert von Mitte Mai bis Ende September. Unser Hostel ist jedoch das ganze Jahr über für Geschäftsreisen buchbar und eignet sich für längere Aufenthalte oder größere Buchungen. Für weitere Informationen und Buchungsanfragen kontaktieren Sie uns bitte unter info@malnbadenscamping.se.",
             "reception": "Rezeption",
             "minigolf": "Minigolf"
         },

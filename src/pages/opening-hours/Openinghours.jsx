@@ -80,6 +80,9 @@ function OpeningHours() {
                     <Grid item xs={12} md={6}>
                         <AnimatedSection direction="left">
                             <Typography variant="h2" gutterBottom>{t('openingHoursPage.openingHours.title')}</Typography>
+                            <Typography variant="body1" sx={{ mb: 2 }}>
+                                {t('openingHoursPage.openingHours.description')}
+                            </Typography>
                         </AnimatedSection>
                         <AnimatedSection direction="left">
                             {hoursData ? (

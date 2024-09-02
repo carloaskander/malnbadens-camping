@@ -144,7 +144,7 @@
         },
         "hostelPage": {
             "title": "Vandrerhjem",
-            "description": "Vårt vandrerhjem tilbyr kun private rom for et komfortabelt og trygt opphold. Med tilgang til to felleskjøkken kan gjestene enkelt tilberede egne måltider, mens spisesalen tilbyr et sted for hyggelige måltider sammen. Vandrerhjemmet har separate fellesbad for menn og kvinner, som holdes rene og tilgjengelige for alle gjester. I tillegg finnes det en uteterrasse hvor du kan slappe av og nyte frisk luft. Vårt vandrerhjem er det perfekte stedet for deg som vil ha et rimelig opphold med mulighet for nye bekjentskaper og opplevelser.",
+            "description": "Vårt friske og praktiske vandrerhjem er ideelt for bedrifter som ønsker å bestille overnatting for sine ansatte eller arbeidere som pendler ukentlig eller søker langtidsopphold. Vi tilbyr enkelt- og dobbeltrom med delte bad, samt to kjøkken og et fellesrom med storskjerm-TV, perfekt for avslapning etter en arbeidsdag. Det er rikelig med parkeringsplass. Vandrerhjemmet ligger 4 kilometer fra sentrum av Hudiksvall, i et stille område omgitt av furuskog, som gir utmerkede muligheter for løping og turgåing. Vi tilbyr også gratis vaskemuligheter med tilgang til vaskemaskin og tørkeskap. Det er gode bussforbindelser til byen, og nærmeste matbutikk ligger 2 kilometer unna, langs veien hit.",
             "booking": {
                 "title": "Gjør en bestilling",
                 "button": "Book"
@@ -213,6 +213,7 @@
     "openingHoursPage": {
         "openingHours": {
             "title": "Åpningstider",
+            "description": "Turistsesongen på vår campingplass og i våre hytter strekker seg fra midten av mai til slutten av september. Vandrerhjemmet vårt er derimot tilgjengelig for bedriftsbestillinger hele året, noe som passer for lengre opphold eller større bestillinger. For mer informasjon og bookingforespørsler, vennligst kontakt oss på info@malnbadenscamping.se.",
             "reception": "Resepsjon",
             "minigolf": "Minigolf"
         },

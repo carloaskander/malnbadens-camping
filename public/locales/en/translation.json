@@ -144,7 +144,7 @@
         },
         "hostelPage": {
             "title": "Hostel",
-            "description": "Our hostel offers only private rooms for a comfortable and secure stay. With access to two shared kitchens, guests can easily prepare their own meals, while the dining room provides a place for pleasant meals together. The hostel has separate shared bathrooms for men and women, which are kept clean and accessible to all guests. Additionally, there is an outdoor terrace where you can relax and enjoy the fresh air. Our hostel is the perfect place for those seeking an affordable stay with opportunities for new acquaintances and experiences.",
+            "description": "Our fresh and practical hostel is ideal for companies looking to book accommodation for their employees or workers who commute weekly or seek long-term stays. We offer single and double rooms with shared bathrooms, as well as two kitchens and a common room with a big-screen TV, perfect for relaxing after a workday. There is plenty of parking space. The hostel is located 4 kilometers from the center of Hudiksvall, in a quiet area surrounded by pine forest, offering excellent opportunities for running and walking. We also offer free laundry facilities with access to a washing machine and drying cabinet. There are good bus connections to the city, and the nearest grocery store is 2 kilometers away, along the road to us.",
             "booking": {
                 "title": "Make a Booking",
                 "button": "Book"
@@ -213,6 +213,7 @@
     "openingHoursPage": {
         "openingHours": {
             "title": "Opening Hours",
+            "description": "The tourist season at our campsite and in our cottages runs from mid-May to the end of September. However, our hostel is available for business bookings year-round, suitable for longer stays or larger bookings. For more information and booking inquiries, please contact us at info@malnbadenscamping.se.",
             "reception": "Reception",
             "minigolf": "Minigolf"
         },

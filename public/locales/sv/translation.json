@@ -144,7 +144,7 @@
         },
         "hostelPage": {
             "title": "Vandrarhem",
-            "description": "Vårt vandrarhem erbjuder enbart privata rum för en bekväm och trygg vistelse. Med tillgång till två gemensamma kök kan gästerna lätt förbereda egna måltider, medan matsalen erbjuder en plats för trevliga måltider tillsammans. Vandrarhemmet har separata gemensamma badrum för män och kvinnor, som hålls rena och tillgängliga för alla gäster. Utöver detta finns en uteterrass där du kan koppla av och njuta av frisk luft. Vårt vandrarhem är den perfekta platsen för dig som vill ha en prisvärd vistelse med möjlighet till nya bekantskaper och upplevelser.",
+            "description": "Vårt fräscha och praktiska vandrarhem är idealiskt för företag som vill boka boende för sina anställda eller arbetare som pendlar veckovis eller söker långsiktigt boende. Vi erbjuder enkel- och dubbelrum med delade badrum samt två kök och ett sällskapsrum med storbilds-tv, perfekt för avkoppling efter en arbetsdag. Det finns gott om parkeringsplatser. Vandrarhemmet är beläget 4 kilometer från Hudiksvalls centrum, i ett tyst område omgiven av tallskog, vilket ger utmärkta möjligheter för löpning och promenader. Vi erbjuder också gratis tvättmöjligheter med tillgång till tvättmaskin och torkskåp. Det finns bra bussförbindelser till stan och den närmaste matbutiken ligger 2 kilometer bort, längs vägen hit.",
             "booking": {
                 "title": "Gör en bokning",
                 "button": "Boka"
@@ -213,6 +213,7 @@
     "openingHoursPage": {
         "openingHours": {
             "title": "Öppettider",
+            "description": "Turistsäsongen på vår camping och i våra sommarstugor sträcker sig från mitten av Maj till slutet av September. Vårt vandrarhem är dock tillgängligt för företagsbokningar året runt, vilket gäller för längre vistelser eller större bokningar. För mer information och bokningsförfrågningar, vänligen kontakta oss på info@malnbadenscamping.se.",
             "reception": "Reception",
             "minigolf": "Minigolf"
         },

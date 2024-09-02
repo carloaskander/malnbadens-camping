@@ -144,7 +144,7 @@
         },
         "hostelPage": {
             "title": "Auberge",
-            "description": "Notre auberge offre uniquement des chambres privées pour un séjour confortable et sécurisé. Avec accès à deux cuisines communes, les invités peuvent facilement préparer leurs propres repas, tandis que la salle à manger offre un endroit pour des repas agréables ensemble. L'auberge dispose de salles de bains communes séparées pour hommes et femmes, maintenues propres et accessibles à tous les invités. De plus, il y a une terrasse extérieure où vous pouvez vous détendre et profiter de l'air frais. Notre auberge est l'endroit parfait pour ceux qui recherchent un séjour abordable avec la possibilité de rencontrer de nouvelles personnes et de vivre de nouvelles expériences.",
+            "description": "Notre auberge fraîche et pratique est idéale pour les entreprises souhaitant réserver un hébergement pour leurs employés ou les travailleurs qui font la navette chaque semaine ou recherchent un séjour de longue durée. Nous proposons des chambres simples et doubles avec salles de bains partagées, ainsi que deux cuisines et une salle commune avec un grand écran de télévision, parfait pour se détendre après une journée de travail. Il y a beaucoup de places de parking. L'auberge est située à 4 kilomètres du centre de Hudiksvall, dans un quartier calme entouré de forêt de pins, offrant d'excellentes possibilités de course et de promenade. Nous offrons également des installations de blanchisserie gratuites avec accès à une machine à laver et un cabinet de séchage. Il y a de bonnes connexions de bus vers la ville, et l'épicerie la plus proche est à 2 kilomètres, le long de la route qui mène à nous.",
             "booking": {
                 "title": "Faire une réservation",
                 "button": "Réserver"
@@ -213,6 +213,7 @@
     "openingHoursPage": {
         "openingHours": {
             "title": "Horaires d'ouverture",
+            "description": "La saison touristique dans notre camping et nos chalets s'étend de la mi-mai à la fin septembre. Cependant, notre auberge est disponible pour les réservations d'entreprises toute l'année, ce qui convient aux séjours prolongés ou aux réservations de groupe. Pour plus d'informations et pour les demandes de réservation, veuillez nous contacter à info@malnbadenscamping.se.",
             "reception": "Réception",
             "minigolf": "Minigolf"
         },
