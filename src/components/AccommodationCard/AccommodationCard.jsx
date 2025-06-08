@@ -11,8 +11,8 @@ import campingThumbnailMedium from '../../assets/images/accommodation-cards/camp
 import cottagesThumbnailSmall from '../../assets/images/accommodation-cards/cottages-card/cottages-thumbnail-small.webp';
 import cottagesThumbnailMedium from '../../assets/images/accommodation-cards/cottages-card/cottages-thumbnail-medium.webp';
 
-import hostelThumbnailSmall from '../../assets/images/accommodation-cards/hostel-card/hostel-thumbnail-small.webp';
-import hostelThumbnailMedium from '../../assets/images/accommodation-cards/hostel-card/hostel-thumbnail-medium.webp';
+import hostelThumbnailSmall from '../../assets/images/accommodation-cards/hostel-card/hostel-thumbnail-small-new.jpg';
+import hostelThumbnailMedium from '../../assets/images/accommodation-cards/hostel-card/hostel-thumbnail-medium-new.jpg';
 
 function createAccommodationOptions(t) {
   return [
@@ -23,6 +23,7 @@ function createAccommodationOptions(t) {
         medium: campingThumbnailMedium,
         small: campingThumbnailSmall,
       },
+      imagePosition: 'center center',
       link: "/accommodation/camping",
       button: t('accommodationCard.camping.button')
     },
@@ -33,6 +34,7 @@ function createAccommodationOptions(t) {
         medium: cottagesThumbnailMedium,
         small: cottagesThumbnailSmall,
       },
+      imagePosition: 'center top',
       link: "/accommodation/cottages",
       button: t('accommodationCard.cottages.button')
     },
@@ -43,6 +45,7 @@ function createAccommodationOptions(t) {
         medium: hostelThumbnailMedium,
         small: hostelThumbnailSmall,
       },
+      imagePosition: '50% 65%',
       link: "/accommodation/hostel",
       button: t('accommodationCard.hostel.button')
     }
@@ -77,7 +80,16 @@ function AccommodationCard() {
                     },
                   }}
                 >
-                  <Box sx={{ position: 'relative', width: '100%', overflow: 'hidden', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                  <Box sx={{ 
+                    position: 'relative', 
+                    width: '100%', 
+                    height: 0,
+                    paddingBottom: '66.67%', // 3:2 aspect ratio (2/3 * 100%)
+                    overflow: 'hidden', 
+                    display: 'flex', 
+                    justifyContent: 'center', 
+                    alignItems: 'center' 
+                  }}>
                     <img 
                       src={option.imageUrls.small} 
                       srcSet={`
@@ -86,7 +98,15 @@ function AccommodationCard() {
                       `}
                       sizes="(max-width: 960px) 800px, 480px"
                       alt={option.title} 
-                      style={{ width: '100%', height: 'auto' }}
+                      style={{ 
+                        position: 'absolute',
+                        top: 0,
+                        left: 0,
+                        width: '100%', 
+                        height: '100%', 
+                        objectFit: 'cover',
+                        objectPosition: option.imagePosition || 'center center'
+                      }}
                     />
                   </Box>
                   <CardContent>

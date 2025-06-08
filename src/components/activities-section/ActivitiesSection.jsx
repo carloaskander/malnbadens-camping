@@ -7,7 +7,7 @@ import { Box, Typography, Button, Grid, Container } from '@mui/material';
 import AnimatedSection from '../animated-section/AnimatedSection.jsx';
 
 import beachDroneImage from '../../assets/images/beach/beach-drone.webp';
-import beachSoccerRestaurantImage from '../../assets/images/beach/beach-soccer-restaurant.webp';
+import beachSoccerRestaurantImage from '../../assets/images/beach/beach-landing-page.jpg';
 import runningTrailImage from '../../assets/images/activities/running-trail.jpg';
 
 
