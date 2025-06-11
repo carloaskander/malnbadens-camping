@@ -25,7 +25,7 @@ function CampingPrices() {
                 setPricesData(entry.pricingDetails); // Assuming 'pricingDetails' is the field ID for your JSON
                 setTitle(entry.Title); // Here we use 'Title' as per your field ID
             } else {
-                console.log("No entries found for the specified content type.");
+        
             }
         })
         .catch((error) => {

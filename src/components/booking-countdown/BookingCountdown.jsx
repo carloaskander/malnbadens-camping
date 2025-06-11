@@ -49,7 +49,7 @@ function BookingCountdown() {
 
     useEffect(() => {
         const currentLang = i18n.language;
-        console.log(`Current language: ${currentLang}`);
+    
 
         // Use appropriate moment locale based on the current language
         moment.locale(currentLang === 'sv' || currentLang === 'no' ? 'sv' : currentLang);
@@ -68,7 +68,7 @@ function BookingCountdown() {
                     content_type: 'openingHours',
                     locale: locale,
                 });
-                console.log('Contentful response:', entry);
+        
 
                 if (entry.items.length > 0) {
                     const { seasonOpenDate, seasonCloseDate, bookingOpenDate, campingStatusText } = entry.items[0].fields;
