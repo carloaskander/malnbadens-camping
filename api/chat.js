@@ -110,6 +110,21 @@ export default async function handler(req, res) {
   }
   
   try {
+    // Debug: Check environment variables
+    const missingEnvVars = [];
+    if (!process.env.SUPABASE_URL) missingEnvVars.push('SUPABASE_URL');
+    if (!process.env.SUPABASE_ANON_KEY) missingEnvVars.push('SUPABASE_ANON_KEY');
+    if (!process.env.OPENAI_API_KEY) missingEnvVars.push('OPENAI_API_KEY');
+    
+    if (missingEnvVars.length > 0) {
+      console.error('Missing environment variables:', missingEnvVars);
+      return res.status(500).json({
+        error: 'Server configuration error',
+        fallback: FALLBACK_FAQ,
+        debug: `Missing: ${missingEnvVars.join(', ')}`
+      });
+    }
+    
     // Get client IP for rate limiting
     const clientIp = req.headers['x-forwarded-for'] || req.connection.remoteAddress || 'unknown';
     
@@ -127,8 +142,12 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: 'Meddelande krävs' });
     }
     
+    console.log('Processing chat request:', { message: message.trim() });
+    
     // Search for relevant FAQ entries
     const { results, bestSimilarity } = await searchFAQ(message.trim());
+    
+    console.log('Search results:', { resultsCount: results.length, bestSimilarity });
     
     // If we have a high-confidence match, return it directly
     if (bestSimilarity >= 0.82 && results.length > 0) {
@@ -159,6 +178,8 @@ INSTRUKTIONER:
 CONTEXT:
 ${context}`;
 
+    console.log('Calling OpenAI with context length:', context.length);
+    
     const completion = await openai.chat.completions.create({
       model: 'gpt-4o-mini',
       messages: [
@@ -171,6 +192,8 @@ ${context}`;
     
     const response = completion.choices[0].message.content;
     
+    console.log('OpenAI response generated successfully');
+    
     return res.status(200).json({
       response,
       confidence: bestSimilarity >= 0.6 ? 'medium' : 'low',
@@ -179,6 +202,12 @@ ${context}`;
     
   } catch (error) {
     console.error('Chat API error:', error);
+    console.error('Error details:', {
+      message: error.message,
+      stack: error.stack,
+      status: error.status,
+      code: error.code
+    });
     
     // If OpenAI quota exceeded or other API errors, return fallback
     if (error.status === 429 || error.code === 'insufficient_quota') {
@@ -190,7 +219,8 @@ ${context}`;
     
     return res.status(500).json({
       error: 'Ett fel uppstod. Försök igen senare.',
-      fallback: FALLBACK_FAQ
+      fallback: FALLBACK_FAQ,
+      debug: error.message
     });
   }
 } 
