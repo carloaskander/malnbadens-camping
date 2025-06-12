@@ -1,4 +1,7 @@
 {
+    "devCommand": "vite --port $PORT",
+    "buildCommand": "vite build",
+    "outputDirectory": "dist",
     "redirects": [
         { "source": "/camping(/?)", "destination": "/sv/accommodation/camping", "permanent": true },
         { "source": "/stugor(/?)", "destination": "/sv/accommodation/cottages", "permanent": true },

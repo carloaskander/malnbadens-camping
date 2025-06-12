@@ -16,6 +16,7 @@ import Openinghours from './pages/opening-hours/Openinghours';
 import NotFound from './pages/not-found/NotFound';
 import Footer from './components/footer/Footer';
 import ScrollTopButton from './components/scroll-top-button/ScrollTopButton.jsx';
+import ChatButton from './components/chat-button/ChatButton.jsx';
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
           </Routes>
           <Footer />
           <ScrollTopButton />
+          <ChatButton />
         </Router>
       </ThemeProvider>
     </>
