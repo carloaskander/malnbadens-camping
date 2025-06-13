@@ -72,7 +72,7 @@ const ChatBot = ({ open, onClose }) => {
     setError(null);
 
     try {
-      const response = await fetch('/api/chat', {
+      const response = await fetch('/api/chat-simple', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
