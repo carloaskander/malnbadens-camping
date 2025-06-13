@@ -122,7 +122,7 @@ const ChatBot = ({ open, onClose }) => {
       // Add error message to chat
       const errorMessage = {
         id: Date.now() + 1,
-        text: "Ursäkta, jag kan inte svara just nu. Kontakta oss på 0650-132 60 för hjälp.",
+        text: "Oj, något gick fel! Jag har lite tekniska problem just nu. Försök igen om en stund eller kolla vår hemsida för information. 🤖",
         sender: 'bot',
         timestamp: new Date(),
         confidence: 'error'
