@@ -338,10 +338,35 @@ export default async function handler(req, res) {
     // Search for relevant FAQ entries
     const { results, bestSimilarity } = await searchFAQ(trimmedMessage);
     
-    // If we have a high-confidence match, return it directly
+    // Replace the direct response logic with multilingual support
     if (bestSimilarity >= 0.82 && results.length > 0) {
+      // For high-confidence matches, use AI to translate the answer to user's language
+      const directAnswerPrompt = `Du är en hjälpsam AI-assistent för Malnbadens Camping. Du har hittat det perfekta svaret på användarens fråga.
+
+INSTRUKTIONER:
+- Svara på samma språk som användaren frågade på
+- Använd den exakta informationen från FAQ-svaret nedan
+- Håll samma ton och stil som FAQ-svaret
+- Lägg INTE till extra information eller telefonnummer
+
+FAQ SVAR:
+${results[0].answer}
+
+ANVÄNDARENS FRÅGA: ${trimmedMessage}
+
+Ge det exakta svaret på användarens språk:`;
+
+      const completion = await openai.chat.completions.create({
+        model: 'gpt-4o-mini',
+        messages: [
+          { role: 'system', content: directAnswerPrompt }
+        ],
+        temperature: 0.1,
+        max_tokens: 200,
+      });
+
       return res.status(200).json({
-        response: results[0].answer,
+        response: completion.choices[0].message.content,
         confidence: 'high',
         similarity: bestSimilarity
       });
