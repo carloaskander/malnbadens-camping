@@ -46,7 +46,26 @@ const SUSPICIOUS_PATTERNS = [
   /spam/i,
   /(.)\1{10,}/, // Repeated characters
   /^[^a-zA-ZåäöÅÄÖ]*$/, // No letters (only symbols/numbers)
-  /fuck|shit|damn/i, // Basic profanity (add more as needed)
+  
+  // Enhanced profanity detection (Swedish + English)
+  /fuck|shit|damn|bitch|ass|hell|crap/i,
+  /fan|skit|helvete|jävla|kuk|fitta|hora/i,
+  
+  // Kid behavior patterns
+  /hej\s*hej\s*hej/i, // Repetitive greetings
+  /haha+|lol+|xd+/i, // Excessive laughing
+  /poop|pee|fart|butt/i, // Toilet humor
+  /bajs|kiss|pruttar|rumpa/i, // Swedish toilet humor
+  
+  // Irrelevant/off-topic detection
+  /minecraft|fortnite|roblox|pokemon|tiktok/i,
+  /school|homework|math|teacher/i,
+  /skola|läxor|matte|lärare/i,
+  
+  // Nonsense patterns
+  /^(a+|b+|c+|hej+|hello+)$/i, // Single repeated words
+  /qwerty|asdf|zxcv/i, // Keyboard mashing
+  /123+|abc+/i, // Simple sequences
 ];
 
 function getClientIdentifier(req) {
@@ -393,17 +412,13 @@ INSTRUKTIONER:
 - Svara på samma språk som användaren frågade på (svenska, engelska, tyska, etc.)
 - Undvik att ge telefonnummer - hänvisa till hemsidan istället
 
+INNEHÅLLSFILTRERING:
+- Om frågan är irrelevant för camping (spel, skola, etc.), svara vänligt: "Jag hjälper bara med frågor om Malnbadens Camping. Har du några frågor om vår camping?"
+- Vid olämpligt innehåll, svara professionellt: "Jag kan bara hjälpa med frågor om campingen. Vad kan jag berätta om våra faciliteter?"
+- Ignorera nonsens-meddelanden och be om en riktig fråga
+
 CONTEXT:
-${context}
-
-EXEMPEL PÅ BRA SVAR:
-SVENSKA:
-- "Det låter som en bra fråga! Jag har inte den exakta informationen just nu, men du kan hitta aktuella priser och bokningsinfo på vår hemsida."
-- "Ja, de flesta campingar brukar ha det! För att vara säker på vad vi erbjuder just nu, kolla gärna vår hemsida för senaste informationen."
-
-ENGELSKA:
-- "That sounds like a great question! I don't have the exact information right now, but you can find current prices and booking info on our website."
-- "Yes, most campsites usually have that! To be sure about what we offer right now, please check our website for the latest information."`;
+${context}`;
 
     const completion = await openai.chat.completions.create({
       model: 'gpt-4o-mini',

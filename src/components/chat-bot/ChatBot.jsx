@@ -36,7 +36,7 @@ const ChatBot = ({ open, onClose }) => {
     if (open && messages.length === 0) {
       setMessages([{
         id: 1,
-        text: "Hej! Jag är Malnbadens Campings chatbot. Jag kan hjälpa dig med frågor om bokning, priser, aktiviteter och allt annat om vår camping. Vad kan jag hjälpa dig med?",
+        text: "Hej! Jag är Malnbadens Campings chatbot. Jag kan hjälpa dig med frågor om camping, stugor, vandrarhem och aktiviteter. För aktuella priser och bokning, besök våra bokningssidor på hemsidan. Vad kan jag hjälpa dig med?",
         sender: 'bot',
         timestamp: new Date(),
         confidence: 'high'
@@ -311,7 +311,7 @@ const ChatBot = ({ open, onClose }) => {
 
         {/* Input */}
         <Box sx={{ p: 2, bgcolor: 'grey.50' }}>
-          <Box sx={{ display: 'flex', gap: 1 }}>
+          <Box sx={{ display: 'flex', gap: 1, alignItems: 'flex-end' }}>
             <TextField
               ref={inputRef}
               fullWidth
@@ -336,6 +336,9 @@ const ChatBot = ({ open, onClose }) => {
               sx={{
                 bgcolor: 'primary.main',
                 color: 'white',
+                width: 40,
+                height: 40,
+                flexShrink: 0,
                 '&:hover': {
                   bgcolor: 'primary.dark'
                 },
