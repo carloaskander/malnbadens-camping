@@ -34,7 +34,7 @@ function ScrollTopButton() {
                 sx={{
                     position: 'fixed',
                     bottom: 20,
-                    right: 20,
+                    left: 20, // Moved to left side to avoid overlap with chat button
                     backgroundColor: '#D66B27', // Custom color
                     '&:hover': {
                         backgroundColor: '#A54A19', // Darker shade for hover

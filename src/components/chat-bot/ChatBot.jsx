@@ -36,7 +36,7 @@ const ChatBot = ({ open, onClose }) => {
     if (open && messages.length === 0) {
       setMessages([{
         id: 1,
-        text: "Hej! Jag är Malnbadens Campings chatbot. Jag kan hjälpa dig med frågor om camping, stugor, vandrarhem och aktiviteter. För aktuella priser och bokning, besök våra bokningssidor på hemsidan. Vad kan jag hjälpa dig med?",
+        text: "Hej! Jag är Campy Bot och hjälper dig med frågor om Malnbadens Camping - stugor, vandrarhem, aktiviteter och mer. För aktuella priser och bokning, besök våra bokningssidor på hemsidan. Vad kan jag hjälpa dig med?",
         sender: 'bot',
         timestamp: new Date(),
         confidence: 'high'
@@ -193,7 +193,7 @@ const ChatBot = ({ open, onClose }) => {
         >
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
             <BotIcon />
-            <Typography variant="h6">Chat (Beta)</Typography>
+            <Typography variant="h6">Campy Bot (Beta)</Typography>
           </Box>
           <IconButton
             onClick={onClose}

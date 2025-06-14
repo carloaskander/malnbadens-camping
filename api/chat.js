@@ -22,7 +22,7 @@ const RATE_LIMITS = {
   WINDOW_DURATION: 10 * 60 * 1000, // 10 minutes
   
   // Burst protection: max 3 requests per minute
-  BURST_REQUESTS: 3,
+  BURST_REQUESTS: 5,
   BURST_WINDOW: 60 * 1000, // 1 minute
   
   // Daily limit per IP
@@ -30,42 +30,31 @@ const RATE_LIMITS = {
   DAILY_WINDOW: 24 * 60 * 60 * 1000, // 24 hours
   
   // Suspicious activity thresholds
-  MAX_IDENTICAL_MESSAGES: 3, // Same message repeated
+  MAX_IDENTICAL_MESSAGES: 2, // Same message repeated
   MAX_RAPID_FIRE: 5, // Too many requests in short time
   MIN_MESSAGE_LENGTH: 2,
   MAX_MESSAGE_LENGTH: 500,
   
   // Cooldown periods
   ABUSE_COOLDOWN: 30 * 60 * 1000, // 30 minutes for abuse
-  SUSPICIOUS_COOLDOWN: 5 * 60 * 1000 // 5 minutes for suspicious activity
+  SUSPICIOUS_COOLDOWN: 45 * 1000 // 45 seconds for suspicious activity
 };
 
-// Content filtering patterns
+// Content filtering patterns - Only block clearly inappropriate content
 const SUSPICIOUS_PATTERNS = [
-  /test\s*test/i,
-  /spam/i,
-  /(.)\1{10,}/, // Repeated characters
-  /^[^a-zA-ZåäöÅÄÖ]*$/, // No letters (only symbols/numbers)
+  /(.)\1{15,}/, // Very long repeated characters (15+)
+  /^[^a-zA-ZåäöÅÄÖ\s]*$/, // Only symbols/numbers, no letters or spaces
   
   // Enhanced profanity detection (Swedish + English)
   /fuck|shit|damn|bitch|ass|hell|crap/i,
   /fan|skit|helvete|jävla|kuk|fitta|hora/i,
   
-  // Kid behavior patterns
-  /hej\s*hej\s*hej/i, // Repetitive greetings
-  /haha+|lol+|xd+/i, // Excessive laughing
-  /poop|pee|fart|butt/i, // Toilet humor
-  /bajs|kiss|pruttar|rumpa/i, // Swedish toilet humor
-  
-  // Irrelevant/off-topic detection
-  /minecraft|fortnite|roblox|pokemon|tiktok/i,
-  /school|homework|math|teacher/i,
-  /skola|läxor|matte|lärare/i,
-  
-  // Nonsense patterns
-  /^(a+|b+|c+|hej+|hello+)$/i, // Single repeated words
+  // Clear nonsense/spam
   /qwerty|asdf|zxcv/i, // Keyboard mashing
-  /123+|abc+/i, // Simple sequences
+  /^(a{5,}|b{5,}|c{5,}|hej{3,}|hello{3,})$/i, // Excessive repetition
+  
+  // Gaming/irrelevant (but less aggressive)
+  /minecraft|fortnite|roblox/i,
 ];
 
 function getClientIdentifier(req) {
@@ -153,6 +142,10 @@ function checkRateLimit(identifier, message) {
   // Check for suspicious activity
   const suspiciousActivity = checkSuspiciousActivity(userData, message, now, ip);
   if (suspiciousActivity.isSuspicious) {
+    // Flag IP for serious abuse (repeated messages, rapid fire, invalid length)
+    if (suspiciousActivity.flagIP) {
+      flagSuspiciousIP(ip, suspiciousActivity.flagReason);
+    }
     return {
       allowed: false,
       reason: suspiciousActivity.reason,
@@ -172,22 +165,25 @@ function checkSuspiciousActivity(userData, message, now, ip) {
   // Check message length
   if (message.length < RATE_LIMITS.MIN_MESSAGE_LENGTH || 
       message.length > RATE_LIMITS.MAX_MESSAGE_LENGTH) {
-    flagSuspiciousIP(ip, 'Invalid message length');
     return {
       isSuspicious: true,
       reason: 'Invalid message format',
-      retryAfter: 300
+      retryAfter: 300,
+      flagIP: true,
+      flagReason: 'Invalid message length'
     };
   }
   
   // Check for suspicious patterns
   for (const pattern of SUSPICIOUS_PATTERNS) {
     if (pattern.test(message)) {
-      flagSuspiciousIP(ip, `Suspicious pattern: ${pattern}`);
+      // Don't flag IP for single suspicious message, just reject this message
+      console.warn(`🚨 Suspicious pattern detected: ${pattern} in message: ${message}`);
       return {
         isSuspicious: true,
         reason: 'Message contains suspicious content',
-        retryAfter: 600
+        retryAfter: 30, // Only 30 seconds for pattern-based blocks
+        skipIPFlag: true // Don't flag the entire IP
       };
     }
   }
@@ -202,11 +198,12 @@ function checkSuspiciousActivity(userData, message, now, ip) {
   ).length;
   
   if (identicalCount >= RATE_LIMITS.MAX_IDENTICAL_MESSAGES) {
-    flagSuspiciousIP(ip, 'Repeated identical messages');
     return {
       isSuspicious: true,
       reason: 'Too many identical messages',
-      retryAfter: 900
+      retryAfter: 900,
+      flagIP: true,
+      flagReason: 'Repeated identical messages'
     };
   }
   
@@ -214,11 +211,12 @@ function checkSuspiciousActivity(userData, message, now, ip) {
   if (now - userData.lastRequestTime < 2000) { // Less than 2 seconds
     userData.rapidFireCount = (userData.rapidFireCount || 0) + 1;
     if (userData.rapidFireCount >= RATE_LIMITS.MAX_RAPID_FIRE) {
-      flagSuspiciousIP(ip, 'Rapid fire requests');
       return {
         isSuspicious: true,
         reason: 'Requests too frequent',
-        retryAfter: 600
+        retryAfter: 600,
+        flagIP: true,
+        flagReason: 'Rapid fire requests'
       };
     }
   } else {
@@ -265,7 +263,7 @@ async function logSuspiciousActivity(ip, reason) {
 
 // Fallback FAQ for when API is down
 const FALLBACK_FAQ = `
-Hej! Jag är tillfälligt otillgänglig, men här är grundläggande information om Malnbadens Camping:
+Hej! Jag är Campy Bot och är tillfälligt otillgänglig, men här är grundläggande information om Malnbadens Camping:
 
 📍 **Plats**: Malnvägen 34, Hudiksvall - vacker naturmiljö vid vattnet
 🏕️ **Bokning**: Besök vår hemsida för aktuella priser och tillgänglighet
@@ -360,7 +358,7 @@ export default async function handler(req, res) {
     // Replace the direct response logic with multilingual support
     if (bestSimilarity >= 0.82 && results.length > 0) {
       // For high-confidence matches, use AI to translate the answer to user's language
-      const directAnswerPrompt = `Du är en hjälpsam AI-assistent för Malnbadens Camping. Du har hittat det perfekta svaret på användarens fråga.
+      const directAnswerPrompt = `Du är Campy Bot, en hjälpsam AI-assistent för Malnbadens Camping. Du har hittat det perfekta svaret på användarens fråga.
 
 INSTRUKTIONER:
 - Svara på samma språk som användaren frågade på
@@ -401,7 +399,7 @@ Ge det exakta svaret på användarens språk:`;
       ? results.map(r => `Q: ${r.question}\nA: ${r.answer}`).join('\n\n')
       : 'Ingen relevant information hittad i kunskapsdatabasen.';
     
-    const systemPrompt = `Du är en hjälpsam AI-assistent för Malnbadens Camping i Hudiksvall, Sverige. Du är här för att hjälpa besökare med information om campingen.
+    const systemPrompt = `Du är Campy Bot, en hjälpsam AI-assistent för Malnbadens Camping i Hudiksvall, Sverige. Du är här för att hjälpa besökare med information om campingen.
 
 INSTRUKTIONER:
 - Använd CONTEXT nedan som primär informationskälla
@@ -413,7 +411,7 @@ INSTRUKTIONER:
 - Undvik att ge telefonnummer - hänvisa till hemsidan istället
 
 INNEHÅLLSFILTRERING:
-- Om frågan är irrelevant för camping (spel, skola, etc.), svara vänligt: "Jag hjälper bara med frågor om Malnbadens Camping. Har du några frågor om vår camping?"
+- Om frågan är irrelevant för camping (spel, skola, etc.), svara vänligt: "Jag är Campy Bot och hjälper bara med frågor om Malnbadens Camping. Har du några frågor om vår camping?"
 - Vid olämpligt innehåll, svara professionellt: "Jag kan bara hjälpa med frågor om campingen. Vad kan jag berätta om våra faciliteter?"
 - Ignorera nonsens-meddelanden och be om en riktig fråga
 
