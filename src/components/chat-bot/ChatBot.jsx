@@ -169,6 +169,7 @@ const ChatBot = ({ open, onClose }) => {
       
       // Determine user-friendly error message based on error type
       let userErrorMessage;
+      let isSystemError = false; // Flag to determine if red error alert should show
       
       switch (error.message) {
         case 'RATE_LIMIT_BURST':
@@ -191,18 +192,24 @@ const ChatBot = ({ open, onClose }) => {
           break;
         case 'SERVICE_UNAVAILABLE':
           userErrorMessage = t('chatBot.errors.serviceUnavailable');
+          isSystemError = true; // Show red alert for system issues
           break;
         case 'TECHNICAL_ERROR':
           userErrorMessage = t('chatBot.errors.technicalError');
+          isSystemError = true; // Show red alert for technical issues
           break;
         default:
-          // For any other errors, use the generic error message
+          // For any other errors, treat as system error
           userErrorMessage = t('chatBot.errorMessage');
+          isSystemError = true;
       }
       
-      setError(userErrorMessage);
+      // Only show red error alert for actual system/technical errors
+      if (isSystemError) {
+        setError(userErrorMessage);
+      }
       
-      // Add error message to chat
+      // Always add bot message response (this feels more natural for user)
       const errorMessage = {
         id: Date.now() + 1,
         text: userErrorMessage,
@@ -227,9 +234,9 @@ const ChatBot = ({ open, onClose }) => {
 
   const getConfidenceColor = (confidence) => {
     switch (confidence) {
-      case 'high': return 'success';
-      case 'medium': return 'warning';
-      case 'low': return 'info';
+      case 'high': return 'success';      // Green - High confidence, trust this
+      case 'medium': return 'warning';    // Yellow - Medium confidence, proceed with caution
+      case 'low': return 'error';         // Red - Low confidence, very uncertain
       case 'error': return 'error';
       default: return 'default';
     }
