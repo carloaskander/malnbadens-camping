@@ -187,15 +187,29 @@ const ChatBot = ({ open, onClose }) => {
         elevation={8}
         sx={{
           position: 'fixed',
-          bottom: 20,
-          right: 20,
-          width: { xs: 'calc(100vw - 40px)', sm: 400 },
-          height: { xs: 'calc(100vh - 40px)', sm: 500 },
+          // Use inset instead of individual positioning to prevent Safari jumps
+          inset: { xs: '20px', sm: 'auto' },
+          // On desktop, override inset with specific positioning
+          bottom: { sm: 20 },
+          right: { sm: 20 },
+          top: { sm: 'auto' },
+          left: { sm: 'auto' },
+          width: { xs: 'auto', sm: 400 },
+          height: { xs: 'auto', sm: 500 },
+          // Use dvh for proper mobile viewport handling, fallback to vh
+          maxHeight: { 
+            xs: ['calc(100vh - 40px)', 'calc(100dvh - 40px)'], 
+            sm: 500 
+          },
           display: 'flex',
           flexDirection: 'column',
           zIndex: 1300,
           borderRadius: 2,
-          overflow: 'hidden'
+          overflow: 'hidden',
+          // Prevent iOS Safari bounce scrolling issues
+          WebkitOverflowScrolling: 'touch',
+          // Ensure fixed positioning works properly on mobile
+          transform: 'translateZ(0)',
         }}
       >
         {/* Header */}

@@ -20,12 +20,14 @@ const ChatButton = () => {
           onClick={handleToggleChat}
           sx={{
             position: 'fixed',
-            bottom: 16,
-            right: 16,
+            // Use inset for better mobile Safari support
+            inset: 'auto 16px 16px auto',
             zIndex: 1200,
             boxShadow: 3,
+            // Ensure fixed positioning works properly on mobile
+            transform: 'translateZ(0)',
             '&:hover': {
-              transform: 'scale(1.1)',
+              transform: 'translateZ(0) scale(1.1)',
               transition: 'transform 0.2s ease-in-out'
             }
           }}
