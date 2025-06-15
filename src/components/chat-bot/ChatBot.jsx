@@ -355,7 +355,7 @@ const ChatBot = ({ open, onClose }) => {
                 <Box
                   sx={{
                     maxWidth: '75%',
-                    bgcolor: message.sender === 'user' ? 'primary.light' : 'grey.100',
+                    bgcolor: message.sender === 'user' ? 'primary.main' : 'grey.100',
                     color: message.sender === 'user' ? 'white' : 'text.primary',
                     borderRadius: 2,
                     p: 1.5,

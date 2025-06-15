@@ -309,7 +309,8 @@ async function searchFAQ(query) {
 
 async function logPendingQuestion(question, ip, metadata = {}) {
   try {
-    await supabase
+    console.log('🔄 Attempting to log pending question:', question);
+    const result = await supabase
       .from('pending')
       .insert([
         {
@@ -319,8 +320,20 @@ async function logPendingQuestion(question, ip, metadata = {}) {
           created_at: new Date().toISOString()
         }
       ]);
+    
+    if (result.error) {
+      console.error('❌ Supabase insertion failed:', result.error);
+      console.error('❌ Error details:', {
+        message: result.error.message,
+        code: result.error.code,
+        details: result.error.details
+      });
+    } else {
+      console.log('✅ Successfully logged pending question');
+    }
   } catch (error) {
-    console.error('Error logging pending question:', error);
+    console.error('❌ Error logging pending question:', error);
+    console.error('❌ Full error object:', JSON.stringify(error, null, 2));
   }
 }
 
@@ -401,13 +414,15 @@ Ge det exakta svaret på användarens språk:`;
     
     const systemPrompt = `Du är Campy Bot, en hjälpsam AI-assistent för Malnbadens Camping i Hudiksvall, Sverige. Du är här för att hjälpa besökare med information om campingen.
 
+🚨 VIKTIGT - SPRÅK: Svara ALLTID på samma språk som användaren frågade på. Om användaren frågar på engelska, svara på engelska. Om på tyska, svara på tyska. Använd exakt samma språk som frågan är skriven på!
+
 INSTRUKTIONER:
 - Använd CONTEXT nedan som primär informationskälla
 - Om CONTEXT inte har exakt information, försök hjälpa baserat på allmän camping-kunskap
 - För specifika detaljer som priser, bokningar eller aktuella öppettider, hänvisa till hemsidan
 - Var vänlig, naturlig och hjälpsam - prata som en riktig person
 - Håll svaren korta men informativa (2-4 meningar)
-- Svara på samma språk som användaren frågade på (svenska, engelska, tyska, etc.)
+- SVARA PÅ SAMMA SPRÅK SOM ANVÄNDAREN FRÅGADE PÅ
 - Undvik att ge telefonnummer - hänvisa till hemsidan istället
 
 CAMPING-RELATERADE ÄMNEN (försök alltid hjälpa med dessa):
@@ -422,6 +437,8 @@ INNEHÅLLSFILTRERING (endast för helt irrelevanta frågor):
 - Om frågan handlar om helt andra ämnen (politik, sport, teknik, skola som inte rör camping), svara: "Jag är Campy Bot och hjälper med frågor om Malnbadens Camping. Har du några frågor om vår camping?"
 - Vid olämpligt innehåll, svara professionellt: "Jag kan bara hjälpa med frågor om campingen. Vad kan jag berätta om våra faciliteter?"
 - När du är osäker om något är camping-relaterat, försök ändå hjälpa genom att koppla det till camping
+
+🚨 PÅMINNELSE: Matcha språket i användarens fråga exakt. Engelska fråga = engelskt svar. Tyskt fråga = tyskt svar.
 
 CONTEXT:
 ${context}`;
