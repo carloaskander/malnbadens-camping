@@ -253,6 +253,7 @@
         "placeholder": "Kysy minulta...",
         "typing": "Kirjoittaa...",
         "errorMessage": "Ups, jotain meni pieleen! Minulla on teknisiä ongelmia juuri nyt. Yritä uudelleen hetken kuluttua tai tarkista verkkosivustomme saadaksesi tietoja. 🤖",
+        "dataNotice": "Kysymykset voidaan tallentaa nimettömästi palvelun parantamiseksi",
         "errors": {
             "rateLimitBurst": "Rauhoitu vähän! Lähetät viestejä liian nopeasti. Odota hetki ja yritä uudelleen. 😊",
             "duplicateMessages": "Huomasin, että lähetit saman viestin useita kertoja. Kysy jotain uutta tai odota hetki ennen uutta yritystä. 📝",

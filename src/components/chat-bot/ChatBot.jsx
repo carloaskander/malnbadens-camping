@@ -529,6 +529,22 @@ const ChatBot = ({ open, onClose }) => {
               <ArrowUpIcon sx={{ fontSize: '20px' }} />
             </IconButton>
           </Box>
+          
+          {/* Simple data notice */}
+          <Typography 
+            variant="caption" 
+            sx={{ 
+              mt: 1, 
+              color: 'text.primary', 
+              fontSize: '0.7rem',
+              fontFamily: 'system-ui, -apple-system, Roboto, sans-serif',
+              opacity: 0.7,
+              textAlign: 'center',
+              display: 'block'
+            }}
+          >
+            {t('chatBot.dataNotice')}
+          </Typography>
         </Box>
       </Paper>
     </Slide>

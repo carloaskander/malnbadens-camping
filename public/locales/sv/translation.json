@@ -253,6 +253,7 @@
         "placeholder": "Fråga mig något...",
         "typing": "Skriver...",
         "errorMessage": "Oj, något gick fel! Jag har lite tekniska problem just nu. Försök igen om en stund eller kolla vår hemsida för information. 🤖",
+        "dataNotice": "Frågor kan sparas anonymt för att förbättra tjänsten",
         "errors": {
             "rateLimitBurst": "Ta det lite lugnt! Du skickar meddelanden för snabbt. Vänta ett ögonblick och försök igen. 😊",
             "duplicateMessages": "Jag märkte att du skickade samma meddelande flera gånger. Fråga något nytt eller vänta en stund innan du försöker igen. 📝",

@@ -253,6 +253,7 @@
         "placeholder": "Spør meg noe...",
         "typing": "Skriver...",
         "errorMessage": "Oops, noe gikk galt! Jeg har litt tekniske problemer akkurat nå. Prøv igjen om litt eller sjekk nettstedet vårt for informasjon. 🤖",
+        "dataNotice": "Spørsmål kan lagres anonymt for å forbedre tjenesten",
         "errors": {
             "rateLimitBurst": "Ta det litt med ro! Du sender meldinger for raskt. Vent litt og prøv igjen. 😊",
             "duplicateMessages": "Jeg la merke til at du sendte samme melding flere ganger. Spør om noe nytt eller vent litt før du prøver igjen. 📝",

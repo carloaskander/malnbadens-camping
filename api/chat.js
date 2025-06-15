@@ -11,33 +11,15 @@ const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
 
-// Enhanced rate limiting store with multiple protection layers
-const rateLimitStore = new Map();
-const suspiciousActivityStore = new Map();
+// Simple rate limiting store - no personal data
+const sessionLimitStore = new Map();
 
-// Rate limiting configuration
+// Basic rate limiting configuration
 const RATE_LIMITS = {
-  // Basic rate limit: 10 requests per 10 minutes per IP
   REQUESTS_PER_WINDOW: 10,
   WINDOW_DURATION: 10 * 60 * 1000, // 10 minutes
-  
-  // Burst protection: max 3 requests per minute
   BURST_REQUESTS: 5,
   BURST_WINDOW: 60 * 1000, // 1 minute
-  
-  // Daily limit per IP
-  DAILY_LIMIT: 50,
-  DAILY_WINDOW: 24 * 60 * 60 * 1000, // 24 hours
-  
-  // Suspicious activity thresholds
-  MAX_IDENTICAL_MESSAGES: 2, // Same message repeated
-  MAX_RAPID_FIRE: 5, // Too many requests in short time
-  MIN_MESSAGE_LENGTH: 2,
-  MAX_MESSAGE_LENGTH: 500,
-  
-  // Cooldown periods
-  ABUSE_COOLDOWN: 30 * 60 * 1000, // 30 minutes for abuse
-  SUSPICIOUS_COOLDOWN: 45 * 1000 // 45 seconds for suspicious activity
 };
 
 // Content filtering patterns - Only block clearly inappropriate content
@@ -52,213 +34,91 @@ const SUSPICIOUS_PATTERNS = [
   // Clear nonsense/spam
   /qwerty|asdf|zxcv/i, // Keyboard mashing
   /^(a{5,}|b{5,}|c{5,}|hej{3,}|hello{3,})$/i, // Excessive repetition
-  
-  // Gaming/irrelevant (but less aggressive)
-  /minecraft|fortnite|roblox/i,
 ];
 
-function getClientIdentifier(req) {
-  // Use multiple identifiers for better tracking
-  const ip = req.headers['x-forwarded-for']?.split(',')[0] || 
-            req.headers['x-real-ip'] || 
-            req.connection.remoteAddress || 
-            'unknown';
-  
-  const userAgent = req.headers['user-agent'] || 'unknown';
-  const fingerprint = `${ip}_${userAgent.substring(0, 50)}`;
-  
-  return { ip, fingerprint };
+function getSessionId() {
+  // Generate random session ID - no personal data
+  return Math.random().toString(36).substring(2, 15);
 }
 
-function checkRateLimit(identifier, message) {
+function checkRateLimit(message) {
   const now = Date.now();
-  const { ip, fingerprint } = identifier;
   
-  // Check if IP is in abuse cooldown
-  if (suspiciousActivityStore.has(ip)) {
-    const suspiciousData = suspiciousActivityStore.get(ip);
-    if (now < suspiciousData.cooldownUntil) {
-      return {
-        allowed: false,
-        reason: 'IP temporarily blocked due to suspicious activity',
-        retryAfter: Math.ceil((suspiciousData.cooldownUntil - now) / 1000)
-      };
-    } else {
-      suspiciousActivityStore.delete(ip);
-    }
-  }
+  // Simple session-based rate limiting
+  const sessionId = 'anonymous'; // All users share same basic limits
   
   // Initialize or get rate limit data
-  if (!rateLimitStore.has(fingerprint)) {
-    rateLimitStore.set(fingerprint, {
+  if (!sessionLimitStore.has(sessionId)) {
+    sessionLimitStore.set(sessionId, {
       requests: [],
-      dailyCount: 0,
-      dailyReset: now + RATE_LIMITS.DAILY_WINDOW,
-      recentMessages: [],
-      rapidFireCount: 0,
-      lastRequestTime: 0
+      recentMessages: []
     });
   }
   
-  const userData = rateLimitStore.get(fingerprint);
-  
-  // Reset daily counter if needed
-  if (now > userData.dailyReset) {
-    userData.dailyCount = 0;
-    userData.dailyReset = now + RATE_LIMITS.DAILY_WINDOW;
-  }
-  
-  // Check daily limit
-  if (userData.dailyCount >= RATE_LIMITS.DAILY_LIMIT) {
-    return {
-      allowed: false,
-      reason: 'Daily request limit exceeded',
-      retryAfter: Math.ceil((userData.dailyReset - now) / 1000)
-    };
-  }
+  const sessionData = sessionLimitStore.get(sessionId);
   
   // Clean old requests
-  userData.requests = userData.requests.filter(time => now - time < RATE_LIMITS.WINDOW_DURATION);
+  sessionData.requests = sessionData.requests.filter(time => now - time < RATE_LIMITS.WINDOW_DURATION);
   
   // Check main rate limit
-  if (userData.requests.length >= RATE_LIMITS.REQUESTS_PER_WINDOW) {
+  if (sessionData.requests.length >= RATE_LIMITS.REQUESTS_PER_WINDOW) {
     return {
       allowed: false,
-      reason: 'Rate limit exceeded',
-      retryAfter: Math.ceil(RATE_LIMITS.WINDOW_DURATION / 1000)
+      reason: 'Rate limit exceeded'
     };
   }
   
   // Check burst protection
-  const recentRequests = userData.requests.filter(time => now - time < RATE_LIMITS.BURST_WINDOW);
+  const recentRequests = sessionData.requests.filter(time => now - time < RATE_LIMITS.BURST_WINDOW);
   if (recentRequests.length >= RATE_LIMITS.BURST_REQUESTS) {
     return {
       allowed: false,
-      reason: 'Too many requests in short time',
-      retryAfter: 60
+      reason: 'Too many requests in short time'
     };
   }
   
-  // Check for suspicious activity
-  const suspiciousActivity = checkSuspiciousActivity(userData, message, now, ip);
-  if (suspiciousActivity.isSuspicious) {
-    // Flag IP for serious abuse (repeated messages, rapid fire, invalid length)
-    if (suspiciousActivity.flagIP) {
-      flagSuspiciousIP(ip, suspiciousActivity.flagReason);
-    }
+  // Check message length
+  if (message.length < 2 || message.length > 500) {
     return {
       allowed: false,
-      reason: suspiciousActivity.reason,
-      retryAfter: suspiciousActivity.retryAfter
-    };
-  }
-  
-  // Update counters
-  userData.requests.push(now);
-  userData.dailyCount++;
-  userData.lastRequestTime = now;
-  
-  return { allowed: true };
-}
-
-function checkSuspiciousActivity(userData, message, now, ip) {
-  // Check message length
-  if (message.length < RATE_LIMITS.MIN_MESSAGE_LENGTH || 
-      message.length > RATE_LIMITS.MAX_MESSAGE_LENGTH) {
-    return {
-      isSuspicious: true,
-      reason: 'Invalid message format',
-      retryAfter: 300,
-      flagIP: true,
-      flagReason: 'Invalid message length'
+      reason: 'Invalid message format'
     };
   }
   
   // Check for suspicious patterns
   for (const pattern of SUSPICIOUS_PATTERNS) {
     if (pattern.test(message)) {
-      // Don't flag IP for single suspicious message, just reject this message
-      console.warn(`🚨 Suspicious pattern detected: ${pattern} in message: ${message}`);
       return {
-        isSuspicious: true,
-        reason: 'Message contains suspicious content',
-        retryAfter: 30, // Only 30 seconds for pattern-based blocks
-        skipIPFlag: true // Don't flag the entire IP
+        allowed: false,
+        reason: 'Message contains suspicious content'
       };
     }
   }
   
   // Check for repeated identical messages
-  userData.recentMessages = userData.recentMessages.filter(
+  sessionData.recentMessages = sessionData.recentMessages.filter(
     msg => now - msg.timestamp < 5 * 60 * 1000 // Keep last 5 minutes
   );
   
-  const identicalCount = userData.recentMessages.filter(
+  const identicalCount = sessionData.recentMessages.filter(
     msg => msg.text.toLowerCase() === message.toLowerCase()
   ).length;
   
-  if (identicalCount >= RATE_LIMITS.MAX_IDENTICAL_MESSAGES) {
+  if (identicalCount >= 2) {
     return {
-      isSuspicious: true,
-      reason: 'Too many identical messages',
-      retryAfter: 900,
-      flagIP: true,
-      flagReason: 'Repeated identical messages'
+      allowed: false,
+      reason: 'Too many identical messages'
     };
   }
   
-  // Check rapid fire (too fast requests)
-  if (now - userData.lastRequestTime < 2000) { // Less than 2 seconds
-    userData.rapidFireCount = (userData.rapidFireCount || 0) + 1;
-    if (userData.rapidFireCount >= RATE_LIMITS.MAX_RAPID_FIRE) {
-      return {
-        isSuspicious: true,
-        reason: 'Requests too frequent',
-        retryAfter: 600,
-        flagIP: true,
-        flagReason: 'Rapid fire requests'
-      };
-    }
-  } else {
-    userData.rapidFireCount = 0;
-  }
-  
-  // Store message for pattern analysis
-  userData.recentMessages.push({
+  // Update counters
+  sessionData.requests.push(now);
+  sessionData.recentMessages.push({
     text: message,
     timestamp: now
   });
   
-  return { isSuspicious: false };
-}
-
-function flagSuspiciousIP(ip, reason) {
-  console.warn(`🚨 Suspicious activity from IP ${ip}: ${reason}`);
-  
-  suspiciousActivityStore.set(ip, {
-    reason,
-    flaggedAt: Date.now(),
-    cooldownUntil: Date.now() + RATE_LIMITS.SUSPICIOUS_COOLDOWN
-  });
-  
-  // Log to Supabase for monitoring (optional)
-  logSuspiciousActivity(ip, reason).catch(console.error);
-}
-
-async function logSuspiciousActivity(ip, reason) {
-  try {
-    await supabase
-      .from('suspicious_activity')
-      .insert([
-        {
-          ip_address: ip,
-          reason: reason,
-          created_at: new Date().toISOString()
-        }
-      ]);
-  } catch (error) {
-    console.error('Failed to log suspicious activity:', error);
-  }
+  return { allowed: true };
 }
 
 // Fallback FAQ for when API is down
@@ -307,7 +167,7 @@ async function searchFAQ(query) {
   }
 }
 
-async function logPendingQuestion(question, ip, metadata = {}) {
+async function logPendingQuestion(question, anonymous) {
   try {
     console.log('🔄 Attempting to log pending question:', question);
     const result = await supabase
@@ -320,17 +180,11 @@ async function logPendingQuestion(question, ip, metadata = {}) {
     
     if (result.error) {
       console.error('❌ Supabase insertion failed:', result.error);
-      console.error('❌ Error details:', {
-        message: result.error.message,
-        code: result.error.code,
-        details: result.error.details
-      });
     } else {
       console.log('✅ Successfully logged pending question');
     }
   } catch (error) {
     console.error('❌ Error logging pending question:', error);
-    console.error('❌ Full error object:', JSON.stringify(error, null, 2));
   }
 }
 
@@ -341,7 +195,6 @@ export default async function handler(req, res) {
   }
   
   try {
-    const identifier = getClientIdentifier(req);
     const { message } = req.body;
     
     // Validate message
@@ -352,12 +205,11 @@ export default async function handler(req, res) {
     const trimmedMessage = message.trim();
     
     // Check rate limits and abuse protection
-    const rateLimitResult = checkRateLimit(identifier, trimmedMessage);
+    const rateLimitResult = checkRateLimit(trimmedMessage);
     if (!rateLimitResult.allowed) {
       return res.status(429).json({ 
         error: 'Hoppsan! Du har skickat många meddelanden nyligen. Vila lite och försök igen om en stund. 😊',
         fallback: FALLBACK_FAQ,
-        retryAfter: rateLimitResult.retryAfter,
         reason: rateLimitResult.reason
       });
     }
@@ -400,9 +252,7 @@ Ge det exakta svaret på användarens språk:`;
     }
     
     // Log question as potentially unanswered for learning
-    await logPendingQuestion(trimmedMessage, identifier.ip, {
-      userAgent: req.headers['user-agent']
-    });
+    await logPendingQuestion(trimmedMessage, 'anonymous');
     
     // Use GPT-4o-mini with context from search results
     const context = results.length > 0 

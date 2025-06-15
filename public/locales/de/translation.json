@@ -253,6 +253,7 @@
         "placeholder": "Frag mich etwas...",
         "typing": "Tippt...",
         "errorMessage": "Ups, etwas ist schief gelaufen! Ich habe gerade einige technische Probleme. Versuchen Sie es in einem Moment erneut oder schauen Sie auf unserer Website nach Informationen. 🤖",
+        "dataNotice": "Fragen können anonym gespeichert werden, um den Service zu verbessern",
         "errors": {
             "rateLimitBurst": "Bitte etwas langsamer! Sie senden Nachrichten zu schnell. Warten Sie einen Moment und versuchen Sie es erneut. 😊",
             "duplicateMessages": "Ich habe bemerkt, dass Sie dieselbe Nachricht mehrmals gesendet haben. Fragen Sie etwas Neues oder warten Sie einen Moment, bevor Sie es erneut versuchen. 📝",

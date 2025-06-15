@@ -253,6 +253,7 @@
         "placeholder": "Demandez-moi...",
         "typing": "Tape...",
         "errorMessage": "Oups, quelque chose s'est mal passé ! J'ai quelques problèmes techniques en ce moment. Réessayez dans un moment ou consultez notre site web pour des informations. 🤖",
+        "dataNotice": "Les questions peuvent être sauvegardées de manière anonyme pour améliorer le service",
         "errors": {
             "rateLimitBurst": "Doucement ! Vous envoyez des messages trop rapidement. Attendez un moment et réessayez. 😊",
             "duplicateMessages": "J'ai remarqué que vous avez envoyé le même message plusieurs fois. Posez quelque chose de nouveau ou attendez un moment avant de réessayer. 📝",
