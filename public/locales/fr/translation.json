@@ -250,7 +250,7 @@
         "title": "Campy Bot (Bêta)",
         "welcomeMessage": "Salut ! Je suis Campy Bot et je vous aide avec des questions sur Malnbadens Camping - chalets, auberge, activités et plus. Pour les prix actuels et les réservations, visitez nos pages de réservation sur le site web. Comment puis-je vous aider ?",
         "betaNotice": "Bêta • Peut être inexact • Pour des informations importantes appelez 0650-132 60",
-        "placeholder": "Tapez votre question ici...",
+        "placeholder": "Demandez-moi...",
         "typing": "Tape...",
         "errorMessage": "Oups, quelque chose s'est mal passé ! J'ai quelques problèmes techniques en ce moment. Réessayez dans un moment ou consultez notre site web pour des informations. 🤖",
         "badge": "Bêta",
