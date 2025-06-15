@@ -253,6 +253,16 @@
         "placeholder": "Spør meg noe...",
         "typing": "Skriver...",
         "errorMessage": "Oops, noe gikk galt! Jeg har litt tekniske problemer akkurat nå. Prøv igjen om litt eller sjekk nettstedet vårt for informasjon. 🤖",
+        "errors": {
+            "rateLimitBurst": "Ta det litt med ro! Du sender meldinger for raskt. Vent litt og prøv igjen. 😊",
+            "duplicateMessages": "Jeg la merke til at du sendte samme melding flere ganger. Spør om noe nytt eller vent litt før du prøver igjen. 📝",
+            "tooFast": "Wow, du skriver raskere enn jeg kan tenke! Vent noen sekunder mellom meldinger. ⚡",
+            "invalidMessage": "Meldingen din virker litt uvanlig. Skriv et vanlig spørsmål om campingen vår. 🏕️",
+            "contentFilter": "Jeg kan bare hjelpe med spørsmål om camping. Spør gjerne om våre fasiliteter, aktiviteter eller tjenester! 🏕️",
+            "rateLimit": "Du har chattet ganske mye! Ta en kort pause og prøv igjen om noen minutter. ☕",
+            "serviceUnavailable": "Jeg er midlertidig offline for vedlikehold. Prøv igjen om noen minutter eller sjekk nettstedet vårt. 🔧",
+            "technicalError": "Jeg har noen tekniske problemer akkurat nå. Prøv å oppdatere siden eller kontakt oss direkte. 🤖"
+        },
         "badge": "Beta",
         "confidence": {
             "high": "Sikker",

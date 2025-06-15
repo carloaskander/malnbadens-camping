@@ -253,6 +253,16 @@
         "placeholder": "Frag mich etwas...",
         "typing": "Tippt...",
         "errorMessage": "Ups, etwas ist schief gelaufen! Ich habe gerade einige technische Probleme. Versuchen Sie es in einem Moment erneut oder schauen Sie auf unserer Website nach Informationen. 🤖",
+        "errors": {
+            "rateLimitBurst": "Bitte etwas langsamer! Sie senden Nachrichten zu schnell. Warten Sie einen Moment und versuchen Sie es erneut. 😊",
+            "duplicateMessages": "Ich habe bemerkt, dass Sie dieselbe Nachricht mehrmals gesendet haben. Fragen Sie etwas Neues oder warten Sie einen Moment, bevor Sie es erneut versuchen. 📝",
+            "tooFast": "Wow, Sie tippen schneller als ich denken kann! Bitte warten Sie einige Sekunden zwischen den Nachrichten. ⚡",
+            "invalidMessage": "Ihre Nachricht scheint etwas ungewöhnlich. Bitte stellen Sie eine normale Frage über unser Camping. 🏕️",
+            "contentFilter": "Ich kann nur bei Fragen über Camping helfen. Fragen Sie gerne nach unseren Einrichtungen, Aktivitäten oder Dienstleistungen! 🏕️",
+            "rateLimit": "Sie haben ziemlich viel gechattet! Machen Sie eine kurze Pause und versuchen Sie es in ein paar Minuten erneut. ☕",
+            "serviceUnavailable": "Ich bin vorübergehend offline für Wartungsarbeiten. Versuchen Sie es in ein paar Minuten erneut oder schauen Sie auf unsere Website. 🔧",
+            "technicalError": "Ich habe gerade einige technische Schwierigkeiten. Versuchen Sie, die Seite zu aktualisieren oder kontaktieren Sie uns direkt. 🤖"
+        },
         "badge": "Beta",
         "confidence": {
             "high": "Sicher",

@@ -253,6 +253,16 @@
         "placeholder": "Demandez-moi...",
         "typing": "Tape...",
         "errorMessage": "Oups, quelque chose s'est mal passé ! J'ai quelques problèmes techniques en ce moment. Réessayez dans un moment ou consultez notre site web pour des informations. 🤖",
+        "errors": {
+            "rateLimitBurst": "Doucement ! Vous envoyez des messages trop rapidement. Attendez un moment et réessayez. 😊",
+            "duplicateMessages": "J'ai remarqué que vous avez envoyé le même message plusieurs fois. Posez quelque chose de nouveau ou attendez un moment avant de réessayer. 📝",
+            "tooFast": "Wow, vous tapez plus vite que je ne peux penser ! Attendez quelques secondes entre les messages. ⚡",
+            "invalidMessage": "Votre message semble un peu inhabituel. Écrivez une question normale sur notre camping. 🏕️",
+            "contentFilter": "Je ne peux aider qu'avec des questions sur le camping. N'hésitez pas à demander sur nos installations, activités ou services ! 🏕️",
+            "rateLimit": "Vous avez beaucoup chatté ! Prenez une petite pause et réessayez dans quelques minutes. ☕",
+            "serviceUnavailable": "Je suis temporairement hors ligne pour maintenance. Réessayez dans quelques minutes ou consultez notre site web. 🔧",
+            "technicalError": "J'ai quelques difficultés techniques en ce moment. Essayez de rafraîchir la page ou contactez-nous directement. 🤖"
+        },
         "badge": "Bêta",
         "confidence": {
             "high": "Confiant",

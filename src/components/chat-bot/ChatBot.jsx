@@ -100,7 +100,7 @@ const ChatBot = ({ open, onClose }) => {
         })
       });
 
-      // Debug: Log the raw response
+      // Debug: Log the raw response (for developers)
       console.log('Response status:', response.status);
       console.log('Response headers:', response.headers);
       
@@ -114,11 +114,42 @@ const ChatBot = ({ open, onClose }) => {
         data = JSON.parse(responseText);
       } catch (parseError) {
         console.error('JSON parse error:', parseError);
-        throw new Error(`API returned invalid JSON: ${responseText.substring(0, 100)}...`);
+        console.error('Raw response that failed to parse:', responseText);
+        // User-friendly error instead of technical JSON parsing error
+        throw new Error('TECHNICAL_ERROR');
       }
 
+      // Handle different types of API errors with user-friendly messages
       if (!response.ok) {
-        throw new Error(data.error || t('chatBot.errorMessage'));
+        // Log technical details for developers
+        console.error('API Error:', {
+          status: response.status,
+          error: data.error,
+          reason: data.reason,
+          retryAfter: data.retryAfter
+        });
+
+        // Handle specific error types with user-friendly messages
+        if (response.status === 429) {
+          // Rate limiting errors - explain what user did wrong
+          if (data.reason === 'Too many requests in short time') {
+            throw new Error('RATE_LIMIT_BURST');
+          } else if (data.reason === 'Too many identical messages') {
+            throw new Error('DUPLICATE_MESSAGES');
+          } else if (data.reason === 'Requests too frequent') {
+            throw new Error('TOO_FAST');
+          } else if (data.reason === 'Invalid message format') {
+            throw new Error('INVALID_MESSAGE');
+          } else if (data.reason === 'Message contains suspicious content') {
+            throw new Error('CONTENT_FILTER');
+          } else {
+            throw new Error('RATE_LIMIT');
+          }
+        } else if (response.status === 503) {
+          throw new Error('SERVICE_UNAVAILABLE');
+        } else {
+          throw new Error(data.error || 'GENERIC_ERROR');
+        }
       }
 
       const botMessage = {
@@ -135,12 +166,46 @@ const ChatBot = ({ open, onClose }) => {
 
     } catch (error) {
       console.error('Chat error:', error);
-      setError(error.message);
+      
+      // Determine user-friendly error message based on error type
+      let userErrorMessage;
+      
+      switch (error.message) {
+        case 'RATE_LIMIT_BURST':
+          userErrorMessage = t('chatBot.errors.rateLimitBurst');
+          break;
+        case 'DUPLICATE_MESSAGES':
+          userErrorMessage = t('chatBot.errors.duplicateMessages');
+          break;
+        case 'TOO_FAST':
+          userErrorMessage = t('chatBot.errors.tooFast');
+          break;
+        case 'INVALID_MESSAGE':
+          userErrorMessage = t('chatBot.errors.invalidMessage');
+          break;
+        case 'CONTENT_FILTER':
+          userErrorMessage = t('chatBot.errors.contentFilter');
+          break;
+        case 'RATE_LIMIT':
+          userErrorMessage = t('chatBot.errors.rateLimit');
+          break;
+        case 'SERVICE_UNAVAILABLE':
+          userErrorMessage = t('chatBot.errors.serviceUnavailable');
+          break;
+        case 'TECHNICAL_ERROR':
+          userErrorMessage = t('chatBot.errors.technicalError');
+          break;
+        default:
+          // For any other errors, use the generic error message
+          userErrorMessage = t('chatBot.errorMessage');
+      }
+      
+      setError(userErrorMessage);
       
       // Add error message to chat
       const errorMessage = {
         id: Date.now() + 1,
-        text: t('chatBot.errorMessage'),
+        text: userErrorMessage,
         sender: 'bot',
         timestamp: new Date(),
         confidence: 'error',

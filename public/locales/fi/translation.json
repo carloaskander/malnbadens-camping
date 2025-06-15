@@ -144,7 +144,7 @@
         },
         "hostelPage": {
             "title": "Hostelli",
-            "description": "Meidän tuore ja käytännöllinen hostellimme on ihanteellinen yrityksille, jotka haluavat varata majoitusta työntekijöilleen tai viikoittain pendelöiville tai pitkäaikaista majoitusta etsiville työntekijöille. Tarjoamme yksi- ja kahden hengen huoneita yhteisillä kylpyhuoneilla sekä kaksi keittiötä ja yhteisen huoneen, jossa on suuri televisio, joka on täydellinen rentoutumiseen työpäivän jälkeen. Meillä on runsaasti pysäköintitilaa. Hostelli sijaitsee 4 kilometrin päässä Hudiksvallin keskustasta, rauhallisella alueella mäntymetsän ympäröimänä, tarjoten erinomaiset mahdollisuudet juoksemiseen ja kävelyyn. Tarjoamme myös ilmaiset pyykinpesumahdollisuudet, joissa on pääsy pesukoneeseen ja kuivauskaappiin. Bussiyhteydet kaupunkiin ovat hyvät, ja lähin ruokakauppa on 2 kilometrin päässä, matkan varrella tänne.",
+            "description": "Meidän tuore ja käytännöllinen hostellimme on ihanteellinen yritysille, jotka haluavat varata majoitusta työntekijöilleen tai viikoittain pendelöiville tai pitkäaikaista majoitusta etsiville työntekijöille. Tarjoamme yksi- ja kahden hengen huoneita yhteisillä kylpyhuoneilla sekä kaksi keittiötä ja yhteisen huoneen, jossa on suuri televisio, joka on täydellinen rentoutumiseen työpäivän jälkeen. Meillä on runsaasti pysäköintitilaa. Hostelli sijaitsee 4 kilometrin päässä Hudiksvallin keskustasta, rauhallisella alueella mäntymetsän ympäröimänä, tarjoten erinomaiset mahdollisuudet juoksemiseen ja kävelyyn. Tarjoamme myös ilmaiset pyykinpesumahdollisuudet, joissa on pääsy pesukoneeseen ja kuivauskaappiin. Bussiyhteydet kaupunkiin ovat hyvät, ja lähin ruokakauppa on 2 kilometrin päässä, matkan varrella tänne.",
             "booking": {
                 "title": "Tee varaus",
                 "button": "Varaa"
@@ -253,6 +253,16 @@
         "placeholder": "Kysy minulta...",
         "typing": "Kirjoittaa...",
         "errorMessage": "Ups, jotain meni pieleen! Minulla on teknisiä ongelmia juuri nyt. Yritä uudelleen hetken kuluttua tai tarkista verkkosivustomme saadaksesi tietoja. 🤖",
+        "errors": {
+            "rateLimitBurst": "Rauhoitu vähän! Lähetät viestejä liian nopeasti. Odota hetki ja yritä uudelleen. 😊",
+            "duplicateMessages": "Huomasin, että lähetit saman viestin useita kertoja. Kysy jotain uutta tai odota hetki ennen uutta yritystä. 📝",
+            "tooFast": "Vau, kirjoitat nopeammin kuin osaan ajatella! Odota muutama sekunti viestien välillä. ⚡",
+            "invalidMessage": "Viestisi vaikuttaa hieman epätavalliselta. Kirjoita tavallinen kysymys leirintäalueestamme. 🏕️",
+            "contentFilter": "Voin auttaa vain leirintäaluetta koskevissa kysymyksissä. Kysy vapaasti tiloistamme, aktiviteeteistamme tai palveluistamme! 🏕️",
+            "rateLimit": "Olet chatannut aika paljon! Pidä lyhyt tauko ja yritä uudelleen muutaman minuutin kuluttua. ☕",
+            "serviceUnavailable": "Olen tilapäisesti offline-tilassa huollon vuoksi. Yritä uudelleen muutaman minuutin kuluttua tai tarkista verkkosivustomme. 🔧",
+            "technicalError": "Minulla on teknisiä vaikeuksia juuri nyt. Yritä päivittää sivu tai ota meihin yhteyttä suoraan. 🤖"
+        },
         "badge": "Beta",
         "confidence": {
             "high": "Varma",
