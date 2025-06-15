@@ -18,7 +18,8 @@ import {
   Send as SendIcon,
   SmartToy as BotIcon,
   Person as PersonIcon,
-  Close as CloseIcon
+  Close as CloseIcon,
+  ArrowUpward as ArrowUpIcon
 } from '@mui/icons-material';
 import { useTranslation } from 'react-i18next';
 
@@ -194,22 +195,25 @@ const ChatBot = ({ open, onClose }) => {
           right: { sm: 20 },
           top: { sm: 'auto' },
           left: { sm: 'auto' },
-          width: { xs: 'auto', sm: 400 },
-          height: { xs: 'auto', sm: 500 },
+          width: { xs: 'auto', sm: 450 },
+          height: { xs: 'auto', sm: 600 },
           // Use dvh for proper mobile viewport handling, fallback to vh
           maxHeight: { 
             xs: ['calc(100vh - 40px)', 'calc(100dvh - 40px)'], 
-            sm: 500 
+            sm: 600 
           },
           display: 'flex',
           flexDirection: 'column',
           zIndex: 1300,
-          borderRadius: 2,
+          // Match your site's design - remove border radius for consistency
+          borderRadius: 0,
           overflow: 'hidden',
           // Prevent iOS Safari bounce scrolling issues
           WebkitOverflowScrolling: 'touch',
           // Ensure fixed positioning works properly on mobile
           transform: 'translateZ(0)',
+          // Add subtle border like your cards
+          boxShadow: '0px 2px 8px 4px rgba(0, 0, 0, 0.1)',
         }}
       >
         {/* Header */}
@@ -220,12 +224,16 @@ const ChatBot = ({ open, onClose }) => {
             p: 2,
             display: 'flex',
             alignItems: 'center',
-            justifyContent: 'space-between'
+            justifyContent: 'space-between',
+            // Add subtle border like your AppBar styling
+            borderBottom: `2px solid rgba(214, 107, 39, 0.3)`
           }}
         >
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
             <BotIcon />
-            <Typography variant="h6">{t('chatBot.title')}</Typography>
+            <Typography variant="h6" sx={{ fontFamily: 'system-ui, -apple-system, Roboto, sans-serif', letterSpacing: '0.5px' }}>
+              {t('chatBot.title')}
+            </Typography>
           </Box>
           <IconButton
             onClick={onClose}
@@ -238,13 +246,18 @@ const ChatBot = ({ open, onClose }) => {
 
         {/* Beta Notice */}
         <Box sx={{ p: 1, bgcolor: 'warning.light' }}>
-          <Typography variant="caption" sx={{ display: 'block', textAlign: 'center' }}>
+          <Typography variant="caption" sx={{ 
+            display: 'block', 
+            textAlign: 'center',
+            fontFamily: 'system-ui, -apple-system, Roboto, sans-serif',
+            fontWeight: 500
+          }}>
             {t('chatBot.betaNotice')}
           </Typography>
         </Box>
 
         {/* Messages */}
-        <Box sx={{ flex: 1, overflow: 'auto', p: 1 }}>
+        <Box sx={{ flex: 1, overflow: 'auto', p: 2 }}>
           <List sx={{ py: 0 }}>
             {messages.map((message) => (
               <ListItem
@@ -277,19 +290,31 @@ const ChatBot = ({ open, onClose }) => {
                     wordBreak: 'break-word'
                   }}
                 >
-                  <Typography variant="body2" sx={{ whiteSpace: 'pre-wrap' }}>
+                  <Typography variant="body2" sx={{ 
+                    whiteSpace: 'pre-wrap',
+                    fontFamily: 'system-ui, -apple-system, Roboto, sans-serif',
+                    fontWeight: 400,
+                    fontSize: '17px',
+                    lineHeight: 1.4
+                  }}>
                     {message.text}
                   </Typography>
                   
                   {message.sender === 'bot' && message.confidence && message.confidence !== 'error' && (
                     <Box sx={{ mt: 1 }}>
-                      <Chip
-                        label={getConfidenceText(message.confidence)}
-                        size="small"
-                        color={getConfidenceColor(message.confidence)}
-                        variant="outlined"
-                        sx={{ fontSize: '0.7rem', height: 20 }}
-                      />
+                                        <Chip
+                    label={getConfidenceText(message.confidence)}
+                    size="small"
+                    color={getConfidenceColor(message.confidence)}
+                    variant="outlined"
+                    sx={{ 
+                      fontSize: '0.7rem', 
+                      height: 20,
+                      fontFamily: 'system-ui, -apple-system, Roboto, sans-serif',
+                      letterSpacing: '0.5px',
+                      fontWeight: 500
+                    }}
+                  />
                     </Box>
                   )}
                   
@@ -299,7 +324,9 @@ const ChatBot = ({ open, onClose }) => {
                       display: 'block',
                       mt: 0.5,
                       opacity: 0.8,
-                      fontSize: '0.7rem'
+                      fontSize: '0.7rem',
+                      fontFamily: 'system-ui, -apple-system, Roboto, sans-serif',
+                      fontWeight: 400
                     }}
                   >
                     {message.timestamp.toLocaleTimeString('sv-SE', { 
@@ -318,7 +345,11 @@ const ChatBot = ({ open, onClose }) => {
                 </Avatar>
                 <Box sx={{ ml: 1, display: 'flex', alignItems: 'center', gap: 1 }}>
                   <CircularProgress size={16} />
-                  <Typography variant="body2" sx={{ fontStyle: 'italic' }}>
+                  <Typography variant="body2" sx={{ 
+                    fontStyle: 'italic',
+                    fontFamily: 'system-ui, -apple-system, Roboto, sans-serif',
+                    fontWeight: 400
+                  }}>
                     {t('chatBot.typing')}
                   </Typography>
                 </Box>
@@ -342,7 +373,7 @@ const ChatBot = ({ open, onClose }) => {
         )}
 
         {/* Input */}
-        <Box sx={{ p: 2, bgcolor: 'grey.50' }}>
+        <Box sx={{ p: 3, bgcolor: 'grey.50' }}>
           <Box sx={{ display: 'flex', gap: 1, alignItems: 'flex-end' }}>
             <TextField
               ref={inputRef}
@@ -355,31 +386,75 @@ const ChatBot = ({ open, onClose }) => {
               disabled={isLoading}
               multiline
               maxRows={3}
+              variant="filled"
               sx={{
-                '& .MuiOutlinedInput-root': {
-                  borderRadius: 3
+                // Remove default TextField margins and spacing
+                margin: 0,
+                '& .MuiInputBase-root': {
+                  margin: 0,
+                },
+                '& .MuiFilledInput-root': {
+                  borderRadius: '8px',
+                  backgroundColor: 'white',
+                  border: 'none',
+                  boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)',
+                  fontFamily: 'system-ui, -apple-system, Roboto, sans-serif',
+                  minHeight: 'auto', // Remove default min-height
+                  paddingTop: 0, // Remove default top padding
+                  paddingBottom: 0, // Remove default bottom padding
+                  '&:hover': {
+                    backgroundColor: 'white',
+                    boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)',
+                  },
+                  '&.Mui-focused': {
+                    backgroundColor: 'white',
+                    boxShadow: '0 4px 16px rgba(0, 0, 0, 0.2)',
+                  },
+                  '&:before': {
+                    display: 'none',
+                  },
+                  '&:after': {
+                    display: 'none',
+                  }
+                },
+                '& .MuiFilledInput-input::placeholder': {
+                  fontSize: '14px',
+                  fontFamily: 'system-ui, -apple-system, Roboto, sans-serif',
+                  opacity: 0.6,
+                },
+                '& .MuiFilledInput-input': {
+                  fontSize: '14px',
+                  fontFamily: 'system-ui, -apple-system, Roboto, sans-serif',
+                  padding: '16px',
+                  lineHeight: 1.2, // Tighter line height
                 }
               }}
             />
             <IconButton
               onClick={handleSendMessage}
               disabled={!inputMessage.trim() || isLoading}
-              color="primary"
               sx={{
                 bgcolor: 'primary.main',
                 color: 'white',
-                width: 40,
-                height: 40,
+                width: 48,
+                height: 48,
                 flexShrink: 0,
+                borderRadius: '8px',
+                boxShadow: '0 2px 8px rgba(0, 0, 0, 0.15)',
                 '&:hover': {
-                  bgcolor: 'primary.dark'
+                  bgcolor: 'rgba(214, 107, 39, 0.8)',
+                  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)',
+                  transform: 'translateY(-1px)'
                 },
                 '&.Mui-disabled': {
-                  bgcolor: 'grey.300'
-                }
+                  bgcolor: 'grey.300',
+                  boxShadow: 'none',
+                  transform: 'none'
+                },
+                transition: 'all 0.2s ease-in-out'
               }}
             >
-              <SendIcon />
+              <ArrowUpIcon sx={{ fontSize: '20px' }} />
             </IconButton>
           </Box>
         </Box>
