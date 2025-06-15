@@ -418,12 +418,12 @@ const ChatBot = ({ open, onClose }) => {
                   }
                 },
                 '& .MuiFilledInput-input::placeholder': {
-                  fontSize: '14px',
+                  fontSize: { xs: '16px' },
                   fontFamily: 'system-ui, -apple-system, Roboto, sans-serif',
                   opacity: 0.6,
                 },
                 '& .MuiFilledInput-input': {
-                  fontSize: '14px',
+                  fontSize: { xs: '16px', sm: '14px' },
                   fontFamily: 'system-ui, -apple-system, Roboto, sans-serif',
                   padding: '16px',
                   lineHeight: 1.2, // Tighter line height
