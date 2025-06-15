@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { Fab, Badge, Zoom } from '@mui/material';
 import { SmartToy as BotIcon } from '@mui/icons-material';
+import { useTranslation } from 'react-i18next';
 import ChatBot from '../chat-bot/ChatBot';
 
 const ChatButton = () => {
+  const { t } = useTranslation();
   const [chatOpen, setChatOpen] = useState(false);
 
   const handleToggleChat = () => {
@@ -29,7 +31,7 @@ const ChatButton = () => {
           }}
         >
           <Badge 
-            badgeContent="Beta" 
+            badgeContent={t('chatBot.badge')} 
             color="warning"
             sx={{
               '& .MuiBadge-badge': {

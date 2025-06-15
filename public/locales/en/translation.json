@@ -245,5 +245,20 @@
         "description": "A diligent programmer is working hard behind the scenes to continuously improve our website and give you a better user experience. You may find the page you were looking for by navigating through our website.",
         "homeButton": "Home",
         "campingButton": "Camping"
+    },
+    "chatBot": {
+        "title": "Campy Bot (Beta)",
+        "welcomeMessage": "Hi! I'm Campy Bot and I help you with questions about Malnbadens Camping - cottages, hostel, activities and more. For current prices and booking, visit our booking pages on the website. How can I help you?",
+        "betaNotice": "Beta • May be inaccurate • For important information call 0650-132 60",
+        "placeholder": "Type your question here...",
+        "typing": "Typing...",
+        "errorMessage": "Oops, something went wrong! I'm having some technical issues right now. Try again in a moment or check our website for information. 🤖",
+        "badge": "Beta",
+        "confidence": {
+            "high": "Confident",
+            "medium": "Fairly confident",
+            "low": "Uncertain",
+            "error": "Error"
+        }
     }
 }

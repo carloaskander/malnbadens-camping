@@ -23,7 +23,7 @@ import {
 import { useTranslation } from 'react-i18next';
 
 const ChatBot = ({ open, onClose }) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [messages, setMessages] = useState([]);
   const [inputMessage, setInputMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -36,13 +36,30 @@ const ChatBot = ({ open, onClose }) => {
     if (open && messages.length === 0) {
       setMessages([{
         id: 1,
-        text: "Hej! Jag är Campy Bot och hjälper dig med frågor om Malnbadens Camping - stugor, vandrarhem, aktiviteter och mer. För aktuella priser och bokning, besök våra bokningssidor på hemsidan. Vad kan jag hjälpa dig med?",
+        text: t('chatBot.welcomeMessage'),
         sender: 'bot',
         timestamp: new Date(),
-        confidence: 'high'
+        confidence: 'high',
+        isWelcomeMessage: true
       }]);
     }
-  }, [open, messages.length]);
+  }, [open, messages.length, t]);
+
+  // Update translatable messages when language changes
+  useEffect(() => {
+    if (messages.length > 0) {
+      setMessages(prevMessages => 
+        prevMessages.map(message => {
+          if (message.isWelcomeMessage) {
+            return { ...message, text: t('chatBot.welcomeMessage') };
+          } else if (message.isErrorMessage) {
+            return { ...message, text: t('chatBot.errorMessage') };
+          }
+          return message;
+        })
+      );
+    }
+  }, [i18n.language, t]);
 
   // Auto-scroll to bottom
   useEffect(() => {
@@ -100,7 +117,7 @@ const ChatBot = ({ open, onClose }) => {
       }
 
       if (!response.ok) {
-        throw new Error(data.error || 'Ett fel uppstod');
+        throw new Error(data.error || t('chatBot.errorMessage'));
       }
 
       const botMessage = {
@@ -122,10 +139,11 @@ const ChatBot = ({ open, onClose }) => {
       // Add error message to chat
       const errorMessage = {
         id: Date.now() + 1,
-        text: "Oj, något gick fel! Jag har lite tekniska problem just nu. Försök igen om en stund eller kolla vår hemsida för information. 🤖",
+        text: t('chatBot.errorMessage'),
         sender: 'bot',
         timestamp: new Date(),
-        confidence: 'error'
+        confidence: 'error',
+        isErrorMessage: true
       };
       
       setMessages(prev => [...prev, errorMessage]);
@@ -153,10 +171,10 @@ const ChatBot = ({ open, onClose }) => {
 
   const getConfidenceText = (confidence) => {
     switch (confidence) {
-      case 'high': return 'Säker';
-      case 'medium': return 'Ganska säker';
-      case 'low': return 'Osäker';
-      case 'error': return 'Fel';
+      case 'high': return t('chatBot.confidence.high');
+      case 'medium': return t('chatBot.confidence.medium');
+      case 'low': return t('chatBot.confidence.low');
+      case 'error': return t('chatBot.confidence.error');
       default: return '';
     }
   };
@@ -193,7 +211,7 @@ const ChatBot = ({ open, onClose }) => {
         >
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
             <BotIcon />
-            <Typography variant="h6">Campy Bot (Beta)</Typography>
+            <Typography variant="h6">{t('chatBot.title')}</Typography>
           </Box>
           <IconButton
             onClick={onClose}
@@ -207,7 +225,7 @@ const ChatBot = ({ open, onClose }) => {
         {/* Beta Notice */}
         <Box sx={{ p: 1, bgcolor: 'warning.light' }}>
           <Typography variant="caption" sx={{ display: 'block', textAlign: 'center' }}>
-            Beta • Kan vara felaktig • För viktig information ring 0650-132 60
+            {t('chatBot.betaNotice')}
           </Typography>
         </Box>
 
@@ -287,7 +305,7 @@ const ChatBot = ({ open, onClose }) => {
                 <Box sx={{ ml: 1, display: 'flex', alignItems: 'center', gap: 1 }}>
                   <CircularProgress size={16} />
                   <Typography variant="body2" sx={{ fontStyle: 'italic' }}>
-                    Skriver...
+                    {t('chatBot.typing')}
                   </Typography>
                 </Box>
               </ListItem>
@@ -316,7 +334,7 @@ const ChatBot = ({ open, onClose }) => {
               ref={inputRef}
               fullWidth
               size="small"
-              placeholder="Skriv din fråga här..."
+              placeholder={t('chatBot.placeholder')}
               value={inputMessage}
               onChange={(e) => setInputMessage(e.target.value)}
               onKeyPress={handleKeyPress}

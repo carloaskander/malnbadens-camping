@@ -245,5 +245,20 @@
         "description": "Ein fleißiger Programmierer arbeitet hart hinter den Kulissen, um unsere Website kontinuierlich zu verbessern und Ihnen eine bessere Benutzererfahrung zu bieten. Sie finden möglicherweise die gesuchte Seite, indem Sie durch unsere Website navigieren.",
         "homeButton": "Startseite",
         "campingButton": "Camping"
+    },
+    "chatBot": {
+        "title": "Campy Bot (Beta)",
+        "welcomeMessage": "Hallo! Ich bin Campy Bot und helfe Ihnen bei Fragen zu Malnbadens Camping - Hütten, Herberge, Aktivitäten und mehr. Für aktuelle Preise und Buchungen besuchen Sie unsere Buchungsseiten auf der Website. Womit kann ich Ihnen helfen?",
+        "betaNotice": "Beta • Kann ungenau sein • Für wichtige Informationen rufen Sie 0650-132 60 an",
+        "placeholder": "Geben Sie Ihre Frage hier ein...",
+        "typing": "Tippt...",
+        "errorMessage": "Ups, etwas ist schief gelaufen! Ich habe gerade einige technische Probleme. Versuchen Sie es in einem Moment erneut oder schauen Sie auf unserer Website nach Informationen. 🤖",
+        "badge": "Beta",
+        "confidence": {
+            "high": "Sicher",
+            "medium": "Ziemlich sicher",
+            "low": "Unsicher",
+            "error": "Fehler"
+        }
     }
 }

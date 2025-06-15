@@ -245,5 +245,20 @@
         "description": "En flittig programmerer jobber hardt bak kulissene for kontinuerlig å forbedre nettstedet vårt og gi deg en bedre brukeropplevelse. Du kan finne siden du lette etter ved å navigere på nettstedet vårt.",
         "homeButton": "Hjem",
         "campingButton": "Camping"
+    },
+    "chatBot": {
+        "title": "Campy Bot (Beta)",
+        "welcomeMessage": "Hei! Jeg er Campy Bot og hjelper deg med spørsmål om Malnbadens Camping - hytter, vandrerhjem, aktiviteter og mer. For aktuelle priser og booking, besøk våre bookingsider på nettsiden. Hva kan jeg hjelpe deg med?",
+        "betaNotice": "Beta • Kan være unøyaktig • For viktig informasjon ring 0650-132 60",
+        "placeholder": "Skriv spørsmålet ditt her...",
+        "typing": "Skriver...",
+        "errorMessage": "Oops, noe gikk galt! Jeg har litt tekniske problemer akkurat nå. Prøv igjen om litt eller sjekk nettstedet vårt for informasjon. 🤖",
+        "badge": "Beta",
+        "confidence": {
+            "high": "Sikker",
+            "medium": "Ganske sikker",
+            "low": "Usikker",
+            "error": "Feil"
+        }
     }
 }

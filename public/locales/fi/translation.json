@@ -245,5 +245,20 @@
         "description": "Ahkera ohjelmoija työskentelee kovasti kulissien takana parantaakseen jatkuvasti verkkosivustoamme ja tarjotakseen sinulle paremman käyttökokemuksen. Saatat löytää etsimäsi sivun navigoimalla verkkosivustomme kautta.",
         "homeButton": "Koti",
         "campingButton": "Leirintäalue"
+    },
+    "chatBot": {
+        "title": "Campy Bot (Beta)",
+        "welcomeMessage": "Hei! Olen Campy Bot ja autan sinua kysymyksissä koskien Malnbadens Campingia - mökkejä, hostellia, aktiviteetteja ja muuta. Ajankohtaisia hintoja ja varauksia varten vieraile varaussivuillamme verkkosivustolla. Miten voin auttaa sinua?",
+        "betaNotice": "Beta • Voi olla epätarkka • Tärkeää tietoa varten soita 0650-132 60",
+        "placeholder": "Kirjoita kysymyksesi tähän...",
+        "typing": "Kirjoittaa...",
+        "errorMessage": "Ups, jotain meni pieleen! Minulla on teknisiä ongelmia juuri nyt. Yritä uudelleen hetken kuluttua tai tarkista verkkosivustomme saadaksesi tietoja. 🤖",
+        "badge": "Beta",
+        "confidence": {
+            "high": "Varma",
+            "medium": "Melko varma",
+            "low": "Epävarma",
+            "error": "Virhe"
+        }
     }
 }
