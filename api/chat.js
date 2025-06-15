@@ -314,9 +314,7 @@ async function logPendingQuestion(question, ip, metadata = {}) {
       .from('pending')
       .insert([
         {
-          question: question,
-          user_agent: metadata.userAgent,
-          created_at: new Date().toISOString()
+          question: question
         }
       ]);
     
