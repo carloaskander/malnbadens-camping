@@ -167,21 +167,24 @@ async function searchFAQ(query) {
   }
 }
 
-async function logPendingQuestion(question, anonymous) {
+async function logPendingQuestion(question, botResponse, confidence, similarity) {
   try {
     console.log('🔄 Attempting to log pending question:', question);
     const result = await supabase
       .from('pending')
       .insert([
         {
-          question: question
+          question: question,
+          bot_response: botResponse,
+          confidence: confidence,
+          similarity: similarity
         }
       ]);
     
     if (result.error) {
       console.error('❌ Supabase insertion failed:', result.error);
     } else {
-      console.log('✅ Successfully logged pending question');
+      console.log('✅ Successfully logged pending question with bot response');
     }
   } catch (error) {
     console.error('❌ Error logging pending question:', error);
@@ -251,9 +254,6 @@ Ge det exakta svaret på användarens språk:`;
       });
     }
     
-    // Log question as potentially unanswered for learning
-    await logPendingQuestion(trimmedMessage, 'anonymous');
-    
     // Use GPT-4o-mini with context from search results
     const context = results.length > 0 
       ? results.map(r => `Q: ${r.question}\nA: ${r.answer}`).join('\n\n')
@@ -301,10 +301,14 @@ ${context}`;
     });
     
     const response = completion.choices[0].message.content;
+    const confidence = bestSimilarity >= 0.6 ? 'medium' : 'low';
+    
+    // Log question with bot response for learning
+    await logPendingQuestion(trimmedMessage, response, confidence, bestSimilarity);
     
     return res.status(200).json({
       response,
-      confidence: bestSimilarity >= 0.6 ? 'medium' : 'low',
+      confidence: confidence,
       similarity: bestSimilarity
     });
     
