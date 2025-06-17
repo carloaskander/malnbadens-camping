@@ -26,7 +26,7 @@ export default async function handler(req, res) {
 
     // Generate embedding for the question
     const embeddingResponse = await openai.embeddings.create({
-      model: 'text-embedding-3-small',
+      model: 'text-embedding-3-large',
       input: question,
     });
 

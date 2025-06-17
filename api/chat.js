@@ -137,17 +137,52 @@ async function searchFAQ(query) {
   try {
     // Generate embedding for the query
     const embeddingResponse = await openai.embeddings.create({
-      model: 'text-embedding-3-small',
+      model: 'text-embedding-3-large',
       input: query,
     });
     
     const queryEmbedding = embeddingResponse.data[0].embedding;
     
-    // Search for similar FAQs using cosine similarity
+    // First, do a quick search to determine best similarity
+    const { data: quickData, error: quickError } = await supabase.rpc('match_faq', {
+      query_embedding: queryEmbedding,
+      match_threshold: 0.5,
+      match_count: 1
+    });
+    
+    if (quickError) {
+      console.error('Supabase quick search error:', quickError);
+      return { results: [], bestSimilarity: 0 };
+    }
+    
+    const bestSimilarity = quickData.length > 0 ? quickData[0].similarity : 0;
+    
+    // Dynamic k based on similarity - lower similarity needs more context
+    let matchCount;
+    let threshold;
+    
+    if (bestSimilarity < 0.6) {
+      // Low similarity - cast a wider net
+      matchCount = 10;
+      threshold = 0.4;
+      console.log(`🔍 Low similarity (${bestSimilarity.toFixed(3)}), using wide search: k=${matchCount}`);
+    } else if (bestSimilarity < 0.75) {
+      // Medium similarity - moderate search
+      matchCount = 6;
+      threshold = 0.5;
+      console.log(`🎯 Medium similarity (${bestSimilarity.toFixed(3)}), using moderate search: k=${matchCount}`);
+    } else {
+      // High similarity - focused search
+      matchCount = 4;
+      threshold = 0.6;
+      console.log(`✅ High similarity (${bestSimilarity.toFixed(3)}), using focused search: k=${matchCount}`);
+    }
+    
+    // Now do the full search with dynamic parameters
     const { data, error } = await supabase.rpc('match_faq', {
       query_embedding: queryEmbedding,
-      match_threshold: 0.6,
-      match_count: 3
+      match_threshold: threshold,
+      match_count: matchCount
     });
     
     if (error) {
@@ -155,7 +190,7 @@ async function searchFAQ(query) {
       return { results: [], bestSimilarity: 0 };
     }
     
-    const bestSimilarity = data.length > 0 ? data[0].similarity : 0;
+    console.log(`📊 Retrieved ${data.length} FAQ chunks for context`);
     
     return {
       results: data,
