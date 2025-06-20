@@ -248,12 +248,12 @@
     },
     "chatBot": {
         "title": "Campy Bot (Bêta)",
-        "welcomeMessage": "Salut ! Je suis Campy Bot et je vous aide avec des questions sur Malnbadens Camping - chalets, auberge, activités et plus. Pour les prix actuels et les réservations, visitez nos pages de réservation sur le site web. Comment puis-je vous aider ?",
-        "betaNotice": "Bêta • Peut être inexact • Pour des informations importantes appelez 0650-132 60",
+        "welcomeMessage": "Salut ! Je vous aide avec des questions sur Malnbadens Camping. Comment puis-je vous aider ?",
+        "betaNotice": "Bêta • Appelez le 0650-132 60 pour infos importantes",
         "placeholder": "Demandez-moi...",
         "typing": "Tape...",
         "errorMessage": "Oups, quelque chose s'est mal passé ! J'ai quelques problèmes techniques en ce moment. Réessayez dans un moment ou consultez notre site web pour des informations. 🤖",
-        "dataNotice": "Les questions peuvent être sauvegardées de manière anonyme pour améliorer le service",
+        "dataNotice": "Questions sauvegardées anonymement",
         "errors": {
             "rateLimitBurst": "Doucement ! Vous envoyez des messages trop rapidement. Attendez un moment et réessayez. 😊",
             "duplicateMessages": "J'ai remarqué que vous avez envoyé le même message plusieurs fois. Posez quelque chose de nouveau ou attendez un moment avant de réessayer. 📝",

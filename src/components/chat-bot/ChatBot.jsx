@@ -32,6 +32,21 @@ const ChatBot = ({ open, onClose }) => {
   const messagesEndRef = useRef(null);
   const inputRef = useRef(null);
 
+  // Prevent background scrolling when chat is open on mobile
+  useEffect(() => {
+    if (open) {
+      // Store original overflow style
+      const originalStyle = window.getComputedStyle(document.body).overflow;
+      // Prevent body scroll
+      document.body.style.overflow = 'hidden';
+      
+      // Cleanup function to restore scroll
+      return () => {
+        document.body.style.overflow = originalStyle;
+      };
+    }
+  }, [open]);
+
   // Welcome message
   useEffect(() => {
     if (open && messages.length === 0) {
@@ -260,32 +275,35 @@ const ChatBot = ({ open, onClose }) => {
         elevation={8}
         sx={{
           position: 'fixed',
-          // Use inset instead of individual positioning to prevent Safari jumps
-          inset: { xs: '20px', sm: 'auto' },
+          // Full-screen on mobile, floating on desktop
+          inset: { xs: '0', sm: 'auto' },
           // On desktop, override inset with specific positioning
           bottom: { sm: 20 },
           right: { sm: 20 },
           top: { sm: 'auto' },
           left: { sm: 'auto' },
-          width: { xs: 'auto', sm: 450 },
-          height: { xs: 'auto', sm: 600 },
+          width: { xs: '100%', sm: 450 },
+          height: { xs: '100%', sm: 600 },
           // Use dvh for proper mobile viewport handling, fallback to vh
           maxHeight: { 
-            xs: ['calc(100vh - 40px)', 'calc(100dvh - 40px)'], 
+            xs: ['100vh', '100dvh'], 
             sm: 600 
           },
           display: 'flex',
           flexDirection: 'column',
           zIndex: 1300,
-          // Match your site's design - remove border radius for consistency
-          borderRadius: 0,
+          // Remove border radius on mobile for full-screen feel, keep on desktop
+          borderRadius: { xs: 0, sm: 2 },
           overflow: 'hidden',
           // Prevent iOS Safari bounce scrolling issues
           WebkitOverflowScrolling: 'touch',
           // Ensure fixed positioning works properly on mobile
           transform: 'translateZ(0)',
-          // Add subtle border like your cards
-          boxShadow: '0px 2px 8px 4px rgba(0, 0, 0, 0.1)',
+          // Add subtle border like your cards, but only on desktop
+          boxShadow: { 
+            xs: 'none', 
+            sm: '0px 2px 8px 4px rgba(0, 0, 0, 0.1)' 
+          },
         }}
       >
         {/* Header */}
@@ -329,7 +347,7 @@ const ChatBot = ({ open, onClose }) => {
         </Box>
 
         {/* Messages */}
-        <Box sx={{ flex: 1, overflow: 'auto', p: 2 }}>
+        <Box sx={{ flex: 1, overflow: 'auto', p: 1 }}>
           <List sx={{ py: 0 }}>
             {messages.map((message) => (
               <ListItem
@@ -338,7 +356,8 @@ const ChatBot = ({ open, onClose }) => {
                   display: 'flex',
                   flexDirection: message.sender === 'user' ? 'row-reverse' : 'row',
                   alignItems: 'flex-start',
-                  gap: 1,
+                  gap: 0.5,
+                  px: 1,
                   py: 1
                 }}
               >
@@ -358,7 +377,8 @@ const ChatBot = ({ open, onClose }) => {
                     bgcolor: message.sender === 'user' ? 'primary.main' : 'grey.100',
                     color: message.sender === 'user' ? 'white' : 'text.primary',
                     borderRadius: 2,
-                    p: 1.5,
+                    px: 1.5,
+                    py: 1.5,
                     wordBreak: 'break-word'
                   }}
                 >
@@ -445,7 +465,7 @@ const ChatBot = ({ open, onClose }) => {
         )}
 
         {/* Input */}
-        <Box sx={{ p: 3, bgcolor: 'grey.50' }}>
+        <Box sx={{ px: 3, py: 2, bgcolor: 'grey.50' }}>
           <Box sx={{ display: 'flex', gap: 1, alignItems: 'flex-end' }}>
             <TextField
               ref={inputRef}
@@ -508,8 +528,8 @@ const ChatBot = ({ open, onClose }) => {
               sx={{
                 bgcolor: 'primary.main',
                 color: 'white',
-                width: 48,
-                height: 48,
+                width: { xs: 52, sm: 49 },
+                height: { xs: 52, sm: 49 },
                 flexShrink: 0,
                 borderRadius: '8px',
                 boxShadow: '0 2px 8px rgba(0, 0, 0, 0.15)',
