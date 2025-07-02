@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 import {
   Box,
   Paper,
@@ -31,21 +31,30 @@ const ChatBot = ({ open, onClose }) => {
   const [error, setError] = useState(null);
   const messagesEndRef = useRef(null);
   const inputRef = useRef(null);
+  const messagesContainerRef = useRef(null);
 
-  // Prevent background scrolling when chat is open on mobile
+  // Clean body scroll lock - keep it simple
   useEffect(() => {
-    if (open) {
-      // Store original overflow style
-      const originalStyle = window.getComputedStyle(document.body).overflow;
-      // Prevent body scroll
-      document.body.style.overflow = 'hidden';
-      
-      // Cleanup function to restore scroll
-      return () => {
-        document.body.style.overflow = originalStyle;
-      };
-    }
+    if (!open) return;
+
+    // Prevent page scroll while chat is open
+    document.body.classList.add('modal-open');
+
+    return () => {
+      document.body.classList.remove('modal-open');
+    };
   }, [open]);
+
+  // Professional auto-scroll function using scrollHeight
+  const scrollToBottom = useCallback(() => {
+    if (messagesContainerRef.current) {
+      const container = messagesContainerRef.current;
+      container.scrollTo({
+        top: container.scrollHeight,
+        behavior: 'smooth'
+      });
+    }
+  }, []);
 
   // Welcome message
   useEffect(() => {
@@ -77,17 +86,23 @@ const ChatBot = ({ open, onClose }) => {
     }
   }, [i18n.language, t]);
 
-  // Auto-scroll to bottom
+  // Auto-scroll on new messages (including streaming tokens)
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-  }, [messages]);
+    if (messages.length > 0) {
+      // Small delay to ensure DOM is updated
+      setTimeout(scrollToBottom, 50);
+    }
+  }, [messages, scrollToBottom]);
 
-  // Focus input when opened
+  // Focus input and scroll when chat opens
   useEffect(() => {
     if (open) {
-      setTimeout(() => inputRef.current?.focus(), 100);
+      setTimeout(() => {
+        inputRef.current?.focus();
+        scrollToBottom();
+      }, 300); // Longer delay for mobile keyboard
     }
-  }, [open]);
+  }, [open, scrollToBottom]);
 
   const handleSendMessage = async () => {
     if (!inputMessage.trim() || isLoading) return;
@@ -247,6 +262,11 @@ const ChatBot = ({ open, onClose }) => {
     }
   };
 
+  // Simple auto-scroll on input focus
+  const handleInputFocus = () => {
+    setTimeout(scrollToBottom, 100);
+  };
+
   const getConfidenceColor = (confidence) => {
     switch (confidence) {
       case 'high': return 'success';      // Green - High confidence, trust this
@@ -274,39 +294,37 @@ const ChatBot = ({ open, onClose }) => {
       <Paper
         elevation={8}
         sx={{
+          // Clean fixed positioning - chat overlay on top of everything
           position: 'fixed',
-          // Full-screen on mobile, floating on desktop
-          inset: { xs: '0', sm: 'auto' },
-          // On desktop, override inset with specific positioning
-          bottom: { sm: 20 },
-          right: { sm: 20 },
-          top: { sm: 'auto' },
-          left: { sm: 'auto' },
-          width: { xs: '100%', sm: 450 },
-          height: { xs: '100%', sm: 600 },
-          // Use dvh for proper mobile viewport handling, fallback to vh
-          maxHeight: { 
-            xs: ['100vh', '100dvh'], 
-            sm: 600 
-          },
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          width: '100%',
+          height: '100dvh',
           display: 'flex',
           flexDirection: 'column',
-          zIndex: 1300,
-          // Remove border radius on mobile for full-screen feel, keep on desktop
+          zIndex: 9999,
+          // Mobile-first, then desktop override
           borderRadius: { xs: 0, sm: 2 },
+          // Desktop positioning
+          ...(window.innerWidth >= 600 && {
+            position: 'fixed',
+            top: 'auto',
+            left: 'auto',
+            right: 20,
+            bottom: 20,
+            width: 450,
+            height: 600,
+          }),
           overflow: 'hidden',
-          // Prevent iOS Safari bounce scrolling issues
-          WebkitOverflowScrolling: 'touch',
-          // Ensure fixed positioning works properly on mobile
-          transform: 'translateZ(0)',
-          // Add subtle border like your cards, but only on desktop
           boxShadow: { 
             xs: 'none', 
             sm: '0px 2px 8px 4px rgba(0, 0, 0, 0.1)' 
           },
         }}
       >
-        {/* Header */}
+        {/* Header - Fixed at top */}
         <Box
           sx={{
             bgcolor: 'primary.main',
@@ -315,8 +333,9 @@ const ChatBot = ({ open, onClose }) => {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
-            // Add subtle border like your AppBar styling
-            borderBottom: `2px solid rgba(214, 107, 39, 0.3)`
+            borderBottom: `2px solid rgba(214, 107, 39, 0.3)`,
+            flexShrink: 0, // Don't allow shrinking
+            zIndex: 2,
           }}
         >
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
@@ -334,8 +353,8 @@ const ChatBot = ({ open, onClose }) => {
           </IconButton>
         </Box>
 
-        {/* Beta Notice */}
-        <Box sx={{ p: 1, bgcolor: 'warning.light' }}>
+        {/* Beta Notice - Fixed below header */}
+        <Box sx={{ p: 1, bgcolor: 'warning.light', flexShrink: 0 }}>
           <Typography variant="caption" sx={{ 
             display: 'block', 
             textAlign: 'center',
@@ -346,8 +365,29 @@ const ChatBot = ({ open, onClose }) => {
           </Typography>
         </Box>
 
-        {/* Messages */}
-        <Box sx={{ flex: 1, overflow: 'auto', p: 1 }}>
+        {/* Messages - Flexible, scrollable area */}
+        <Box 
+          ref={messagesContainerRef}
+          sx={{ 
+            flex: '1 1 auto', // Flex grow, shrink, auto basis
+            minHeight: 0, // Critical: allows flex item to shrink below content size
+            overflowY: 'auto',
+            overflowX: 'hidden',
+            // Prevent pull-to-refresh and block page scroll propagation
+            overscrollBehavior: 'contain',
+            p: 1,
+            // Smooth scrolling
+            scrollBehavior: 'smooth',
+            // Improve touch scrolling on mobile
+            WebkitOverflowScrolling: 'touch',
+            // Prevent horizontal scrolling
+            width: '100%',
+            // Push content to bottom so first message stays visible
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'flex-end',
+          }}
+        >
           <List sx={{ py: 0 }}>
             {messages.map((message) => (
               <ListItem
@@ -394,19 +434,19 @@ const ChatBot = ({ open, onClose }) => {
                   
                   {message.sender === 'bot' && message.confidence && message.confidence !== 'error' && (
                     <Box sx={{ mt: 1 }}>
-                                        <Chip
-                    label={getConfidenceText(message.confidence)}
-                    size="small"
-                    color={getConfidenceColor(message.confidence)}
-                    variant="outlined"
-                    sx={{ 
-                      fontSize: '0.7rem', 
-                      height: 20,
-                      fontFamily: 'system-ui, -apple-system, Roboto, sans-serif',
-                      letterSpacing: '0.5px',
-                      fontWeight: 500
-                    }}
-                  />
+                      <Chip
+                        label={getConfidenceText(message.confidence)}
+                        size="small"
+                        color={getConfidenceColor(message.confidence)}
+                        variant="outlined"
+                        sx={{ 
+                          fontSize: '0.7rem', 
+                          height: 20,
+                          fontFamily: 'system-ui, -apple-system, Roboto, sans-serif',
+                          letterSpacing: '0.5px',
+                          fontWeight: 500
+                        }}
+                      />
                     </Box>
                   )}
                   
@@ -457,15 +497,25 @@ const ChatBot = ({ open, onClose }) => {
             <Alert 
               severity="error" 
               onClose={() => setError(null)}
-              sx={{ mx: 1, mb: 1 }}
+              sx={{ mx: 1, mb: 1, flexShrink: 0 }}
             >
               {error}
             </Alert>
           </Fade>
         )}
 
-        {/* Input */}
-        <Box sx={{ px: 3, py: 2, bgcolor: 'grey.50' }}>
+        {/* Input Row - Clean sticky positioning */}
+        <Box 
+          sx={{ 
+            px: 3, 
+            py: 2, 
+            bgcolor: 'grey.50',
+            flexShrink: 0,
+            position: 'sticky',
+            bottom: 0,
+            zIndex: 3,
+          }}
+        >
           <Box sx={{ display: 'flex', gap: 1, alignItems: 'flex-end' }}>
             <TextField
               ref={inputRef}
@@ -475,12 +525,12 @@ const ChatBot = ({ open, onClose }) => {
               value={inputMessage}
               onChange={(e) => setInputMessage(e.target.value)}
               onKeyPress={handleKeyPress}
+              onFocus={handleInputFocus}
               disabled={isLoading}
               multiline
               maxRows={3}
               variant="filled"
               sx={{
-                // Remove default TextField margins and spacing
                 margin: 0,
                 '& .MuiInputBase-root': {
                   margin: 0,
@@ -491,9 +541,9 @@ const ChatBot = ({ open, onClose }) => {
                   border: 'none',
                   boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)',
                   fontFamily: 'system-ui, -apple-system, Roboto, sans-serif',
-                  minHeight: 'auto', // Remove default min-height
-                  paddingTop: 0, // Remove default top padding
-                  paddingBottom: 0, // Remove default bottom padding
+                  minHeight: 'auto',
+                  paddingTop: 0,
+                  paddingBottom: 0,
                   '&:hover': {
                     backgroundColor: 'white',
                     boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)',
@@ -510,15 +560,15 @@ const ChatBot = ({ open, onClose }) => {
                   }
                 },
                 '& .MuiFilledInput-input::placeholder': {
-                  fontSize: { xs: '16px' },
+                  fontSize: { xs: '16px' }, // Prevent zoom on iOS
                   fontFamily: 'system-ui, -apple-system, Roboto, sans-serif',
                   opacity: 0.6,
                 },
                 '& .MuiFilledInput-input': {
-                  fontSize: { xs: '16px', sm: '14px' },
+                  fontSize: { xs: '16px', sm: '14px' }, // Prevent zoom on iOS
                   fontFamily: 'system-ui, -apple-system, Roboto, sans-serif',
                   padding: '16px',
-                  lineHeight: 1.2, // Tighter line height
+                  lineHeight: 1.2,
                 }
               }}
             />
@@ -550,7 +600,6 @@ const ChatBot = ({ open, onClose }) => {
             </IconButton>
           </Box>
           
-          {/* Simple data notice */}
           <Typography 
             variant="caption" 
             sx={{ 

@@ -248,7 +248,7 @@
     },
     "chatBot": {
         "title": "Campy Bot (Beta)",
-        "welcomeMessage": "Hej! Jag hjälper dig med frågor om Malnbadens Camping. Vad kan jag hjälpa dig med?",
+        "welcomeMessage": "Hej! Jag kan hjälpa dig med frågor om Malnbadens Camping. Vad kan jag hjälpa dig med?",
         "betaNotice": "Beta • Ring 0650-132 60 för viktig info",
         "placeholder": "Fråga mig något...",
         "typing": "Skriver...",

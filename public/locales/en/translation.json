@@ -248,7 +248,7 @@
     },
     "chatBot": {
         "title": "Campy Bot (Beta)",
-        "welcomeMessage": "Hi! I help you with questions about Malnbadens Camping. How can I help you?",
+        "welcomeMessage": "Hi! I can help you with questions about Malnbadens Camping. How can I help you?",
         "betaNotice": "Beta • Call 0650-132 60 for important info",
         "placeholder": "Ask me anything...",
         "typing": "Typing...",

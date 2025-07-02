@@ -248,7 +248,7 @@
     },
     "chatBot": {
         "title": "Campy Bot (Bêta)",
-        "welcomeMessage": "Salut ! Je vous aide avec des questions sur Malnbadens Camping. Comment puis-je vous aider ?",
+        "welcomeMessage": "Salut ! Je peux vous aider avec des questions sur Malnbadens Camping. Comment puis-je vous aider ?",
         "betaNotice": "Bêta • Appelez le 0650-132 60 pour infos importantes",
         "placeholder": "Demandez-moi...",
         "typing": "Tape...",
