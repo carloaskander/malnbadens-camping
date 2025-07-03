@@ -256,7 +256,7 @@ export default async function handler(req, res) {
     const { results, bestSimilarity } = await searchFAQ(trimmedMessage);
     
     // Replace the direct response logic with multilingual support
-    if (bestSimilarity >= 0.82 && results.length > 0) {
+    if (bestSimilarity >= 0.75 && results.length > 0) {
       // For high-confidence matches, use AI to translate the answer to user's language
       const directAnswerPrompt = `Du är Campy Bot, en hjälpsam AI-assistent för Malnbadens Camping. Du har hittat det perfekta svaret på användarens fråga.
 
@@ -336,7 +336,8 @@ ${context}`;
     });
     
     const response = completion.choices[0].message.content;
-    const confidence = bestSimilarity >= 0.6 ? 'medium' : 'low';
+    // Confidence ranges: High (0.75+), Medium (0.55-0.74), Low (<0.55)
+    const confidence = bestSimilarity >= 0.55 ? 'medium' : 'low';
     
     // Log question with bot response for learning
     await logPendingQuestion(trimmedMessage, response, confidence, bestSimilarity);

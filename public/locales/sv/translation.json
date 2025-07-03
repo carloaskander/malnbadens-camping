@@ -250,10 +250,10 @@
         "title": "Campy Bot (Beta)",
         "welcomeMessage": "Hej! Jag kan hjälpa dig med frågor om Malnbadens Camping. Vad kan jag hjälpa dig med?",
         "betaNotice": "Beta • Ring 0650-132 60 för viktig info",
-        "placeholder": "Fråga mig något...",
+        "placeholder": "Skriv din fråga...",
         "typing": "Skriver...",
         "errorMessage": "Oj, något gick fel! Jag har lite tekniska problem just nu. Försök igen om en stund eller kolla vår hemsida för information. 🤖",
-        "dataNotice": "Frågor sparas anonymt",
+        "dataNotice": "Vissa frågor sparas anonymt",
         "errors": {
             "rateLimitBurst": "Ta det lite lugnt! Du skickar meddelanden för snabbt. Vänta ett ögonblick och försök igen. 😊",
             "duplicateMessages": "Jag märkte att du skickade samma meddelande flera gånger. Fråga något nytt eller vänta en stund innan du försöker igen. 📝",

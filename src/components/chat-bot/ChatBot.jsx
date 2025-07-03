@@ -382,12 +382,14 @@ const ChatBot = ({ open, onClose }) => {
             WebkitOverflowScrolling: 'touch',
             // Prevent horizontal scrolling
             width: '100%',
-            // Push content to bottom so first message stays visible
+            // Remove flex-end to allow proper scrolling
             display: 'flex',
             flexDirection: 'column',
-            justifyContent: 'flex-end',
           }}
         >
+          {/* Spacer to push content to bottom when there's only one message */}
+          {messages.length === 1 && <Box sx={{ flex: '1 1 auto' }} />}
+          
           <List sx={{ py: 0 }}>
             {messages.map((message) => (
               <ListItem

@@ -250,10 +250,10 @@
         "title": "Campy Bot (Beta)",
         "welcomeMessage": "Hei! Autan sinua kysymyksissä Malnbadens Campingista. Miten voin auttaa sinua?",
         "betaNotice": "Beta • Soita 0650-132 60 tärkeää tietoa varten",
-        "placeholder": "Kysy minulta...",
+        "placeholder": "Kirjoita kysymyksesi...",
         "typing": "Kirjoittaa...",
         "errorMessage": "Ups, jotain meni pieleen! Minulla on teknisiä ongelmia juuri nyt. Yritä uudelleen hetken kuluttua tai tarkista verkkosivustomme saadaksesi tietoja. 🤖",
-        "dataNotice": "Kysymykset tallennetaan nimettömästi",
+        "dataNotice": "Jotkut kysymykset tallennetaan nimettömästi",
         "errors": {
             "rateLimitBurst": "Rauhoitu vähän! Lähetät viestejä liian nopeasti. Odota hetki ja yritä uudelleen. 😊",
             "duplicateMessages": "Huomasin, että lähetit saman viestin useita kertoja. Kysy jotain uutta tai odota hetki ennen uutta yritystä. 📝",
