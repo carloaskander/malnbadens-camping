@@ -12,7 +12,8 @@ import {
   CircularProgress,
   Alert,
   Fade,
-  Slide
+  Slide,
+  Link
 } from '@mui/material';
 import {
   Send as SendIcon,
@@ -120,7 +121,7 @@ const ChatBot = ({ open, onClose }) => {
     setError(null);
 
     try {
-      const response = await fetch('/api/chat', {
+      const response = await fetch('https://malnbadens-camping-git-chatbot-dev-carloaskanders-projects.vercel.app/api/chat', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -287,6 +288,38 @@ const ChatBot = ({ open, onClose }) => {
     }
   };
 
+  // Helper function to convert URLs to clickable links
+  const renderMessageWithLinks = (text) => {
+    // Regex to match URLs starting with / (relative paths)
+    const urlRegex = /(\/[a-zA-Z0-9\/\-_]+)/g;
+    const parts = text.split(urlRegex);
+    
+    return parts.map((part, index) => {
+      if (part.match(urlRegex)) {
+        return (
+          <Link
+            key={index}
+            href={part}
+            target="_blank"
+            rel="noopener noreferrer"
+            sx={{
+              color: 'primary.main',
+              textDecoration: 'underline',
+              fontWeight: 500,
+              '&:hover': {
+                textDecoration: 'underline',
+                opacity: 0.8
+              }
+            }}
+          >
+            {part}
+          </Link>
+        );
+      }
+      return part;
+    });
+  };
+
   if (!open) return null;
 
   return (
@@ -431,7 +464,7 @@ const ChatBot = ({ open, onClose }) => {
                     fontSize: '17px',
                     lineHeight: 1.4
                   }}>
-                    {message.text}
+                    {renderMessageWithLinks(message.text)}
                   </Typography>
                   
                   {message.sender === 'bot' && message.confidence && message.confidence !== 'error' && (
