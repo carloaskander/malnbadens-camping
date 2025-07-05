@@ -23,9 +23,11 @@ import {
   ArrowUpward as ArrowUpIcon
 } from '@mui/icons-material';
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 
 const ChatBot = ({ open, onClose }) => {
   const { t, i18n } = useTranslation();
+  const navigate = useNavigate();
   const [messages, setMessages] = useState([]);
   const [inputMessage, setInputMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -288,7 +290,7 @@ const ChatBot = ({ open, onClose }) => {
     }
   };
 
-  // Helper function to convert URLs to clickable links
+  // Helper function to convert URLs to clickable links with proper language routing
   const renderMessageWithLinks = (text) => {
     // Regex to match URLs starting with / (relative paths)
     const urlRegex = /(\/[a-zA-Z0-9\/\-_]+)/g;
@@ -296,16 +298,29 @@ const ChatBot = ({ open, onClose }) => {
     
     return parts.map((part, index) => {
       if (part.match(urlRegex)) {
+        const handleLinkClick = (e) => {
+          e.preventDefault();
+          // Add current language prefix to the URL
+          const languageUrl = `/${i18n.language}${part}`;
+          navigate(languageUrl);
+          // Optionally close the chat after navigation
+          onClose();
+        };
+
         return (
           <Link
             key={index}
-            href={part}
-            target="_blank"
-            rel="noopener noreferrer"
+            component="button"
+            onClick={handleLinkClick}
             sx={{
               color: 'primary.main',
               textDecoration: 'underline',
               fontWeight: 500,
+              cursor: 'pointer',
+              background: 'none',
+              border: 'none',
+              padding: 0,
+              font: 'inherit',
               '&:hover': {
                 textDecoration: 'underline',
                 opacity: 0.8

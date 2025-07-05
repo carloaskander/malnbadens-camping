@@ -33,6 +33,15 @@ function App() {
             <Route path="/:lng/activities" element={<TranslatedComponent Component={Activities} />} />
             <Route path="/:lng/restaurant" element={<TranslatedComponent Component={Restaurant} />} />
             <Route path="/:lng/opening-hours" element={<TranslatedComponent Component={Openinghours} />} />
+            
+            {/* Catch-all redirects for URLs without language prefix */}
+            <Route path="/accommodation/camping" element={<Navigate replace to={`/${i18n.language}/accommodation/camping`} />} />
+            <Route path="/accommodation/cottages" element={<Navigate replace to={`/${i18n.language}/accommodation/cottages`} />} />
+            <Route path="/accommodation/hostel" element={<Navigate replace to={`/${i18n.language}/accommodation/hostel`} />} />
+            <Route path="/activities" element={<Navigate replace to={`/${i18n.language}/activities`} />} />
+            <Route path="/restaurant" element={<Navigate replace to={`/${i18n.language}/restaurant`} />} />
+            <Route path="/opening-hours" element={<Navigate replace to={`/${i18n.language}/opening-hours`} />} />
+            
             <Route path="*" element={<NotFound />} />
             {/* Other routes */}
           </Routes>
