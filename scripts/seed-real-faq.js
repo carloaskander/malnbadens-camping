@@ -1,8 +1,15 @@
 import { createClient } from '@supabase/supabase-js';
 import OpenAI from 'openai';
 import dotenv from 'dotenv';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
-dotenv.config();
+// Get the directory of the current file
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// Load .env from the parent directory (project root)
+dotenv.config({ path: path.join(__dirname, '..', '.env') });
 
 const supabase = createClient(
   process.env.SUPABASE_URL,
@@ -133,6 +140,38 @@ const REAL_FAQ_DATA = [
   {
     question: "Var hittar jag priser för vandrarhemmet?",
     answer: "Se /sv/accommodation/hostel för priser och långtidspaket."
+  },
+  {
+    question: "Vad ingår i priset?",
+    answer: "På campingplatserna ingår el, varma duschar, Wi-Fi samt fri tillgång till servicehusets kök och övriga faciliteter – det mesta du behöver för en bekväm vistelse. För stugor och vandrarhem ingår inte sänglinne; däremot ingår slutstädning i vandrarhemmet. Båda boendena har fräscha gemensamma badrum och kök, och stugorna har dessutom ett litet pentry för enklare måltider. Kompletta priser och bokning hittar du på /accommodation/camping, /accommodation/cottages och /accommodation/hostel."
+  },
+  {
+    question: "Finns det wifi överallt?",
+    answer: "Ja, vi erbjuder kostnadsfritt Wi-Fi som täcker hela campingen. Nätet förbättras kontinuerligt och genomgick en extra uppgradering 2025 för att stärka täckningen även i tidigare svagare områden. Skulle du ändå märka av svag signal är du alltid välkommen att säga till i receptionen så hjälper vi dig snabbt."
+  },
+  {
+    question: "Kan jag få studentrabatt?",
+    answer: "Tyvärr erbjuder vi inga särskilda rabatter för studenter eller pensionärer. Våra ordinarie priser gäller för alla gäster och visas alltid uppdaterade på respektive bokningssida."
+  },
+  {
+    question: "Kan jag få en plats nära stranden?",
+    answer: "Hela campingen ligger inom ungefär 150 meter från sandstranden, så du har alltid kort promenadavstånd till vattnet. Det finns dock inga tomter precis på strandkanten."
+  },
+  {
+    question: "Vill ha en stor plats för min stora husbil",
+    answer: "De flesta av våra campingtomter rymmer även större husbilar. Lägg gärna till en kommentar i bokningen eller meddela receptionen, särskilt under högsäsong, så ser vi till att du får en plats som passar."
+  },
+  {
+    question: "Har ni restaurang?",
+    answer: "Ja, Restaurang Maln Hav & Krog ligger på stranden strax intill campingen. Den drivs fristående och är känd för god mat, evenemang och en fantastisk havsutsikt. Läs mer på /restaurant."
+  },
+  {
+    question: "Var parkerar jag bilen?",
+    answer: "Vandrarhems- och stuggäster har markerade parkeringsplatser intill sitt boende. Camperar du på en tomt parkerar du normalt på själva platsen; extra fordon går bra så länge allt får plats inom tomtgränsen och inte stör grannar."
+  },
+  {
+    question: "Är det ledigt imorgon?",
+    answer: "Jag är inte direkt kopplad till bokningssystemet. Klicka på \"Boka nu\" på startsidan eller på sidorna för camping, stugor eller vandrarhem (/accommodation/camping, /accommodation/cottages, /accommodation/hostel) för att se aktuell tillgänglighet och boka direkt."
   }
 ];
 
