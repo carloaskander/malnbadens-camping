@@ -117,7 +117,17 @@ async function sendPendingQuestion(question) {
     console.log(`✅ Sent ${question.priority} priority question to Discord`);
     return message;
   } catch (error) {
-    console.error('❌ Error sending question to Discord:', error);
+    if (error.code === 50013) {
+      console.error('❌ Discord: Missing permissions');
+    } else if (error.code === 429) {
+      console.error('❌ Discord: Rate limited!', {
+        retryAfter: error.retryAfter,
+        limit: error.limit,
+        remaining: error.remaining
+      });
+    } else {
+      console.error('❌ Error sending question to Discord:', error);
+    }
   }
 }
 
@@ -315,9 +325,13 @@ export default async function handler(req, res) {
       }
 
       // Check for pending questions with retry logic
+      const startTime = Date.now();
       await checkPendingQuestionsWithRetry();
+      const duration = Date.now() - startTime;
       
-      return res.status(200).json({ success: true, message: 'Checked pending questions' });
+      console.log(`⏱️ Discord bot execution took ${duration}ms`);
+      
+      return res.status(200).json({ success: true, message: 'Checked pending questions', duration });
     } catch (error) {
       console.error('❌ Discord bot error:', error);
       return res.status(500).json({ error: 'Discord bot error', details: error.message });
