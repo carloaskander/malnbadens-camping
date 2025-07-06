@@ -205,7 +205,7 @@ async function searchFAQ(query) {
 async function logPendingQuestion(question, botResponse, confidence, similarity, priority = 'medium') {
   try {
     console.log(`🔄 Attempting to log ${priority} priority pending question:`, question);
-    const result = await supabase
+    const { data, error } = await supabase
       .from('pending')
       .insert([
         {
@@ -216,15 +216,19 @@ async function logPendingQuestion(question, botResponse, confidence, similarity,
           priority: priority,
           sent_to_discord: false
         }
-      ]);
+      ])
+      .select(); // Add select to get the inserted data back
     
-    if (result.error) {
-      console.error('❌ Supabase insertion failed:', result.error);
+    if (error) {
+      console.error('❌ Supabase insertion failed:', error);
+      console.error('❌ Error details:', JSON.stringify(error, null, 2));
     } else {
       console.log('✅ Successfully logged pending question with bot response');
+      console.log('📝 Inserted data:', data);
     }
   } catch (error) {
     console.error('❌ Error logging pending question:', error);
+    console.error('❌ Full error:', JSON.stringify(error, null, 2));
   }
 }
 
