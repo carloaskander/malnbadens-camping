@@ -385,8 +385,13 @@ ${context}`;
           headers: { 'Content-Type': 'application/json' }
         }).then(response => {
           console.log('✅ Discord bot triggered, status:', response.status);
+          return response.text();
+        }).then(text => {
+          console.log('📝 Discord bot response:', text);
         }).catch(error => {
           console.error('❌ Error triggering Discord bot:', error);
+          console.error('❌ Error details:', error.message);
+          console.error('❌ Error stack:', error.stack);
         });
       } else {
         console.log('📝 Medium priority question, not triggering Discord');
