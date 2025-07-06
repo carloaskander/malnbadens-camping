@@ -366,6 +366,7 @@ ${context}`;
     // Only log medium and low confidence for review
     if (bestSimilarity < 0.75) {
       const priority = bestSimilarity < 0.5 ? 'high' : 'medium';
+      console.log(`🎯 Question priority: ${priority} (similarity: ${bestSimilarity})`);
       await logPendingQuestion(trimmedMessage, response, confidence, bestSimilarity, priority);
       
       // Trigger Discord notification for high priority questions
@@ -378,6 +379,8 @@ ${context}`;
         }).catch(error => {
           console.error('❌ Error triggering Discord bot:', error);
         });
+      } else {
+        console.log('📝 Medium priority question, not triggering Discord');
       }
     }
     
