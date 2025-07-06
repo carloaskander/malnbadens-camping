@@ -313,33 +313,25 @@ export default async function handler(req, res) {
     try {
       console.log('🚀 Discord bot handler called');
       
-      // Respond immediately to prevent timeout
-      res.status(200).json({ success: true, message: 'Discord bot triggered, processing in background' });
-      
-      // Process in background without blocking the response
-      setImmediate(async () => {
-        try {
-          // If bot is not ready, start it
-          if (!client.isReady()) {
-            console.log('🔄 Bot not ready, logging in...');
-            await client.login(process.env.DISCORD_BOT_TOKEN);
-            // Wait a bit for the bot to be ready
-            await new Promise(resolve => setTimeout(resolve, 2000));
-            console.log('✅ Bot logged in and ready');
-          } else {
-            console.log('✅ Bot already ready');
-          }
+      // If bot is not ready, start it
+      if (!client.isReady()) {
+        console.log('🔄 Bot not ready, logging in...');
+        await client.login(process.env.DISCORD_BOT_TOKEN);
+        // Wait a bit for the bot to be ready
+        await new Promise(resolve => setTimeout(resolve, 2000));
+        console.log('✅ Bot logged in and ready');
+      } else {
+        console.log('✅ Bot already ready');
+      }
 
-          // Check for pending questions with retry logic
-          const startTime = Date.now();
-          await checkPendingQuestionsWithRetry();
-          const duration = Date.now() - startTime;
-          
-          console.log(`⏱️ Discord bot execution took ${duration}ms`);
-        } catch (error) {
-          console.error('❌ Discord bot background error:', error);
-        }
-      });
+      // Check for pending questions with retry logic
+      const startTime = Date.now();
+      await checkPendingQuestionsWithRetry();
+      const duration = Date.now() - startTime;
+      
+      console.log(`⏱️ Discord bot execution took ${duration}ms`);
+      
+      return res.status(200).json({ success: true, message: 'Checked pending questions', duration });
       
     } catch (error) {
       console.error('❌ Discord bot error:', error);
