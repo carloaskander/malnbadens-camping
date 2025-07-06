@@ -222,13 +222,29 @@ async function logPendingQuestion(question, botResponse, confidence, similarity,
     if (error) {
       console.error('❌ Supabase insertion failed:', error);
       console.error('❌ Error details:', JSON.stringify(error, null, 2));
+      return { 
+        success: false, 
+        error: error.message,
+        errorCode: error.code,
+        details: error
+      };
     } else {
       console.log('✅ Successfully logged pending question with bot response');
       console.log('📝 Inserted data:', data);
+      return { 
+        success: true, 
+        data: data,
+        questionId: data[0]?.id
+      };
     }
   } catch (error) {
     console.error('❌ Error logging pending question:', error);
     console.error('❌ Full error:', JSON.stringify(error, null, 2));
+    return { 
+      success: false, 
+      error: error.message,
+      details: error
+    };
   }
 }
 
@@ -371,10 +387,20 @@ ${context}`;
     if (bestSimilarity < 0.75) {
       const priority = bestSimilarity < 0.5 ? 'high' : 'medium';
       console.log(`🎯 Question priority: ${priority} (similarity: ${bestSimilarity})`);
-      await logPendingQuestion(trimmedMessage, response, confidence, bestSimilarity, priority);
       
-      // Discord bot will be triggered independently via database webhook
-      console.log(`📝 Question logged - Discord bot will be notified via webhook (${priority} priority)`);
+      const logResult = await logPendingQuestion(trimmedMessage, response, confidence, bestSimilarity, priority);
+      
+      if (logResult.success) {
+        console.log(`✅ Question logged successfully - Discord bot will be notified via webhook (${priority} priority)`);
+        console.log(`📝 Question ID: ${logResult.questionId}`);
+      } else {
+        console.error(`❌ Failed to log question for review: ${logResult.error}`);
+        console.error(`❌ Error code: ${logResult.errorCode}`);
+        console.error(`❌ This question will NOT reach Discord for admin review`);
+        
+        // Log a warning but don't fail the user request
+        console.error(`⚠️ User will receive response but admins won't see this question`);
+      }
     }
     
     return res.status(200).json({
@@ -384,16 +410,29 @@ ${context}`;
     });
     
   } catch (error) {
-    console.error('Chat API error:', error);
+    console.error('🚨 Chat API error:', error);
+    console.error('🚨 Error details:', JSON.stringify(error, null, 2));
+    console.error('🚨 Request details:', { message: trimmedMessage });
     
     // If OpenAI quota exceeded or other API errors, return fallback
     if (error.status === 429 || error.code === 'insufficient_quota') {
+      console.error('🚨 OpenAI quota/rate limit exceeded');
       return res.status(503).json({
         error: 'AI-tjänsten är tillfälligt otillgänglig',
         fallback: FALLBACK_FAQ
       });
     }
     
+    // If it's a Supabase error, be more specific
+    if (error.code && error.code.startsWith('PG')) {
+      console.error('🚨 Database error occurred');
+      return res.status(500).json({
+        error: 'Databasfel uppstod. Försök igen senare.',
+        fallback: FALLBACK_FAQ
+      });
+    }
+    
+    console.error('🚨 Unknown error occurred');
     return res.status(500).json({
       error: 'Ett fel uppstod. Försök igen senare.',
       fallback: FALLBACK_FAQ
