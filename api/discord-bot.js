@@ -212,6 +212,7 @@ async function handleFAQReply(replyMessage, originalMessage) {
 // Check for new pending questions
 async function checkPendingQuestions() {
   try {
+    console.log('🔍 Checking for pending questions...');
     const { data: pendingQuestions, error } = await supabase
       .from('pending')
       .select('*')
@@ -224,21 +225,32 @@ async function checkPendingQuestions() {
       return;
     }
 
+    console.log(`📋 Found ${pendingQuestions?.length || 0} pending questions to send`);
+    
     if (pendingQuestions && pendingQuestions.length > 0) {
-      console.log(`📋 Found ${pendingQuestions.length} pending questions to send`);
+      console.log('📋 Questions:', pendingQuestions.map(q => ({ id: q.id, question: q.question.substring(0, 50) + '...', priority: q.priority })));
       
       for (const question of pendingQuestions) {
+        console.log(`🔄 Processing question ${question.id}: ${question.question.substring(0, 50)}...`);
         await sendPendingQuestion(question);
         
         // Mark as sent to Discord
-        await supabase
+        const { error: updateError } = await supabase
           .from('pending')
           .update({ sent_to_discord: true })
           .eq('id', question.id);
         
+        if (updateError) {
+          console.error('❌ Error marking question as sent:', updateError);
+        } else {
+          console.log(`✅ Marked question ${question.id} as sent to Discord`);
+        }
+        
         // Small delay to avoid rate limiting
         await new Promise(resolve => setTimeout(resolve, 1000));
       }
+    } else {
+      console.log('📋 No pending questions found');
     }
   } catch (error) {
     console.error('❌ Error checking pending questions:', error);
@@ -249,11 +261,17 @@ async function checkPendingQuestions() {
 export default async function handler(req, res) {
   if (req.method === 'POST') {
     try {
+      console.log('🚀 Discord bot handler called');
+      
       // If bot is not ready, start it
       if (!client.isReady()) {
+        console.log('🔄 Bot not ready, logging in...');
         await client.login(process.env.DISCORD_BOT_TOKEN);
         // Wait a bit for the bot to be ready
         await new Promise(resolve => setTimeout(resolve, 2000));
+        console.log('✅ Bot logged in and ready');
+      } else {
+        console.log('✅ Bot already ready');
       }
 
       // Check for pending questions
