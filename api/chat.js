@@ -366,6 +366,18 @@ ${context}`;
     if (bestSimilarity < 0.75) {
       const priority = bestSimilarity < 0.5 ? 'high' : 'medium';
       await logPendingQuestion(trimmedMessage, response, confidence, bestSimilarity, priority);
+      
+      // Trigger Discord notification for high priority questions
+      if (priority === 'high') {
+        try {
+          await fetch(`${process.env.VERCEL_URL || 'http://localhost:3000'}/api/discord-bot`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' }
+          });
+        } catch (error) {
+          console.error('❌ Error triggering Discord bot:', error);
+        }
+      }
     }
     
     return res.status(200).json({
