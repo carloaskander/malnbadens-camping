@@ -327,12 +327,11 @@ async function processSingleQuestion(questionId) {
   try {
     console.log(`🔍 Processing single question: ${questionId}`);
     
-    // Get the specific question
+    // Get the specific question (don't check sent_to_discord yet)
     const { data: question, error } = await supabase
       .from('pending')
       .select('*')
       .eq('id', questionId)
-      .eq('sent_to_discord', false)
       .single();
     
     if (error) {
@@ -341,8 +340,14 @@ async function processSingleQuestion(questionId) {
     }
     
     if (!question) {
-      console.log('📋 Question not found or already processed');
-      return { success: true, message: 'Question not found or already processed' };
+      console.log('📋 Question not found');
+      return { success: true, message: 'Question not found' };
+    }
+    
+    // Check if already sent to Discord
+    if (question.sent_to_discord) {
+      console.log('📋 Question already sent to Discord, skipping');
+      return { success: true, message: 'Question already processed' };
     }
     
     console.log(`📝 Found question: ${question.question.substring(0, 50)}... (Priority: ${question.priority})`);
