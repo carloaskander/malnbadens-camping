@@ -230,6 +230,25 @@ async function checkPendingQuestionsWithRetry() {
 async function checkPendingQuestions() {
   try {
     console.log('🔍 Checking for pending questions...');
+    
+    // First, check ALL pending questions
+    const { data: allPending, error: allError } = await supabase
+      .from('pending')
+      .select('id, question, sent_to_discord, priority, created_at')
+      .order('created_at', { ascending: false })
+      .limit(5);
+    
+    if (!allError && allPending) {
+      console.log('📊 Recent pending questions:', allPending.map(q => ({
+        id: q.id,
+        question: q.question.substring(0, 30) + '...',
+        sent_to_discord: q.sent_to_discord,
+        priority: q.priority,
+        created_at: q.created_at
+      })));
+    }
+    
+    // Now check specifically for unsent ones
     const { data: pendingQuestions, error } = await supabase
       .from('pending')
       .select('*')
