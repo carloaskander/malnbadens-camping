@@ -370,7 +370,9 @@ ${context}`;
       // Trigger Discord notification for high priority questions
       if (priority === 'high') {
         try {
-          await fetch(`${process.env.VERCEL_URL || 'http://localhost:3000'}/api/discord-bot`, {
+          const discordUrl = `https://${process.env.VERCEL_URL}/api/discord-bot`;
+          console.log('🔍 Triggering Discord bot at:', discordUrl);
+          await fetch(discordUrl, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' }
           });
