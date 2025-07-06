@@ -248,13 +248,14 @@ async function checkPendingQuestions() {
       })));
     }
     
-    // Now check specifically for unsent ones
+    // Now check specifically for unsent ones (limit to 2 to avoid timeouts)
     const { data: pendingQuestions, error } = await supabase
       .from('pending')
       .select('*')
       .eq('sent_to_discord', false)
       .order('priority', { ascending: false }) // High priority first
-      .order('created_at', { ascending: true }); // Oldest first within same priority
+      .order('created_at', { ascending: true }) // Oldest first within same priority
+      .limit(2);
 
     if (error) {
       console.error('❌ Error fetching pending questions:', error);
