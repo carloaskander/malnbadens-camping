@@ -423,6 +423,39 @@ export default async function handler(req, res) {
       // Debug: Log the entire request body
       console.log('🔍 Request body:', JSON.stringify(req.body, null, 2));
       
+      // Debug: Test database access first
+      if (req.body && req.body.test === 'database') {
+        console.log('🧪 Testing Discord bot database access...');
+        try {
+          const { data: testData, error: testError } = await supabase
+            .from('pending')
+            .select('id, question, created_at, sent_to_discord')
+            .limit(3);
+          
+          console.log('🔍 Database test result:', {
+            error: testError,
+            rowCount: testData?.length || 0,
+            data: testData
+          });
+          
+          return res.status(200).json({
+            success: true,
+            message: 'Database access test',
+            canAccessDatabase: !testError,
+            error: testError,
+            rowsFound: testData?.length || 0,
+            sampleData: testData
+          });
+        } catch (e) {
+          console.error('🔥 Database test failed:', e);
+          return res.status(500).json({
+            success: false,
+            message: 'Database test failed',
+            error: e.message
+          });
+        }
+      }
+      
       // Check if we have a specific question ID (from webhook)
       if (req.body && req.body.record && req.body.record.id) {
         console.log('📨 Webhook triggered for specific question');
