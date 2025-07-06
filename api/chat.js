@@ -371,6 +371,9 @@ ${context}`;
       // Trigger Discord notification for high priority questions
       if (priority === 'high') {
         try {
+          // Small delay to ensure database commit is complete
+          await new Promise(resolve => setTimeout(resolve, 500));
+          
           const baseUrl = process.env.VERCEL_URL?.startsWith('http') 
             ? process.env.VERCEL_URL 
             : `https://${process.env.VERCEL_URL}`;
