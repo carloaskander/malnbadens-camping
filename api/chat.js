@@ -379,29 +379,14 @@ ${context}`;
         const discordUrl = `https://${process.env.VERCEL_URL}/api/discord-bot`;
         console.log('🔗 Discord URL:', discordUrl);
         
-        // Fire immediately with timeout protection - Discord bot will poll with retry logic
-        const timeoutPromise = new Promise((_, reject) => {
-          setTimeout(() => reject(new Error('Discord bot trigger timeout after 3 seconds')), 3000);
-        });
-        
-        Promise.race([
-          fetch(discordUrl, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' }
-          }),
-          timeoutPromise
-        ]).then(response => {
-          console.log('✅ Discord bot triggered, status:', response.status);
-          return response.text();
-        }).then(text => {
-          console.log('📝 Discord bot response:', text);
+        // Fire and forget - don't wait for response to avoid blocking chat
+        fetch(discordUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' }
         }).catch(error => {
-          console.error('❌ Error triggering Discord bot:', error);
-          console.error('❌ Error details:', error.message);
-          console.error('❌ Error stack:', error.stack);
-          // Don't fail the main response - Discord bot will catch up on next manual trigger
-          console.log('💡 Discord bot will process this question on next manual trigger');
+          console.error('❌ Error triggering Discord bot (fire-and-forget):', error.message);
         });
+        console.log('🔥 Discord bot triggered (fire-and-forget)');
       } else {
         console.log('📝 Medium priority question, not triggering Discord');
       }
