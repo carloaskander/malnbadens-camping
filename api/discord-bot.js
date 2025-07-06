@@ -326,6 +326,23 @@ async function checkPendingQuestions() {
 async function processSingleQuestion(questionId) {
   try {
     console.log(`🔍 Processing single question: ${questionId}`);
+    console.log(`🔍 Question ID type: ${typeof questionId}`);
+    
+    // First, let's see if the question exists at all
+    const { data: allQuestions, error: allError } = await supabase
+      .from('pending')
+      .select('id, question, created_at, sent_to_discord')
+      .order('created_at', { ascending: false })
+      .limit(10);
+    
+    if (allError) {
+      console.error('❌ Error fetching all questions:', allError);
+    } else {
+      console.log('🔍 Recent questions in database:');
+      allQuestions.forEach(q => {
+        console.log(`  - ${q.id} | ${q.question.substring(0, 30)}... | sent: ${q.sent_to_discord} | ${q.created_at}`);
+      });
+    }
     
     // Get the specific question (don't check sent_to_discord yet)
     const { data: question, error } = await supabase
@@ -336,6 +353,7 @@ async function processSingleQuestion(questionId) {
     
     if (error) {
       console.error('❌ Error fetching question:', error);
+      console.log('🔍 Searched for question ID:', questionId);
       return { success: false, error: error.message };
     }
     
@@ -402,12 +420,17 @@ export default async function handler(req, res) {
       const startTime = Date.now();
       let result;
       
+      // Debug: Log the entire request body
+      console.log('🔍 Request body:', JSON.stringify(req.body, null, 2));
+      
       // Check if we have a specific question ID (from webhook)
       if (req.body && req.body.record && req.body.record.id) {
         console.log('📨 Webhook triggered for specific question');
+        console.log('🔍 Question ID from webhook:', req.body.record.id);
         result = await processSingleQuestion(req.body.record.id);
       } else if (req.body && req.body.questionId) {
         console.log('📨 Manual trigger for specific question');
+        console.log('🔍 Question ID from manual:', req.body.questionId);
         result = await processSingleQuestion(req.body.questionId);
       } else {
         console.log('📨 Processing all pending questions (fallback)');
