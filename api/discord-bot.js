@@ -209,6 +209,23 @@ async function handleFAQReply(replyMessage, originalMessage) {
   }
 }
 
+// Check for new pending questions with retry logic
+async function checkPendingQuestionsWithRetry() {
+  let retries = 3;
+  while (retries > 0) {
+    const found = await checkPendingQuestions();
+    if (found > 0) {
+      return; // Found and processed questions
+    }
+    retries--;
+    if (retries > 0) {
+      console.log(`🔄 No questions found, retrying in 2 seconds... (${retries} retries left)`);
+      await new Promise(resolve => setTimeout(resolve, 2000));
+    }
+  }
+  console.log('📋 No pending questions found after retries');
+}
+
 // Check for new pending questions
 async function checkPendingQuestions() {
   try {
@@ -252,8 +269,11 @@ async function checkPendingQuestions() {
     } else {
       console.log('📋 No pending questions found');
     }
+    
+    return pendingQuestions?.length || 0;
   } catch (error) {
     console.error('❌ Error checking pending questions:', error);
+    return 0;
   }
 }
 
@@ -274,8 +294,8 @@ export default async function handler(req, res) {
         console.log('✅ Bot already ready');
       }
 
-      // Check for pending questions
-      await checkPendingQuestions();
+      // Check for pending questions with retry logic
+      await checkPendingQuestionsWithRetry();
       
       return res.status(200).json({ success: true, message: 'Checked pending questions' });
     } catch (error) {
