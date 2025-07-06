@@ -368,24 +368,24 @@ ${context}`;
       const priority = bestSimilarity < 0.5 ? 'high' : 'medium';
       await logPendingQuestion(trimmedMessage, response, confidence, bestSimilarity, priority);
       
-      // Trigger Discord notification for high priority questions
+      // Trigger Discord notification for high priority questions (fire-and-forget)
       if (priority === 'high') {
-        try {
-          // Small delay to ensure database commit is complete
-          await new Promise(resolve => setTimeout(resolve, 500));
-          
-          const baseUrl = process.env.VERCEL_URL?.startsWith('http') 
-            ? process.env.VERCEL_URL 
-            : `https://${process.env.VERCEL_URL}`;
-          const discordUrl = `${baseUrl}/api/discord-bot`;
-          console.log('🔍 Triggering Discord bot at:', discordUrl);
-          await fetch(discordUrl, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' }
-          });
-        } catch (error) {
-          console.error('❌ Error triggering Discord bot:', error);
-        }
+        // Don't await - let it run in background
+        setTimeout(async () => {
+          try {
+            const baseUrl = process.env.VERCEL_URL?.startsWith('http') 
+              ? process.env.VERCEL_URL 
+              : `https://${process.env.VERCEL_URL}`;
+            const discordUrl = `${baseUrl}/api/discord-bot`;
+            console.log('🔍 Triggering Discord bot at:', discordUrl);
+            await fetch(discordUrl, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' }
+            });
+          } catch (error) {
+            console.error('❌ Error triggering Discord bot:', error);
+          }
+        }, 3000); // 3 second delay, but doesn't block chat response
       }
     }
     
