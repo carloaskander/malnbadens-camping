@@ -373,23 +373,8 @@ ${context}`;
       console.log(`🎯 Question priority: ${priority} (similarity: ${bestSimilarity})`);
       await logPendingQuestion(trimmedMessage, response, confidence, bestSimilarity, priority);
       
-      // Trigger Discord notification for high priority questions
-      if (priority === 'high') {
-        console.log('🚀 Triggering Discord bot for high priority question');
-        const discordUrl = `https://${process.env.VERCEL_URL}/api/discord-bot`;
-        console.log('🔗 Discord URL:', discordUrl);
-        
-        // Fire and forget - don't wait for response to avoid blocking chat
-        fetch(discordUrl, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' }
-        }).catch(error => {
-          console.error('❌ Error triggering Discord bot (fire-and-forget):', error.message);
-        });
-        console.log('🔥 Discord bot triggered (fire-and-forget)');
-      } else {
-        console.log('📝 Medium priority question, not triggering Discord');
-      }
+      // Discord bot will be triggered independently via database webhook
+      console.log(`📝 Question logged - Discord bot will be notified via webhook (${priority} priority)`);
     }
     
     return res.status(200).json({

@@ -322,6 +322,61 @@ async function checkPendingQuestions() {
   }
 }
 
+// Process a single question by ID
+async function processSingleQuestion(questionId) {
+  try {
+    console.log(`🔍 Processing single question: ${questionId}`);
+    
+    // Get the specific question
+    const { data: question, error } = await supabase
+      .from('pending')
+      .select('*')
+      .eq('id', questionId)
+      .eq('sent_to_discord', false)
+      .single();
+    
+    if (error) {
+      console.error('❌ Error fetching question:', error);
+      return { success: false, error: error.message };
+    }
+    
+    if (!question) {
+      console.log('📋 Question not found or already processed');
+      return { success: true, message: 'Question not found or already processed' };
+    }
+    
+    console.log(`📝 Found question: ${question.question.substring(0, 50)}... (Priority: ${question.priority})`);
+    
+    // Mark as sent immediately to prevent duplicates
+    const { error: markError } = await supabase
+      .from('pending')
+      .update({ sent_to_discord: true })
+      .eq('id', questionId);
+    
+    if (markError) {
+      console.error('❌ Error marking question as sent:', markError);
+      return { success: false, error: markError.message };
+    }
+    
+    // Send to Discord
+    await sendPendingQuestion(question);
+    console.log(`✅ Successfully sent question ${questionId} to Discord`);
+    
+    return { success: true, message: 'Question processed successfully', questionId };
+    
+  } catch (error) {
+    console.error(`❌ Error processing question ${questionId}:`, error);
+    
+    // If something went wrong, mark as not sent so it can be retried
+    await supabase
+      .from('pending')
+      .update({ sent_to_discord: false })
+      .eq('id', questionId);
+    
+    return { success: false, error: error.message };
+  }
+}
+
 // API endpoint handler
 export default async function handler(req, res) {
   if (req.method === 'POST') {
@@ -339,17 +394,31 @@ export default async function handler(req, res) {
         console.log('✅ Bot already ready');
       }
 
-      // Check for pending questions with retry logic
       const startTime = Date.now();
-      const questionsProcessed = await checkPendingQuestionsWithRetry();
-      const duration = Date.now() - startTime;
+      let result;
       
+      // Check if we have a specific question ID (from webhook)
+      if (req.body && req.body.record && req.body.record.id) {
+        console.log('📨 Webhook triggered for specific question');
+        result = await processSingleQuestion(req.body.record.id);
+      } else if (req.body && req.body.questionId) {
+        console.log('📨 Manual trigger for specific question');
+        result = await processSingleQuestion(req.body.questionId);
+      } else {
+        console.log('📨 Processing all pending questions (fallback)');
+        const questionsProcessed = await checkPendingQuestionsWithRetry();
+        result = { 
+          success: true, 
+          message: questionsProcessed > 0 ? `Processed ${questionsProcessed} pending questions` : 'No pending questions found',
+          questionsProcessed 
+        };
+      }
+      
+      const duration = Date.now() - startTime;
       console.log(`⏱️ Discord bot execution took ${duration}ms`);
       
       return res.status(200).json({ 
-        success: true, 
-        message: questionsProcessed > 0 ? `Processed ${questionsProcessed} pending questions` : 'No pending questions found',
-        questionsProcessed,
+        ...result,
         duration 
       });
       
