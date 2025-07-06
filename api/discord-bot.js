@@ -354,7 +354,26 @@ async function processSingleQuestion(questionId) {
     if (error) {
       console.error('❌ Error fetching question:', error);
       console.log('🔍 Searched for question ID:', questionId);
-      return { success: false, error: error.message };
+      
+      // FALLBACK: If the specific question ID doesn't exist, try to find the most recent unsent question
+      console.log('🔄 Attempting fallback: processing most recent unsent question...');
+      const { data: fallbackQuestions, error: fallbackError } = await supabase
+        .from('pending')
+        .select('*')
+        .eq('sent_to_discord', false)
+        .order('created_at', { ascending: false })
+        .limit(1);
+      
+      if (fallbackError || !fallbackQuestions || fallbackQuestions.length === 0) {
+        console.log('❌ No fallback questions found');
+        return { success: false, error: 'Question not found and no fallback available' };
+      }
+      
+      const fallbackQuestion = fallbackQuestions[0];
+      console.log(`🔄 Using fallback question: ${fallbackQuestion.id} - ${fallbackQuestion.question.substring(0, 50)}...`);
+      
+      // Process the fallback question
+      return await processSingleQuestion(fallbackQuestion.id);
     }
     
     if (!question) {
