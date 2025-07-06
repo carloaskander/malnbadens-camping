@@ -370,6 +370,7 @@ ${context}`;
       
       // Trigger Discord notification for high priority questions
       if (priority === 'high') {
+        console.log('🚀 Triggering Discord bot for high priority question');
         // Fire immediately - Discord bot will poll with retry logic
         fetch(`https://${process.env.VERCEL_URL}/api/discord-bot`, {
           method: 'POST',
