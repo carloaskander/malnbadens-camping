@@ -221,19 +221,21 @@ async function handleFAQReply(replyMessage, originalMessage) {
 
 // Check for new pending questions with retry logic
 async function checkPendingQuestionsWithRetry() {
-  let retries = 3;
+  let retries = 2; // Reduced from 3 to 2 since we now process all questions at once
   while (retries > 0) {
     const found = await checkPendingQuestions();
     if (found > 0) {
-      return; // Found and processed questions
+      console.log(`✅ Processed ${found} pending questions`);
+      return found; // Return the count of processed questions
     }
     retries--;
     if (retries > 0) {
-      console.log(`🔄 No questions found, retrying in 2 seconds... (${retries} retries left)`);
-      await new Promise(resolve => setTimeout(resolve, 2000));
+      console.log(`🔄 No questions found, retrying in 1 second... (${retries} retries left)`);
+      await new Promise(resolve => setTimeout(resolve, 1000)); // Reduced delay from 2s to 1s
     }
   }
   console.log('📋 No pending questions found after retries');
+  return 0;
 }
 
 // Check for new pending questions
@@ -258,14 +260,14 @@ async function checkPendingQuestions() {
       })));
     }
     
-    // Now check specifically for unsent ones (limit to 1 for immediate processing)
+    // Now check specifically for unsent ones - PROCESS ALL PENDING QUESTIONS
     const { data: pendingQuestions, error } = await supabase
       .from('pending')
       .select('*')
       .eq('sent_to_discord', false)
       .order('priority', { ascending: false }) // High priority first
-      .order('created_at', { ascending: true }) // Oldest first within same priority
-      .limit(1);
+      .order('created_at', { ascending: true }); // Oldest first within same priority
+      // REMOVED .limit(1) - now processes ALL pending questions
 
     if (error) {
       console.error('❌ Error fetching pending questions:', error);
@@ -277,23 +279,36 @@ async function checkPendingQuestions() {
     if (pendingQuestions && pendingQuestions.length > 0) {
       console.log('📋 Questions:', pendingQuestions.map(q => ({ id: q.id, question: q.question.substring(0, 50) + '...', priority: q.priority })));
       
+      // Process all questions in sequence
       for (const question of pendingQuestions) {
         console.log(`🔄 Processing question ${question.id}: ${question.question.substring(0, 50)}...`);
-        await sendPendingQuestion(question);
         
-        // Mark as sent to Discord
-        const { error: updateError } = await supabase
+        // First, mark as sent to Discord IMMEDIATELY to prevent other instances from picking it up
+        const { error: markError } = await supabase
           .from('pending')
           .update({ sent_to_discord: true })
           .eq('id', question.id);
         
-        if (updateError) {
-          console.error('❌ Error marking question as sent:', updateError);
-        } else {
-          console.log(`✅ Marked question ${question.id} as sent to Discord`);
+        if (markError) {
+          console.error('❌ Error marking question as sent (skipping):', markError);
+          continue; // Skip this question to avoid duplicates
         }
         
-        // Small delay to avoid rate limiting
+        // Then send to Discord
+        try {
+          await sendPendingQuestion(question);
+          console.log(`✅ Successfully sent question ${question.id} to Discord`);
+        } catch (sendError) {
+          console.error(`❌ Error sending question ${question.id} to Discord:`, sendError);
+          
+          // If sending failed, mark as not sent so it can be retried
+          await supabase
+            .from('pending')
+            .update({ sent_to_discord: false })
+            .eq('id', question.id);
+        }
+        
+        // Small delay to avoid Discord rate limiting
         await new Promise(resolve => setTimeout(resolve, 1000));
       }
     } else {
@@ -326,12 +341,17 @@ export default async function handler(req, res) {
 
       // Check for pending questions with retry logic
       const startTime = Date.now();
-      await checkPendingQuestionsWithRetry();
+      const questionsProcessed = await checkPendingQuestionsWithRetry();
       const duration = Date.now() - startTime;
       
       console.log(`⏱️ Discord bot execution took ${duration}ms`);
       
-      return res.status(200).json({ success: true, message: 'Checked pending questions', duration });
+      return res.status(200).json({ 
+        success: true, 
+        message: questionsProcessed > 0 ? `Processed ${questionsProcessed} pending questions` : 'No pending questions found',
+        questionsProcessed,
+        duration 
+      });
       
     } catch (error) {
       console.error('❌ Discord bot error:', error);
