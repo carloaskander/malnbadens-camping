@@ -213,7 +213,8 @@ async function logPendingQuestion(question, botResponse, confidence, similarity,
           bot_response: botResponse,
           confidence: confidence,
           similarity: similarity,
-          priority: priority
+          priority: priority,
+          sent_to_discord: false
         }
       ]);
     
