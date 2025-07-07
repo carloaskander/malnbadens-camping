@@ -256,14 +256,12 @@ async function callDiscordBotDirectly(questionData, req) {
     console.log(`🔍 URL Debug - VERCEL_URL: ${process.env.VERCEL_URL}`);
     console.log(`🔍 URL Debug - req.headers.host: ${req?.headers?.host}`);
     
-    // Use req.headers.host as primary method since it's always current
-    if (req && req.headers.host) {
+    // Force use of current host to fix URL issue
+    if (req?.headers?.host) {
       webhookUrl = `https://${req.headers.host}/api/discord-bot-optimized`;
-      console.log(`🔗 Using req.headers.host: ${webhookUrl}`);
-    } else if (process.env.VERCEL_URL) {
-      webhookUrl = `https://${process.env.VERCEL_URL}/api/discord-bot-optimized`;
-      console.log(`🔗 Using VERCEL_URL: ${webhookUrl}`);
+      console.log(`🔗 FORCED req.headers.host: ${webhookUrl}`);
     } else {
+      // Fallback to stable branch URL
       webhookUrl = 'https://malnbadens-camping-git-chatbot-dev-carloaskanders-projects.vercel.app/api/discord-bot-optimized';
       console.log(`🔗 Using fallback URL: ${webhookUrl}`);
     }
@@ -275,9 +273,9 @@ async function callDiscordBotDirectly(questionData, req) {
     // Add timeout to prevent hanging
     const controller = new AbortController();
     const timeoutId = setTimeout(() => {
-      console.log(`⏰ Discord bot call timed out after 10 seconds`);
+      console.log(`⏰ Discord bot call timed out after 30 seconds`);
       controller.abort();
-    }, 10000); // 10 second timeout
+    }, 30000); // 30 second timeout for cold starts
     
     console.log(`🚀 Starting fetch request...`);
     const response = await fetch(webhookUrl, {
