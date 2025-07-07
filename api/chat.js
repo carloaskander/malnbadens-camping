@@ -250,7 +250,10 @@ async function logPendingQuestion(question, botResponse, confidence, similarity,
 
 async function callDiscordBotDirectly(questionData) {
   try {
-    const webhookUrl = `${process.env.VERCEL_URL ? 'https://' + process.env.VERCEL_URL : 'http://localhost:3000'}/api/discord-bot-optimized`;
+    // Use the correct production URL for Discord bot
+    const webhookUrl = process.env.VERCEL_URL 
+      ? `https://${process.env.VERCEL_URL}/api/discord-bot-optimized`
+      : 'https://malnbadens-camping-hwo542oy8-carloaskanders-projects.vercel.app/api/discord-bot-optimized';
     
     console.log(`📞 Calling Discord bot at: ${webhookUrl}`);
     console.log(`📝 Sending data:`, JSON.stringify(questionData, null, 2));
