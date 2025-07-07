@@ -253,11 +253,17 @@ async function callDiscordBotDirectly(questionData) {
     const webhookUrl = `${process.env.VERCEL_URL ? 'https://' + process.env.VERCEL_URL : 'http://localhost:3000'}/api/discord-bot-optimized`;
     
     console.log(`📞 Calling Discord bot at: ${webhookUrl}`);
+    console.log(`📝 Sending data:`, JSON.stringify(questionData, null, 2));
+    console.log(`🔑 Environment check - VERCEL_URL: ${process.env.VERCEL_URL ? 'EXISTS' : 'MISSING'}`);
     
     // Add timeout to prevent hanging
     const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 second timeout
+    const timeoutId = setTimeout(() => {
+      console.log(`⏰ Discord bot call timed out after 10 seconds`);
+      controller.abort();
+    }, 10000); // 10 second timeout
     
+    console.log(`🚀 Starting fetch request...`);
     const response = await fetch(webhookUrl, {
       method: 'POST',
       headers: {
@@ -268,17 +274,29 @@ async function callDiscordBotDirectly(questionData) {
     });
     
     clearTimeout(timeoutId);
+    console.log(`📊 Response status: ${response.status}`);
+    console.log(`📊 Response statusText: ${response.statusText}`);
     
     if (!response.ok) {
-      throw new Error(`Discord bot returned ${response.status}: ${response.statusText}`);
+      const errorText = await response.text();
+      console.error(`❌ Discord bot error response: ${errorText}`);
+      throw new Error(`Discord bot returned ${response.status}: ${response.statusText} - ${errorText}`);
     }
     
     const result = await response.json();
-    console.log(`✅ Discord bot responded: ${result.message || 'Success'}`);
+    console.log(`✅ Discord bot responded:`, result);
     return result;
     
   } catch (error) {
-    console.error('❌ Discord bot call failed:', error);
+    console.error('❌ Discord bot call failed with error:');
+    console.error(`❌ Error name: ${error.name}`);
+    console.error(`❌ Error message: ${error.message}`);
+    console.error(`❌ Error stack: ${error.stack}`);
+    
+    if (error.name === 'AbortError') {
+      console.error('❌ Request was aborted (timeout)');
+    }
+    
     throw error;
   }
 }
@@ -434,6 +452,7 @@ ${context}`;
         
         // Don't wait for Discord response - fire and forget
         setTimeout(() => {
+          console.log(`🔄 Starting Discord bot call for question ID: ${logResult.questionId}`);
           callDiscordBotDirectly({
             id: logResult.questionId,
             question: trimmedMessage,
@@ -441,8 +460,13 @@ ${context}`;
             confidence: confidence,
             similarity: bestSimilarity,
             priority: priority
+          }).then(result => {
+            console.log(`✅ Discord bot call successful:`, result);
           }).catch(error => {
-            console.error(`⚠️ Discord notification failed (but question is saved): ${error.message}`);
+            console.error(`❌ Discord notification failed (but question is saved):`);
+            console.error(`❌ Error message: ${error.message}`);
+            console.error(`❌ Error stack: ${error.stack}`);
+            console.error(`❌ Full error object:`, error);
           });
         }, 0);
         
