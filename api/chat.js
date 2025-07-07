@@ -254,13 +254,20 @@ async function callDiscordBotDirectly(questionData) {
     
     console.log(`📞 Calling Discord bot at: ${webhookUrl}`);
     
+    // Add timeout to prevent hanging
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 second timeout
+    
     const response = await fetch(webhookUrl, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(questionData)
+      body: JSON.stringify(questionData),
+      signal: controller.signal
     });
+    
+    clearTimeout(timeoutId);
     
     if (!response.ok) {
       throw new Error(`Discord bot returned ${response.status}: ${response.statusText}`);
@@ -424,16 +431,20 @@ ${context}`;
         
         // Call Discord bot directly (separate from database transaction)
         console.log(`🚀 Notifying Discord bot directly...`);
-        callDiscordBotDirectly({
-          id: logResult.questionId,
-          question: trimmedMessage,
-          bot_response: response,
-          confidence: confidence,
-          similarity: bestSimilarity,
-          priority: priority
-        }).catch(error => {
-          console.error(`⚠️ Discord notification failed (but question is saved): ${error.message}`);
-        });
+        
+        // Don't wait for Discord response - fire and forget
+        setTimeout(() => {
+          callDiscordBotDirectly({
+            id: logResult.questionId,
+            question: trimmedMessage,
+            bot_response: response,
+            confidence: confidence,
+            similarity: bestSimilarity,
+            priority: priority
+          }).catch(error => {
+            console.error(`⚠️ Discord notification failed (but question is saved): ${error.message}`);
+          });
+        }, 0);
         
       } else {
         console.error(`❌ Failed to log question for review: ${logResult.error}`);
