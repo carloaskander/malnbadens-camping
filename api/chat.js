@@ -256,12 +256,13 @@ async function callDiscordBotDirectly(questionData, req) {
     console.log(`🔍 URL Debug - VERCEL_URL: ${process.env.VERCEL_URL}`);
     console.log(`🔍 URL Debug - req.headers.host: ${req?.headers?.host}`);
     
-    if (process.env.VERCEL_URL) {
-      webhookUrl = `https://${process.env.VERCEL_URL}/api/discord-bot-optimized`;
-      console.log(`🔗 Using VERCEL_URL: ${webhookUrl}`);
-    } else if (req && req.headers.host) {
+    // Use req.headers.host as primary method since it's always current
+    if (req && req.headers.host) {
       webhookUrl = `https://${req.headers.host}/api/discord-bot-optimized`;
       console.log(`🔗 Using req.headers.host: ${webhookUrl}`);
+    } else if (process.env.VERCEL_URL) {
+      webhookUrl = `https://${process.env.VERCEL_URL}/api/discord-bot-optimized`;
+      console.log(`🔗 Using VERCEL_URL: ${webhookUrl}`);
     } else {
       webhookUrl = 'https://malnbadens-camping-git-chatbot-dev-carloaskanders-projects.vercel.app/api/discord-bot-optimized';
       console.log(`🔗 Using fallback URL: ${webhookUrl}`);
