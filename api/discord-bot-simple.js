@@ -8,6 +8,20 @@ const supabase = createClient(
 
 // Simple Discord bot that just logs questions for manual processing
 export default async function handler(req, res) {
+  // Quick health check without database
+  if (req.method === 'GET') {
+    console.log('🏥 Health check requested');
+    return res.status(200).json({ 
+      status: 'ok',
+      timestamp: new Date().toISOString(),
+      environment: {
+        hasSupabaseUrl: !!process.env.SUPABASE_URL,
+        hasSupabaseKey: !!process.env.SUPABASE_ANON_KEY,
+        hasVercelUrl: !!process.env.VERCEL_URL
+      }
+    });
+  }
+  
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
@@ -54,8 +68,16 @@ export default async function handler(req, res) {
     console.log(`📝 Question: ${question.substring(0, 100)}...`);
     console.log(`📝 Priority: ${priority}`);
     
+    // Check environment variables before database call
+    console.log('🔍 Environment check:', {
+      hasSupabaseUrl: !!process.env.SUPABASE_URL,
+      hasSupabaseKey: !!process.env.SUPABASE_ANON_KEY,
+      supabaseUrlPrefix: process.env.SUPABASE_URL ? process.env.SUPABASE_URL.substring(0, 20) + '...' : 'MISSING'
+    });
+    
     // Instead of connecting to Discord, just mark as processed
     // This prevents timeouts and allows manual Discord posting later
+    console.log('⏰ Starting database update...');
     const { error } = await supabase
       .from('pending')
       .update({ 
@@ -64,11 +86,14 @@ export default async function handler(req, res) {
       })
       .eq('id', id);
     
+    console.log('⏰ Database update completed');
+    
     if (error) {
       console.error('❌ Database update error:', error);
       return res.status(500).json({ 
         success: false, 
-        error: 'Database update failed' 
+        error: 'Database update failed',
+        details: error.message 
       });
     }
     

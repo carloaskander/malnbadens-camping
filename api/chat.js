@@ -273,9 +273,9 @@ async function callDiscordBotDirectly(questionData, req) {
     // Add timeout to prevent hanging  
     const controller = new AbortController();
     const timeoutId = setTimeout(() => {
-      console.log(`⏰ Simple Discord bot call timed out after 10 seconds`);
+      console.log(`⏰ Simple Discord bot call timed out after 5 seconds`);
       controller.abort();
-    }, 10000); // 10 second timeout for simple bot
+    }, 5000); // 5 second timeout for simple bot
     
     console.log(`🚀 Starting fetch request...`);
     const response = await fetch(webhookUrl, {
@@ -331,7 +331,21 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
   
+  // Declare variables outside try block for error handling
+  let trimmedMessage = 'N/A';
+  
   try {
+    // Debug request body
+    console.log('📝 Request body received:', req.body);
+    console.log('📝 Request body type:', typeof req.body);
+    console.log('📝 Request content-type:', req.headers['content-type']);
+    
+    // Handle case where body is not parsed correctly
+    if (!req.body) {
+      console.error('❌ Request body is null or undefined');
+      return res.status(400).json({ error: 'Ingen data mottagen' });
+    }
+    
     const { message } = req.body;
     
     // Validate message
@@ -339,7 +353,7 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: 'Meddelande krävs' });
     }
     
-    const trimmedMessage = message.trim();
+    trimmedMessage = message.trim();
     
     // Check rate limits and abuse protection
     const rateLimitResult = checkRateLimit(trimmedMessage);
