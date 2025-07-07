@@ -248,12 +248,24 @@ async function logPendingQuestion(question, botResponse, confidence, similarity,
   }
 }
 
-async function callDiscordBotDirectly(questionData) {
+async function callDiscordBotDirectly(questionData, req) {
   try {
     // Use the correct production URL for Discord bot
-    const webhookUrl = process.env.VERCEL_URL 
-      ? `https://${process.env.VERCEL_URL}/api/discord-bot-optimized`
-      : 'https://malnbadens-camping-hwo542oy8-carloaskanders-projects.vercel.app/api/discord-bot-optimized';
+    let webhookUrl;
+    
+    console.log(`🔍 URL Debug - VERCEL_URL: ${process.env.VERCEL_URL}`);
+    console.log(`🔍 URL Debug - req.headers.host: ${req?.headers?.host}`);
+    
+    if (process.env.VERCEL_URL) {
+      webhookUrl = `https://${process.env.VERCEL_URL}/api/discord-bot-optimized`;
+      console.log(`🔗 Using VERCEL_URL: ${webhookUrl}`);
+    } else if (req && req.headers.host) {
+      webhookUrl = `https://${req.headers.host}/api/discord-bot-optimized`;
+      console.log(`🔗 Using req.headers.host: ${webhookUrl}`);
+    } else {
+      webhookUrl = 'https://malnbadens-camping-git-chatbot-dev-carloaskanders-projects.vercel.app/api/discord-bot-optimized';
+      console.log(`🔗 Using fallback URL: ${webhookUrl}`);
+    }
     
     console.log(`📞 Calling Discord bot at: ${webhookUrl}`);
     console.log(`📝 Sending data:`, JSON.stringify(questionData, null, 2));
@@ -462,7 +474,7 @@ ${context}`;
           confidence: confidence,
           similarity: bestSimilarity,
           priority: priority
-        }).then(result => {
+        }, req).then(result => {
           console.log(`✅ Discord bot call successful:`, result);
         }).catch(error => {
           console.error(`❌ Discord notification failed (but question is saved):`);
