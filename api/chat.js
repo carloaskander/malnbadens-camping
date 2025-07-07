@@ -452,26 +452,24 @@ ${context}`;
         
         // Call Discord bot directly (separate from database transaction)
         console.log(`🚀 Notifying Discord bot directly...`);
+        console.log(`🔄 Starting Discord bot call for question ID: ${logResult.questionId}`);
         
-        // Don't wait for Discord response - fire and forget
-        setTimeout(() => {
-          console.log(`🔄 Starting Discord bot call for question ID: ${logResult.questionId}`);
-          callDiscordBotDirectly({
-            id: logResult.questionId,
-            question: trimmedMessage,
-            bot_response: response,
-            confidence: confidence,
-            similarity: bestSimilarity,
-            priority: priority
-          }).then(result => {
-            console.log(`✅ Discord bot call successful:`, result);
-          }).catch(error => {
-            console.error(`❌ Discord notification failed (but question is saved):`);
-            console.error(`❌ Error message: ${error.message}`);
-            console.error(`❌ Error stack: ${error.stack}`);
-            console.error(`❌ Full error object:`, error);
-          });
-        }, 0);
+        // Fire and forget - don't wait for response
+        callDiscordBotDirectly({
+          id: logResult.questionId,
+          question: trimmedMessage,
+          bot_response: response,
+          confidence: confidence,
+          similarity: bestSimilarity,
+          priority: priority
+        }).then(result => {
+          console.log(`✅ Discord bot call successful:`, result);
+        }).catch(error => {
+          console.error(`❌ Discord notification failed (but question is saved):`);
+          console.error(`❌ Error message: ${error.message}`);
+          console.error(`❌ Error stack: ${error.stack}`);
+          console.error(`❌ Full error object:`, error);
+        });
         
       } else {
         console.error(`❌ Failed to log question for review: ${logResult.error}`);
