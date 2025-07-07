@@ -261,7 +261,40 @@ async function processSingleQuestion(questionId) {
   }
 }
 
-// Process using webhook data directly (NEW APPROACH)
+// Process direct question data from Chat API (NEW APPROACH)
+async function processDirectQuestionData(questionData) {
+  try {
+    console.log(`🔍 Processing direct question data: ${questionData.question.substring(0, 50)}...`);
+    
+    // Use direct question data from Chat API
+    const question = {
+      id: questionData.id,
+      question: questionData.question,
+      bot_response: questionData.bot_response,
+      confidence: questionData.confidence,
+      similarity: questionData.similarity,
+      priority: questionData.priority,
+      created_at: new Date().toISOString()
+    };
+    
+    // Send to Discord using direct data
+    await sendPendingQuestion(question);
+    
+    // Update database to mark as sent (for audit trail)
+    await supabase
+      .from('pending')
+      .update({ discord_message_id: 'direct-call-processed' })
+      .eq('id', questionData.id);
+    
+    return { success: true, message: 'Direct question data processed successfully', questionId: questionData.id };
+    
+  } catch (error) {
+    console.error('❌ Error processing direct question data:', error);
+    return { success: false, error: error.message };
+  }
+}
+
+// Process using webhook data directly (OLD APPROACH - kept for backwards compatibility)
 async function processWebhookData(webhookData) {
   try {
     const { record } = webhookData;
@@ -313,8 +346,11 @@ export default async function handler(req, res) {
     
     let result;
     
-    // Use webhook data directly if available (NEW APPROACH)
-    if (req.body && req.body.record) {
+    // Direct question data from Chat API (NEW APPROACH)
+    if (req.body && req.body.id && req.body.question) {
+      console.log('📨 Processing direct question data from Chat API');
+      result = await processDirectQuestionData(req.body);
+    } else if (req.body && req.body.record) {
       console.log('📨 Processing webhook data directly');
       result = await processWebhookData(req.body);
     } else if (req.body && req.body.questionId) {

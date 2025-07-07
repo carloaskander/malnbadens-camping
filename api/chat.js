@@ -248,6 +248,34 @@ async function logPendingQuestion(question, botResponse, confidence, similarity,
   }
 }
 
+async function callDiscordBotDirectly(questionData) {
+  try {
+    const webhookUrl = `${process.env.VERCEL_URL ? 'https://' + process.env.VERCEL_URL : 'http://localhost:3000'}/api/discord-bot-optimized`;
+    
+    console.log(`📞 Calling Discord bot at: ${webhookUrl}`);
+    
+    const response = await fetch(webhookUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(questionData)
+    });
+    
+    if (!response.ok) {
+      throw new Error(`Discord bot returned ${response.status}: ${response.statusText}`);
+    }
+    
+    const result = await response.json();
+    console.log(`✅ Discord bot responded: ${result.message || 'Success'}`);
+    return result;
+    
+  } catch (error) {
+    console.error('❌ Discord bot call failed:', error);
+    throw error;
+  }
+}
+
 export default async function handler(req, res) {
   // Set CORS headers to allow requests from localhost during development
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -391,8 +419,22 @@ ${context}`;
       const logResult = await logPendingQuestion(trimmedMessage, response, confidence, bestSimilarity, priority);
       
       if (logResult.success) {
-        console.log(`✅ Question logged successfully - Discord bot will be notified via webhook (${priority} priority)`);
+        console.log(`✅ Question logged successfully (${priority} priority)`);
         console.log(`📝 Question ID: ${logResult.questionId}`);
+        
+        // Call Discord bot directly (separate from database transaction)
+        console.log(`🚀 Notifying Discord bot directly...`);
+        callDiscordBotDirectly({
+          id: logResult.questionId,
+          question: trimmedMessage,
+          bot_response: response,
+          confidence: confidence,
+          similarity: bestSimilarity,
+          priority: priority
+        }).catch(error => {
+          console.error(`⚠️ Discord notification failed (but question is saved): ${error.message}`);
+        });
+        
       } else {
         console.error(`❌ Failed to log question for review: ${logResult.error}`);
         console.error(`❌ Error code: ${logResult.errorCode}`);
