@@ -14,18 +14,41 @@ export default async function handler(req, res) {
 
   try {
     console.log('📨 Simple Discord bot received request');
+    console.log('📝 Raw request body:', req.body);
+    console.log('📝 Request body type:', typeof req.body);
+    console.log('📝 Request body keys:', req.body ? Object.keys(req.body) : 'No body');
+    console.log('📝 Request headers:', req.headers);
+    
     const startTime = Date.now();
     
+    // Parse JSON if it's a string
+    let parsedBody;
+    if (typeof req.body === 'string') {
+      try {
+        parsedBody = JSON.parse(req.body);
+        console.log('📝 Parsed body:', parsedBody);
+      } catch (parseError) {
+        console.log('❌ JSON parse error:', parseError.message);
+        return res.status(400).json({ 
+          success: false, 
+          error: 'Invalid JSON',
+          details: parseError.message 
+        });
+      }
+    } else {
+      parsedBody = req.body;
+    }
+    
     // Validate request data
-    if (!req.body || !req.body.id || !req.body.question) {
-      console.log('❌ Invalid request data:', req.body);
+    if (!parsedBody || !parsedBody.id || !parsedBody.question) {
+      console.log('❌ Invalid request data:', parsedBody);
       return res.status(400).json({ 
         success: false, 
         error: 'Invalid request data - missing id or question' 
       });
     }
     
-    const { id, question, bot_response, confidence, similarity, priority } = req.body;
+    const { id, question, bot_response, confidence, similarity, priority } = parsedBody;
     
     console.log(`📝 Processing question ID: ${id}`);
     console.log(`📝 Question: ${question.substring(0, 100)}...`);
