@@ -1,5 +1,6 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate, useParams } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { ThemeProvider } from '@mui/material/styles';
 import theme from './theme';
 import './App.css';
@@ -13,6 +14,7 @@ import Hostel from './pages/hostel/Hostel';
 import Activities from './pages/activities/Activities';
 import Restaurant from './pages/restaurant/Restaurant';
 import Openinghours from './pages/opening-hours/Openinghours';
+import Shop24SJU from './pages/24sju-butik/Shop24SJU';
 import NotFound from './pages/not-found/NotFound';
 import Footer from './components/footer/Footer';
 import ScrollTopButton from './components/scroll-top-button/ScrollTopButton.jsx';
@@ -32,6 +34,7 @@ function App() {
             <Route path="/:lng/activities" element={<TranslatedComponent Component={Activities} />} />
             <Route path="/:lng/restaurant" element={<TranslatedComponent Component={Restaurant} />} />
             <Route path="/:lng/opening-hours" element={<TranslatedComponent Component={Openinghours} />} />
+            <Route path="/:lng/24sju-butik" element={<TranslatedComponent Component={Shop24SJU} />} />
             <Route path="*" element={<NotFound />} />
             {/* Other routes */}
           </Routes>
@@ -43,16 +46,23 @@ function App() {
   );
 }
 
+// eslint-disable-next-line react/prop-types
 function TranslatedComponent({ Component }) {
   const { lng } = useParams();
+  const { i18n: translationI18n } = useTranslation();
 
   React.useEffect(() => {
-    if (lng && lng !== i18n.language) {
-      i18n.changeLanguage(lng);
+    if (lng && lng !== translationI18n.resolvedLanguage) {
+      translationI18n.changeLanguage(lng);
     }
-  }, [lng]);
+    if (lng) {
+      document.documentElement.lang = lng;
+    }
+  }, [lng, translationI18n]);
 
   return <Component />;
 }
+
+TranslatedComponent.displayName = 'TranslatedComponent';
 
 export default App;

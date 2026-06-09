@@ -18,7 +18,8 @@
         },
         "activities": "Aktiviteetit",
         "restaurant": "Ravintola",
-        "openingHours": "Aukioloajat"
+        "openingHours": "Aukioloajat",
+        "shop": "24SJU Ruokakauppa"
     },
     "hero": {
         "title": "Malnbaden<br>Camping",
@@ -225,6 +226,34 @@
             "send": "Lähetä"
         },
         "loading": "Ladataan..."
+    },
+    "shopPage": {
+        "meta": {
+            "title": "24SJU Ruokakauppa avautuu pian | Malnbadens Camping",
+            "description": "24SJU on Malnbadens Campingin lähelle avautuva miehittämätön ruokakauppa, joka palvelee ympäri vuorokauden leirintäalueen vieraita, rannalla kävijöitä ja lähialueen asukkaita."
+        },
+        "logoAlt": "24SJU Kaupan logo",
+        "eyebrow": "Lähellä ja avoinna silloin kun sinulle sopii",
+        "title": "Ruokakauppa, joka on aina auki",
+        "description": "24SJU on miehittämätön ruokakauppa vain lyhyen kävelymatkan päässä Malnbadens Campingilta, metsän kuntopolkujen vieressä. Kaupasta saat tarvikkeet aamiaiselle, päivälliselle ja rantapäivään – myös tuoreita vihanneksia ja aineksia kunnon ateriaan – ilman usean kilometrin matkaa kaupunkiin. Kaikki ovat tervetulleita: leirintäalueen vieraat, rannalla kävijät, naapurit ja ohikulkijat.",
+        "highlights": {
+            "alwaysOpen": {
+                "title": "Avoinna 24/7",
+                "description": "Tee ostokset silloin kun sinulle sopii, aikaisin aamulla tai myöhään illalla."
+            },
+            "realGroceries": {
+                "title": "Oikeita ruokatarvikkeita",
+                "description": "Harkittu valikoima aterioihin, arjen tarpeisiin ja spontaaneihin rantapäiviin."
+            },
+            "everyoneWelcome": {
+                "title": "Paikallinen ja lämmin",
+                "description": "Lähikauppa leirintävieraille, kävijöille ja kaikille alueella asuville."
+            }
+        },
+        "openingLabel": "Tavoitteemme on avata",
+        "openingDate": "1. heinäkuuta 2026",
+        "openingNote": "Tavoitteenamme on avata 1. heinäkuuta. Kaupan perustaminen on vielä kesken, joten päivämäärä voi muuttua. Päivitämme sivua heti, kun tiedämme lisää.",
+        "contactButton": "Ota yhteyttä 24SJUun"
     },
     "bookingCountdown": {
         "bookingOpens": "Varaukset alkavat",

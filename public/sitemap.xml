@@ -175,4 +175,42 @@
         <changefreq>yearly</changefreq>
         <priority>0.8</priority>
     </url>
+
+    <!-- 24SJU Butik -->
+    <url>
+        <loc>https://www.malnbadenscamping.se/sv/24sju-butik</loc>
+        <lastmod>2026-06-09</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.malnbadenscamping.se/en/24sju-butik</loc>
+        <lastmod>2026-06-09</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.malnbadenscamping.se/no/24sju-butik</loc>
+        <lastmod>2026-06-09</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.malnbadenscamping.se/de/24sju-butik</loc>
+        <lastmod>2026-06-09</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.malnbadenscamping.se/fr/24sju-butik</loc>
+        <lastmod>2026-06-09</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.malnbadenscamping.se/fi/24sju-butik</loc>
+        <lastmod>2026-06-09</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
 </urlset>

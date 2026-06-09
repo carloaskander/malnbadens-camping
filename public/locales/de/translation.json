@@ -18,7 +18,8 @@
         },
         "activities": "Aktivitäten",
         "restaurant": "Restaurant",
-        "openingHours": "Öffnungszeiten"
+        "openingHours": "Öffnungszeiten",
+        "shop": "24SJU Lebensmittelmarkt"
     },
     "hero": {
         "title": "Malnbadens<br>Camping",
@@ -225,6 +226,34 @@
             "send": "Senden"
         },
         "loading": "Lädt..."
+    },
+    "shopPage": {
+        "meta": {
+            "title": "24SJU Lebensmittelmarkt eröffnet bald | Malnbadens Camping",
+            "description": "24SJU wird ein unbemannter Lebensmittelladen bei Malnbadens Camping, rund um die Uhr geöffnet für Campinggäste, Strandbesucher und die Nachbarschaft."
+        },
+        "logoAlt": "Logo des 24SJU Shops",
+        "eyebrow": "Nah einkaufen, wann immer es passt",
+        "title": "Der Lebensmittelladen, der immer geöffnet ist",
+        "description": "24SJU wird ein unbemannter Lebensmittelladen, nur wenige Gehminuten von Malnbadens Camping entfernt, direkt an den Waldlaufwegen. Hier erhalten Sie alles für Frühstück, Abendessen und Strandtage – darunter frisches Gemüse und Zutaten für eine richtige Mahlzeit – ohne mehrere Kilometer in die Stadt fahren zu müssen. Alle sind willkommen: Campinggäste, Strandbesucher, Nachbarn und Durchreisende.",
+        "highlights": {
+            "alwaysOpen": {
+                "title": "Rund um die Uhr geöffnet",
+                "description": "Einkaufen, wann es Ihnen passt – früh am Morgen oder spät am Abend."
+            },
+            "realGroceries": {
+                "title": "Echte Lebensmittel",
+                "description": "Ein durchdachtes Sortiment für Mahlzeiten, den Alltag und spontane Strandtage."
+            },
+            "everyoneWelcome": {
+                "title": "Lokal und herzlich",
+                "description": "Ein Laden für Campinggäste, Besucher und alle Menschen aus der Umgebung."
+            }
+        },
+        "openingLabel": "Unser geplantes Eröffnungsziel",
+        "openingDate": "1. Juli 2026",
+        "openingNote": "Unser Ziel ist die Eröffnung am 1. Juli. Da sich der Laden noch im Aufbau befindet, kann sich der Termin ändern. Diese Seite wird aktualisiert, sobald es Neuigkeiten gibt.",
+        "contactButton": "24SJU kontaktieren"
     },
     "bookingCountdown": {
         "bookingOpens": "Buchung öffnet",

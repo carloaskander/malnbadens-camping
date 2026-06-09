@@ -18,7 +18,8 @@
         },
         "activities": "Activités",
         "restaurant": "Restaurant",
-        "openingHours": "Horaires d'ouverture"
+        "openingHours": "Horaires d'ouverture",
+        "shop": "Épicerie 24SJU"
     },
     "hero": {
         "title": "Camping<br>de Malnbaden",
@@ -225,6 +226,34 @@
             "send": "Envoyer"
         },
         "loading": "Chargement..."
+    },
+    "shopPage": {
+        "meta": {
+            "title": "L'épicerie 24SJU ouvre bientôt | Malnbadens Camping",
+            "description": "24SJU sera une épicerie sans personnel près du Malnbadens Camping, ouverte jour et nuit aux campeurs, visiteurs de la plage et habitants du quartier."
+        },
+        "logoAlt": "Logo de la boutique 24SJU",
+        "eyebrow": "Faites vos courses à proximité, à toute heure",
+        "title": "L'épicerie qui ne ferme jamais",
+        "description": "24SJU sera une épicerie sans personnel située à quelques minutes à pied du Malnbadens Camping, près des pistes de course en forêt. Vous pourrez y trouver de quoi préparer le petit-déjeuner, le dîner ou une journée à la plage – notamment des légumes frais et des ingrédients pour un vrai repas – sans parcourir plusieurs kilomètres jusqu'en ville. Tout le monde est bienvenu : campeurs, visiteurs de la plage, voisins et personnes de passage.",
+        "highlights": {
+            "alwaysOpen": {
+                "title": "Ouvert 24 h/24, 7 j/7",
+                "description": "Faites vos courses quand cela vous convient, tôt le matin ou tard le soir."
+            },
+            "realGroceries": {
+                "title": "De vrais produits frais",
+                "description": "Une sélection réfléchie pour les repas, le quotidien et les journées à la plage."
+            },
+            "everyoneWelcome": {
+                "title": "Local et accueillant",
+                "description": "Une épicerie de proximité pour les campeurs, visiteurs et habitants du quartier."
+            }
+        },
+        "openingLabel": "Notre objectif d'ouverture",
+        "openingDate": "1er juillet 2026",
+        "openingNote": "Notre objectif est d'ouvrir le 1er juillet. L'installation étant toujours en cours, cette date peut changer. Cette page sera mise à jour dès que nous en saurons davantage.",
+        "contactButton": "Contacter 24SJU"
     },
     "bookingCountdown": {
         "bookingOpens": "Ouverture des réservations",

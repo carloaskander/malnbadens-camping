@@ -22,7 +22,8 @@
         },
         "activities": "Activities",
         "restaurant": "Restaurant",
-        "openingHours": "Opening Hours"
+        "openingHours": "Opening Hours",
+        "shop": "24SJU Grocery Store"
     },
     "accommodationCard": {
         "camping": {
@@ -225,6 +226,34 @@
             "send": "Send"
         },
         "loading": "Loading..."
+    },
+    "shopPage": {
+        "meta": {
+            "title": "24SJU Grocery Store coming soon | Malnbadens Camping",
+            "description": "24SJU will be an unmanned grocery store by Malnbadens Camping, open around the clock for camping guests, beach visitors, and the local community."
+        },
+        "logoAlt": "24SJU Shop logo",
+        "eyebrow": "Shop nearby, whenever it suits you",
+        "title": "The grocery store that never closes",
+        "description": "24SJU will be an unmanned grocery store just a short walk from Malnbadens Camping, beside the forest running trails. You will be able to pick up what you need for breakfast, dinner, and days at the beach – including fresh vegetables and ingredients for a proper meal – without travelling several kilometres into town. Everyone is welcome: camping guests, beach visitors, neighbours, and passers-by.",
+        "highlights": {
+            "alwaysOpen": {
+                "title": "Open 24/7",
+                "description": "Shop whenever it suits you, early in the morning or late at night."
+            },
+            "realGroceries": {
+                "title": "Proper groceries",
+                "description": "A thoughtful range for real meals, everyday needs, and spontaneous beach days."
+            },
+            "everyoneWelcome": {
+                "title": "Local and welcoming",
+                "description": "A neighbourhood shop for camping guests, visitors, and local residents."
+            }
+        },
+        "openingLabel": "We aim to open",
+        "openingDate": "July 1, 2026",
+        "openingNote": "Our goal is to open on July 1. As the store is still being established, the date may change. We will update this page as soon as we know more.",
+        "contactButton": "Contact 24SJU"
     },
     "bookingCountdown": {
         "bookingOpens": "Booking opens",

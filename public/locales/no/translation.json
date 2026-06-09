@@ -18,7 +18,8 @@
         },
         "activities": "Aktiviteter",
         "restaurant": "Restaurant",
-        "openingHours": "Åpningstider"
+        "openingHours": "Åpningstider",
+        "shop": "24SJU Dagligvarebutikk"
     },
     "hero": {
         "title": "Malnbadens<br>Camping",
@@ -225,6 +226,34 @@
             "send": "Send"
         },
         "loading": "Laster..."
+    },
+    "shopPage": {
+        "meta": {
+            "title": "24SJU Dagligvarebutikk åpner snart | Malnbadens Camping",
+            "description": "24SJU blir en ubemannet dagligvarebutikk ved Malnbadens Camping, åpen døgnet rundt for campinggjester, strandbesøkende og nærmiljøet."
+        },
+        "logoAlt": "24SJU Butikk-logo",
+        "eyebrow": "Handle i nærheten, når det passer deg",
+        "title": "Dagligvarebutikken som alltid er åpen",
+        "description": "24SJU blir en ubemannet dagligvarebutikk bare en kort spasertur fra Malnbadens Camping, ved skogens tur- og løpestier. Her skal du kunne kjøpe det du trenger til frokost, middag og stranddager – inkludert friske grønnsaker og råvarer til et ordentlig måltid – uten å reise flere kilometer inn til byen. Alle er velkomne: campinggjester, strandbesøkende, naboer og forbipasserende.",
+        "highlights": {
+            "alwaysOpen": {
+                "title": "Åpent 24/7",
+                "description": "Handle når det passer deg, tidlig om morgenen eller sent på kvelden."
+            },
+            "realGroceries": {
+                "title": "Ordentlige dagligvarer",
+                "description": "Et gjennomtenkt utvalg for måltider, hverdagsbehov og spontane stranddager."
+            },
+            "everyoneWelcome": {
+                "title": "Lokalt og inkluderende",
+                "description": "En nærbutikk for campinggjester, besøkende og alle som bor i området."
+            }
+        },
+        "openingLabel": "Vi tar sikte på å åpne",
+        "openingDate": "1. juli 2026",
+        "openingNote": "Målet er å åpne 1. juli. Siden etableringen fortsatt pågår, kan datoen bli endret. Vi oppdaterer siden så snart vi vet mer.",
+        "contactButton": "Kontakt 24SJU"
     },
     "bookingCountdown": {
         "bookingOpens": "Booking åpner",

@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
@@ -20,7 +20,6 @@ import AnimatedSection from '../animated-section/AnimatedSection.jsx';
 
 function MobileNavbar() {
   const { t, i18n } = useTranslation();
-  const { pathname } = useLocation();
   const currentLanguage = i18n.language;
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [openAccommodation, setOpenAccommodation] = useState(true);
@@ -97,6 +96,16 @@ function MobileNavbar() {
             </ListItem>
           </List>
         </Collapse>
+        <ListItem sx={{ pr: 6 }} button component={Link} to={generateLink('/24sju-butik')} key="24SJU Shop">
+          <ListItemText primary={t('navbar.shop')} primaryTypographyProps={{
+            style: {
+              color: '#F28A3C',
+              fontFamily: 'Bebas Neue',
+              fontSize: '1.25rem',
+              letterSpacing: '1px'
+            }
+          }} />
+        </ListItem>
         <ListItem sx={{ pr: 6 }} button component={Link} to={generateLink('/activities')} key="Activities">
           <ListItemText primary={t('navbar.activities')} primaryTypographyProps={{
             style: {
