@@ -11,7 +11,7 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
-import logo from '../../assets/images/logo/mbclogo-orange-transparent-horizontal-2.png';
+import logo from '../../assets/images/logo/mbc-logo-navbar-web.svg';
 import { useTheme } from '@mui/material/styles';
 import LanguageSwitcher from '../language-switcher/LanguageSwitcher';
 import AnimatedSection from '../animated-section/AnimatedSection.jsx';
@@ -50,7 +50,19 @@ function DesktopNavbar() {
         <Container maxWidth="lg">
           <Toolbar sx={{ justifyContent: 'space-between', minHeight: '70px' }}>
             <AnimatedSection direction="left">
-              <img src={logo} alt="Logo" style={{ height: '70px', width: 'auto' }} />
+              <Box
+                component={Link}
+                to={generateLink('/home')}
+                aria-label="Malnbadens Camping"
+                sx={{ display: 'flex', alignItems: 'center', flexShrink: 0 }}
+              >
+                <Box
+                  component="img"
+                  src={logo}
+                  alt=""
+                  sx={{ width: '180px', height: '60px', objectFit: 'contain' }}
+                />
+              </Box>
             </AnimatedSection>
             <Box display="flex" alignItems="center" sx={{ ml: 2 }}>
               <AnimatedSection direction="right">

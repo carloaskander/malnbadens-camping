@@ -14,7 +14,7 @@ import Collapse from '@mui/material/Collapse';
 import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
 import CloseIcon from '@mui/icons-material/Close';
-import logo from '../../assets/images/logo/mbclogo-orange-transparent-horizontal-2.png';
+import logo from '../../assets/images/logo/mbc-logo-navbar-web.svg';
 import LanguageSwitcher from '../language-switcher/LanguageSwitcher';
 import AnimatedSection from '../animated-section/AnimatedSection.jsx';
 
@@ -141,7 +141,23 @@ function MobileNavbar() {
     <AppBar position="fixed">
       <Toolbar style={{ justifyContent: 'space-between', minHeight: '70px' }}>
         <AnimatedSection direction="left">
-          <img src={logo} alt="Logo" style={{ height: '70px', width: 'auto' }} />
+          <Box
+            component={Link}
+            to={generateLink('/home')}
+            aria-label="Malnbadens Camping"
+            sx={{ display: 'flex', alignItems: 'center' }}
+          >
+            <Box
+              component="img"
+              src={logo}
+              alt=""
+              sx={{
+                width: { xs: '150px', sm: '180px' },
+                height: '60px',
+                objectFit: 'contain',
+              }}
+            />
+          </Box>
         </AnimatedSection>
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
           <AnimatedSection direction="right">

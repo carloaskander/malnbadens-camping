@@ -1,9 +1,9 @@
-import React, { useRef, useEffect } from 'react';
+import { useRef, useEffect } from 'react';
 import { Box, Typography, Container } from '@mui/material';
 import { useTranslation } from 'react-i18next';
-import parse from 'html-react-parser';
 import heroVideo from '../../assets/images/hero/malnbaden-drone-video.mp4';
 import heroVideoPoster from '../../assets/images/hero/malnbaden-drone-video-poster.webp';
+import heroLogo from '../../assets/images/logo/mbc-wordmark-white.svg';
 import BookingCountdown from '../booking-countdown/BookingCountdown';
 import AnimatedSection from '../animated-section/AnimatedSection';
 
@@ -89,21 +89,40 @@ function Hero() {
         </AnimatedSection>
         <AnimatedSection direction='right' delay={0.2}>
           <Typography
-            color="text.secondary"
-            variant="h1"
+            component="h1"
             sx={{
-              fontSize: {
-                xs: '4rem',
-                sm: '5rem',
-                md: '6rem',
-                lg: '8rem',
-              },
-              textAlign: 'left',
-              maxWidth: 'none',  // Ensures text aligns within the Container
+              position: 'absolute',
+              width: '1px',
+              height: '1px',
+              p: 0,
+              m: '-1px',
+              overflow: 'hidden',
+              clip: 'rect(0, 0, 0, 0)',
+              whiteSpace: 'nowrap',
+              border: 0,
             }}
           >
-            {parse(t('hero.title'))}
+            Malnbadens Camping
           </Typography>
+          <Box
+            component="img"
+            src={heroLogo}
+            alt=""
+            sx={{
+              display: 'block',
+              width: {
+                xs: '300px',
+                sm: '360px',
+                md: '420px',
+                lg: '480px',
+              },
+              maxWidth: '100%',
+              maxHeight: { xs: '22vh', md: '24vh' },
+              objectFit: 'contain',
+              mt: { xs: -1, sm: -1.5, md: -2, lg: -2.5 },
+              mb: { xs: 1, sm: 1.5, lg: 2 },
+            }}
+          />
         </AnimatedSection>
         <AnimatedSection direction='left' delay={0.4}>
           <BookingCountdown />
