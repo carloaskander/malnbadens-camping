@@ -7,6 +7,7 @@ import './App.css';
 import i18n from '../i18n'; // Importera i18next-konfiguration
 
 import ResponsiveNavbar from './components/responsive-navbar/ResponsiveNavbar';
+import PageTitle from './components/page-title/PageTitle';
 import Home from './pages/home/Home';
 import Camping from './pages/camping/Camping';
 import Cottages from './pages/cottages/Cottages';
@@ -24,6 +25,7 @@ function App() {
     <>
       <ThemeProvider theme={theme}>
         <Router>
+          <PageTitle />
           <ResponsiveNavbar />
           <Routes>
             <Route path="/" element={<Navigate replace to={`/${i18n.language}/home`} />} />
@@ -35,6 +37,7 @@ function App() {
             <Route path="/:lng/restaurant" element={<TranslatedComponent Component={Restaurant} />} />
             <Route path="/:lng/opening-hours" element={<TranslatedComponent Component={Openinghours} />} />
             <Route path="/:lng/24sju-butik" element={<TranslatedComponent Component={Shop24SJU} />} />
+            <Route path="/:lng/*" element={<TranslatedComponent Component={NotFound} />} />
             <Route path="*" element={<NotFound />} />
             {/* Other routes */}
           </Routes>
