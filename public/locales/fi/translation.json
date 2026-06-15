@@ -255,6 +255,9 @@
         "openingNote": "Tavoitteenamme on avata 1. heinäkuuta. Kaupan perustaminen on vielä kesken, joten päivämäärä voi muuttua. Päivitämme sivua heti, kun tiedämme lisää.",
         "contactButton": "Ota yhteyttä 24SJUun"
     },
+    "pricePeriods": {
+        "appliesNow": "Voimassa nyt"
+    },
     "bookingCountdown": {
         "bookingOpens": "Varaukset alkavat",
         "bookingOpensIn": "Varaukset alkavat",

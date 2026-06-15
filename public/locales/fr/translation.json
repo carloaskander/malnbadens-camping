@@ -255,6 +255,9 @@
         "openingNote": "Notre objectif est d'ouvrir le 1er juillet. L'installation étant toujours en cours, cette date peut changer. Cette page sera mise à jour dès que nous en saurons davantage.",
         "contactButton": "Contacter 24SJU"
     },
+    "pricePeriods": {
+        "appliesNow": "En vigueur actuellement"
+    },
     "bookingCountdown": {
         "bookingOpens": "Ouverture des réservations",
         "bookingOpensIn": "Ouverture des réservations dans",

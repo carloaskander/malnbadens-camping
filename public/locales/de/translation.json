@@ -255,6 +255,9 @@
         "openingNote": "Unser Ziel ist die Eröffnung am 1. Juli. Da sich der Laden noch im Aufbau befindet, kann sich der Termin ändern. Diese Seite wird aktualisiert, sobald es Neuigkeiten gibt.",
         "contactButton": "24SJU kontaktieren"
     },
+    "pricePeriods": {
+        "appliesNow": "Gilt jetzt"
+    },
     "bookingCountdown": {
         "bookingOpens": "Buchung öffnet",
         "bookingOpensIn": "Buchung öffnet in",

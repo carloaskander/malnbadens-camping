@@ -255,6 +255,9 @@
         "openingNote": "Our goal is to open on July 1. As the store is still being established, the date may change. We will update this page as soon as we know more.",
         "contactButton": "Contact 24SJU"
     },
+    "pricePeriods": {
+        "appliesNow": "Applies now"
+    },
     "bookingCountdown": {
         "bookingOpens": "Booking opens",
         "bookingOpensIn": "Booking opens in",

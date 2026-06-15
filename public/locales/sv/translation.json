@@ -255,6 +255,9 @@
         "openingNote": "Målet är att öppna den 1 juli. Eftersom etableringen fortfarande pågår kan datumet ändras. Vi uppdaterar sidan så snart vi vet mer.",
         "contactButton": "Kontakta 24SJU"
     },
+    "pricePeriods": {
+        "appliesNow": "Gäller nu"
+    },
     "bookingCountdown": {
         "bookingOpens": "Bokning öppnar",
         "bookingOpensIn": "Bokning öppnar om",

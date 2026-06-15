@@ -1,10 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import contentfulClient from '../../contentfulClient';
 import { Box, Typography, Paper, List, ListItem, Grid } from '@mui/material';
+import CurrentPricePeriodBadge from '../current-price-period/CurrentPricePeriodBadge';
+import { getPriceCardSx } from '../current-price-period/currentPricePeriodStyles';
+import { isSeasonCurrent } from '../../utils/pricePeriods';
 
 function CampingPrices() {
-    const { i18n } = useTranslation();
+    const { t, i18n } = useTranslation();
     const [pricesData, setPricesData] = useState(null);
     const [title, setTitle] = useState("");
 
@@ -24,8 +27,6 @@ function CampingPrices() {
                 const entry = response.items[0].fields;
                 setPricesData(entry.pricingDetails); // Assuming 'pricingDetails' is the field ID for your JSON
                 setTitle(entry.Title); // Here we use 'Title' as per your field ID
-            } else {
-        
             }
         })
         .catch((error) => {
@@ -38,9 +39,18 @@ function CampingPrices() {
         <Box sx={{ my: 4 }}>
             <Typography variant="h4" gutterBottom>{title}</Typography>
             <Grid container spacing={2} justifyContent="flex-start"> {/* Create a grid container */}
-                {pricesData.seasons.map((season, index) => (
-                <Grid item xs={12} sm={6} md={4} sx={{ minWidth: 325 }} key={index}> {/* Define how each item behaves on different screen sizes */}
-                    <Paper elevation={2} sx={{ mb: 2, p: 2, height: '100%' }}>
+                {pricesData.seasons.map((season, index) => {
+                const isCurrent = isSeasonCurrent(season);
+
+                return (
+                <Grid item xs={12} sm={6} md={4} sx={{ minWidth: 0 }} key={index}> {/* Define how each item behaves on different screen sizes */}
+                    <Paper
+                        elevation={isCurrent ? 6 : 2}
+                        sx={getPriceCardSx(isCurrent)}
+                    >
+                        {isCurrent && (
+                            <CurrentPricePeriodBadge label={t('pricePeriods.appliesNow')} />
+                        )}
                         <Typography variant="h5" gutterBottom>{season.name} <br/> {season.dateRange}</Typography>
                         <List>
                             {season.prices.map((price, priceIndex) => (
@@ -60,7 +70,8 @@ function CampingPrices() {
                         </List>
                     </Paper>
                 </Grid>
-                ))}
+                );
+                })}
             </Grid>
         </Box>
     );
