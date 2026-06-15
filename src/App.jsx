@@ -1,10 +1,15 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate, useParams } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { ThemeProvider } from '@mui/material/styles';
 import theme from './theme';
 import './App.css';
-import i18n from '../i18n'; // Importera i18next-konfiguration
+import {
+  getPathForLanguageRedirect,
+  getPreferredLanguage,
+  normalizeLanguage,
+  removeFirstPathSegment,
+} from './utils/language';
 
 import ResponsiveNavbar from './components/responsive-navbar/ResponsiveNavbar';
 import PageTitle from './components/page-title/PageTitle';
@@ -28,7 +33,7 @@ function App() {
           <PageTitle />
           <ResponsiveNavbar />
           <Routes>
-            <Route path="/" element={<Navigate replace to={`/${i18n.language}/home`} />} />
+            <Route path="/" element={<RootLanguageRedirect />} />
             <Route path="/:lng/home" element={<TranslatedComponent Component={Home} />} />
             <Route path="/:lng/accommodation/camping" element={<TranslatedComponent Component={Camping} />} />
             <Route path="/:lng/accommodation/cottages" element={<TranslatedComponent Component={Cottages} />} />
@@ -49,19 +54,65 @@ function App() {
   );
 }
 
+function RootLanguageRedirect() {
+  const location = useLocation();
+  const language = getPreferredLanguage();
+
+  return (
+    <Navigate
+      replace
+      to={{
+        pathname: `/${language}/home`,
+        search: location.search,
+        hash: location.hash,
+      }}
+    />
+  );
+}
+
 // eslint-disable-next-line react/prop-types
 function TranslatedComponent({ Component }) {
   const { lng } = useParams();
+  const location = useLocation();
   const { i18n: translationI18n } = useTranslation();
+  const routeLanguage = normalizeLanguage(lng);
 
   React.useEffect(() => {
-    if (lng && lng !== translationI18n.resolvedLanguage) {
-      translationI18n.changeLanguage(lng);
+    if (routeLanguage && routeLanguage !== translationI18n.resolvedLanguage) {
+      translationI18n.changeLanguage(routeLanguage);
     }
-    if (lng) {
-      document.documentElement.lang = lng;
+    if (routeLanguage) {
+      document.documentElement.lang = routeLanguage;
     }
-  }, [lng, translationI18n]);
+  }, [routeLanguage, translationI18n]);
+
+  if (routeLanguage && lng !== routeLanguage) {
+    return (
+      <Navigate
+        replace
+        to={{
+          pathname: `/${routeLanguage}${removeFirstPathSegment(location.pathname)}`,
+          search: location.search,
+          hash: location.hash,
+        }}
+      />
+    );
+  }
+
+  if (!routeLanguage) {
+    const preferredLanguage = getPreferredLanguage();
+
+    return (
+      <Navigate
+        replace
+        to={{
+          pathname: `/${preferredLanguage}${getPathForLanguageRedirect(location.pathname)}`,
+          search: location.search,
+          hash: location.hash,
+        }}
+      />
+    );
+  }
 
   return <Component />;
 }

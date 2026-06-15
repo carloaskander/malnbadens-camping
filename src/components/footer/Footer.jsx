@@ -1,21 +1,15 @@
-import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Box, Container, Grid, Typography, IconButton, Link } from '@mui/material';
 import { Facebook, YouTube, Email, Phone, LocationOn } from '@mui/icons-material';
 import { Link as RouterLink } from 'react-router-dom';
 
 import AnimatedSection from '../animated-section/AnimatedSection.jsx';
+import { DEFAULT_LANGUAGE, normalizeLanguage } from '../../utils/language';
 
 function Footer() {
-    const { t } = useTranslation();
-    const headingStyle = {
-        fontSize: {
-          xs: '0.75rem', // mindre för små enheter
-          sm: '0.875rem', // lite större för medium enheter
-          md: '1rem', // standardstorlek för större enheter
-        },
-        // Lägg till ytterligare stilinställningar här
-    };
+    const { t, i18n } = useTranslation();
+    const currentLanguage = normalizeLanguage(i18n.resolvedLanguage || i18n.language)
+        || DEFAULT_LANGUAGE;
 
     const textStyle = {
         fontSize: {
@@ -35,7 +29,7 @@ function Footer() {
                             <AnimatedSection direction='right'>
                                 <Typography variant="h4">{t('footer.links.title')}</Typography>
                                 <Box component="nav">
-                                    <Link variant='h6' sx={textStyle} component={RouterLink} to="/opening-hours" color="inherit" underline="hover">{t('footer.links.openingHours')}</Link>
+                                    <Link variant='h6' sx={textStyle} component={RouterLink} to={`/${currentLanguage}/opening-hours`} color="inherit" underline="hover">{t('footer.links.openingHours')}</Link>
                                 </Box>
                             </AnimatedSection>
                         </Grid>

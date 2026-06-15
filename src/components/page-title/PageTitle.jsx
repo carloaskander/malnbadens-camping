@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useLocation } from 'react-router-dom';
+import { getRouteLanguage } from '../../utils/language';
 
 const SITE_NAME = 'Malnbadens Camping';
-const SUPPORTED_LANGUAGES = ['sv', 'en', 'no', 'de', 'fr', 'fi'];
 
 const PAGE_TITLE_KEYS = {
   '/home': 'meta.title',
@@ -19,10 +19,8 @@ const PAGE_TITLE_KEYS = {
 function PageTitle() {
   const { t, i18n } = useTranslation();
   const { pathname } = useLocation();
-  const routeLanguage = pathname.split('/')[1];
-  const titleLanguage = SUPPORTED_LANGUAGES.includes(routeLanguage)
-    ? routeLanguage
-    : i18n.resolvedLanguage;
+  const routeLanguage = getRouteLanguage(pathname);
+  const titleLanguage = routeLanguage || i18n.resolvedLanguage;
   const routePath = pathname.replace(/^\/[^/]+/, '') || '/home';
 
   useEffect(() => {
