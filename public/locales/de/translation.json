@@ -233,6 +233,7 @@
             "description": "24SJU wird ein unbemannter Lebensmittelladen bei Malnbadens Camping, rund um die Uhr geöffnet für Campinggäste, Strandbesucher und die Nachbarschaft."
         },
         "logoAlt": "Logo des 24SJU Shops",
+        "heroImageAlt": "Der zukünftige Standort des 24SJU Lebensmittelmarkts bei Malnbadens Camping",
         "eyebrow": "Nah einkaufen, wann immer es passt",
         "title": "Der Lebensmittelladen, der immer geöffnet ist",
         "description": "24SJU wird ein unbemannter Lebensmittelladen, nur wenige Gehminuten von Malnbadens Camping entfernt, direkt an den Waldlaufwegen. Hier erhalten Sie alles für Frühstück, Abendessen und Strandtage – darunter frisches Gemüse und Zutaten für eine richtige Mahlzeit – ohne mehrere Kilometer in die Stadt fahren zu müssen. Alle sind willkommen: Campinggäste, Strandbesucher, Nachbarn und Durchreisende.",
@@ -251,8 +252,8 @@
             }
         },
         "openingLabel": "Unser geplantes Eröffnungsziel",
-        "openingDate": "8. Juli 2026",
-        "openingNote": "Unser Ziel ist die Eröffnung am 8. Juli. Da sich der Laden noch im Aufbau befindet, kann sich der Termin ändern. Diese Seite wird aktualisiert, sobald es Neuigkeiten gibt.",
+        "openingDate": "10. Juli 2026",
+        "openingNote": "Unser Ziel ist die Eröffnung am 10. Juli. Da sich der Laden noch im Aufbau befindet, kann sich der Termin ändern. Diese Seite wird aktualisiert, sobald es Neuigkeiten gibt.",
         "contactButton": "24SJU kontaktieren"
     },
     "pricePeriods": {

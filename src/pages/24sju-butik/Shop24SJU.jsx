@@ -1,3 +1,5 @@
+import { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 import { useTranslation } from 'react-i18next';
 import { Box, Button, Container, Divider, Grid, Paper, Typography } from '@mui/material';
@@ -7,9 +9,65 @@ import LocalGroceryStoreIcon from '@mui/icons-material/LocalGroceryStore';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import AnimatedSection from '../../components/animated-section/AnimatedSection';
 import shopLogo from '../../assets/images/24sju/24sju-logo.svg';
+import heroImage1 from '../../assets/images/24sju/hero/24sju-hero-1.jpg';
+import heroImage2 from '../../assets/images/24sju/hero/24sju-hero-2.jpg';
+import heroImage3 from '../../assets/images/24sju/hero/24sju-hero-3.jpg';
 
 const SHOP_EMAIL = '24sju@malnbadenscamping.se';
 const SUPPORTED_LANGUAGES = ['sv', 'en', 'no', 'de', 'fr', 'fi'];
+const HERO_IMAGES = [heroImage1, heroImage2, heroImage3];
+
+function ShopHeroSlideshow({ alt }) {
+  const [activeImageIndex, setActiveImageIndex] = useState(0);
+
+  useEffect(() => {
+    const intervalId = window.setInterval(() => {
+      setActiveImageIndex((currentIndex) => (currentIndex + 1) % HERO_IMAGES.length);
+    }, 5200);
+
+    return () => window.clearInterval(intervalId);
+  }, []);
+
+  return (
+    <Box
+      role="img"
+      aria-label={alt}
+      sx={{
+        position: 'relative',
+        width: '100%',
+        height: { xs: 360, md: 420 },
+        overflow: 'hidden',
+        bgcolor: 'primary.main',
+        boxShadow: '0 16px 40px rgba(4, 43, 42, 0.12)',
+      }}
+    >
+      {HERO_IMAGES.map((image, index) => (
+        <Box
+          key={image}
+          component="img"
+          src={image}
+          alt=""
+          aria-hidden="true"
+          loading={index === 0 ? 'eager' : 'lazy'}
+          decoding="async"
+          sx={{
+            position: 'absolute',
+            inset: 0,
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            opacity: activeImageIndex === index ? 1 : 0,
+            transition: 'opacity 1200ms ease-in-out',
+          }}
+        />
+      ))}
+    </Box>
+  );
+}
+
+ShopHeroSlideshow.propTypes = {
+  alt: PropTypes.string.isRequired,
+};
 
 function Shop24SJU() {
   const { t, i18n } = useTranslation();
@@ -55,7 +113,7 @@ function Shop24SJU() {
         component="main"
         sx={{
           bgcolor: '#FAF6EE',
-          pt: { xs: 'calc(70px + 48px)', md: 'calc(70px + 72px)' },
+          pt: '70px',
           pb: { xs: 9, md: 13 },
           backgroundImage: `
             radial-gradient(circle at 12% 20%, rgba(247, 191, 84, 0.12), transparent 30%),
@@ -63,6 +121,17 @@ function Shop24SJU() {
           `,
         }}
       >
+        <AnimatedSection direction="left">
+          <Box
+            sx={{
+              width: '100%',
+              mb: { xs: 5, md: 7 },
+            }}
+          >
+            <ShopHeroSlideshow alt={t('shopPage.heroImageAlt')} />
+          </Box>
+        </AnimatedSection>
+
         <Container maxWidth="md">
           <Box>
             <AnimatedSection direction="left">

@@ -233,6 +233,7 @@
             "description": "24SJU on Malnbadens Campingin lähelle avautuva miehittämätön ruokakauppa, joka palvelee ympäri vuorokauden leirintäalueen vieraita, rannalla kävijöitä ja lähialueen asukkaita."
         },
         "logoAlt": "24SJU Kaupan logo",
+        "heroImageAlt": "Tulevan 24SJU Ruokakaupan sijainti Malnbadens Campingilla",
         "eyebrow": "Lähellä ja avoinna silloin kun sinulle sopii",
         "title": "Ruokakauppa, joka on aina auki",
         "description": "24SJU on miehittämätön ruokakauppa vain lyhyen kävelymatkan päässä Malnbadens Campingilta, metsän kuntopolkujen vieressä. Kaupasta saat tarvikkeet aamiaiselle, päivälliselle ja rantapäivään – myös tuoreita vihanneksia ja aineksia kunnon ateriaan – ilman usean kilometrin matkaa kaupunkiin. Kaikki ovat tervetulleita: leirintäalueen vieraat, rannalla kävijät, naapurit ja ohikulkijat.",
@@ -251,8 +252,8 @@
             }
         },
         "openingLabel": "Tavoitteemme on avata",
-        "openingDate": "8. heinäkuuta 2026",
-        "openingNote": "Tavoitteenamme on avata 8. heinäkuuta. Kaupan perustaminen on vielä kesken, joten päivämäärä voi muuttua. Päivitämme sivua heti, kun tiedämme lisää.",
+        "openingDate": "10. heinäkuuta 2026",
+        "openingNote": "Tavoitteenamme on avata 10. heinäkuuta. Kaupan perustaminen on vielä kesken, joten päivämäärä voi muuttua. Päivitämme sivua heti, kun tiedämme lisää.",
         "contactButton": "Ota yhteyttä 24SJUun"
     },
     "pricePeriods": {

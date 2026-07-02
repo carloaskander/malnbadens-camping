@@ -233,6 +233,7 @@
             "description": "24SJU will be an unmanned grocery store by Malnbadens Camping, open around the clock for camping guests, beach visitors, and the local community."
         },
         "logoAlt": "24SJU Shop logo",
+        "heroImageAlt": "The future 24SJU Grocery Store location at Malnbadens Camping",
         "eyebrow": "Shop nearby, whenever it suits you",
         "title": "The grocery store that never closes",
         "description": "24SJU will be an unmanned grocery store just a short walk from Malnbadens Camping, beside the forest running trails. You will be able to pick up what you need for breakfast, dinner, and days at the beach – including fresh vegetables and ingredients for a proper meal – without travelling several kilometres into town. Everyone is welcome: camping guests, beach visitors, neighbours, and passers-by.",
@@ -251,8 +252,8 @@
             }
         },
         "openingLabel": "We aim to open",
-        "openingDate": "July 8, 2026",
-        "openingNote": "Our goal is to open on July 8. As the store is still being established, the date may change. We will update this page as soon as we know more.",
+        "openingDate": "July 10, 2026",
+        "openingNote": "Our goal is to open on July 10. As the store is still being established, the date may change. We will update this page as soon as we know more.",
         "contactButton": "Contact 24SJU"
     },
     "pricePeriods": {

@@ -233,6 +233,7 @@
             "description": "24SJU blir en obemannad livsmedelsbutik vid Malnbadens Camping, öppen dygnet runt för campinggäster, strandbesökare och alla som bor i området."
         },
         "logoAlt": "24SJU Butik logotyp",
+        "heroImageAlt": "Platsen där 24SJU Matbutik byggs vid Malnbadens Camping",
         "eyebrow": "Handla nära, när det passar dig",
         "title": "Matbutiken som alltid är öppen",
         "description": "24SJU blir en obemannad livsmedelsbutik bara en kort promenad från Malnbadens Camping, intill motionsspåren. Här ska du kunna köpa det du behöver till frukost, middag och stranddagar – inklusive färska grönsaker och råvaror till en riktig måltid – utan att behöva ta dig flera kilometer in mot stan. Butiken är till för alla: campinggäster, strandbesökare, grannar och förbipasserande.",
@@ -251,8 +252,8 @@
             }
         },
         "openingLabel": "Vi siktar på att öppna",
-        "openingDate": "8 juli 2026",
-        "openingNote": "Målet är att öppna den 8 juli. Eftersom etableringen fortfarande pågår kan datumet ändras. Vi uppdaterar sidan så snart vi vet mer.",
+        "openingDate": "10 juli 2026",
+        "openingNote": "Målet är att öppna den 10 juli. Eftersom etableringen fortfarande pågår kan datumet ändras. Vi uppdaterar sidan så snart vi vet mer.",
         "contactButton": "Kontakta 24SJU"
     },
     "pricePeriods": {
