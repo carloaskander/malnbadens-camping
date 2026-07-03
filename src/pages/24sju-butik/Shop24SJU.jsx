@@ -114,6 +114,9 @@ function Shop24SJU() {
         sx={{
           bgcolor: '#FAF6EE',
           pt: '70px',
+          '@media (min-width:1180px)': {
+            pt: '64px',
+          },
           pb: { xs: 9, md: 13 },
           backgroundImage: `
             radial-gradient(circle at 12% 20%, rgba(247, 191, 84, 0.12), transparent 30%),
@@ -121,16 +124,14 @@ function Shop24SJU() {
           `,
         }}
       >
-        <AnimatedSection direction="left">
-          <Box
-            sx={{
-              width: '100%',
-              mb: { xs: 5, md: 7 },
-            }}
-          >
-            <ShopHeroSlideshow alt={t('shopPage.heroImageAlt')} />
-          </Box>
-        </AnimatedSection>
+        <Box
+          sx={{
+            width: '100%',
+            mb: { xs: 5, md: 7 },
+          }}
+        >
+          <ShopHeroSlideshow alt={t('shopPage.heroImageAlt')} />
+        </Box>
 
         <Container maxWidth="md">
           <Box>

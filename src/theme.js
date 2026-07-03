@@ -1,5 +1,4 @@
 import { createTheme } from '@mui/material/styles';
-import { grey } from '@mui/material/colors';
 
 
 const theme = createTheme({
@@ -79,6 +78,7 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           backgroundColor: 'rgba(4, 51, 40, 0.97)',
+          boxShadow: 'none',
         },
       },
     },
