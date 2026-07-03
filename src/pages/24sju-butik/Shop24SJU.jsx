@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 import { useTranslation } from 'react-i18next';
@@ -9,6 +9,8 @@ import LocalGroceryStoreIcon from '@mui/icons-material/LocalGroceryStore';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import AnimatedSection from '../../components/animated-section/AnimatedSection';
 import shopLogo from '../../assets/images/24sju/24sju-logo.svg';
+import heroIntroVideo from '../../assets/images/24sju/hero/24sju-hero-intro.mp4';
+import heroIntroPoster from '../../assets/images/24sju/hero/24sju-hero-intro-poster.jpg';
 import heroImage1 from '../../assets/images/24sju/hero/24sju-hero-1.jpg';
 import heroImage2 from '../../assets/images/24sju/hero/24sju-hero-2.jpg';
 import heroImage3 from '../../assets/images/24sju/hero/24sju-hero-3.jpg';
@@ -18,15 +20,36 @@ const SUPPORTED_LANGUAGES = ['sv', 'en', 'no', 'de', 'fr', 'fi'];
 const HERO_IMAGES = [heroImage1, heroImage2, heroImage3];
 
 function ShopHeroSlideshow({ alt }) {
-  const [activeImageIndex, setActiveImageIndex] = useState(0);
+  const videoRef = useRef(null);
+  const [activeMediaIndex, setActiveMediaIndex] = useState(0);
 
   useEffect(() => {
+    if (activeMediaIndex === 0) {
+      return undefined;
+    }
+
     const intervalId = window.setInterval(() => {
-      setActiveImageIndex((currentIndex) => (currentIndex + 1) % HERO_IMAGES.length);
+      setActiveMediaIndex((currentIndex) => {
+        const nextIndex = currentIndex + 1;
+        return nextIndex > HERO_IMAGES.length ? 0 : nextIndex;
+      });
     }, 5200);
 
     return () => window.clearInterval(intervalId);
-  }, []);
+  }, [activeMediaIndex]);
+
+  useEffect(() => {
+    if (activeMediaIndex !== 0 || !videoRef.current) {
+      return;
+    }
+
+    videoRef.current.currentTime = 0;
+    const playPromise = videoRef.current.play();
+
+    if (playPromise) {
+      playPromise.catch(() => setActiveMediaIndex(1));
+    }
+  }, [activeMediaIndex]);
 
   return (
     <Box
@@ -41,6 +64,38 @@ function ShopHeroSlideshow({ alt }) {
         boxShadow: '0 16px 40px rgba(4, 43, 42, 0.12)',
       }}
     >
+      <Box
+        ref={videoRef}
+        component="video"
+        src={heroIntroVideo}
+        poster={heroIntroPoster}
+        autoPlay
+        muted
+        playsInline
+        preload="metadata"
+        aria-hidden="true"
+        onLoadedData={(event) => {
+          if (activeMediaIndex !== 0) {
+            return;
+          }
+
+          const playPromise = event.currentTarget.play();
+          if (playPromise) {
+            playPromise.catch(() => setActiveMediaIndex(1));
+          }
+        }}
+        onEnded={() => setActiveMediaIndex(1)}
+        onError={() => setActiveMediaIndex(1)}
+        sx={{
+          position: 'absolute',
+          inset: 0,
+          width: '100%',
+          height: '100%',
+          objectFit: 'cover',
+          opacity: activeMediaIndex === 0 ? 1 : 0,
+          transition: 'opacity 1200ms ease-in-out',
+        }}
+      />
       {HERO_IMAGES.map((image, index) => (
         <Box
           key={image}
@@ -56,7 +111,7 @@ function ShopHeroSlideshow({ alt }) {
             width: '100%',
             height: '100%',
             objectFit: 'cover',
-            opacity: activeImageIndex === index ? 1 : 0,
+            opacity: activeMediaIndex === index + 1 ? 1 : 0,
             transition: 'opacity 1200ms ease-in-out',
           }}
         />
