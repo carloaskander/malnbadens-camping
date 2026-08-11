@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 import { useTranslation } from 'react-i18next';
@@ -11,45 +11,57 @@ import AnimatedSection from '../../components/animated-section/AnimatedSection';
 import shopLogo from '../../assets/images/24sju/24sju-logo.svg';
 import heroIntroVideo from '../../assets/images/24sju/hero/24sju-hero-intro.mp4';
 import heroIntroPoster from '../../assets/images/24sju/hero/24sju-hero-intro-poster.jpg';
-import heroImage1 from '../../assets/images/24sju/hero/24sju-hero-1.jpg';
-import heroImage2 from '../../assets/images/24sju/hero/24sju-hero-2.jpg';
 import heroImage3 from '../../assets/images/24sju/hero/24sju-hero-3.jpg';
+import heroDrillingVideo from '../../assets/images/24sju/hero/24sju-hero-drilling.mp4';
+import heroDrillingPoster from '../../assets/images/24sju/hero/24sju-hero-drilling-poster.jpg';
+import heroMarkingVideo from '../../assets/images/24sju/hero/24sju-hero-marking.mp4';
+import heroMarkingPoster from '../../assets/images/24sju/hero/24sju-hero-marking-poster.jpg';
+import heroNightImage from '../../assets/images/24sju/hero/24sju-hero-night.jpg';
 
 const SHOP_EMAIL = '24sju@malnbadenscamping.se';
 const SUPPORTED_LANGUAGES = ['sv', 'en', 'no', 'de', 'fr', 'fi'];
-const HERO_IMAGES = [heroImage1, heroImage2, heroImage3];
+const HERO_MEDIA = [
+  { type: 'video', src: heroIntroVideo, poster: heroIntroPoster },
+  { type: 'image', src: heroNightImage },
+  { type: 'video', src: heroDrillingVideo, poster: heroDrillingPoster },
+  { type: 'video', src: heroMarkingVideo, poster: heroMarkingPoster },
+  { type: 'image', src: heroImage3 },
+];
 
 function ShopHeroSlideshow({ alt }) {
-  const videoRef = useRef(null);
+  const videoRefs = useRef([]);
   const [activeMediaIndex, setActiveMediaIndex] = useState(0);
+  const showNextMedia = useCallback(() => {
+    setActiveMediaIndex((currentIndex) => (currentIndex + 1) % HERO_MEDIA.length);
+  }, []);
 
   useEffect(() => {
-    if (activeMediaIndex === 0) {
+    const activeMedia = HERO_MEDIA[activeMediaIndex];
+
+    if (activeMedia.type !== 'image') {
       return undefined;
     }
 
-    const intervalId = window.setInterval(() => {
-      setActiveMediaIndex((currentIndex) => {
-        const nextIndex = currentIndex + 1;
-        return nextIndex > HERO_IMAGES.length ? 0 : nextIndex;
-      });
-    }, 5200);
+    const timeoutId = window.setTimeout(showNextMedia, 5200);
 
-    return () => window.clearInterval(intervalId);
-  }, [activeMediaIndex]);
+    return () => window.clearTimeout(timeoutId);
+  }, [activeMediaIndex, showNextMedia]);
 
   useEffect(() => {
-    if (activeMediaIndex !== 0 || !videoRef.current) {
+    const activeMedia = HERO_MEDIA[activeMediaIndex];
+    const activeVideo = videoRefs.current[activeMediaIndex];
+
+    if (activeMedia.type !== 'video' || !activeVideo) {
       return;
     }
 
-    videoRef.current.currentTime = 0;
-    const playPromise = videoRef.current.play();
+    activeVideo.currentTime = 0;
+    const playPromise = activeVideo.play();
 
     if (playPromise) {
-      playPromise.catch(() => setActiveMediaIndex(1));
+      playPromise.catch(showNextMedia);
     }
-  }, [activeMediaIndex]);
+  }, [activeMediaIndex, showNextMedia]);
 
   return (
     <Box
@@ -64,58 +76,60 @@ function ShopHeroSlideshow({ alt }) {
         boxShadow: '0 16px 40px rgba(4, 43, 42, 0.12)',
       }}
     >
-      <Box
-        ref={videoRef}
-        component="video"
-        src={heroIntroVideo}
-        poster={heroIntroPoster}
-        autoPlay
-        muted
-        playsInline
-        preload="metadata"
-        aria-hidden="true"
-        onLoadedData={(event) => {
-          if (activeMediaIndex !== 0) {
-            return;
-          }
-
-          const playPromise = event.currentTarget.play();
-          if (playPromise) {
-            playPromise.catch(() => setActiveMediaIndex(1));
-          }
-        }}
-        onEnded={() => setActiveMediaIndex(1)}
-        onError={() => setActiveMediaIndex(1)}
-        sx={{
+      {HERO_MEDIA.map((media, index) => {
+        const sharedStyles = {
           position: 'absolute',
           inset: 0,
           width: '100%',
           height: '100%',
           objectFit: 'cover',
-          opacity: activeMediaIndex === 0 ? 1 : 0,
+          opacity: activeMediaIndex === index ? 1 : 0,
           transition: 'opacity 1200ms ease-in-out',
-        }}
-      />
-      {HERO_IMAGES.map((image, index) => (
-        <Box
-          key={image}
-          component="img"
-          src={image}
-          alt=""
-          aria-hidden="true"
-          loading={index === 0 ? 'eager' : 'lazy'}
-          decoding="async"
-          sx={{
-            position: 'absolute',
-            inset: 0,
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-            opacity: activeMediaIndex === index + 1 ? 1 : 0,
-            transition: 'opacity 1200ms ease-in-out',
-          }}
-        />
-      ))}
+        };
+
+        if (media.type === 'video') {
+          return (
+            <Box
+              key={media.src}
+              ref={(node) => {
+                videoRefs.current[index] = node;
+              }}
+              component="video"
+              src={media.src}
+              poster={media.poster}
+              autoPlay={index === 0}
+              muted
+              playsInline
+              preload="metadata"
+              aria-hidden="true"
+              onEnded={() => {
+                if (activeMediaIndex === index) {
+                  showNextMedia();
+                }
+              }}
+              onError={() => {
+                if (activeMediaIndex === index) {
+                  showNextMedia();
+                }
+              }}
+              sx={sharedStyles}
+            />
+          );
+        }
+
+        return (
+          <Box
+            key={media.src}
+            component="img"
+            src={media.src}
+            alt=""
+            aria-hidden="true"
+            loading="lazy"
+            decoding="async"
+            sx={sharedStyles}
+          />
+        );
+      })}
     </Box>
   );
 }
