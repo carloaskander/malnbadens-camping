@@ -205,6 +205,10 @@
     },
     "restaurantPage": {
         "welcome": "Välkommen till",
+        "seasonalOpening": {
+            "title": "Säsongsöppet",
+            "description": "Restaurangen är öppen från mitten av juni till mitten av augusti. Exakta öppettider kan variera under säsongen - se restaurangens Facebook eller Instagram för aktuell information."
+        },
         "description": "Njut av vällagad mat i härligt solläge med havet och Malnbadens sandstrand som fond. Maln Hav & Krog ligger bara ett stenkast från campingen och erbjuder en avslappnad miljö för god mat, dryck och gemenskap. Besök restaurangens Facebook eller Instagram för aktuell meny, öppettider och information om kommande evenemang.",
         "facebook": "Facebook",
         "instagram": "Instagram",

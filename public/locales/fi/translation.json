@@ -205,6 +205,10 @@
     },
     "restaurantPage": {
         "welcome": "Tervetuloa",
+        "seasonalOpening": {
+            "title": "Avoinna sesongin aikana",
+            "description": "Ravintola on avoinna kesäkuun puolivälistä elokuun puoliväliin. Tarkat aukioloajat voivat vaihdella sesongin aikana - ajantasaiset tiedot löytyvät ravintolan Facebook- tai Instagram-sivulta."
+        },
         "description": "Nauti hyvin valmistetusta ruoasta aurinkoisessa ympäristössä meren ja Malnbadenin hiekkarannan äärellä. Maln Hav & Krog sijaitsee vain lyhyen kävelymatkan päässä leirintäalueelta ja tarjoaa rennon paikan hyvälle ruoalle, juomille ja yhdessäololle. Ajantasainen menu, aukioloajat ja tulevat tapahtumat löytyvät ravintolan Facebook- ja Instagram-sivuilta.",
         "facebook": "Facebook",
         "instagram": "Instagram",

@@ -1,4 +1,3 @@
-import React from 'react';
 import { Box, Container, Typography, Grid, Link, IconButton } from '@mui/material';
 import { Facebook, Instagram, Phone, Place } from '@mui/icons-material';
 import { useTranslation } from 'react-i18next';
@@ -23,6 +22,25 @@ function Restaurant() {
                                     alt="Maln Hav & Krog" 
                                     sx={{ maxWidth: '100%', mt: 2, mb: 2 }} 
                                 />
+                            </AnimatedSection>
+                            <AnimatedSection direction="right">
+                                <Box
+                                    sx={{
+                                        mt: 2,
+                                        px: 2.5,
+                                        py: 2,
+                                        borderLeft: '4px solid',
+                                        borderColor: 'secondary.main',
+                                        bgcolor: 'rgba(214, 107, 39, 0.10)',
+                                    }}
+                                >
+                                    <Typography variant="h5" component="h2" color="primary.main" sx={{ mb: 0.5 }}>
+                                        {t('restaurantPage.seasonalOpening.title')}
+                                    </Typography>
+                                    <Typography variant="body1">
+                                        {t('restaurantPage.seasonalOpening.description')}
+                                    </Typography>
+                                </Box>
                             </AnimatedSection>
                             <AnimatedSection direction="right">
                                 <Typography variant='body1' mt={2}>
@@ -88,7 +106,6 @@ function Restaurant() {
                                         style={{ position: 'absolute', top: 0, left: 0, border: 'none' }}
                                         scrolling="no"
                                         frameBorder="0"
-                                        allowTransparency="true"
                                         allow="encrypted-media"
                                         allowFullScreen={true}
                                         title="Facebook Reel"
